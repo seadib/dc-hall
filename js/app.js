@@ -644,7 +644,11 @@ async function fetchJson(path) {
 
 function normalizeCmsPath(path) {
   if (!path) return "";
-  if (typeof path === "object" && path.url) path = path.url;
+  if (typeof path === "object") {
+    if (path.url) path = path.url;
+    else if (path.asset && path.asset.url) path = path.asset.url;
+    else if (path.photo) path = typeof path.photo === "object" ? (path.photo.url || path.photo.asset?.url || "") : path.photo;
+  }
   if (typeof path !== "string") return "";
   if (path.startsWith("http://") || path.startsWith("https://") || path.startsWith("//")) {
     return path;
@@ -2006,11 +2010,11 @@ function openRoomModal(room) {
   
   let roomPhotos = [];
   if (cmsRoom && cmsRoom.photos && cmsRoom.photos.length) {
-    roomPhotos = cmsRoom.photos.map(normalizeCmsPath);
+    roomPhotos = cmsRoom.photos.map(normalizeCmsPath).filter(Boolean);
   }
 
   const photoGridHtml = roomPhotos.length 
-    ? `<div class="room-photo-grid">${roomPhotos.map((photo, index) => `<img src="${photo}" alt="Room photo ${index + 1}" loading="lazy">`).join("")}</div>`
+    ? `<div class="room-photo-grid">${roomPhotos.map((photo, index) => `<img src="${photo}" alt="Room photo ${index + 1}" loading="lazy" style="cursor: pointer;" onclick="openGalleryModal('${photo}', '${title}', '')">`).join("")}</div>`
     : `<div class="no-photos-placeholder">
          <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor">
            <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 5H5l3.5-4.5z"/>

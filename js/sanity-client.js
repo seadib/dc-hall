@@ -30,21 +30,27 @@ const SANITY_GROQ_QUERY = `{
   },
   "rooms": *[_type == "room"] | order(room_no asc){
     ...,
-    "photos": photos[]{
-      "url": coalesce(asset->url, @)
-    }
+    "photos": coalesce(photos[].asset->url, photos)
   },
   "home": *[_type == "homePage"][0],
   "hall": *[_type == "hallInfo"][0]{
     ...,
     "hall_photo": coalesce(hall_photo.asset->url, hall_photo),
-    "hall_super_photo": coalesce(hall_super_photo.asset->url, hall_super_photo)
+    "hall_super_photo": coalesce(hall_super_photo.asset->url, hall_super_photo),
+    "hall_photos": hall_photos[]{
+      ...,
+      "photo": coalesce(photo.asset->url, photo, asset->url)
+    },
+    "alumni_profiles": alumni_profiles[]{
+      ...,
+      "photo": coalesce(photo.asset->url, photo, asset->url)
+    }
   },
   "developer": *[_type == "developerProfile"][0]{
     ...,
     "portrait": coalesce(portrait.asset->url, portrait)
   },
-  "gallery": *[_type == "galleryItem"] | order(position asc){
+  "gallery": *[_type == "galleryItem"] | order(position asc, _createdAt desc){
     ...,
     "photo": coalesce(photo.asset->url, photo)
   }
