@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://seadib.github.io/dc-hall/sitemap.xml
+Sitemap: https://dchall.pro.bd/sitemap.xml

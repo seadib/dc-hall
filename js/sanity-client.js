@@ -1,13 +1,13 @@
 /**
  * Dhaka College International Hall - Sanity CMS Client
- * Connects directly to Sanity Cloud Content Lake via fast CDN.
+ * Connects directly to Sanity Cloud Content Lake with real-time live synchronization.
  */
 
 const SANITY_CONFIG = {
   projectId: "w16kaeyg",
   dataset: "production",
   apiVersion: "2023-01-01",
-  useCdn: true
+  useCdn: false // false guarantees instant real-time live data with zero edge-caching lag
 };
 
 const SANITY_GROQ_QUERY = `{
@@ -51,23 +51,28 @@ const SANITY_GROQ_QUERY = `{
 }`;
 
 /**
- * Fetches all site content from Sanity CDN.
- * Returns null if network fails so the app can fall back to local JSON files.
+ * Fetches all site content from Sanity Content Lake.
+ * Uses cache: "no-store" and timestamp to bypass any browser cache.
  */
 async function fetchSanityCms() {
   const host = SANITY_CONFIG.useCdn ? "apicdn.sanity.io" : "api.sanity.io";
-  const endpoint = `https://${SANITY_CONFIG.projectId}.${host}/v${SANITY_CONFIG.apiVersion}/data/query/${SANITY_CONFIG.dataset}?query=${encodeURIComponent(SANITY_GROQ_QUERY)}`;
+  const timestamp = Date.now();
+  const endpoint = `https://${SANITY_CONFIG.projectId}.${host}/v${SANITY_CONFIG.apiVersion}/data/query/${SANITY_CONFIG.dataset}?query=${encodeURIComponent(SANITY_GROQ_QUERY)}&_t=${timestamp}`;
 
   try {
-    const res = await fetch(endpoint);
+    const res = await fetch(endpoint, { cache: "no-store" });
     if (!res.ok) {
       console.warn(`Sanity API responded with status ${res.status}`);
       return null;
     }
     const data = await res.json();
-    return data && data.result ? data.result : null;
+    if (data && data.result) {
+      console.log("✔ Live data successfully fetched from Sanity CMS Lake:", data.result);
+      return data.result;
+    }
+    return null;
   } catch (error) {
-    console.warn("Unable to fetch from Sanity CDN, falling back to local files:", error);
+    console.warn("Unable to fetch from Sanity CMS, falling back to local files:", error);
     return null;
   }
 }
