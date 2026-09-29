@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="description" content="Dhaka College International Hall Website (DC Hall Website). Explore student directory, room details, roommates search, academic results, club directory, and official social pages. Searchable for adib dchall, hostel info, and international hall students.">
+  <meta name="keywords" content="dhaka college international hall wbsite, dc hall website, adib dchall, international hall info, hostel, dhaka college hostel, dc hostel, dhaka college, adib">
+  <link rel="icon" href="images/favicon.png" type="image/png" sizes="192x192">
+  <link rel="icon" href="images/favicon.png" type="image/png" sizes="96x96">
+  <link rel="icon" href="images/favicon.png" type="image/png" sizes="48x48">
+  <link rel="icon" href="images/favicon.png" type="image/png" sizes="32x32">
+  <link rel="icon" href="images/favicon.png" type="image/png" sizes="16x16">
+  <link rel="shortcut icon" href="images/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="images/favicon.png" sizes="180x180">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DC Hostel | Students | Dhaka College International Hall | DC Hall Website</title>
+  <script>
+    (function () {
+      try {
+        if (localStorage.getItem("dc-hostel-theme") === "dark") {
+          document.documentElement.classList.add("dark");
+          document.documentElement.dataset.theme = "dark";
+        }
+      } catch (error) {}
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700;800&family=Noto+Serif+Bengali:wght@400;500;600;700&family=Outfit:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="students">
+  <header class="navbar" id="navbar">
+    <div class="container nav-inner">
+      <a class="logo" href="index.html" aria-label="DC Hostel home">
+        <img class="logo-img" src="images/logo.png" alt="International Hall logo" loading="lazy">
+        <span data-i18n="nav.logo">International Hall</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="index.html" data-i18n="nav.home">Home</a>
+        <a href="students.html" class="active" data-i18n="nav.students">Students</a>
+        <a href="roommates.html" data-i18n="nav.roommates">Roommates</a>
+        <a href="results.html" data-i18n="nav.results">Results</a>
+        <a href="hostel.html" data-i18n="nav.hostel">Hostel Info</a>
+      </nav>
+      <div class="nav-actions">
+        <div class="language-switch" aria-label="Language selector">
+          <button type="button" data-lang-option="en">English</button>
+          <button type="button" data-lang-option="bn">বাংলা</button>
+        </div>
+        <a href="profile.html" class="profile-toggle" id="profileBtn" aria-label="Profile Status / Login">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+          </svg>
+        </a>
+        <button class="theme-toggle" id="toggle" type="button" aria-label="Toggle dark mode">
+          <span aria-hidden="true">&#9789;</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-main">
+    <section class="page-hero compact">
+      <div class="container" data-aos="fade-up">
+        <p class="eyebrow" data-i18n="common.students">Students</p>
+        <h1 data-i18n="students.title">Student Directory</h1>
+        <p data-i18n="students.subtitle">Profiles, contact details, rooms, goals and academic summary in one searchable list.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="filter-panel" data-aos="fade-up">
+          <label>
+            <span data-i18n="filters.class">Class</span>
+            <select id="filterClass">
+              <option value="" data-i18n="filters.allClasses">All Classes</option>
+              <option value="11" data-i18n="studentClass.11">Class XI</option>
+              <option value="12" data-i18n="studentClass.12">Class XII</option>
+            </select>
+          </label>
+          <label>
+            <span data-i18n="filters.group">Group</span>
+            <select id="filterGroup">
+              <option value="" data-i18n="filters.allGroups">All Groups</option>
+              <option value="science" data-i18n="groups.science">Science</option>
+              <option value="commerce" data-i18n="groups.commerce">Business Studies</option>
+              <option value="arts" data-i18n="groups.arts">Humanities</option>
+            </select>
+          </label>
+          <label>
+            <span data-i18n="filters.section">Section</span>
+            <select id="filterSection">
+              <option value="" data-i18n="filters.allSections">All Sections</option>
+              <option value="A">A</option>
+              <option value="B">B</option>
+              <option value="C">C</option>
+              <option value="D">D</option>
+              <option value="E">E</option>
+              <option value="F">F</option>
+            </select>
+          </label>
+          <label>
+            <span data-i18n="filters.blood">Blood Group</span>
+            <select id="filterBlood">
+              <option value="" data-i18n="filters.allBlood">All Blood Groups</option>
+              <option value="A+">A+</option>
+              <option value="A-">A-</option>
+              <option value="B+">B+</option>
+              <option value="B-">B-</option>
+              <option value="O+">O+</option>
+              <option value="O-">O-</option>
+              <option value="AB+">AB+</option>
+              <option value="AB-">AB-</option>
+            </select>
+          </label>
+        </div>
+        <div class="search-wrap" data-aos="fade-up">
+          <label for="studentSearch" class="sr-only" data-i18n="common.searchStudents">Search students</label>
+          <input id="studentSearch" class="search-input" type="search" placeholder="Search by name, room, phone, blood group or address" data-i18n-placeholder="common.searchPlaceholderFull">
+        </div>
+        <div class="student-grid" id="studentGrid"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner"></div>
+  </footer>
+
+  <div class="modal" id="studentModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalName">
+    <div class="modal-backdrop" data-close-modal></div>
+    <article class="modal-panel">
+      <button class="modal-close" type="button" aria-label="Close student profile" data-close-modal>&times;</button>
+      <div id="modalContent"></div>
+    </article>
+  </div>
+
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script src="js/sanity-client.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

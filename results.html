@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="description" content="Dhaka College International Hall Website (DC Hall Website). Explore student directory, room details, roommates search, academic results, club directory, and official social pages. Searchable for adib dchall, hostel info, and international hall students.">
+  <meta name="keywords" content="dhaka college international hall wbsite, dc hall website, adib dchall, international hall info, hostel, dhaka college hostel, dc hostel, dhaka college, adib">
+  <link rel="icon" href="images/favicon.png" type="image/png" sizes="192x192">
+  <link rel="icon" href="images/favicon.png" type="image/png" sizes="96x96">
+  <link rel="icon" href="images/favicon.png" type="image/png" sizes="48x48">
+  <link rel="icon" href="images/favicon.png" type="image/png" sizes="32x32">
+  <link rel="icon" href="images/favicon.png" type="image/png" sizes="16x16">
+  <link rel="shortcut icon" href="images/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="images/favicon.png" sizes="180x180">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DC Hostel | Results | Dhaka College International Hall | DC Hall Website</title>
+  <script>
+    (function () {
+      try {
+        if (localStorage.getItem("dc-hostel-theme") === "dark") {
+          document.documentElement.classList.add("dark");
+          document.documentElement.dataset.theme = "dark";
+        }
+      } catch (error) {}
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700;800&family=Noto+Serif+Bengali:wght@400;500;600;700&family=Outfit:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="results">
+  <header class="navbar" id="navbar">
+    <div class="container nav-inner">
+      <a class="logo" href="index.html" aria-label="DC Hostel home">
+        <img class="logo-img" src="images/logo.png" alt="International Hall logo" loading="lazy">
+        <span data-i18n="nav.logo">International Hall</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="index.html" data-i18n="nav.home">Home</a>
+        <a href="students.html" data-i18n="nav.students">Students</a>
+        <a href="roommates.html" data-i18n="nav.roommates">Roommates</a>
+        <a href="results.html" class="active" data-i18n="nav.results">Results</a>
+        <a href="hostel.html" data-i18n="nav.hostel">Hostel Info</a>
+      </nav>
+      <div class="nav-actions">
+        <div class="language-switch" aria-label="Language selector">
+          <button type="button" data-lang-option="en">English</button>
+          <button type="button" data-lang-option="bn">বাংলা</button>
+        </div>
+        <a href="profile.html" class="profile-toggle" id="profileBtn" aria-label="Profile Status / Login">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+          </svg>
+        </a>
+        <button class="theme-toggle" id="toggle" type="button" aria-label="Toggle dark mode">
+          <span aria-hidden="true">&#9789;</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-main">
+    <section class="page-hero results-hero compact">
+      <div class="container" data-aos="fade-up">
+        <p class="eyebrow" data-i18n="common.results">Results</p>
+        <h1 data-i18n="results.title">Academic Results</h1>
+        <p data-i18n="results.subtitle">GPA and subject marks for hostel students.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="table-shell" data-aos="fade-up">
+          <table class="result-table">
+            <thead>
+              <tr>
+                <th data-i18n="resultTable.serial">Serial</th>
+                <th data-i18n="resultTable.student">Student</th>
+                <th data-i18n="resultTable.roll">Roll No</th>
+                <th data-i18n="pdf.ct1">CT-1</th>
+                <th data-i18n="pdf.ct2">CT-2</th>
+                <th data-i18n="pdf.hy">Half Yearly</th>
+                <th data-i18n="pdf.ct3">CT-3</th>
+                <th data-i18n="pdf.yearly">Yearly</th>
+              </tr>
+            </thead>
+            <tbody id="resultTable"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner"></div>
+  </footer>
+
+  <div class="modal" id="studentModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalName">
+    <div class="modal-backdrop" data-close-modal></div>
+    <article class="modal-panel">
+      <button class="modal-close" type="button" aria-label="Close student profile" data-close-modal>&times;</button>
+      <div id="modalContent"></div>
+    </article>
+  </div>
+
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script src="js/sanity-client.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

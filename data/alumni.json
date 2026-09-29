@@ -1,0 +1,20 @@
+{
+  "profiles": [
+    {
+      "position": 1,
+      "name_en": "Dr. Anis Rahman",
+      "name_bn": "ড. আনিস রহমান",
+      "photo": "images/famousppl1..jpg",
+      "role_en": "Former International Hall student and public health researcher",
+      "role_bn": "সাবেক হল শিক্ষার্থী ও জনস্বাস্থ্য গবেষক",
+      "biography_en": "Alumni biography can be edited from the admin panel.",
+      "biography_bn": "অ্যালামনাই জীবনী admin panel থেকে edit করা যাবে।",
+      "career_en": "Career success details can be edited here.",
+      "career_bn": "কর্মজীবনের সাফল্যের তথ্য এখানে edit করা যাবে।",
+      "hall_memory_en": "Hall memories can be written here.",
+      "hall_memory_bn": "হলের স্মৃতি এখানে লেখা যাবে।",
+      "hall_contribution_en": "Hall contribution details can be written here.",
+      "hall_contribution_bn": "হলের অবদান এখানে লেখা যাবে।"
+    }
+  ]
+}

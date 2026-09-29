@@ -1,0 +1,12 @@
+{
+  "items": [
+    {
+      "position": 1,
+      "title_en": "Event 01",
+      "title_bn": "ইভেন্ট ০১",
+      "description_en": "Headline and short event description will be added here.",
+      "description_bn": "এখানে event headline ও সংক্ষিপ্ত description যোগ করা হবে।",
+      "photo": "images/gallery1.jpg"
+    }
+  ]
+}

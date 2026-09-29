@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="description" content="Dhaka College International Hall Website (DC Hall Website). Explore student directory, room details, roommates search, academic results, club directory, and official social pages. Searchable for adib dchall, hostel info, and international hall students.">
+  <meta name="keywords" content="dhaka college international hall wbsite, dc hall website, adib dchall, international hall info, hostel, dhaka college hostel, dc hostel, dhaka college, adib">
+  <link rel="icon" href="images/favicon.png" type="image/png" sizes="192x192">
+  <link rel="icon" href="images/favicon.png" type="image/png" sizes="96x96">
+  <link rel="icon" href="images/favicon.png" type="image/png" sizes="48x48">
+  <link rel="icon" href="images/favicon.png" type="image/png" sizes="32x32">
+  <link rel="icon" href="images/favicon.png" type="image/png" sizes="16x16">
+  <link rel="shortcut icon" href="images/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="images/favicon.png" sizes="180x180">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>International Hall | Dhaka College Clubs | Dhaka College International Hall | DC Hall Website</title>
+  <script>
+    (function () {
+      try {
+        if (localStorage.getItem("dc-hostel-theme") === "dark") {
+          document.documentElement.classList.add("dark");
+          document.documentElement.dataset.theme = "dark";
+        }
+      } catch (error) {}
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700;800&family=Noto+Serif+Bengali:wght@400;500;600;700&family=Outfit:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="dc-clubs">
+  <header class="navbar" id="navbar">
+    <div class="container nav-inner">
+      <a class="logo" href="index.html" aria-label="International Hall home">
+        <img class="logo-img" src="images/logo.png" alt="International Hall logo" loading="lazy">
+        <span data-i18n="nav.logo">International Hall</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="index.html" data-i18n="nav.home">Home</a>
+      </nav>
+      <div class="nav-actions">
+        <div class="language-switch" aria-label="Language selector">
+          <button type="button" data-lang-option="en">English</button>
+          <button type="button" data-lang-option="bn">বাংলা</button>
+        </div>
+        <a href="profile.html" class="profile-toggle" id="profileBtn" aria-label="Profile Status / Login">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+          </svg>
+        </a>
+        <button class="theme-toggle" id="toggle" type="button" aria-label="Toggle dark mode">
+          <span aria-hidden="true">&#9789;</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-main">
+    <section class="page-hero compact">
+      <div class="container" data-aos="fade-up">
+        <p class="eyebrow" data-i18n="nav.dcClubs">Dhaka College Clubs</p>
+        <h1 data-i18n="dcClubs.title">Dhaka College Clubs</h1>
+        <p data-i18n="dcClubs.subtitle">Explore active interest clubs, co-curricular groups, and associations at Dhaka College.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="clubs-grid" id="dcClubsGrid" data-aos="fade-up">
+          <!-- Dynamic rendering from settings data inside js/app.js -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner"></div>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script src="js/sanity-client.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

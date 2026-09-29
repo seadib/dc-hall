@@ -1,0 +1,128 @@
+{
+  "hostel_title_en": "Hall Information",
+  "hostel_title_bn": "হল তথ্য",
+  "hostel_subtitle_en": "History, notable students, admission success and location preview.",
+  "hostel_subtitle_bn": "ইতিহাস, খ্যাতিমান শিক্ষার্থী, ভর্তি সাফল্য এবং অবস্থান।",
+  "history_title_en": "A hall connected to Dhaka College legacy",
+  "history_title_bn": "ঢাকা কলেজের ঐতিহ্যের সঙ্গে যুক্ত একটি হল",
+  "history_text_en": "Dhaka College, established in 1841, is one of the oldest and most influential educational institutions in Bangladesh. International Hall carries that academic spirit through shared study, discipline and student community life.",
+  "history_text_bn": "১৮৪১ সালে প্রতিষ্ঠিত ঢাকা কলেজ বাংলাদেশের অন্যতম প্রাচীন ও প্রভাবশালী শিক্ষাপ্রতিষ্ঠান। আন্তর্জাতিক ছাত্রাবাস যৌথ শিক্ষা, শৃঙ্খলা ও ছাত্র জীবনের মাধ্যমে সেই ঐতিহ্যকে লালন করে।",
+  "hall_photo": "images/hall.jpg",
+  "history_places": [
+    {
+      "name_en": "New Market",
+      "name_bn": "নিউ মার্কেট"
+    },
+    {
+      "name_en": "Science Lab",
+      "name_bn": "সাইন্স ল্যাব"
+    },
+    {
+      "name_en": "Dhanmondi",
+      "name_bn": "ধানমন্ডি"
+    }
+  ],
+  "hall_photos": [
+    {
+      "photo": "images/hall1.jpg",
+      "title_en": "Hall Photo 01",
+      "title_bn": "হল ফটো ০১",
+      "desc_en": "Replace this demo file later with hall1.jpg.",
+      "desc_bn": "পরবর্তীতে hall1.jpg দিয়ে এটি পরিবর্তন করুন।"
+    },
+    {
+      "photo": "images/hall2.jpg",
+      "title_en": "Hall Photo 02",
+      "title_bn": "হল ফটো ০২",
+      "desc_en": "Replace this demo file later with hall2.jpg.",
+      "desc_bn": "পরবর্তীতে hall2.jpg দিয়ে এটি পরিবর্তন করুন।"
+    },
+    {
+      "photo": "images/hall3.jpg",
+      "title_en": "Hall Photo 03",
+      "title_bn": "হল ফটো ০৩",
+      "desc_en": "Upload hall3.jpg later and it will show here.",
+      "desc_bn": "পরবর্তীতে hall3.jpg আপলোড করলে এখানে দেখাবে।"
+    }
+  ],
+  "success_title_en": "Admission success overview",
+  "success_title_bn": "ভর্তি পরীক্ষার সাফল্য",
+  "success_text_en": "Demo chart showing how many students received chances in engineering, medical and university admission.",
+  "success_text_bn": "ইঞ্জিনিয়ারিং, মেডিকেল এবং বিশ্ববিদ্যালয়ে সুযোগ পাওয়া শিক্ষার্থীদের তথ্যচিত্র।",
+  "success_chart": [
+    {
+      "year": "2023",
+      "width": 48,
+      "text_en": "BUET 6 · Medical 12 · University 28",
+      "text_bn": "বুয়েট ৬ · মেডিকেল ১২ · বিশ্ববিদ্যালয় ২৮"
+    },
+    {
+      "year": "2024",
+      "width": 62,
+      "text_en": "BUET 9 · Medical 16 · University 34",
+      "text_bn": "বুয়েট ৯ · মেডিকেল ১৬ · বিশ্ববিদ্যালয় ৩৪"
+    },
+    {
+      "year": "2025",
+      "width": 78,
+      "text_en": "BUET 12 · Medical 21 · University 42",
+      "text_bn": "বুয়েট ১২ · মেডিকেল ২১ · বিশ্ববিদ্যালয় ৪২"
+    },
+    {
+      "year": "2026",
+      "width": 86,
+      "text_en": "BUET 14 · Medical 24 · University 48",
+      "text_bn": "বুয়েট ১৪ · মেডিকেল ২৪ · বিশ্ববিদ্যালয় ৪৮"
+    }
+  ],
+  "location_title_en": "International Hall Location",
+  "location_title_bn": "আন্তর্জাতিক ছাত্রাবাসের অবস্থান",
+  "location_text_en": "Exact location: International Hall, Dhaka College. The live Google map below can be viewed directly on the website.",
+  "location_text_bn": "সঠিক অবস্থান: আন্তর্জাতিক ছাত্রাবাস, ঢাকা কলেজ। নিচের লাইভ গুগল ম্যাপটি সরাসরি ওয়েবসাইট থেকে দেখা যাবে।",
+  "map_url": "https://www.google.com/maps?q=International%20Hall,%20Dhaka%20College&output=embed",
+  "alumni_profiles": [
+    {
+      "position": 1,
+      "name_en": "Dr. Anis Rahman",
+      "name_bn": "ড. আনিস রহমান",
+      "photo": "images/famousppl1..jpg",
+      "role_en": "Former International Hall student and public health researcher",
+      "role_bn": "সাবেক হল শিক্ষার্থী ও জনস্বাস্থ্য গবেষক",
+      "biography_en": "Alumni biography can be edited from the admin panel.",
+      "biography_bn": "অ্যালামনাই জীবনী admin panel থেকে edit করা যাবে।",
+      "career_en": "Career success details can be edited here.",
+      "career_bn": "কর্মজীবনের সাফল্যের তথ্য এখানে edit করা যাবে।",
+      "hall_memory_en": "Hall memories can be written here.",
+      "hall_memory_bn": "হলের স্মৃতি এখানে লেখা যাবে।",
+      "hall_contribution_en": "Hall contribution details can be written here.",
+      "hall_contribution_bn": "হলের অবদান এখানে লেখা যাবে।"
+    }
+  ],
+  "hall_super_eyebrow_en": "Respectful Leadership",
+  "hall_super_eyebrow_bn": "সম্মানিত নেতৃত্ব",
+  "hall_super_name_en": "Prof. Md. Rahman",
+  "hall_super_name_bn": "প্রটেন্সর মো. রহমান",
+  "hall_super_photo": "images/hallsuper1.jpg",
+  "hall_super_bio_en": "Demo profile: the hall super guides students with discipline, care and academic encouragement. He works to keep the hall organized, safe and study-friendly.",
+  "hall_super_bio_bn": "হল সুপারের ডেমো বায়োগ্রাফি: তিনি শিক্ষার্থীদের শৃঙ্খলা, আন্তরিকতা এবং একাডেমিক উৎসাহের মাধ্যমে দিকনির্দেশনা প্রদান করেন।",
+  "hall_super_info_boxes": [
+    {
+      "title_en": "Joined Hall Duty",
+      "title_bn": "যুক্ত হয়েছেন",
+      "text_en": "Serving students since 2022 as a demo timeline entry.",
+      "text_bn": "২০২২ সাল থেকে শিক্ষার্থীদের সেবা দিয়ে যাচ্ছেন।"
+    },
+    {
+      "title_en": "Contribution",
+      "title_bn": "অবদান",
+      "text_en": "Improved discipline, student communication and admission preparation culture.",
+      "text_bn": "শৃঙ্খলা, শিক্ষার্থীদের সাথে যোগাযোগ এবং ভর্তি প্রস্তুতি সংস্কৃতির উন্নয়ন।"
+    },
+    {
+      "title_en": "Student Support",
+      "title_bn": "সহায়তা",
+      "text_en": "Students can contact the hall office for room, attendance and emergency support.",
+      "text_bn": "রুম, উপস্থিতি এবং যেকোনো জরুরি সহায়তার জন্য হল অফিসে যোগাযোগ করা যাবে।"
+    }
+  ]
+}

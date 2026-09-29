@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="description" content="Dhaka College International Hall Website (DC Hall Website). Explore student directory, room details, roommates search, academic results, club directory, and official social pages. Searchable for adib dchall, hostel info, and international hall students.">
+  <meta name="keywords" content="dhaka college international hall wbsite, dc hall website, adib dchall, international hall info, hostel, dhaka college hostel, dc hostel, dhaka college, adib">
+  <link rel="icon" href="images/favicon.png" type="image/png" sizes="192x192">
+  <link rel="icon" href="images/favicon.png" type="image/png" sizes="96x96">
+  <link rel="icon" href="images/favicon.png" type="image/png" sizes="48x48">
+  <link rel="icon" href="images/favicon.png" type="image/png" sizes="32x32">
+  <link rel="icon" href="images/favicon.png" type="image/png" sizes="16x16">
+  <link rel="shortcut icon" href="images/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="images/favicon.png" sizes="180x180">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DC Hostel | Portal | Dhaka College International Hall | DC Hall Website</title>
+  <script>
+    (function () {
+      try {
+        if (localStorage.getItem("dc-hostel-theme") === "dark") {
+          document.documentElement.classList.add("dark");
+          document.documentElement.dataset.theme = "dark";
+        }
+      } catch (error) {}
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700;800&family=Noto+Serif+Bengali:wght@400;500;600;700&family=Outfit:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    body.embed-body {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      margin: 0;
+      overflow: hidden;
+      background: var(--bg);
+    }
+    .embed-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 24px;
+      background: var(--nav-bg);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      z-index: 10;
+    }
+    .embed-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .embed-title-wrap h1 {
+      margin: 0;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .embed-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .iframe-container {
+      flex: 1;
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+    .iframe-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      background: #ffffff;
+    }
+    .embed-header .nav-actions {
+      margin: 0;
+    }
+    @media (max-width: 768px) {
+      .embed-header {
+        flex-direction: column;
+        gap: 10px;
+        align-items: stretch;
+        padding: 10px 16px;
+      }
+      .embed-title-wrap {
+        justify-content: space-between;
+      }
+      .embed-actions {
+        justify-content: space-between;
+      }
+    }
+  </style>
+</head>
+<body class="embed-body" data-page="embed">
+  <header class="embed-header">
+    <div class="embed-title-wrap">
+      <a href="index.html" class="btn secondary" style="min-height:36px; padding: 0 12px; font-size: 0.85rem; display: inline-flex; align-items: center;">
+        &larr; <span data-i18n="embed.back">Back</span>
+      </a>
+      <h1 id="embedTitle">Loading Portal...</h1>
+    </div>
+    <div class="embed-actions">
+      <a id="externalLink" href="#" target="_blank" rel="noopener" class="btn primary" style="min-height:36px; padding: 0 14px; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 4px;">
+        <span data-i18n="embed.openTab">Open in New Tab</span> &nearr;
+      </a>
+      <div class="nav-actions">
+        <div class="language-switch" aria-label="Language selector">
+          <button type="button" data-lang-option="en">English</button>
+          <button type="button" data-lang-option="bn">বাংলা</button>
+        </div>
+        <button class="theme-toggle" id="toggle" type="button" aria-label="Toggle dark mode">
+          <span aria-hidden="true">&#9789;</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="iframe-container">
+    <iframe id="portalIframe" src="" title="Portal Frame"></iframe>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const targetUrl = params.get('url');
+    const targetTitle = params.get('title') || 'Portal';
+
+    if (targetUrl) {
+      document.getElementById('portalIframe').src = targetUrl;
+      document.getElementById('externalLink').href = targetUrl;
+    } else {
+      window.location.href = 'index.html';
+    }
+
+    document.getElementById('embedTitle').textContent = targetTitle;
+  </script>
+
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script src="js/sanity-client.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

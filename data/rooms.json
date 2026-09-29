@@ -1,0 +1,186 @@
+{
+  "rooms": [
+    {
+      "room_no": "101",
+      "title_en": "Room 101",
+      "title_bn": "রুম ১০১",
+      "description_en": "Demo room details. Later you can replace the room photos and add bed, table, window and seat information.",
+      "description_bn": "রুমের ডেমো বিবরণ। পরে আপনি রুমের ছবি পরিবর্তন করতে এবং বিছানা, টেবিল, জানালা ও সিটের তথ্য যুক্ত করতে পারবেন।",
+      "photos": [
+        "images/room1-1.jpg",
+        "images/room1-2.jpg",
+        "images/room1-3.jpg",
+        "images/room1-4.jpg"
+      ]
+    },
+    {
+      "room_no": "102",
+      "title_en": "Room 102",
+      "title_bn": "রুম ১০২",
+      "description_en": "Demo room details. Later you can replace the room photos and add bed, table, window and seat information.",
+      "description_bn": "রুমের ডেমো বিবরণ। পরে আপনি রুমের ছবি পরিবর্তন করতে এবং বিছানা, টেবিল, জানালা ও সিটের তথ্য যুক্ত করতে পারবেন।",
+      "photos": [
+        "images/room2-1.jpg",
+        "images/room2-2.jpg",
+        "images/room2-3.jpg",
+        "images/room2-4.jpg"
+      ]
+    },
+    {
+      "room_no": "103",
+      "title_en": "Room 103",
+      "title_bn": "রুম ১০৩",
+      "description_en": "Demo room details. Later you can replace the room photos and add bed, table, window and seat information.",
+      "description_bn": "রুমের ডেমো বিবরণ। পরে আপনি রুমের ছবি পরিবর্তন করতে এবং বিছানা, টেবিল, জানালা ও সিটের তথ্য যুক্ত করতে পারবেন।",
+      "photos": [
+        "images/room3-1.jpg",
+        "images/room3-2.jpg",
+        "images/room3-3.jpg",
+        "images/room3-4.jpg"
+      ]
+    },
+    {
+      "room_no": "104",
+      "title_en": "Room 104",
+      "title_bn": "রুম ১০৪",
+      "description_en": "Demo room details. Later you can replace the room photos and add bed, table, window and seat information.",
+      "description_bn": "রুমের ডেমো বিবরণ। পরে আপনি রুমের ছবি পরিবর্তন করতে এবং বিছানা, টেবিল, জানালা ও সিটের তথ্য যুক্ত করতে পারবেন।",
+      "photos": [
+        "images/room4-1.jpg",
+        "images/room4-2.jpg",
+        "images/room4-3.jpg",
+        "images/room4-4.jpg"
+      ]
+    },
+    {
+      "room_no": "105",
+      "title_en": "Room 105",
+      "title_bn": "রুম ১০৫",
+      "description_en": "Demo room details. Later you can replace the room photos and add bed, table, window and seat information.",
+      "description_bn": "রুমের ডেমো বিবরণ। পরে আপনি রুমের ছবি পরিবর্তন করতে এবং বিছানা, টেবিল, জানালা ও সিটের তথ্য যুক্ত করতে পারবেন।",
+      "photos": [
+        "images/room5-1.jpg",
+        "images/room5-2.jpg",
+        "images/room5-3.jpg",
+        "images/room5-4.jpg"
+      ]
+    },
+    {
+      "room_no": "106",
+      "title_en": "Room 106",
+      "title_bn": "রুম ১০৬",
+      "description_en": "Demo room details. Later you can replace the room photos and add bed, table, window and seat information.",
+      "description_bn": "রুমের ডেমো বিবরণ। পরে আপনি রুমের ছবি পরিবর্তন করতে এবং বিছানা, টেবিল, জানালা ও সিটের তথ্য যুক্ত করতে পারবেন।",
+      "photos": [
+        "images/room6-1.jpg",
+        "images/room6-2.jpg",
+        "images/room6-3.jpg",
+        "images/room6-4.jpg"
+      ]
+    },
+    {
+      "room_no": "107",
+      "title_en": "Room 107",
+      "title_bn": "রুম ১০৭",
+      "description_en": "Demo room details. Later you can replace the room photos and add bed, table, window and seat information.",
+      "description_bn": "রুমের ডেমো বিবরণ। পরে আপনি রুমের ছবি পরিবর্তন করতে এবং বিছানা, টেবিল, জানালা ও সিটের তথ্য যুক্ত করতে পারবেন।",
+      "photos": [
+        "images/room7-1.jpg",
+        "images/room7-2.jpg",
+        "images/room7-3.jpg",
+        "images/room7-4.jpg"
+      ]
+    },
+    {
+      "room_no": "108",
+      "title_en": "Room 108",
+      "title_bn": "রুম ১০৮",
+      "description_en": "Demo room details. Later you can replace the room photos and add bed, table, window and seat information.",
+      "description_bn": "রুমের ডেমো বিবরণ। পরে আপনি রুমের ছবি পরিবর্তন করতে এবং বিছানা, টেবিল, জানালা ও সিটের তথ্য যুক্ত করতে পারবেন।",
+      "photos": [
+        "images/room8-1.jpg",
+        "images/room8-2.jpg",
+        "images/room8-3.jpg",
+        "images/room8-4.jpg"
+      ]
+    },
+    {
+      "room_no": "109",
+      "title_en": "Room 109",
+      "title_bn": "রুম ১০৯",
+      "description_en": "Demo room details. Later you can replace the room photos and add bed, table, window and seat information.",
+      "description_bn": "রুমের ডেমো বিবরণ। পরে আপনি রুমের ছবি পরিবর্তন করতে এবং বিছানা, টেবিল, জানালা ও সিটের তথ্য যুক্ত করতে পারবেন।",
+      "photos": [
+        "images/room9-1.jpg",
+        "images/room9-2.jpg",
+        "images/room9-3.jpg",
+        "images/room9-4.jpg"
+      ]
+    },
+    {
+      "room_no": "110",
+      "title_en": "Room 110",
+      "title_bn": "রুম ১১০",
+      "description_en": "Demo room details. Later you can replace the room photos and add bed, table, window and seat information.",
+      "description_bn": "রুমের ডেমো বিবরণ। পরে আপনি রুমের ছবি পরিবর্তন করতে এবং বিছানা, টেবিল, জানালা ও সিটের তথ্য যুক্ত করতে পারবেন।",
+      "photos": [
+        "images/room10-1.jpg",
+        "images/room10-2.jpg",
+        "images/room10-3.jpg",
+        "images/room10-4.jpg"
+      ]
+    },
+    {
+      "room_no": "111",
+      "title_en": "Room 111",
+      "title_bn": "রুম ১১১",
+      "description_en": "Demo room details. Later you can replace the room photos and add bed, table, window and seat information.",
+      "description_bn": "রুমের ডেমো বিবরণ। পরে আপনি রুমের ছবি পরিবর্তন করতে এবং বিছানা, টেবিল, জানালা ও সিটের তথ্য যুক্ত করতে পারবেন।",
+      "photos": [
+        "images/room11-1.jpg",
+        "images/room11-2.jpg",
+        "images/room11-3.jpg",
+        "images/room11-4.jpg"
+      ]
+    },
+    {
+      "room_no": "112",
+      "title_en": "Room 112",
+      "title_bn": "রুম ১১২",
+      "description_en": "Demo room details. Later you can replace the room photos and add bed, table, window and seat information.",
+      "description_bn": "রুমের ডেমো বিবরণ। পরে আপনি রুমের ছবি পরিবর্তন করতে এবং বিছানা, টেবিল, জানালা ও সিটের তথ্য যুক্ত করতে পারবেন।",
+      "photos": [
+        "images/room12-1.jpg",
+        "images/room12-2.jpg",
+        "images/room12-3.jpg",
+        "images/room12-4.jpg"
+      ]
+    },
+    {
+      "room_no": "113",
+      "title_en": "Room 113",
+      "title_bn": "রুম ১১৩",
+      "description_en": "Demo room details. Later you can replace the room photos and add bed, table, window and seat information.",
+      "description_bn": "রুমের ডেমো বিবরণ। পরে আপনি রুমের ছবি পরিবর্তন করতে এবং বিছানা, টেবিল, জানালা ও সিটের তথ্য যুক্ত করতে পারবেন।",
+      "photos": [
+        "images/room13-1.jpg",
+        "images/room13-2.jpg",
+        "images/room13-3.jpg",
+        "images/room13-4.jpg"
+      ]
+    },
+    {
+      "room_no": "114",
+      "title_en": "Room 114",
+      "title_bn": "রুম ১১৪",
+      "description_en": "Demo room details. Later you can replace the room photos and add bed, table, window and seat information.",
+      "description_bn": "রুমের ডেমো বিবরণ। পরে আপনি রুমের ছবি পরিবর্তন করতে এবং বিছানা, টেবিল, জানালা ও সিটের তথ্য যুক্ত করতে পারবেন।",
+      "photos": [
+        "images/room14-1.jpg",
+        "images/room14-2.jpg",
+        "images/room14-3.jpg",
+        "images/room14-4.jpg"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "room_no": "108",
+  "title_en": "Room 108",
+  "title_bn": "রুম ১০৮",
+  "description_en": "Demo room details. Later you can replace the room photos and add bed, table, window and seat information.",
+  "description_bn": "রুমের ডেমো বিবরণ। পরে আপনি রুমের ছবি পরিবর্তন করতে এবং বিছানা, টেবিল, জানালা ও সিটের তথ্য যুক্ত করতে পারবেন।",
+  "photos": [
+    "images/room8-1.jpg",
+    "images/room8-2.jpg",
+    "images/room8-3.jpg",
+    "images/room8-4.jpg"
+  ]
+}

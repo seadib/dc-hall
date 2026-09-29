@@ -1,0 +1,163 @@
+{
+  "site_title_en": "International Hall",
+  "site_title_bn": "আন্তর্জাতিক ছাত্রাবাস",
+  "logo": "images/logo.png",
+  "hero_title_en": "International Hall",
+  "hero_title_bn": "আন্তর্জাতিক ছাত্রাবাস",
+  "hero_subtitle_en": "Together we learn, together we succeed.",
+  "hero_subtitle_bn": "একসাথে শিখি, একসাথে সফল হই।",
+  "hero_image": "images/hostel-hero.jpg",
+  "notice_pdf": "",
+  "menu_items": [
+    {
+      "position": 1,
+      "text_en": "Home",
+      "text_bn": "হোম",
+      "link": "index.html"
+    },
+    {
+      "position": 2,
+      "text_en": "Students",
+      "text_bn": "শিক্ষার্থী",
+      "link": "students.html"
+    },
+    {
+      "position": 3,
+      "text_en": "Roommates",
+      "text_bn": "রুমমেট",
+      "link": "roommates.html"
+    },
+    {
+      "position": 4,
+      "text_en": "Results",
+      "text_bn": "ফলাফল",
+      "link": "results.html"
+    },
+    {
+      "position": 5,
+      "text_en": "Hall Info",
+      "text_bn": "হল তথ্য",
+      "link": "hostel.html"
+    },
+    {
+      "position": 6,
+      "text_en": "Hall Super",
+      "text_bn": "হল সুপার",
+      "link": "hallsuper.html"
+    },
+    {
+      "position": 7,
+      "text_en": "Gallery",
+      "text_bn": "গ্যালারি",
+      "link": "gallery.html"
+    },
+    {
+      "position": 8,
+      "text_en": "Developer",
+      "text_bn": "ডেভেলপার",
+      "link": "developer.html"
+    }
+  ],
+  "contact_logos": {
+    "phone": "images/phonelogo.png",
+    "whatsapp": "images/whatsapplogo.png",
+    "email": "images/emaillogo.png",
+    "facebook": "images/facebooklogo.png",
+    "messenger": "images/messengerlogo.png"
+  },
+  "password": "102103104",
+  "global_visibility": false,
+  "locked_fields": {
+    "lock_phone": true,
+    "lock_father_phone": true,
+    "lock_email": true,
+    "lock_address": true,
+    "lock_socials": true,
+    "lock_results": true
+  },
+  "dhaka_college": {
+    "official_site_title_en": "Dhaka College Website",
+    "official_site_title_bn": "ঢাকা কলেজ ওয়েবসাইট",
+    "official_site_url": "https://www.dhakacollege.edu.bd/",
+    "notice_title_en": "Dhaka College Notice",
+    "notice_title_bn": "ঢাকা কলেজ নোটিশ",
+    "notice_url": "https://www.dhakacollege.edu.bd/en/notice?limit=100&page=1",
+    "result_admit_title_en": "DC Result & Admit Card",
+    "result_admit_title_bn": "রেজাল্ট ও এডমিট কার্ড",
+    "result_admit_url": "https://dhakacollege.eshiksabd.com/",
+    "archive_title_en": "The DC Archive Website",
+    "archive_title_bn": "দা ডিসি আর্কাইভ",
+    "archive_url": "https://thedcarchive.pages.dev/",
+    "social_links": [
+      {
+        "title_en": "DCian Freaks Page",
+        "title_bn": "DCian Freaks পেজ",
+        "url": "https://www.facebook.com/DhakaCollegeFreaks",
+        "is_group": false
+      },
+      {
+        "title_en": "Dhaka College : Ruling Colleges since 1841 Page",
+        "title_bn": "Dhaka College : Ruling Colleges since 1841 পেজ",
+        "url": "https://www.facebook.com/dcrules1841",
+        "is_group": false
+      },
+      {
+        "title_en": "Dhaka College Facebook Group",
+        "title_bn": "ঢাকা কলেজ ফেসবুক গ্রুপ",
+        "url": "https://www.facebook.com/groups/683881283509348/",
+        "is_group": true
+      }
+    ],
+    "clubs": [
+      {
+        "name_en": "Dhaka College Cultural Club",
+        "name_bn": "ঢাকা কলেজ কালচারাল ক্লাব",
+        "desc_en": "Promoting art, music, drama, and cultural heritage among Dhaka College students.",
+        "desc_bn": "ঢাকা কলেজের শিক্ষার্থীদের মাঝে শিল্প, সঙ্গীত, নাটক ও সাংস্কৃতিক ঐতিহ্যকে তুলে ধরা ও প্রচার করা।",
+        "facebook_url": "https://www.facebook.com/dc.cultural.club"
+      },
+      {
+        "name_en": "Dhaka College International College Club (DCICC)",
+        "name_bn": "ঢাকা কলেজ ইন্টারন্যাশনাল কলেজ ক্লাব (DCICC)",
+        "desc_en": "Fostering global leadership, academic exchange, and international network.",
+        "desc_bn": "বিশ্বব্যাপী নেতৃত্ব, একাডেমিক আদান-প্রদান এবং আন্তর্জাতিক নেটওয়ার্ক গড়ে তোলা।",
+        "facebook_url": "https://www.facebook.com/DCICC"
+      },
+      {
+        "name_en": "Dhaka College Science Club (DCSC)",
+        "name_bn": "ঢাকা কলেজ বিজ্ঞান ক্লাব (DCSC)",
+        "desc_en": "Inspiring young minds towards innovation, science fairs, and technological research.",
+        "desc_bn": "তরুণদের উদ্ভাবন, বিজ্ঞান মেলা এবং প্রযুক্তিগত গবেষণায় অনুপ্রাণিত করা।",
+        "facebook_url": "https://www.facebook.com/dcsc.dc"
+      },
+      {
+        "name_en": "Dhaka College Mathematics Club",
+        "name_bn": "ঢাকা কলেজ গণিত ক্লাব",
+        "desc_en": "Nurturing analytical thinking, competitive mathematics, and math olympiad preparations.",
+        "desc_bn": "বিশ্লেষণাত্মক চিন্তা, প্রতিযোগিতামূলক গণিত এবং গণিত অলিম্পিয়াডের প্রস্তুতি জোরদার করা।",
+        "facebook_url": "https://www.facebook.com/dhakacollegemathclub"
+      },
+      {
+        "name_en": "Dhaka College IT Club (DCITC)",
+        "name_bn": "ঢাকা কলেজ আইটি ক্লাব (DCITC)",
+        "desc_en": "Guiding students in software development, coding competitions, web design, and digital literacy.",
+        "desc_bn": "শিক্ষার্থীদের সফটওয়্যার ডেভেলপমেন্ট, কোডিং প্রতিযোগিতা, ওয়েব ডিজাইন ও ডিজিটাল শিক্ষায় গাইড করা।",
+        "facebook_url": "https://www.facebook.com/DCITC"
+      },
+      {
+        "name_en": "Dhaka College Business Club (DCBC)",
+        "name_bn": "ঢাকা কলেজ বিজনেস ক্লাব (DCBC)",
+        "desc_en": "Encouraging entrepreneurship, business case solving, leadership, and finance skills.",
+        "desc_bn": "উদ্যোক্তা মনোভাব, বিজনেস কেস সলভিং, নেতৃত্ব এবং ফাইন্যান্স দক্ষতা বৃদ্ধি করা।",
+        "facebook_url": "https://www.facebook.com/DCBC.Official"
+      },
+      {
+        "name_en": "Dhaka College English Language Club (DCELC)",
+        "name_bn": "ঢাকা কলেজ ইংরেজি ভাষা ক্লাব (DCELC)",
+        "desc_en": "Enhancing public speaking, debate, professional writing, and English communication skills.",
+        "desc_bn": "পাবলিক স্পিকিং, বিতর্ক, পেশাদার লেখা এবং ইংরেজি যোগাযোগ দক্ষতা বৃদ্ধি করা।",
+        "facebook_url": "https://www.facebook.com/dcelc.official"
+      }
+    ]
+  }
+}
