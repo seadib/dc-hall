@@ -45,5 +45,12 @@ export default defineType({
       subtitle: 'title_bn',
       media: 'photo',
     },
+    prepare({ title, subtitle, media }) {
+      return {
+        title: title || 'Gallery Item',
+        subtitle: subtitle || '',
+        media: (media && typeof media === 'object' && media.asset) ? media : undefined,
+      }
+    },
   },
 })

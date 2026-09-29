@@ -56,8 +56,9 @@ export default defineType({
       return {
         title: `Room ${title}`,
         subtitle: subtitle ? `Capacity: ${subtitle} students` : '',
-        media,
+        media: (media && typeof media === 'object' && media.asset) ? media : undefined,
       }
     },
   },
+
 })

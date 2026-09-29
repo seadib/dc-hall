@@ -54,4 +54,16 @@ export default defineType({
       ],
     }),
   ],
+  preview: {
+    select: {
+      title: 'site_title_en',
+      subtitle: 'site_title_bn',
+    },
+    prepare({ title, subtitle }) {
+      return {
+        title: title || 'Site Settings & Privacy',
+        subtitle: subtitle || 'Global Configuration',
+      }
+    },
+  },
 })

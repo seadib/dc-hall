@@ -151,8 +151,9 @@ export default defineType({
       return {
         title: title || 'Unnamed Student',
         subtitle: subtitle ? `Room: ${subtitle}` : '',
-        media,
+        media: (media && typeof media === 'object' && media.asset) ? media : undefined,
       }
     },
   },
+
 })

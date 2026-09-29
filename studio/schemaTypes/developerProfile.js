@@ -33,4 +33,19 @@ export default defineType({
       type: 'image',
     }),
   ],
+  preview: {
+    select: {
+      title: 'name_en',
+      subtitle: 'lead_en',
+      media: 'portrait',
+    },
+    prepare({ title, subtitle, media }) {
+      return {
+        title: title || 'Developer Profile',
+        subtitle: subtitle || 'Developer',
+        media: (media && typeof media === 'object' && media.asset) ? media : undefined,
+      }
+    },
+  },
 })
+

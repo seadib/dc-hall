@@ -53,4 +53,17 @@ export default defineType({
       type: 'url',
     }),
   ],
+  preview: {
+    select: {
+      title: 'hero_title_en',
+      subtitle: 'hero_eyebrow_en',
+    },
+    prepare({ title, subtitle }) {
+      return {
+        title: title || 'Home Page Content',
+        subtitle: subtitle || 'Homepage Sections',
+      }
+    },
+  },
 })
+

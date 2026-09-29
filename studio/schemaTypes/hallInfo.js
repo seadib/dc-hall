@@ -43,4 +43,19 @@ export default defineType({
       rows: 4,
     }),
   ],
+  preview: {
+    select: {
+      title: 'hostel_title_en',
+      subtitle: 'hall_super_name_en',
+      media: 'hall_super_photo',
+    },
+    prepare({ title, subtitle, media }) {
+      return {
+        title: title || 'Hall Information',
+        subtitle: subtitle ? `Super: ${subtitle}` : '',
+        media: (media && typeof media === 'object' && media.asset) ? media : undefined,
+      }
+    },
+  },
 })
+
