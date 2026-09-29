@@ -4,8 +4,9 @@
 - **Project Name:** `dchall`
 - **Project ID:** `w16kaeyg`
 - **Dataset:** `production`
-- **Hosting:** GitHub Pages (`https://seadib.github.io/dchall/`)
-- **Repository:** `https://github.com/seadib/dchall`
+- **Hosting:** GitHub Pages (`https://seadib.github.io/dc-hall/`)
+- **Repository:** `https://github.com/seadib/dc-hall`
+- **Live Studio Admin Panel:** [https://dchall.sanity.studio/](https://dchall.sanity.studio/)
 - **Sanity Manage Dashboard:** [https://www.sanity.io/manage/project/w16kaeyg](https://www.sanity.io/manage/project/w16kaeyg)
 
 ---

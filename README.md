@@ -42,7 +42,7 @@ This platform combines a premium, glassmorphic client-side interface with a secu
 - **Frontend**: HTML5, CSS3 (Vanilla), Modern JavaScript (ES6+ async/await)
 - **CMS Database & Admin**: Sanity Headless CMS (Sanity Content Lake & Sanity Studio v3)
 - **Asset & Media Delivery**: Sanity Global CDN (`apicdn.sanity.io` & `cdn.sanity.io`)
-- **Hosting**: GitHub Pages (`https://seadib.github.io/dchall/`)
+- **Hosting**: GitHub Pages (`https://seadib.github.io/dc-hall/`)
 - **Automation Pipeliners**:
   - Python migration & normalizer (`scripts/migrate_to_sanity.py`)
   - Real-time client-side GROQ query processor (`js/sanity-client.js`)
@@ -57,12 +57,12 @@ To run the project locally and view changes in your browser:
 2. The website will automatically fetch live content from Sanity CDN.
 
 ### Deploying to GitHub Pages
-1. Commit and push your changes to `https://github.com/seadib/dchall` on the `main` branch.
+1. Commit and push your changes to `https://github.com/seadib/dc-hall` on the `main` branch.
 2. In your GitHub repository, go to **Settings** -> **Pages**:
    - Source: **Deploy from a branch**
    - Branch: `main` / `root`
    - Click **Save**.
-3. Your site will be live at `https://seadib.github.io/dchall/`!
+3. Your site will be live at `https://seadib.github.io/dc-hall/`!
 
 ---
 
