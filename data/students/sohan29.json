@@ -1,0 +1,46 @@
+{
+  "short_roll": "031",
+  "name_bn": "মোঃ সোহরাব হোসেন প্রামানিক",
+  "name_en": "Md. Shohoorab Hossen Pramanik",
+  "student_id": "sohan29",
+  "position": 29,
+  "class_no": "12",
+  "group": "commerce",
+  "group_en": "Business Studies",
+  "group_bn": "ব্যবসায় শিক্ষা",
+  "section": "A",
+  "practical_group": "-",
+  "room_no": "326",
+  "roommate_ids": [
+    "alif28"
+  ],
+  "phone": "01827048355",
+  "father_phone": "01747206790",
+  "email": "-",
+  "blood_group": "B+",
+  "address_en": "Paika, Dholdanga, Sadullapur, Gaibandha",
+  "address_bn": "পাইকা, ধলডাঙ্গা, সাদুল্লাপুর, গাইবান্ধা",
+  "photo": "images/sohan29.jpg",
+  "facebook": "https://facebook.com/",
+  "messenger": "",
+  "bio_en": "",
+  "bio_bn": "",
+  "dob": "31-Dec",
+  "dob_bn": "৩১ ডিসেম্বর",
+  "custom_links": [],
+  "pdfs": {
+    "ct1": "pdfs/sohan29-11-ct1.pdf",
+    "ct2": "pdfs/sohan29-11-ct2.pdf",
+    "hy": "pdfs/sohan29-11-hy.pdf",
+    "ct3": "pdfs/sohan29-11-ct3.pdf",
+    "yearly": "pdfs/sohan29-11-y.pdf"
+  },
+  "generated_pdf_names": {
+    "ct1": "pdfs/sohan29-11-ct1.pdf",
+    "ct2": "pdfs/sohan29-11-ct2.pdf",
+    "hy": "pdfs/sohan29-11-hy.pdf",
+    "ct3": "pdfs/sohan29-11-ct3.pdf",
+    "yearly": "pdfs/sohan29-11-y.pdf"
+  },
+  "full_roll": "1202526020031"
+}

@@ -11,7 +11,7 @@
   },
   "bio_bn": "আন্তর্জাতিক ছাত্রাবাসের ডেমো শিক্ষার্থী প্রোফাইল। পরে sheet থেকে বিস্তারিত তথ্য আপডেট করা যাবে।",
   "section": "F",
-  "room_no": "321",
+  "room_no": "319",
   "facebook": "https://facebook.com/",
   "class_no": "12",
   "position": 18,
@@ -32,10 +32,14 @@
   "address_en": "Rifaitpur, Daulatpur, Kushtia",
   "practical_group": "F2",
   "address_bn": "রিফায়েতপুর, দৌলতপুর, কুষ্টিয়া",
-  "roommate_ids": [],
+  "roommate_ids": [
+    "siam12"
+  ],
   "blood_group": "O+",
   "email": "-",
   "name_en": "Md. Rafiq Bin Nizam",
   "student_id": "rafiq18",
-  "group": "science"
+  "group": "science",
+  "dob": "24-Dec",
+  "dob_bn": "২৪ ডিসেম্বর"
 }

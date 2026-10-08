@@ -49,6 +49,7 @@ const i18n = {
       admissionSuccess: "Admission Success",
       address: "Address",
       blood: "Blood Group",
+      dob: "Date of Birth",
       chemistry: "Chemistry",
       classLabel: "Class",
       closeProfile: "Close student profile",
@@ -288,6 +289,7 @@ const i18n = {
       admissionSuccess: "এডমিশন সাফল্য",
       address: "ঠিকানা",
       blood: "রক্তের গ্রুপ",
+      dob: "জন্ম তারিখ",
       chemistry: "রসায়ন",
       classLabel: "শ্রেণী",
       closeProfile: "শিক্ষার্থীর প্রোফাইল বন্ধ করুন",
@@ -519,7 +521,16 @@ let students = [
     "address": "Hatia, Noakhali",
     "blood": "A+",
     "bio": "Goal — to create something no one has done before! ",
+    "dob": "04-Oct",
+    "dobBn": "০৪ অক্টোবর",
     "pdfs": {
+      "ct1": "pdfs/adib1-11-ct1.pdf",
+      "ct2": "pdfs/adib1-11-ct2.pdf",
+      "hy": "pdfs/adib1-11-hy.pdf",
+      "ct3": "pdfs/adib1-11-ct3.pdf",
+      "yearly": "pdfs/adib1-11-y.pdf"
+    },
+    "generated_pdf_names": {
       "ct1": "pdfs/adib1-11-ct1.pdf",
       "ct2": "pdfs/adib1-11-ct2.pdf",
       "hy": "pdfs/adib1-11-hy.pdf",
@@ -536,7 +547,8 @@ let students = [
       "name": "আবদুল্যাহ আল আদিব",
       "college": "ঢাকা কলেজ",
       "address": "হাতিয়া, নোয়াখালী",
-      "bio": "লক্ষ্য — এমন কিছু তৈরি করা যা আগে কেউ কখনও করেনি!"
+      "bio": "লক্ষ্য — এমন কিছু তৈরি করা যা আগে কেউ কখনও করেনি!",
+      "dob": "০৪ অক্টোবর"
     }
   },
   {
@@ -566,7 +578,16 @@ let students = [
     "address": "Hatia, Noakhali",
     "blood": "O+",
     "bio": "A dedicated student of Dhaka College, striving for academic excellence and pursuing personal growth with a focus on future goals",
+    "dob": "08-Dec",
+    "dobBn": "০৮ ডিসেম্বর",
     "pdfs": {
+      "ct1": "pdfs/santo2-11-ct1.pdf",
+      "ct2": "pdfs/santo2-11-ct2.pdf",
+      "hy": "pdfs/santo2-11-hy.pdf",
+      "ct3": "pdfs/santo2-11-ct3.pdf",
+      "yearly": "pdfs/santo2-11-y.pdf"
+    },
+    "generated_pdf_names": {
       "ct1": "pdfs/santo2-11-ct1.pdf",
       "ct2": "pdfs/santo2-11-ct2.pdf",
       "hy": "pdfs/santo2-11-hy.pdf",
@@ -583,7 +604,8 @@ let students = [
       "name": "নাইমুল ইসলাম (সান্ত)",
       "college": "ঢাকা কলেজ",
       "address": "হাতিয়া, নোয়াখালী",
-      "bio": "ঢাকা কলেজের একজন ডেডিকেটেড শিক্ষার্থী, যিনি একাডেমিক উৎকর্ষতা অর্জন এবং ভবিষ্যতের লক্ষ্যকে সামনে রেখে নিজের সামগ্রিক উন্নয়নে বিশ্বাসী।"
+      "bio": "ঢাকা কলেজের একজন ডেডিকেটেড শিক্ষার্থী, যিনি একাডেমিক উৎকর্ষতা অর্জন এবং ভবিষ্যতের লক্ষ্যকে সামনে রেখে নিজের সামগ্রিক উন্নয়নে বিশ্বাসী।",
+      "dob": "০৮ ডিসেম্বর"
     }
   },
   {
@@ -613,7 +635,16 @@ let students = [
     "address": "Hatia, Noakhali",
     "blood": "A+",
     "bio": "I'm SIGMA The Zahid",
+    "dob": "07-Jan",
+    "dobBn": "০৭ জানুয়ারি",
     "pdfs": {
+      "ct1": "pdfs/jahid3-11-ct1.pdf",
+      "ct2": "pdfs/jahid3-11-ct2.pdf",
+      "hy": "pdfs/jahid3-11-hy.pdf",
+      "ct3": "pdfs/jahid3-11-ct3.pdf",
+      "yearly": "pdfs/jahid3-11-y.pdf"
+    },
+    "generated_pdf_names": {
       "ct1": "pdfs/jahid3-11-ct1.pdf",
       "ct2": "pdfs/jahid3-11-ct2.pdf",
       "hy": "pdfs/jahid3-11-hy.pdf",
@@ -630,7 +661,8 @@ let students = [
       "name": "মোঃ জাহিদুল ইসলাম",
       "college": "ঢাকা কলেজ",
       "address": "হাতিয়া, নোয়াখালী",
-      "bio": "I'm SIGMA The Zahid"
+      "bio": "I'm SIGMA The Zahid",
+      "dob": "০৭ জানুয়ারি"
     }
   },
   {
@@ -656,11 +688,19 @@ let students = [
     "email": "-",
     "img": "images/sakil4.jpg",
     "fb": "https://facebook.com/",
-    "messenger": "",
     "address": "Kanchan, Rupganj, Narayanganj",
     "blood": "O+",
     "bio": "CT-1 Pass",
+    "dob": "08-Oct",
+    "dobBn": "০৮ অক্টোবর",
     "pdfs": {
+      "ct1": "pdfs/sakil4-11-ct1.pdf",
+      "ct2": "pdfs/sakil4-11-ct2.pdf",
+      "hy": "pdfs/sakil4-11-hy.pdf",
+      "ct3": "pdfs/sakil4-11-ct3.pdf",
+      "yearly": "pdfs/sakil4-11-y.pdf"
+    },
+    "generated_pdf_names": {
       "ct1": "pdfs/sakil4-11-ct1.pdf",
       "ct2": "pdfs/sakil4-11-ct2.pdf",
       "hy": "pdfs/sakil4-11-hy.pdf",
@@ -677,7 +717,8 @@ let students = [
       "name": "মোঃ শাকিল শেখ",
       "college": "ঢাকা কলেজ",
       "address": "কাঞ্চন, রূপগঞ্জ, নারায়ণগঞ্জ",
-      "bio": "CT-1 Pass"
+      "bio": "CT-1 Pass",
+      "dob": "০৮ অক্টোবর"
     }
   },
   {
@@ -707,7 +748,16 @@ let students = [
     "address": "Deboi, Rupganj, Narayanganj",
     "blood": "O+",
     "bio": "CT-1= Absent, CT-2= Absent, Half yearly = Absent, CT-3= loading, Year FINAL= Loading",
+    "dob": "01-Jan",
+    "dobBn": "০১ জানুয়ারি",
     "pdfs": {
+      "ct1": "pdfs/sasfkat5-11-ct1.pdf",
+      "ct2": "pdfs/sasfkat5-11-ct2.pdf",
+      "hy": "pdfs/sasfkat5-11-hy.pdf",
+      "ct3": "pdfs/sasfkat5-11-ct3.pdf",
+      "yearly": "pdfs/sasfkat5-11-y.pdf"
+    },
+    "generated_pdf_names": {
       "ct1": "pdfs/sasfkat5-11-ct1.pdf",
       "ct2": "pdfs/sasfkat5-11-ct2.pdf",
       "hy": "pdfs/sasfkat5-11-hy.pdf",
@@ -724,7 +774,8 @@ let students = [
       "name": "শাফকাত রহমান",
       "college": "ঢাকা কলেজ",
       "address": "দেবই, রূপগঞ্জ, নারায়ণগঞ্জ",
-      "bio": "CT-1= Absent, CT-2= Absent, Half yearly = Absent, CT-3= loading, Year FINAL= Loading"
+      "bio": "CT-1= Absent, CT-2= Absent, Half yearly = Absent, CT-3= loading, Year FINAL= Loading",
+      "dob": "০১ জানুয়ারি"
     }
   },
   {
@@ -750,11 +801,19 @@ let students = [
     "email": "usage3913@gmail.com",
     "img": "/assets/uploads/munsi.png",
     "fb": "https://facebook.com/",
-    "messenger": "",
     "address": "Choto Alampur, Debidwar, Cumilla",
     "blood": "B+",
     "bio": "Demo student profile for International Hall. Detailed information can be updated later from the student sheet.",
+    "dob": "23-Dec",
+    "dobBn": "২৩ ডিসেম্বর",
     "pdfs": {
+      "ct1": "pdfs/munsi6-11-ct1.pdf",
+      "ct2": "pdfs/munsi6-11-ct2.pdf",
+      "hy": "pdfs/munsi6-11-hy.pdf",
+      "ct3": "pdfs/munsi6-11-ct3.pdf",
+      "yearly": "pdfs/munsi6-11-y.pdf"
+    },
+    "generated_pdf_names": {
       "ct1": "pdfs/munsi6-11-ct1.pdf",
       "ct2": "pdfs/munsi6-11-ct2.pdf",
       "hy": "pdfs/munsi6-11-hy.pdf",
@@ -771,7 +830,8 @@ let students = [
       "name": "শাহরিয়ার আল সাকিব মুন্সি",
       "college": "ঢাকা কলেজ",
       "address": "ছোট আলমপুর, দেবিদ্বার, কুমিল্লা",
-      "bio": "আন্তর্জাতিক ছাত্রাবাসের ডেমো শিক্ষার্থী প্রোফাইল। পরে sheet থেকে বিস্তারিত তথ্য আপডেট করা যাবে।"
+      "bio": "আন্তর্জাতিক ছাত্রাবাসের ডেমো শিক্ষার্থী প্রোফাইল। পরে sheet থেকে বিস্তারিত তথ্য আপডেট করা যাবে।",
+      "dob": "২৩ ডিসেম্বর"
     }
   },
   {
@@ -801,7 +861,16 @@ let students = [
     "address": "South Sakuchia, Monpura, Bhola",
     "blood": "A+",
     "bio": "Demo student profile for International Hall. Detailed information can be updated later from the student sheet.",
+    "dob": "21-Aug",
+    "dobBn": "২১ আগস্ট",
     "pdfs": {
+      "ct1": "pdfs/musfik7-11-ct1.pdf",
+      "ct2": "pdfs/musfik7-11-ct2.pdf",
+      "hy": "pdfs/musfik7-11-hy.pdf",
+      "ct3": "pdfs/musfik7-11-ct3.pdf",
+      "yearly": "pdfs/musfik7-11-y.pdf"
+    },
+    "generated_pdf_names": {
       "ct1": "pdfs/musfik7-11-ct1.pdf",
       "ct2": "pdfs/musfik7-11-ct2.pdf",
       "hy": "pdfs/musfik7-11-hy.pdf",
@@ -818,7 +887,8 @@ let students = [
       "name": "মোঃ মুশফিকুর রহমান",
       "college": "ঢাকা কলেজ",
       "address": "দক্ষিণ সাকুচিয়া, মনপুরা, ভোলা",
-      "bio": "আন্তর্জাতিক ছাত্রাবাসের ডেমো শিক্ষার্থী প্রোফাইল। পরে sheet থেকে বিস্তারিত তথ্য আপডেট করা যাবে।"
+      "bio": "আন্তর্জাতিক ছাত্রাবাসের ডেমো শিক্ষার্থী প্রোফাইল। পরে sheet থেকে বিস্তারিত তথ্য আপডেট করা যাবে।",
+      "dob": "২১ আগস্ট"
     }
   },
   {
@@ -843,12 +913,20 @@ let students = [
     "fatherPhone": "01714097613",
     "email": "dhakaiyyaesty@gmail.com",
     "img": "/assets/uploads/taskin.jpg",
-    "fb": "https://facebook.com/",
-    "messenger": "",
+    "fb": "",
     "address": "Chattogram",
     "blood": "O+",
     "bio": "Demo student profile for International Hall. Detailed information can be updated later from the student sheet.",
+    "dob": "21-Aug",
+    "dobBn": "২১ আগস্ট",
     "pdfs": {
+      "ct1": "pdfs/esty8-11-ct1.pdf",
+      "ct2": "pdfs/esty8-11-ct2.pdf",
+      "hy": "pdfs/esty8-11-hy.pdf",
+      "ct3": "pdfs/esty8-11-ct3.pdf",
+      "yearly": "pdfs/esty8-11-y.pdf"
+    },
+    "generated_pdf_names": {
       "ct1": "pdfs/esty8-11-ct1.pdf",
       "ct2": "pdfs/esty8-11-ct2.pdf",
       "hy": "pdfs/esty8-11-hy.pdf",
@@ -865,7 +943,8 @@ let students = [
       "name": "তাসকিন রহমান ইশতি",
       "college": "ঢাকা কলেজ",
       "address": "চট্টগ্রাম",
-      "bio": "আন্তর্জাতিক ছাত্রাবাসের ডেমো শিক্ষার্থী প্রোফাইল। পরে sheet থেকে বিস্তারিত তথ্য আপডেট করা যাবে।"
+      "bio": "আন্তর্জাতিক ছাত্রাবাসের ডেমো শিক্ষার্থী প্রোফাইল। পরে sheet থেকে বিস্তারিত তথ্য আপডেট করা যাবে।",
+      "dob": "২১ আগস্ট"
     }
   },
   {
@@ -895,7 +974,16 @@ let students = [
     "address": "Ranisonkail, Thakurgaon",
     "blood": "O+",
     "bio": "Competition, I'm The Competition....",
+    "dob": "12-Oct",
+    "dobBn": "১২ অক্টোবর",
     "pdfs": {
+      "ct1": "pdfs/nafis9-11-ct1.pdf",
+      "ct2": "pdfs/nafis9-11-ct2.pdf",
+      "hy": "pdfs/nafis9-11-hy.pdf",
+      "ct3": "pdfs/nafis9-11-ct3.pdf",
+      "yearly": "pdfs/nafis9-11-y.pdf"
+    },
+    "generated_pdf_names": {
       "ct1": "pdfs/nafis9-11-ct1.pdf",
       "ct2": "pdfs/nafis9-11-ct2.pdf",
       "hy": "pdfs/nafis9-11-hy.pdf",
@@ -912,7 +1000,8 @@ let students = [
       "name": "নাফিস আলম তারিফ",
       "college": "ঢাকা কলেজ",
       "address": "রাণীশংকৈল, ঠাকুরগাঁও",
-      "bio": "Competition, I'm The Competition...."
+      "bio": "Competition, I'm The Competition....",
+      "dob": "১২ অক্টোবর"
     }
   },
   {
@@ -938,11 +1027,19 @@ let students = [
     "email": "riasadulislamkayes@gmail.com",
     "img": "/assets/uploads/whatsapp-image-2026-05-09-at-7.20.39-pm-naimul-islam-1-.jpeg",
     "fb": "https://facebook.com/",
-    "messenger": "",
     "address": "Chakaria, Cox's bazar.",
     "blood": "A+",
     "bio": "\"Every soul shall taste death.\"",
+    "dob": "13-Dec",
+    "dobBn": "১৩ ডিসেম্বর",
     "pdfs": {
+      "ct1": "pdfs/kayes10-11-ct1.pdf",
+      "ct2": "pdfs/kayes10-11-ct2.pdf",
+      "hy": "pdfs/kayes10-11-hy.pdf",
+      "ct3": "pdfs/kayes10-11-ct3.pdf",
+      "yearly": "pdfs/kayes10-11-y.pdf"
+    },
+    "generated_pdf_names": {
       "ct1": "pdfs/kayes10-11-ct1.pdf",
       "ct2": "pdfs/kayes10-11-ct2.pdf",
       "hy": "pdfs/kayes10-11-hy.pdf",
@@ -959,7 +1056,8 @@ let students = [
       "name": "রিয়াসাদুল ইসলাম কায়েস",
       "college": "ঢাকা কলেজ",
       "address": "চকরিয়া, কক্সবাজার",
-      "bio": "\"প্রত্যেক প্রাণীই মৃত্যুর স্বাদ গ্রহণ করবে\""
+      "bio": "\"প্রত্যেক প্রাণীই মৃত্যুর স্বাদ গ্রহণ করবে\"",
+      "dob": "১৩ ডিসেম্বর"
     }
   },
   {
@@ -985,11 +1083,19 @@ let students = [
     "email": " jkjahidultaskin10@gmail.com",
     "img": "/assets/uploads/jahidvay.jpg",
     "fb": "https://facebook.com/",
-    "messenger": "",
     "address": "Narsingdi",
     "blood": "O+",
     "bio": "Demo student profile for International Hall. Detailed information can be updated later from the student sheet.",
+    "dob": "04-Apr",
+    "dobBn": "০৪ এপ্রিল",
     "pdfs": {
+      "ct1": "pdfs/jahid11-11-ct1.pdf",
+      "ct2": "pdfs/jahid11-11-ct2.pdf",
+      "hy": "pdfs/jahid11-11-hy.pdf",
+      "ct3": "pdfs/jahid11-11-ct3.pdf",
+      "yearly": "pdfs/jahid11-11-y.pdf"
+    },
+    "generated_pdf_names": {
       "ct1": "pdfs/jahid11-11-ct1.pdf",
       "ct2": "pdfs/jahid11-11-ct2.pdf",
       "hy": "pdfs/jahid11-11-hy.pdf",
@@ -1006,14 +1112,17 @@ let students = [
       "name": "মোঃ জাহিদুল ইসলাম",
       "college": "ঢাকা কলেজ",
       "address": "নরসিংদী",
-      "bio": "আন্তর্জাতিক ছাত্রাবাসের ডেমো শিক্ষার্থী প্রোফাইল। পরে sheet থেকে বিস্তারিত তথ্য আপডেট করা যাবে।"
+      "bio": "আন্তর্জাতিক ছাত্রাবাসের ডেমো শিক্ষার্থী প্রোফাইল। পরে sheet থেকে বিস্তারিত তথ্য আপডেট করা যাবে।",
+      "dob": "০৪ এপ্রিল"
     }
   },
   {
     "id": 12,
     "slug": "siam12",
     "position": 12,
-    "roommateIds": [],
+    "roommateIds": [
+      "rafiq18"
+    ],
     "name": "Siam Hasan (Nator)",
     "room": "319",
     "roll": "195",
@@ -1034,7 +1143,16 @@ let students = [
     "address": "Moshinda Majpara, Gurudaspur, Natore",
     "blood": "B+",
     "bio": "I am a Crazy Boy.",
+    "dob": "17-Dec",
+    "dobBn": "১৭ ডিসেম্বর",
     "pdfs": {
+      "ct1": "pdfs/siam12-11-ct1.pdf",
+      "ct2": "pdfs/siam12-11-ct2.pdf",
+      "hy": "pdfs/siam12-11-hy.pdf",
+      "ct3": "pdfs/siam12-11-ct3.pdf",
+      "yearly": "pdfs/siam12-11-y.pdf"
+    },
+    "generated_pdf_names": {
       "ct1": "pdfs/siam12-11-ct1.pdf",
       "ct2": "pdfs/siam12-11-ct2.pdf",
       "hy": "pdfs/siam12-11-hy.pdf",
@@ -1051,7 +1169,8 @@ let students = [
       "name": "সিয়াম হাসান (নাটোর)",
       "college": "ঢাকা কলেজ",
       "address": "মশিন্দা মাঝপাড়া, গুরুদাসপুর, নাটোর",
-      "bio": "I am a Crazy Boy."
+      "bio": "I am a Crazy Boy.",
+      "dob": "১৭ ডিসেম্বর"
     }
   },
   {
@@ -1077,11 +1196,19 @@ let students = [
     "email": "-",
     "img": "/assets/uploads/siamkustia.jpg",
     "fb": "https://facebook.com/",
-    "messenger": "",
     "address": "Khorda Ailchara, Kushtia Sadar, Kushtia",
     "blood": "O+",
     "bio": "Demo student profile for International Hall. Detailed information can be updated later from the student sheet.",
+    "dob": "05-Oct",
+    "dobBn": "০৫ অক্টোবর",
     "pdfs": {
+      "ct1": "pdfs/siam13-11-ct1.pdf",
+      "ct2": "pdfs/siam13-11-ct2.pdf",
+      "hy": "pdfs/siam13-11-hy.pdf",
+      "ct3": "pdfs/siam13-11-ct3.pdf",
+      "yearly": "pdfs/siam13-11-y.pdf"
+    },
+    "generated_pdf_names": {
       "ct1": "pdfs/siam13-11-ct1.pdf",
       "ct2": "pdfs/siam13-11-ct2.pdf",
       "hy": "pdfs/siam13-11-hy.pdf",
@@ -1098,7 +1225,8 @@ let students = [
       "name": "মোঃ সিয়াম আলী (কুষ্টিয়া)",
       "college": "ঢাকা কলেজ",
       "address": "খোরদা আইলচারা, কুষ্টিয়া সদর, কুষ্টিয়া",
-      "bio": "আন্তর্জাতিক ছাত্রাবাসের ডেমো শিক্ষার্থী প্রোফাইল। পরে sheet থেকে বিস্তারিত তথ্য আপডেট করা যাবে।"
+      "bio": "আন্তর্জাতিক ছাত্রাবাসের ডেমো শিক্ষার্থী প্রোফাইল। পরে sheet থেকে বিস্তারিত তথ্য আপডেট করা যাবে।",
+      "dob": "০৫ অক্টোবর"
     }
   },
   {
@@ -1106,10 +1234,10 @@ let students = [
     "slug": "saimun14",
     "position": 14,
     "roommateIds": [
-      "alif28"
+      "rudro22"
     ],
     "name": "Saimun Islam",
-    "room": "326",
+    "room": "321",
     "roll": "322",
     "fullRoll": "1202526010322",
     "classNo": "12",
@@ -1124,11 +1252,19 @@ let students = [
     "email": "-",
     "img": "/assets/uploads/saimun3.jpg",
     "fb": "https://facebook.com/",
-    "messenger": "",
     "address": "Baipail, Savar, Dhaka",
     "blood": "AB+",
     "bio": "Demo student profile for International Hall. Detailed information can be updated later from the student sheet.",
+    "dob": "15-Sep",
+    "dobBn": "১৫ সেপ্টেম্বর",
     "pdfs": {
+      "ct1": "pdfs/saimun14-11-ct1.pdf",
+      "ct2": "pdfs/saimun14-11-ct2.pdf",
+      "hy": "pdfs/saimun14-11-hy.pdf",
+      "ct3": "pdfs/saimun14-11-ct3.pdf",
+      "yearly": "pdfs/saimun14-11-y.pdf"
+    },
+    "generated_pdf_names": {
       "ct1": "pdfs/saimun14-11-ct1.pdf",
       "ct2": "pdfs/saimun14-11-ct2.pdf",
       "hy": "pdfs/saimun14-11-hy.pdf",
@@ -1145,7 +1281,8 @@ let students = [
       "name": "সাইমুন ইসলাম",
       "college": "ঢাকা কলেজ",
       "address": "বাইপাইল, সাভার, ঢাকা",
-      "bio": "আন্তর্জাতিক ছাত্রাবাসের ডেমো শিক্ষার্থী প্রোফাইল। পরে sheet থেকে বিস্তারিত তথ্য আপডেট করা যাবে।"
+      "bio": "আন্তর্জাতিক ছাত্রাবাসের ডেমো শিক্ষার্থী প্রোফাইল। পরে sheet থেকে বিস্তারিত তথ্য আপডেট করা যাবে।",
+      "dob": "১৫ সেপ্টেম্বর"
     }
   },
   {
@@ -1175,7 +1312,16 @@ let students = [
     "address": "Kushtia Sadar, Kushtia",
     "blood": "O+",
     "bio": "Demo student profile for International Hall. Detailed information can be updated later from the student sheet.",
+    "dob": "07-Feb",
+    "dobBn": "০৭ ফেব্রুয়ারি",
     "pdfs": {
+      "ct1": "pdfs/pranto15-11-ct1.pdf",
+      "ct2": "pdfs/pranto15-11-ct2.pdf",
+      "hy": "pdfs/pranto15-11-hy.pdf",
+      "ct3": "pdfs/pranto15-11-ct3.pdf",
+      "yearly": "pdfs/pranto15-11-y.pdf"
+    },
+    "generated_pdf_names": {
       "ct1": "pdfs/pranto15-11-ct1.pdf",
       "ct2": "pdfs/pranto15-11-ct2.pdf",
       "hy": "pdfs/pranto15-11-hy.pdf",
@@ -1192,7 +1338,8 @@ let students = [
       "name": "রাতুল হাসান প্রান্ত",
       "college": "ঢাকা কলেজ",
       "address": "কুষ্টিয়া সদর, কুষ্টিয়া",
-      "bio": "আন্তর্জাতিক ছাত্রাবাসের ডেমো শিক্ষার্থী প্রোফাইল। পরে sheet থেকে বিস্তারিত তথ্য আপডেট করা যাবে।"
+      "bio": "আন্তর্জাতিক ছাত্রাবাসের ডেমো শিক্ষার্থী প্রোফাইল। পরে sheet থেকে বিস্তারিত তথ্য আপডেট করা যাবে।",
+      "dob": "০৭ ফেব্রুয়ারি"
     }
   },
   {
@@ -1218,11 +1365,19 @@ let students = [
     "email": "-",
     "img": "/assets/uploads/nayeem.jpg",
     "fb": "https://facebook.com/",
-    "messenger": "",
     "address": "Alamdanga, Chuadanga",
     "blood": "O+",
     "bio": "Demo student profile for International Hall. Detailed information can be updated later from the student sheet.",
+    "dob": "31-Dec",
+    "dobBn": "৩১ ডিসেম্বর",
     "pdfs": {
+      "ct1": "pdfs/nayem18-11-ct1.pdf",
+      "ct2": "pdfs/nayem18-11-ct2.pdf",
+      "hy": "pdfs/nayem18-11-hy.pdf",
+      "ct3": "pdfs/nayem18-11-ct3.pdf",
+      "yearly": "pdfs/nayem18-11-y.pdf"
+    },
+    "generated_pdf_names": {
       "ct1": "pdfs/nayem18-11-ct1.pdf",
       "ct2": "pdfs/nayem18-11-ct2.pdf",
       "hy": "pdfs/nayem18-11-hy.pdf",
@@ -1239,7 +1394,8 @@ let students = [
       "name": "নাঈম সরওয়ার",
       "college": "ঢাকা কলেজ",
       "address": "আলমডাঙ্গা, চুয়াডাঙ্গা",
-      "bio": "আন্তর্জাতিক ছাত্রাবাসের ডেমো শিক্ষার্থী প্রোফাইল। পরে sheet থেকে বিস্তারিত তথ্য আপডেট করা যাবে।"
+      "bio": "আন্তর্জাতিক ছাত্রাবাসের ডেমো শিক্ষার্থী প্রোফাইল। পরে sheet থেকে বিস্তারিত তথ্য আপডেট করা যাবে।",
+      "dob": "৩১ ডিসেম্বর"
     }
   },
   {
@@ -1269,7 +1425,16 @@ let students = [
     "address": "Kalisongkorpur, Joshobontopur, Mohammadpur, Magura",
     "blood": "O+",
     "bio": "Demo student profile for International Hall. Detailed information can be updated later from the student sheet.",
+    "dob": "09-Sep",
+    "dobBn": "০৯ সেপ্টেম্বর",
     "pdfs": {
+      "ct1": "pdfs/alauddin17-11-ct1.pdf",
+      "ct2": "pdfs/alauddin17-11-ct2.pdf",
+      "hy": "pdfs/alauddin17-11-hy.pdf",
+      "ct3": "pdfs/alauddin17-11-ct3.pdf",
+      "yearly": "pdfs/alauddin17-11-y.pdf"
+    },
+    "generated_pdf_names": {
       "ct1": "pdfs/alauddin17-11-ct1.pdf",
       "ct2": "pdfs/alauddin17-11-ct2.pdf",
       "hy": "pdfs/alauddin17-11-hy.pdf",
@@ -1286,16 +1451,19 @@ let students = [
       "name": "মোঃ আলাউদ্দীন মোল্যা",
       "college": "ঢাকা কলেজ",
       "address": "কালিশংকরপুর, যশোবন্তপুর, মোহাম্মদপুর, মাগুরা",
-      "bio": "আন্তর্জাতিক ছাত্রাবাসের ডেমো শিক্ষার্থী প্রোফাইল। পরে sheet থেকে বিস্তারিত তথ্য আপডেট করা যাবে।"
+      "bio": "আন্তর্জাতিক ছাত্রাবাসের ডেমো শিক্ষার্থী প্রোফাইল। পরে sheet থেকে বিস্তারিত তথ্য আপডেট করা যাবে।",
+      "dob": "০৯ সেপ্টেম্বর"
     }
   },
   {
     "id": 18,
     "slug": "rafiq18",
     "position": 18,
-    "roommateIds": [],
+    "roommateIds": [
+      "siam12"
+    ],
     "name": "Md. Rafiq Bin Nizam",
-    "room": "321",
+    "room": "319",
     "roll": "872",
     "fullRoll": "1202526010872",
     "classNo": "12",
@@ -1310,11 +1478,19 @@ let students = [
     "email": "-",
     "img": "/assets/uploads/rafi.jpg",
     "fb": "https://facebook.com/",
-    "messenger": "",
     "address": "Rifaitpur, Daulatpur, Kushtia",
     "blood": "O+",
     "bio": "Demo student profile for International Hall. Detailed information can be updated later from the student sheet.",
+    "dob": "24-Dec",
+    "dobBn": "২৪ ডিসেম্বর",
     "pdfs": {
+      "ct1": "pdfs/rafiq18-11-ct1.pdf",
+      "ct2": "pdfs/rafiq18-11-ct2.pdf",
+      "hy": "pdfs/rafiq18-11-hy.pdf",
+      "ct3": "pdfs/rafiq18-11-ct3.pdf",
+      "yearly": "pdfs/rafiq18-11-y.pdf"
+    },
+    "generated_pdf_names": {
       "ct1": "pdfs/rafiq18-11-ct1.pdf",
       "ct2": "pdfs/rafiq18-11-ct2.pdf",
       "hy": "pdfs/rafiq18-11-hy.pdf",
@@ -1331,7 +1507,8 @@ let students = [
       "name": "মো: রফিক বিন নিজাম",
       "college": "ঢাকা কলেজ",
       "address": "রিফায়েতপুর, দৌলতপুর, কুষ্টিয়া",
-      "bio": "আন্তর্জাতিক ছাত্রাবাসের ডেমো শিক্ষার্থী প্রোফাইল। পরে sheet থেকে বিস্তারিত তথ্য আপডেট করা যাবে।"
+      "bio": "আন্তর্জাতিক ছাত্রাবাসের ডেমো শিক্ষার্থী প্রোফাইল। পরে sheet থেকে বিস্তারিত তথ্য আপডেট করা যাবে।",
+      "dob": "২৪ ডিসেম্বর"
     }
   },
   {
@@ -1361,7 +1538,16 @@ let students = [
     "address": "Purbachal, Rupganj , Narayanganj ",
     "blood": "B+",
     "bio": "My lawyer told me to leave this section blank. ⚖️🤐",
+    "dob": "17-May",
+    "dobBn": "১৭ মে",
     "pdfs": {
+      "ct1": "pdfs/riyad19-11-ct1.pdf",
+      "ct2": "pdfs/riyad19-11-ct2.pdf",
+      "hy": "pdfs/riyad19-11-hy.pdf",
+      "ct3": "pdfs/riyad19-11-ct3.pdf",
+      "yearly": "pdfs/riyad19-11-y.pdf"
+    },
+    "generated_pdf_names": {
       "ct1": "pdfs/riyad19-11-ct1.pdf",
       "ct2": "pdfs/riyad19-11-ct2.pdf",
       "hy": "pdfs/riyad19-11-hy.pdf",
@@ -1378,7 +1564,8 @@ let students = [
       "name": "তাশফিকুর রহমান রিয়াদ",
       "college": "ঢাকা কলেজ",
       "address": "পূর্বাচল, রূপগঞ্জ, নারায়ণগঞ্জ",
-      "bio": "আমার আইনজীবী আমাকে এই অংশটি খালি রাখতে বলেছেন। ⚖️🤐"
+      "bio": "আমার আইনজীবী আমাকে এই অংশটি খালি রাখতে বলেছেন। ⚖️🤐",
+      "dob": "১৭ মে"
     }
   },
   {
@@ -1404,11 +1591,19 @@ let students = [
     "email": "-",
     "img": "/assets/uploads/mosih.jpg",
     "fb": "https://facebook.com/",
-    "messenger": "",
     "address": "Dokkin Lalpur, Lalpur, Natore",
     "blood": "A+",
     "bio": "Demo student profile for International Hall. Detailed information can be updated later from the student sheet.",
+    "dob": "30-May",
+    "dobBn": "৩০ মে",
     "pdfs": {
+      "ct1": "pdfs/mosih20-11-ct1.pdf",
+      "ct2": "pdfs/mosih20-11-ct2.pdf",
+      "hy": "pdfs/mosih20-11-hy.pdf",
+      "ct3": "pdfs/mosih20-11-ct3.pdf",
+      "yearly": "pdfs/mosih20-11-y.pdf"
+    },
+    "generated_pdf_names": {
       "ct1": "pdfs/mosih20-11-ct1.pdf",
       "ct2": "pdfs/mosih20-11-ct2.pdf",
       "hy": "pdfs/mosih20-11-hy.pdf",
@@ -1425,7 +1620,8 @@ let students = [
       "name": "মোঃ চিশতী ইসলাম মসীহ",
       "college": "ঢাকা কলেজ",
       "address": "দক্ষিণ লালপুর, লালপুর, নাটোর",
-      "bio": "আন্তর্জাতিক ছাত্রাবাসের ডেমো শিক্ষার্থী প্রোফাইল। পরে sheet থেকে বিস্তারিত তথ্য আপডেট করা যাবে।"
+      "bio": "আন্তর্জাতিক ছাত্রাবাসের ডেমো শিক্ষার্থী প্রোফাইল। পরে sheet থেকে বিস্তারিত তথ্য আপডেট করা যাবে।",
+      "dob": "৩০ মে"
     }
   },
   {
@@ -1451,11 +1647,19 @@ let students = [
     "email": "abrarislam0723@gmail.com",
     "img": "/assets/uploads/abrar2.jpg",
     "fb": "https://facebook.com/",
-    "messenger": "",
     "address": "429/B Malibag Chowdhury para, Near by Matir Mosjid, Rampura, Dhaka",
     "blood": "B+",
     "bio": "Demo student profile for International Hall. Detailed information can be updated later from the student sheet.",
+    "dob": "01-Jan",
+    "dobBn": "০১ জানুয়ারি",
     "pdfs": {
+      "ct1": "pdfs/abrar21-11-ct1.pdf",
+      "ct2": "pdfs/abrar21-11-ct2.pdf",
+      "hy": "pdfs/abrar21-11-hy.pdf",
+      "ct3": "pdfs/abrar21-11-ct3.pdf",
+      "yearly": "pdfs/abrar21-11-y.pdf"
+    },
+    "generated_pdf_names": {
       "ct1": "pdfs/abrar21-11-ct1.pdf",
       "ct2": "pdfs/abrar21-11-ct2.pdf",
       "hy": "pdfs/abrar21-11-hy.pdf",
@@ -1472,7 +1676,8 @@ let students = [
       "name": "মো: আহনাফ আবরার",
       "college": "ঢাকা কলেজ",
       "address": "৪২৯/বি মালিবাগ চৌধুরী পাড়া, মাটির মসজিদের কাছে, রামপুরা, ঢাকা",
-      "bio": "আন্তর্জাতিক ছাত্রাবাসের ডেমো শিক্ষার্থী প্রোফাইল। পরে sheet থেকে বিস্তারিত তথ্য আপডেট করা যাবে।"
+      "bio": "আন্তর্জাতিক ছাত্রাবাসের ডেমো শিক্ষার্থী প্রোফাইল। পরে sheet থেকে বিস্তারিত তথ্য আপডেট করা যাবে।",
+      "dob": "০১ জানুয়ারি"
     }
   },
   {
@@ -1480,10 +1685,10 @@ let students = [
     "slug": "rudro22",
     "position": 22,
     "roommateIds": [
-      "ariful25"
+      "saimun14"
     ],
     "name": "M M Tanvir (Rudro)",
-    "room": "324",
+    "room": "321",
     "roll": "100",
     "fullRoll": "1202526020100",
     "classNo": "12",
@@ -1498,11 +1703,19 @@ let students = [
     "email": "-",
     "img": "/assets/uploads/100-rudro.jpg",
     "fb": "https://facebook.com/",
-    "messenger": "",
     "address": "Boalia, Sujanagar, Pabna",
     "blood": "B+",
     "bio": "Demo student profile for International Hall. Detailed information can be updated later from the student sheet.",
+    "dob": "04-Jun",
+    "dobBn": "০৪ জুন",
     "pdfs": {
+      "ct1": "pdfs/rudro22-11-ct1.pdf",
+      "ct2": "pdfs/rudro22-11-ct2.pdf",
+      "hy": "pdfs/rudro22-11-hy.pdf",
+      "ct3": "pdfs/rudro22-11-ct3.pdf",
+      "yearly": "pdfs/rudro22-11-y.pdf"
+    },
+    "generated_pdf_names": {
       "ct1": "pdfs/rudro22-11-ct1.pdf",
       "ct2": "pdfs/rudro22-11-ct2.pdf",
       "hy": "pdfs/rudro22-11-hy.pdf",
@@ -1519,7 +1732,8 @@ let students = [
       "name": "এম এম তানভীর (রুদ্র)",
       "college": "ঢাকা কলেজ",
       "address": "বোয়ালিয়া, সুজানগর, পাবনা",
-      "bio": "আন্তর্জাতিক ছাত্রাবাসের ডেমো শিক্ষার্থী প্রোফাইল। পরে sheet থেকে বিস্তারিত তথ্য আপডেট করা যাবে।"
+      "bio": "আন্তর্জাতিক ছাত্রাবাসের ডেমো শিক্ষার্থী প্রোফাইল। পরে sheet থেকে বিস্তারিত তথ্য আপডেট করা যাবে।",
+      "dob": "০৪ জুন"
     }
   },
   {
@@ -1545,11 +1759,19 @@ let students = [
     "email": "-",
     "img": "/assets/uploads/riasad1.jpg",
     "fb": "https://facebook.com/",
-    "messenger": "",
     "address": "Notun Amdoho Allardarga, Daulatpur, Kushtia",
     "blood": "O+",
     "bio": "Demo student profile for International Hall. Detailed information can be updated later from the student sheet.",
+    "dob": "26-Jul",
+    "dobBn": "২৬ জুলাই",
     "pdfs": {
+      "ct1": "pdfs/riasad23-11-ct1.pdf",
+      "ct2": "pdfs/riasad23-11-ct2.pdf",
+      "hy": "pdfs/riasad23-11-hy.pdf",
+      "ct3": "pdfs/riasad23-11-ct3.pdf",
+      "yearly": "pdfs/riasad23-11-y.pdf"
+    },
+    "generated_pdf_names": {
       "ct1": "pdfs/riasad23-11-ct1.pdf",
       "ct2": "pdfs/riasad23-11-ct2.pdf",
       "hy": "pdfs/riasad23-11-hy.pdf",
@@ -1566,13 +1788,14 @@ let students = [
       "name": "সোবহান মাহমুদ খাঁন (রিয়াসাদ)",
       "college": "ঢাকা কলেজ",
       "address": "নতুন আমদহ আল্লারদর্গা, দৌলতপুর, কুষ্টিয়া ",
-      "bio": "আন্তর্জাতিক ছাত্রাবাসের ডেমো শিক্ষার্থী প্রোফাইল। পরে sheet থেকে বিস্তারিত তথ্য আপডেট করা যাবে।"
+      "bio": "আন্তর্জাতিক ছাত্রাবাসের ডেমো শিক্ষার্থী প্রোফাইল। পরে sheet থেকে বিস্তারিত তথ্য আপডেট করা যাবে।",
+      "dob": "২৬ জুলাই"
     }
   },
   {
     "id": 24,
     "slug": "musa24",
-    "position": 23,
+    "position": 24,
     "roommateIds": [
       "jahid11"
     ],
@@ -1596,7 +1819,16 @@ let students = [
     "address": "Jhalakati\n",
     "blood": "A+",
     "bio": "Demo student profile for International Hall. Detailed information can be updated later from the student sheet.",
+    "dob": "10-Apr",
+    "dobBn": "১০ এপ্রিল",
     "pdfs": {
+      "ct1": "pdfs/musa24-11-ct1.pdf",
+      "ct2": "pdfs/musa24-11-ct2.pdf",
+      "hy": "pdfs/musa24-11-hy.pdf",
+      "ct3": "pdfs/musa24-11-ct3.pdf",
+      "yearly": "pdfs/musa24-11-y.pdf"
+    },
+    "generated_pdf_names": {
       "ct1": "pdfs/musa24-11-ct1.pdf",
       "ct2": "pdfs/musa24-11-ct2.pdf",
       "hy": "pdfs/musa24-11-hy.pdf",
@@ -1613,7 +1845,8 @@ let students = [
       "name": "মাহবুবুর রহমান মুছা ",
       "college": "ঢাকা কলেজ",
       "address": "ঝালকাঠি \n",
-      "bio": "আন্তর্জাতিক ছাত্রাবাসের ডেমো শিক্ষার্থী প্রোফাইল। পরে sheet থেকে বিস্তারিত তথ্য আপডেট করা যাবে।"
+      "bio": "আন্তর্জাতিক ছাত্রাবাসের ডেমো শিক্ষার্থী প্রোফাইল। পরে sheet থেকে বিস্তারিত তথ্য আপডেট করা যাবে।",
+      "dob": "১০ এপ্রিল"
     }
   },
   {
@@ -1621,7 +1854,7 @@ let students = [
     "slug": "ariful25",
     "position": 25,
     "roommateIds": [
-      "rudro22"
+      "bayezid30"
     ],
     "name": "Ariful Islam",
     "room": "324",
@@ -1643,7 +1876,16 @@ let students = [
     "address": "Rohanpur, Gomastapur, Chapainawabganj",
     "blood": "O+",
     "bio": "Demo student profile for International Hall. Detailed information can be updated later from the student sheet.",
+    "dob": "21-Sep",
+    "dobBn": "২১ সেপ্টেম্বর",
     "pdfs": {
+      "ct1": "pdfs/ariful25-11-ct1.pdf",
+      "ct2": "pdfs/ariful25-11-ct2.pdf",
+      "hy": "pdfs/ariful25-11-hy.pdf",
+      "ct3": "pdfs/ariful25-11-ct3.pdf",
+      "yearly": "pdfs/ariful25-11-y.pdf"
+    },
+    "generated_pdf_names": {
       "ct1": "pdfs/ariful25-11-ct1.pdf",
       "ct2": "pdfs/ariful25-11-ct2.pdf",
       "hy": "pdfs/ariful25-11-hy.pdf",
@@ -1660,7 +1902,8 @@ let students = [
       "name": "আরিফুল ইসলাম",
       "college": "ঢাকা কলেজ",
       "address": "রোহনপুর, গোমস্তাপুর, চাঁপাইনবাবগঞ্জ",
-      "bio": "আন্তর্জাতিক ছাত্রাবাসের ডেমো শিক্ষার্থী প্রোফাইল। পরে sheet থেকে বিস্তারিত তথ্য আপডেট করা যাবে।"
+      "bio": "আন্তর্জাতিক ছাত্রাবাসের ডেমো শিক্ষার্থী প্রোফাইল। পরে sheet থেকে বিস্তারিত তথ্য আপডেট করা যাবে।",
+      "dob": "২১ সেপ্টেম্বর"
     }
   },
   {
@@ -1686,11 +1929,19 @@ let students = [
     "email": "rkdc8989@gmail.com",
     "img": "/assets/uploads/img-20260328-wa0060-rezaul-karim-1-.jpg",
     "fb": "https://facebook.com/",
-    "messenger": "",
     "address": "Titas, Cumilla",
     "blood": "A+",
     "bio": "Sports lover",
+    "dob": "10-Sep",
+    "dobBn": "১০ সেপ্টেম্বর",
     "pdfs": {
+      "ct1": "pdfs/rejawl26-11-ct1.pdf",
+      "ct2": "pdfs/rejawl26-11-ct2.pdf",
+      "hy": "pdfs/rejawl26-11-hy.pdf",
+      "ct3": "pdfs/rejawl26-11-ct3.pdf",
+      "yearly": "pdfs/rejawl26-11-y.pdf"
+    },
+    "generated_pdf_names": {
       "ct1": "pdfs/rejawl26-11-ct1.pdf",
       "ct2": "pdfs/rejawl26-11-ct2.pdf",
       "hy": "pdfs/rejawl26-11-hy.pdf",
@@ -1707,7 +1958,8 @@ let students = [
       "name": "মোঃ রেজাউল করিম",
       "college": "ঢাকা কলেজ",
       "address": "তিতাস, কুমিল্লা",
-      "bio": "Sports lover"
+      "bio": "Sports lover",
+      "dob": "১০ সেপ্টেম্বর"
     }
   },
   {
@@ -1733,11 +1985,19 @@ let students = [
     "email": "-",
     "img": "/assets/uploads/sabit.jpg",
     "fb": "https://facebook.com/",
-    "messenger": "",
     "address": "Marich Pasha, Lohagara, Narail\n",
     "blood": "AB+",
     "bio": "Demo student profile for International Hall. Detailed information can be updated later from the student sheet.",
+    "dob": "11-Feb",
+    "dobBn": "১১ ফেব্রুয়ারি",
     "pdfs": {
+      "ct1": "pdfs/sabit27-11-ct1.pdf",
+      "ct2": "pdfs/sabit27-11-ct2.pdf",
+      "hy": "pdfs/sabit27-11-hy.pdf",
+      "ct3": "pdfs/sabit27-11-ct3.pdf",
+      "yearly": "pdfs/sabit27-11-y.pdf"
+    },
+    "generated_pdf_names": {
       "ct1": "pdfs/sabit27-11-ct1.pdf",
       "ct2": "pdfs/sabit27-11-ct2.pdf",
       "hy": "pdfs/sabit27-11-hy.pdf",
@@ -1754,7 +2014,8 @@ let students = [
       "name": "মুহাম্মদ রায়হানুর সাবিত ",
       "college": "ঢাকা কলেজ",
       "address": "মরিচ পাশা, লোহাগড়া, নড়াইল",
-      "bio": "আন্তর্জাতিক ছাত্রাবাসের ডেমো শিক্ষার্থী প্রোফাইল। পরে sheet থেকে বিস্তারিত তথ্য আপডেট করা যাবে।"
+      "bio": "আন্তর্জাতিক ছাত্রাবাসের ডেমো শিক্ষার্থী প্রোফাইল। পরে sheet থেকে বিস্তারিত তথ্য আপডেট করা যাবে।",
+      "dob": "১১ ফেব্রুয়ারি"
     }
   },
   {
@@ -1762,7 +2023,7 @@ let students = [
     "slug": "alif28",
     "position": 28,
     "roommateIds": [
-      "saimun14"
+      "sohan29"
     ],
     "name": "Alimuzzamann Alif",
     "room": "326",
@@ -1784,7 +2045,16 @@ let students = [
     "address": "Sundarganj, Gaibandha",
     "blood": "AB+",
     "bio": "What an amazing website it is for our international hall which created by meritorious adib. Keep going higher. Truly appreciating for such kind of initiatives. With all are staying with it . Hoping main target Will fulfill with it's modern development.",
+    "dob": "11-Nov",
+    "dobBn": "১১ নভেম্বর",
     "pdfs": {
+      "ct1": "pdfs/alif28-11-ct1.pdf",
+      "ct2": "pdfs/alif28-11-ct2.pdf",
+      "hy": "pdfs/alif28-11-hy.pdf",
+      "ct3": "pdfs/alif28-11-ct3.pdf",
+      "yearly": "pdfs/alif28-11-y.pdf"
+    },
+    "generated_pdf_names": {
       "ct1": "pdfs/alif28-11-ct1.pdf",
       "ct2": "pdfs/alif28-11-ct2.pdf",
       "hy": "pdfs/alif28-11-hy.pdf",
@@ -1801,7 +2071,122 @@ let students = [
       "name": "আলিমুজ্জামান আলিফ",
       "college": "ঢাকা কলেজ",
       "address": "সুন্দরগঞ্জ, গাইবান্ধা",
-      "bio": "What an amazing website it is for our international hall which created by meritorious adib. Keep going higher. Truly appreciating for such kind of initiatives. With all are staying with it . Hoping main target Will fulfill with it's modern development."
+      "bio": "What an amazing website it is for our international hall which created by meritorious adib. Keep going higher. Truly appreciating for such kind of initiatives. With all are staying with it . Hoping main target Will fulfill with it's modern development.",
+      "dob": "১১ নভেম্বর"
+    }
+  },
+  {
+    "id": 29,
+    "slug": "sohan29",
+    "position": 29,
+    "roommateIds": [
+      "alif28"
+    ],
+    "name": "Md. Shohoorab Hossen Pramanik",
+    "room": "326",
+    "roll": "031",
+    "fullRoll": "1202526020031",
+    "classNo": "12",
+    "group": "commerce",
+    "groupEn": "Business Studies",
+    "groupBn": "ব্যবসায় শিক্ষা",
+    "section": "A",
+    "practicalGroup": "-",
+    "college": "Dhaka College",
+    "phone": "01827048355",
+    "fatherPhone": "01747206790",
+    "email": "-",
+    "img": "images/sohan29.jpg",
+    "fb": "https://facebook.com/",
+    "messenger": "",
+    "address": "Paika, Dholdanga, Sadullapur, Gaibandha",
+    "blood": "B+",
+    "bio": "",
+    "dob": "31-Dec",
+    "dobBn": "৩১ ডিসেম্বর",
+    "pdfs": {
+      "ct1": "pdfs/sohan29-11-ct1.pdf",
+      "ct2": "pdfs/sohan29-11-ct2.pdf",
+      "hy": "pdfs/sohan29-11-hy.pdf",
+      "ct3": "pdfs/sohan29-11-ct3.pdf",
+      "yearly": "pdfs/sohan29-11-y.pdf"
+    },
+    "generated_pdf_names": {
+      "ct1": "pdfs/sohan29-11-ct1.pdf",
+      "ct2": "pdfs/sohan29-11-ct2.pdf",
+      "hy": "pdfs/sohan29-11-hy.pdf",
+      "ct3": "pdfs/sohan29-11-ct3.pdf",
+      "yearly": "pdfs/sohan29-11-y.pdf"
+    },
+    "result": {
+      "gpa": 0,
+      "physics": 0,
+      "chemistry": 0,
+      "math": 0
+    },
+    "bn": {
+      "name": "মোঃ সোহরাব হোসেন প্রামানিক",
+      "college": "ঢাকা কলেজ",
+      "address": "পাইকা, ধলডাঙ্গা, সাদুল্লাপুর, গাইবান্ধা",
+      "bio": "",
+      "dob": "৩১ ডিসেম্বর"
+    }
+  },
+  {
+    "id": 30,
+    "slug": "bayezid30",
+    "position": 30,
+    "roommateIds": [
+      "ariful25"
+    ],
+    "name": "Md. Bayazid",
+    "room": "324",
+    "roll": "001",
+    "fullRoll": "1202526020001",
+    "classNo": "12",
+    "group": "commerce",
+    "groupEn": "Business Studies",
+    "groupBn": "ব্যবসায় শিক্ষা",
+    "section": "A",
+    "practicalGroup": "-",
+    "college": "Dhaka College",
+    "phone": "01822724598",
+    "fatherPhone": "01758682413",
+    "email": "-",
+    "img": "images/bayezid30.jpg",
+    "fb": "https://facebook.com/",
+    "messenger": "",
+    "address": "Sirajganj",
+    "blood": "B+",
+    "bio": "",
+    "dob": "15-May",
+    "dobBn": "১৫ মে",
+    "pdfs": {
+      "ct1": "pdfs/bayezid30-11-ct1.pdf",
+      "ct2": "pdfs/bayezid30-11-ct2.pdf",
+      "hy": "pdfs/bayezid30-11-hy.pdf",
+      "ct3": "pdfs/bayezid30-11-ct3.pdf",
+      "yearly": "pdfs/bayezid30-11-y.pdf"
+    },
+    "generated_pdf_names": {
+      "ct1": "pdfs/bayezid30-11-ct1.pdf",
+      "ct2": "pdfs/bayezid30-11-ct2.pdf",
+      "hy": "pdfs/bayezid30-11-hy.pdf",
+      "ct3": "pdfs/bayezid30-11-ct3.pdf",
+      "yearly": "pdfs/bayezid30-11-y.pdf"
+    },
+    "result": {
+      "gpa": 0,
+      "physics": 0,
+      "chemistry": 0,
+      "math": 0
+    },
+    "bn": {
+      "name": "মোঃ বায়েজিদ",
+      "college": "ঢাকা কলেজ",
+      "address": "সিরাজগঞ্জ",
+      "bio": "",
+      "dob": "১৫ মে"
     }
   }
 ];
@@ -2046,6 +2431,8 @@ function mapCmsStudent(item, index) {
     address: item.address_en || "",
     blood: item.blood_group || "",
     bio: item.bio_en || "",
+    dob: item.dob || "",
+    dobBn: item.dob_bn || "",
     pdfs: item.pdfs || {},
     generated_pdf_names: item.generated_pdf_names || {},
     result: {
@@ -2058,7 +2445,8 @@ function mapCmsStudent(item, index) {
       name: item.name_bn || item.name_en || slug,
       college: "ঢাকা কলেজ",
       address: item.address_bn || item.address_en || "",
-      bio: item.bio_bn || item.bio_en || ""
+      bio: item.bio_bn || item.bio_en || "",
+      dob: item.dob_bn || item.dob || ""
     }
   };
 }
@@ -3350,6 +3738,7 @@ function openStudentModal(student) {
             </strong>
           </div>
           <div class="profile-item"><span>${t("common.blood")}</span><strong>${student.blood}</strong></div>
+          ${student.dob ? `<div class="profile-item"><span>${t("common.dob")}</span><strong>${studentValue(student, "dob") || student.dob}</strong></div>` : ""}
           <div class="profile-item"><span>${t("common.college")}</span><strong>${studentValue(student, "college")}</strong></div>
         </div>
 

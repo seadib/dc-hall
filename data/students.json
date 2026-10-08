@@ -42,7 +42,9 @@
       "email": "quantelixvero@gmail.com",
       "name_en": "Abdullah Al Adib",
       "student_id": "adib1",
-      "group": "science"
+      "group": "science",
+      "dob": "04-Oct",
+      "dob_bn": "০৪ অক্টোবর"
     },
     {
       "short_roll": "161",
@@ -86,7 +88,9 @@
       "email": "mistersanto1000@gmail.com",
       "name_en": "Naimul Islam (Shanto)",
       "student_id": "santo2",
-      "group": "science"
+      "group": "science",
+      "dob": "08-Dec",
+      "dob_bn": "০৮ ডিসেম্বর"
     },
     {
       "short_roll": "164",
@@ -130,7 +134,9 @@
       "email": "zahidsigma164@gmail.com",
       "name_en": "Md Zahidul Islam",
       "student_id": "jahid3",
-      "group": "science"
+      "group": "science",
+      "dob": "07-Jan",
+      "dob_bn": "০৭ জানুয়ারি"
     },
     {
       "short_roll": "326",
@@ -173,7 +179,9 @@
       "email": "-",
       "name_en": "Md. Shakil Sheikh",
       "student_id": "sakil4",
-      "group": "science"
+      "group": "science",
+      "dob": "08-Oct",
+      "dob_bn": "০৮ অক্টোবর"
     },
     {
       "short_roll": "008",
@@ -217,7 +225,9 @@
       "email": "shafkatrahmandkam@gmail.com",
       "name_en": "Shafkat Rahman",
       "student_id": "sasfkat5",
-      "group": "science"
+      "group": "science",
+      "dob": "01-Jan",
+      "dob_bn": "০১ জানুয়ারি"
     },
     {
       "short_roll": "022",
@@ -260,7 +270,9 @@
       "email": "usage3913@gmail.com",
       "name_en": "Shahriar Al Sakib Munshi",
       "student_id": "munsi6",
-      "group": "science"
+      "group": "science",
+      "dob": "23-Dec",
+      "dob_bn": "২৩ ডিসেম্বর"
     },
     {
       "short_roll": "122",
@@ -304,7 +316,9 @@
       "email": "mushfiq88bd@gmail.com",
       "name_en": "Md. Mushfiqur Rahman",
       "student_id": "musfik7",
-      "group": "science"
+      "group": "science",
+      "dob": "21-Aug",
+      "dob_bn": "২১ আগস্ট"
     },
     {
       "short_roll": "870",
@@ -347,7 +361,9 @@
       "email": "dhakaiyyaesty@gmail.com",
       "name_en": "Taskin Rahman Esty",
       "student_id": "esty8",
-      "group": "science"
+      "group": "science",
+      "dob": "21-Aug",
+      "dob_bn": "২১ আগস্ট"
     },
     {
       "short_roll": "141",
@@ -391,7 +407,9 @@
       "email": "tarifalam265@gmail.com",
       "name_en": "Nafis Alam Tarif",
       "student_id": "nafis9",
-      "group": "science"
+      "group": "science",
+      "dob": "12-Oct",
+      "dob_bn": "১২ অক্টোবর"
     },
     {
       "short_roll": "882",
@@ -434,7 +452,9 @@
       "email": "riasadulislamkayes@gmail.com",
       "name_en": "Riasadul Islam Kayes",
       "student_id": "kayes10",
-      "group": "science"
+      "group": "science",
+      "dob": "13-Dec",
+      "dob_bn": "১৩ ডিসেম্বর"
     },
     {
       "short_roll": "223",
@@ -477,7 +497,9 @@
       "email": " jkjahidultaskin10@gmail.com",
       "name_en": "Md. Jahidul Islam",
       "student_id": "jahid11",
-      "group": "science"
+      "group": "science",
+      "dob": "04-Apr",
+      "dob_bn": "০৪ এপ্রিল"
     },
     {
       "short_roll": "195",
@@ -514,12 +536,16 @@
       "address_en": "Moshinda Majpara, Gurudaspur, Natore",
       "practical_group": "B1",
       "address_bn": "মশিন্দা মাঝপাড়া, গুরুদাসপুর, নাটোর",
-      "roommate_ids": [],
+      "roommate_ids": [
+        "rafiq18"
+      ],
       "blood_group": "B+",
       "email": "siamhasananik01@gmail.com",
       "name_en": "Siam Hasan (Nator)",
       "student_id": "siam12",
-      "group": "science"
+      "group": "science",
+      "dob": "17-Dec",
+      "dob_bn": "১৭ ডিসেম্বর"
     },
     {
       "short_roll": "881",
@@ -562,7 +588,9 @@
       "email": "-",
       "name_en": "Md. Siam Ali (Kustia)",
       "student_id": "siam13",
-      "group": "science"
+      "group": "science",
+      "dob": "05-Oct",
+      "dob_bn": "০৫ অক্টোবর"
     },
     {
       "short_roll": "322",
@@ -577,7 +605,7 @@
       },
       "bio_bn": "আন্তর্জাতিক ছাত্রাবাসের ডেমো শিক্ষার্থী প্রোফাইল। পরে sheet থেকে বিস্তারিত তথ্য আপডেট করা যাবে।",
       "section": "C",
-      "room_no": "326",
+      "room_no": "321",
       "facebook": "https://facebook.com/",
       "class_no": "12",
       "position": 14,
@@ -599,13 +627,15 @@
       "practical_group": "C1",
       "address_bn": "বাইপাইল, সাভার, ঢাকা",
       "roommate_ids": [
-        "alif28"
+        "rudro22"
       ],
       "blood_group": "AB+",
       "email": "-",
       "name_en": "Saimun Islam",
       "student_id": "saimun14",
-      "group": "science"
+      "group": "science",
+      "dob": "15-Sep",
+      "dob_bn": "১৫ সেপ্টেম্বর"
     },
     {
       "short_roll": "863",
@@ -649,7 +679,9 @@
       "email": "rh597040@gmail.com",
       "name_en": "Ratul Hassan Pranto",
       "student_id": "pranto15",
-      "group": "science"
+      "group": "science",
+      "dob": "07-Feb",
+      "dob_bn": "০৭ ফেব্রুয়ারি"
     },
     {
       "short_roll": "639",
@@ -692,7 +724,9 @@
       "email": "-",
       "name_en": "Nayeem Sarwar",
       "student_id": "nayem18",
-      "group": "science"
+      "group": "science",
+      "dob": "31-Dec",
+      "dob_bn": "৩১ ডিসেম্বর"
     },
     {
       "short_roll": "140",
@@ -736,7 +770,9 @@
       "email": "ah247556@gmail.com",
       "name_en": "Md. Alauddin Mollah",
       "student_id": "alauddin17",
-      "group": "arts"
+      "group": "arts",
+      "dob": "09-Sep",
+      "dob_bn": "০৯ সেপ্টেম্বর"
     },
     {
       "short_roll": "872",
@@ -751,7 +787,7 @@
       },
       "bio_bn": "আন্তর্জাতিক ছাত্রাবাসের ডেমো শিক্ষার্থী প্রোফাইল। পরে sheet থেকে বিস্তারিত তথ্য আপডেট করা যাবে।",
       "section": "F",
-      "room_no": "321",
+      "room_no": "319",
       "facebook": "https://facebook.com/",
       "class_no": "12",
       "position": 18,
@@ -772,12 +808,16 @@
       "address_en": "Rifaitpur, Daulatpur, Kushtia",
       "practical_group": "F2",
       "address_bn": "রিফায়েতপুর, দৌলতপুর, কুষ্টিয়া",
-      "roommate_ids": [],
+      "roommate_ids": [
+        "siam12"
+      ],
       "blood_group": "O+",
       "email": "-",
       "name_en": "Md. Rafiq Bin Nizam",
       "student_id": "rafiq18",
-      "group": "science"
+      "group": "science",
+      "dob": "24-Dec",
+      "dob_bn": "২৪ ডিসেম্বর"
     },
     {
       "short_roll": "596",
@@ -821,7 +861,9 @@
       "email": "tashfiqurrahmanriyad2009@gmail.com",
       "name_en": "Tashfiqur Rahman Riyad",
       "student_id": "riyad19",
-      "group": "science"
+      "group": "science",
+      "dob": "17-May",
+      "dob_bn": "১৭ মে"
     },
     {
       "short_roll": "332",
@@ -864,7 +906,9 @@
       "email": "-",
       "name_en": "Md. Chisty Islam Mosih",
       "student_id": "mosih20",
-      "group": "science"
+      "group": "science",
+      "dob": "30-May",
+      "dob_bn": "৩০ মে"
     },
     {
       "short_roll": "200",
@@ -907,7 +951,9 @@
       "email": "abrarislam0723@gmail.com",
       "name_en": "Md. Ahanaf Abrar",
       "student_id": "abrar21",
-      "group": "science"
+      "group": "science",
+      "dob": "01-Jan",
+      "dob_bn": "০১ জানুয়ারি"
     },
     {
       "short_roll": "100",
@@ -922,7 +968,7 @@
       },
       "bio_bn": "আন্তর্জাতিক ছাত্রাবাসের ডেমো শিক্ষার্থী প্রোফাইল। পরে sheet থেকে বিস্তারিত তথ্য আপডেট করা যাবে।",
       "section": "-",
-      "room_no": "324",
+      "room_no": "321",
       "facebook": "https://facebook.com/",
       "class_no": "12",
       "position": 22,
@@ -944,13 +990,15 @@
       "practical_group": "-",
       "address_bn": "বোয়ালিয়া, সুজানগর, পাবনা",
       "roommate_ids": [
-        "ariful25"
+        "saimun14"
       ],
       "blood_group": "B+",
       "email": "-",
       "name_en": "M M Tanvir (Rudro)",
       "student_id": "rudro22",
-      "group": "commerce"
+      "group": "commerce",
+      "dob": "04-Jun",
+      "dob_bn": "০৪ জুন"
     },
     {
       "short_roll": "337",
@@ -993,7 +1041,9 @@
       "email": "-",
       "name_en": "Sobhan Mahmud Khan (Riasad)",
       "student_id": "riasad23",
-      "group": "science"
+      "group": "science",
+      "dob": "26-Jul",
+      "dob_bn": "২৬ জুলাই"
     },
     {
       "short_roll": "213",
@@ -1011,7 +1061,7 @@
       "room_no": "328",
       "facebook": "https://www.facebook.com/mahbubur.rahman.musa.2024",
       "class_no": "12",
-      "position": 23,
+      "position": 24,
       "group_en": "Science",
       "father_phone": "01718450916",
       "custom_links": [],
@@ -1037,7 +1087,9 @@
       "email": "mahbuburrahmanmusa99@gmail.com",
       "name_en": "Mahbubur Rahman Musa",
       "student_id": "musa24",
-      "group": "science"
+      "group": "science",
+      "dob": "10-Apr",
+      "dob_bn": "১০ এপ্রিল"
     },
     {
       "short_roll": "050",
@@ -1075,13 +1127,15 @@
       "practical_group": "A1",
       "address_bn": "রোহনপুর, গোমস্তাপুর, চাঁপাইনবাবগঞ্জ",
       "roommate_ids": [
-        "rudro22"
+        "bayezid30"
       ],
       "blood_group": "O+",
       "email": "arifulislam20238086@gmail.com",
       "name_en": "Ariful Islam",
       "student_id": "ariful25",
-      "group": "science"
+      "group": "science",
+      "dob": "21-Sep",
+      "dob_bn": "২১ সেপ্টেম্বর"
     },
     {
       "short_roll": "098",
@@ -1124,7 +1178,9 @@
       "email": "rkdc8989@gmail.com",
       "name_en": "Md Rezaul Karim",
       "student_id": "rejawl26",
-      "group": "arts"
+      "group": "arts",
+      "dob": "10-Sep",
+      "dob_bn": "১০ সেপ্টেম্বর"
     },
     {
       "short_roll": "171",
@@ -1167,7 +1223,9 @@
       "email": "-",
       "name_en": "Muhammad Rayhanoor Sabit",
       "student_id": "sabit27",
-      "group": "science"
+      "group": "science",
+      "dob": "11-Feb",
+      "dob_bn": "১১ ফেব্রুয়ারি"
     },
     {
       "short_roll": "153",
@@ -1205,13 +1263,107 @@
       "practical_group": "B1",
       "address_bn": "সুন্দরগঞ্জ, গাইবান্ধা",
       "roommate_ids": [
-        "saimun14"
+        "sohan29"
       ],
       "blood_group": "AB+",
       "email": "mdalimuzzamanalif890@gmail.com",
       "name_en": "Alimuzzamann Alif",
       "student_id": "alif28",
-      "group": "science"
+      "group": "science",
+      "dob": "11-Nov",
+      "dob_bn": "১১ নভেম্বর"
+    },
+    {
+      "short_roll": "031",
+      "name_bn": "মোঃ সোহরাব হোসেন প্রামানিক",
+      "name_en": "Md. Shohoorab Hossen Pramanik",
+      "student_id": "sohan29",
+      "position": 29,
+      "class_no": "12",
+      "group": "commerce",
+      "group_en": "Business Studies",
+      "group_bn": "ব্যবসায় শিক্ষা",
+      "section": "A",
+      "practical_group": "-",
+      "room_no": "326",
+      "roommate_ids": [
+        "alif28"
+      ],
+      "phone": "01827048355",
+      "father_phone": "01747206790",
+      "email": "-",
+      "blood_group": "B+",
+      "address_en": "Paika, Dholdanga, Sadullapur, Gaibandha",
+      "address_bn": "পাইকা, ধলডাঙ্গা, সাদুল্লাপুর, গাইবান্ধা",
+      "photo": "images/sohan29.jpg",
+      "facebook": "https://facebook.com/",
+      "messenger": "",
+      "bio_en": "",
+      "bio_bn": "",
+      "dob": "31-Dec",
+      "dob_bn": "৩১ ডিসেম্বর",
+      "custom_links": [],
+      "pdfs": {
+        "ct1": "pdfs/sohan29-11-ct1.pdf",
+        "ct2": "pdfs/sohan29-11-ct2.pdf",
+        "hy": "pdfs/sohan29-11-hy.pdf",
+        "ct3": "pdfs/sohan29-11-ct3.pdf",
+        "yearly": "pdfs/sohan29-11-y.pdf"
+      },
+      "generated_pdf_names": {
+        "ct1": "pdfs/sohan29-11-ct1.pdf",
+        "ct2": "pdfs/sohan29-11-ct2.pdf",
+        "hy": "pdfs/sohan29-11-hy.pdf",
+        "ct3": "pdfs/sohan29-11-ct3.pdf",
+        "yearly": "pdfs/sohan29-11-y.pdf"
+      },
+      "full_roll": "1202526020031"
+    },
+    {
+      "short_roll": "001",
+      "name_bn": "মোঃ বায়েজিদ",
+      "name_en": "Md. Bayazid",
+      "student_id": "bayezid30",
+      "position": 30,
+      "class_no": "12",
+      "group": "commerce",
+      "group_en": "Business Studies",
+      "group_bn": "ব্যবসায় শিক্ষা",
+      "section": "A",
+      "practical_group": "-",
+      "room_no": "324",
+      "roommate_ids": [
+        "ariful25"
+      ],
+      "phone": "01822724598",
+      "father_phone": "01758682413",
+      "email": "-",
+      "blood_group": "B+",
+      "address_en": "Sirajganj",
+      "address_bn": "সিরাজগঞ্জ",
+      "photo": "images/bayezid30.jpg",
+      "facebook": "https://facebook.com/",
+      "messenger": "",
+      "bio_en": "",
+      "bio_bn": "",
+      "dob": "15-May",
+      "dob_bn": "১৫ মে",
+      "custom_links": [],
+      "pdfs": {
+        "ct1": "pdfs/bayezid30-11-ct1.pdf",
+        "ct2": "pdfs/bayezid30-11-ct2.pdf",
+        "hy": "pdfs/bayezid30-11-hy.pdf",
+        "ct3": "pdfs/bayezid30-11-ct3.pdf",
+        "yearly": "pdfs/bayezid30-11-y.pdf"
+      },
+      "generated_pdf_names": {
+        "ct1": "pdfs/bayezid30-11-ct1.pdf",
+        "ct2": "pdfs/bayezid30-11-ct2.pdf",
+        "hy": "pdfs/bayezid30-11-hy.pdf",
+        "ct3": "pdfs/bayezid30-11-ct3.pdf",
+        "yearly": "pdfs/bayezid30-11-y.pdf"
+      },
+      "full_roll": "1202526020001"
     }
   ]
 }

@@ -11,7 +11,7 @@
   },
   "bio_bn": "আন্তর্জাতিক ছাত্রাবাসের ডেমো শিক্ষার্থী প্রোফাইল। পরে sheet থেকে বিস্তারিত তথ্য আপডেট করা যাবে।",
   "section": "-",
-  "room_no": "324",
+  "room_no": "321",
   "facebook": "https://facebook.com/",
   "class_no": "12",
   "position": 22,
@@ -33,11 +33,13 @@
   "practical_group": "-",
   "address_bn": "বোয়ালিয়া, সুজানগর, পাবনা",
   "roommate_ids": [
-    "ariful25"
+    "saimun14"
   ],
   "blood_group": "B+",
   "email": "-",
   "name_en": "M M Tanvir (Rudro)",
   "student_id": "rudro22",
-  "group": "commerce"
+  "group": "commerce",
+  "dob": "04-Jun",
+  "dob_bn": "০৪ জুন"
 }

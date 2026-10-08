@@ -33,10 +33,14 @@
   "address_en": "Moshinda Majpara, Gurudaspur, Natore",
   "practical_group": "B1",
   "address_bn": "মশিন্দা মাঝপাড়া, গুরুদাসপুর, নাটোর",
-  "roommate_ids": [],
+  "roommate_ids": [
+    "rafiq18"
+  ],
   "blood_group": "B+",
   "email": "siamhasananik01@gmail.com",
   "name_en": "Siam Hasan (Nator)",
   "student_id": "siam12",
-  "group": "science"
+  "group": "science",
+  "dob": "17-Dec",
+  "dob_bn": "১৭ ডিসেম্বর"
 }

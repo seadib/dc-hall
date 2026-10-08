@@ -11,7 +11,7 @@
   },
   "bio_bn": "আন্তর্জাতিক ছাত্রাবাসের ডেমো শিক্ষার্থী প্রোফাইল। পরে sheet থেকে বিস্তারিত তথ্য আপডেট করা যাবে।",
   "section": "C",
-  "room_no": "326",
+  "room_no": "321",
   "facebook": "https://facebook.com/",
   "class_no": "12",
   "position": 14,
@@ -33,11 +33,13 @@
   "practical_group": "C1",
   "address_bn": "বাইপাইল, সাভার, ঢাকা",
   "roommate_ids": [
-    "alif28"
+    "rudro22"
   ],
   "blood_group": "AB+",
   "email": "-",
   "name_en": "Saimun Islam",
   "student_id": "saimun14",
-  "group": "science"
+  "group": "science",
+  "dob": "15-Sep",
+  "dob_bn": "১৫ সেপ্টেম্বর"
 }

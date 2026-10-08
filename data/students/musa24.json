@@ -14,7 +14,7 @@
   "room_no": "328",
   "facebook": "https://www.facebook.com/mahbubur.rahman.musa.2024",
   "class_no": "12",
-  "position": 23,
+  "position": 24,
   "group_en": "Science",
   "father_phone": "01718450916",
   "custom_links": [],
@@ -40,5 +40,7 @@
   "email": "mahbuburrahmanmusa99@gmail.com",
   "name_en": "Mahbubur Rahman Musa",
   "student_id": "musa24",
-  "group": "science"
+  "group": "science",
+  "dob": "10-Apr",
+  "dob_bn": "১০ এপ্রিল"
 }

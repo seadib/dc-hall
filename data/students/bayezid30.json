@@ -1,0 +1,46 @@
+{
+  "short_roll": "001",
+  "name_bn": "মোঃ বায়েজিদ",
+  "name_en": "Md. Bayazid",
+  "student_id": "bayezid30",
+  "position": 30,
+  "class_no": "12",
+  "group": "commerce",
+  "group_en": "Business Studies",
+  "group_bn": "ব্যবসায় শিক্ষা",
+  "section": "A",
+  "practical_group": "-",
+  "room_no": "324",
+  "roommate_ids": [
+    "ariful25"
+  ],
+  "phone": "01822724598",
+  "father_phone": "01758682413",
+  "email": "-",
+  "blood_group": "B+",
+  "address_en": "Sirajganj",
+  "address_bn": "সিরাজগঞ্জ",
+  "photo": "images/bayezid30.jpg",
+  "facebook": "https://facebook.com/",
+  "messenger": "",
+  "bio_en": "",
+  "bio_bn": "",
+  "dob": "15-May",
+  "dob_bn": "১৫ মে",
+  "custom_links": [],
+  "pdfs": {
+    "ct1": "pdfs/bayezid30-11-ct1.pdf",
+    "ct2": "pdfs/bayezid30-11-ct2.pdf",
+    "hy": "pdfs/bayezid30-11-hy.pdf",
+    "ct3": "pdfs/bayezid30-11-ct3.pdf",
+    "yearly": "pdfs/bayezid30-11-y.pdf"
+  },
+  "generated_pdf_names": {
+    "ct1": "pdfs/bayezid30-11-ct1.pdf",
+    "ct2": "pdfs/bayezid30-11-ct2.pdf",
+    "hy": "pdfs/bayezid30-11-hy.pdf",
+    "ct3": "pdfs/bayezid30-11-ct3.pdf",
+    "yearly": "pdfs/bayezid30-11-y.pdf"
+  },
+  "full_roll": "1202526020001"
+}
