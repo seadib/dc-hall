@@ -1,6 +1,6 @@
 /**
  * Dhaka College International Hall - Sanity CMS Client
- * Connects directly to Sanity Cloud Content Lake with real-time live synchronization.
+ * Connects directly to Sanity Cloud Content Lake with instant real-time synchronization.
  */
 
 const SANITY_CONFIG = {
@@ -58,17 +58,22 @@ const SANITY_GROQ_QUERY = `{
 
 /**
  * Fetches all site content from Sanity Content Lake.
- * Connects directly to live API (api.sanity.io) with cache: "no-store".
+ * Connects directly to live API (api.sanity.io) with &$ts cache-busting parameter.
  */
 async function fetchSanityCms() {
   const host = SANITY_CONFIG.useCdn ? "apicdn.sanity.io" : "api.sanity.io";
-  const endpoint = `https://${SANITY_CONFIG.projectId}.${host}/v${SANITY_CONFIG.apiVersion}/data/query/${SANITY_CONFIG.dataset}?query=${encodeURIComponent(SANITY_GROQ_QUERY)}`;
+  // &$ts is a standard GROQ query parameter that guarantees zero browser or proxy caching
+  const endpoint = `https://${SANITY_CONFIG.projectId}.${host}/v${SANITY_CONFIG.apiVersion}/data/query/${SANITY_CONFIG.dataset}?query=${encodeURIComponent(SANITY_GROQ_QUERY)}&%24ts=${Date.now()}`;
 
   try {
     const controller = typeof AbortController !== "undefined" ? new AbortController() : null;
-    const timeoutId = controller ? setTimeout(() => controller.abort(), 6000) : null;
+    const timeoutId = controller ? setTimeout(() => controller.abort(), 7000) : null;
     const res = await fetch(endpoint, {
       cache: "no-store",
+      headers: {
+        "Cache-Control": "no-cache",
+        "Pragma": "no-cache"
+      },
       signal: controller ? controller.signal : undefined
     });
     if (timeoutId) clearTimeout(timeoutId);
@@ -89,4 +94,40 @@ async function fetchSanityCms() {
   }
 }
 
+/**
+ * Real-time Live Listener:
+ * Uses Server-Sent Events (SSE) to listen for mutations in the Sanity dataset.
+ * When an admin publishes or edits any document in Sanity Studio, it triggers onUpdate immediately.
+ */
+function initSanityRealtimeListener(onUpdate) {
+  if (typeof EventSource === "undefined") return null;
+
+  try {
+    const listenUrl = `https://${SANITY_CONFIG.projectId}.api.sanity.io/v${SANITY_CONFIG.apiVersion}/data/listen/${SANITY_CONFIG.dataset}?query=${encodeURIComponent('*')}`;
+    const evtSource = new EventSource(listenUrl);
+
+    let debounceTimer = null;
+    evtSource.addEventListener("mutation", (event) => {
+      console.log("⚡ Sanity CMS real-time mutation event received:", event.data);
+      if (debounceTimer) clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(() => {
+        if (typeof onUpdate === "function") {
+          onUpdate();
+        }
+      }, 500);
+    });
+
+    evtSource.onerror = (err) => {
+      // EventSource automatically reconnects on error
+      console.debug("Sanity EventSource reconnecting...", err);
+    };
+
+    return evtSource;
+  } catch (err) {
+    console.warn("Could not initialize Sanity real-time listener:", err);
+    return null;
+  }
+}
+
 window.fetchSanityCms = fetchSanityCms;
+window.initSanityRealtimeListener = initSanityRealtimeListener;

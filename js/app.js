@@ -2047,6 +2047,7 @@ function mapCmsStudent(item, index) {
     blood: item.blood_group || "",
     bio: item.bio_en || "",
     pdfs: item.pdfs || {},
+    generated_pdf_names: item.generated_pdf_names || {},
     result: {
       gpa: 0,
       physics: 0,
@@ -2208,6 +2209,7 @@ async function loadCmsContent() {
   await renderDeveloperPage(devData);
   await renderHallInfoPage(hallData);
   await renderHallSuperPage(hallData);
+  renderDynamicContent();
 }
 
 function t(key) {
@@ -2232,13 +2234,25 @@ function sectionText(student) {
 
 function resultFiles(student) {
   if (student.pdfs && Object.keys(student.pdfs).length) {
-    return [
+    const valid = [
       ["ct1", normalizeCmsPath(student.pdfs.ct1)],
       ["ct2", normalizeCmsPath(student.pdfs.ct2)],
       ["hy", normalizeCmsPath(student.pdfs.hy)],
       ["ct3", normalizeCmsPath(student.pdfs.ct3)],
       ["yearly", normalizeCmsPath(student.pdfs.yearly)]
     ].filter(([, file]) => file);
+    if (valid.length) return valid;
+  }
+
+  if (student.generated_pdf_names && Object.keys(student.generated_pdf_names).length) {
+    const validGen = [
+      ["ct1", normalizeCmsPath(student.generated_pdf_names.ct1)],
+      ["ct2", normalizeCmsPath(student.generated_pdf_names.ct2)],
+      ["hy", normalizeCmsPath(student.generated_pdf_names.hy)],
+      ["ct3", normalizeCmsPath(student.generated_pdf_names.ct3)],
+      ["yearly", normalizeCmsPath(student.generated_pdf_names.yearly)]
+    ].filter(([, file]) => file);
+    if (validGen.length) return validGen;
   }
 
   return [
@@ -3560,6 +3574,14 @@ document.addEventListener("DOMContentLoaded", async () => {
   initModal();
   initImageFallbacks();
   initAos();
+
+  // Initialize Sanity real-time listener for instant live syncing
+  if (typeof initSanityRealtimeListener === "function") {
+    initSanityRealtimeListener(async () => {
+      console.log("⚡ Live update received from Sanity Studio, syncing website content...");
+      await loadCmsContent();
+    });
+  }
 });
 
 async function renderGalleryPage(galleryData) {
@@ -3589,7 +3611,8 @@ function renderHomeGallery(galleryData) {
   const grid = document.getElementById("homeGalleryGrid");
   if (!grid) return;
 
-  const items = (galleryData && galleryData.items ? galleryData.items : []).slice(0, 6);
+  const rawItems = (galleryData && galleryData.items ? galleryData.items : []);
+  const items = rawItems.slice().sort((a, b) => Number(a.position || 0) - Number(b.position || 0)).slice(0, 6);
   if (!items.length) return;
 
   grid.innerHTML = items.map((item, index) => {
