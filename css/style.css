@@ -43,6 +43,11 @@
   --r-xl:  26px;
   --r-max: 999px;
 
+  /* ── JS-compatibility aliases ── */
+  --overlay:        rgba(5,10,20,0.72);
+  --surface-strong: #ffffff;
+  --text-muted:     #7a88ab;
+
   color-scheme: light;
 }
 
@@ -77,6 +82,11 @@ html.dark {
   /* nav */
   --nav-bg:     rgba(8,13,26,.93);
   --nav-border: rgba(16,201,168,.10);
+
+  /* ── JS-compatibility aliases ── */
+  --overlay:        rgba(5,10,20,0.82);
+  --surface-strong: #121b30;
+  --text-muted:     #4e5a7a;
 
   color-scheme: dark;
 }
