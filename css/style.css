@@ -51,7 +51,7 @@
   color-scheme: light;
 }
 
-html.dark {
+.dark {
   /* backgrounds */
   --bg:       #080d1a;
   --bg-alt:   #0d1425;
