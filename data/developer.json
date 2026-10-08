@@ -1,21 +1,25 @@
 {
-  "name_en": "Abdullah Al Adib",
   "name_bn": "আবদুল্যাহ আল আদিব",
-  "portrait": "images/adib1.jpg",
-  "lead_en": "Student developer from Dhaka College, building useful web tools, hall information systems and small experimental apps.",
-  "lead_bn": "ঢাকা কলেজের student developer, useful web tools, hall information system এবং ছোট experimental app তৈরি করি।",
-  "about_title_en": "About",
-  "about_title_bn": "পরিচিতি",
-  "about_text_en": "I am Abdullah Al Adib, a student of Dhaka College and the developer of this International Hall website. I like building clean, helpful and easy-to-use web projects for students.",
-  "about_text_bn": "আমি আবদুল্লাহ আল আদিব, ঢাকা কলেজের ছাত্র এবং এই আন্তর্জাতিক ছাত্রাবাস ওয়েবসাইটের ডেভেলপার। আমি শিক্ষার্থীদের জন্য পরিষ্কার, দরকারী এবং সহজে ব্যবহারযোগ্য ওয়েব প্রজেক্ট তৈরি করতে পছন্দ করি।",
-  "contact_title_en": "Contact",
-  "contact_title_bn": "যোগাযোগ",
-  "contact_text_en": "drseadib@gmail.com\nDhaka College — Science",
-  "contact_text_bn": "drseadib@gmail.com\nঢাকা কলেজ — বিজ্ঞান বিভাগ",
-  "focus_title_en": "Focus",
-  "focus_title_bn": "মূল লক্ষ্য",
-  "focus_text_en": "Student profiles, result links, gallery systems, responsive UI, language switching and practical web tools for daily use.",
-  "focus_text_bn": "শিক্ষার্থী প্রোফাইল, ফলাফল লিংক, গ্যালারি সিস্টেম, রেসপন্সিভ ইউআই, ভাষা পরিবর্তন এবং দৈনন্দিন ব্যবহারের জন্য ব্যবহারিক ওয়েব টুলস।",
+  "timeline": [
+    {
+      "step_en": "Collect",
+      "step_bn": "তথ্য সংগ্রহ",
+      "desc_en": "Gather student, hall and project information.",
+      "desc_bn": "শিক্ষার্থী, হল এবং প্রজেক্টের যাবতীয় তথ্য সংগ্রহ করা।"
+    },
+    {
+      "step_en": "Build",
+      "step_bn": "তৈরি করা",
+      "desc_en": "Turn the information into clean pages and useful features.",
+      "desc_bn": "সংগৃহীত তথ্যগুলোকে পরিষ্কার পেইজ ও প্রয়োজনীয় ফিচারে রূপান্তর করা।"
+    },
+    {
+      "step_en": "Improve",
+      "step_bn": "উন্নতি সাধন",
+      "desc_en": "Update design, mobile view and content based on real feedback.",
+      "desc_bn": "বাস্তব মতামতের ভিত্তিতে ডিজাইন, মোবাইল ভিউ এবং কনটেন্ট আপডেট করা।"
+    }
+  ],
   "skills": [
     {
       "skill": "HTML"
@@ -36,24 +40,31 @@
       "skill": "Static Websites"
     }
   ],
-  "timeline": [
+  "about_title_en": "About",
+  "about_title_bn": "পরিচিতি",
+  "about_text_en": "I am Abdullah Al Adib, a student of Dhaka College and the developer of this International Hall website. I like building clean, helpful and easy-to-use web projects for students.",
+  "lead_en": "Student developer from Dhaka College, building useful web tools, hall information systems and small experimental apps.",
+  "about_text_bn": "আমি আবদুল্লাহ আল আদিব, ঢাকা কলেজের ছাত্র এবং এই আন্তর্জাতিক ছাত্রাবাস ওয়েবসাইটের ডেভেলপার। আমি শিক্ষার্থীদের জন্য পরিষ্কার, দরকারী এবং সহজে ব্যবহারযোগ্য ওয়েব প্রজেক্ট তৈরি করতে পছন্দ করি।",
+  "lead_bn": "ঢাকা কলেজের student developer, useful web tools, hall information system এবং ছোট experimental app তৈরি করি।",
+  "contact_title_en": "Contact",
+  "contact_title_bn": "যোগাযোগ",
+  "focus_text_en": "Student profiles, result links, gallery systems, responsive UI, language switching and practical web tools for daily use.",
+  "focus_text_bn": "শিক্ষার্থী প্রোফাইল, ফলাফল লিংক, গ্যালারি সিস্টেম, রেসপন্সিভ ইউআই, ভাষা পরিবর্তন এবং দৈনন্দিন ব্যবহারের জন্য ব্যবহারিক ওয়েব টুলস।",
+  "focus_title_en": "Focus",
+  "contributors": [
     {
-      "step_en": "Collect",
-      "step_bn": "তথ্য সংগ্রহ",
-      "desc_en": "Gather student, hall and project information.",
-      "desc_bn": "শিক্ষার্থী, হল এবং প্রজেক্টের যাবতীয় তথ্য সংগ্রহ করা।"
+      "name_en": "Content Helper",
+      "name_bn": "কনটেন্ট হেল্পার",
+      "photo": "images/contributor2.jpg",
+      "desc_en": "Helps collect student data, event descriptions and hall updates.",
+      "desc_bn": "শিক্ষার্থী তথ্য, ইভেন্ট বিবরণ এবং হল আপডেট সংগ্রহ করতে সহায়তা করে।"
     },
     {
-      "step_en": "Build",
-      "step_bn": "তৈরি করা",
-      "desc_en": "Turn the information into clean pages and useful features.",
-      "desc_bn": "সংগৃহীত তথ্যগুলোকে পরিষ্কার পেইজ ও প্রয়োজনীয় ফিচারে রূপান্তর করা।"
-    },
-    {
-      "step_en": "Improve",
-      "step_bn": "উন্নতি সাধন",
-      "desc_en": "Update design, mobile view and content based on real feedback.",
-      "desc_bn": "বাস্তব মতামতের ভিত্তিতে ডিজাইন, মোবাইল ভিউ এবং কনটেন্ট আপডেট করা।"
+      "name_en": "Photographer",
+      "name_bn": "ফটোগ্রাফার",
+      "photo": "images/contributor1..jpg",
+      "desc_en": "Supports the project with hall and student event photos.",
+      "desc_bn": "হল এবং শিক্ষার্থীদের বিভিন্ন অনুষ্ঠানের ছবি দিয়ে প্রজেক্টকে সমৃদ্ধ করে।"
     }
   ],
   "projects": [
@@ -86,20 +97,9 @@
       "desc_bn": "শিক্ষার্থী, রুম, ফলাফল, গ্যালারি এবং হল তথ্য হাব।"
     }
   ],
-  "contributors": [
-    {
-      "name_en": "Content Helper",
-      "name_bn": "কনটেন্ট হেল্পার",
-      "photo": "images/contributor2.jpg",
-      "desc_en": "Helps collect student data, event descriptions and hall updates.",
-      "desc_bn": "শিক্ষার্থী তথ্য, ইভেন্ট বিবরণ এবং হল আপডেট সংগ্রহ করতে সহায়তা করে।"
-    },
-    {
-      "name_en": "Photographer",
-      "name_bn": "ফটোগ্রাফার",
-      "photo": "images/contributor1..jpg",
-      "desc_en": "Supports the project with hall and student event photos.",
-      "desc_bn": "হল এবং শিক্ষার্থীদের বিভিন্ন অনুষ্ঠানের ছবি দিয়ে প্রজেক্টকে সমৃদ্ধ করে।"
-    }
-  ]
+  "focus_title_bn": "মূল লক্ষ্য",
+  "portrait": "images/adib1.jpg",
+  "contact_text_en": "drseadib@gmail.com\nDhaka College — Science",
+  "name_en": "Abdullah Al Adib",
+  "contact_text_bn": "drseadib@gmail.com\nঢাকা কলেজ — বিজ্ঞান বিভাগ"
 }

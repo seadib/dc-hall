@@ -11,13 +11,13 @@ const SANITY_CONFIG = {
 };
 
 const SANITY_GROQ_QUERY = `{
-  "settings": *[_type == "siteSettings"][0]{
+  "settings": *[_type == "siteSettings" && !(_id in path("drafts.**"))][0]{
     ...,
     "logo": coalesce(logo.asset->url, logo),
     "hero_image": coalesce(hero_image.asset->url, hero_image),
     "notice_pdf": coalesce(notice_pdf.asset->url, notice_pdf)
   },
-  "students": *[_type == "student"] | order(position asc){
+  "students": *[_type == "student" && !(_id in path("drafts.**"))] | order(position asc){
     ...,
     "photo": coalesce(photo.asset->url, photo),
     "pdfs": {
@@ -28,12 +28,12 @@ const SANITY_GROQ_QUERY = `{
       "yearly": coalesce(pdfs.yearly.asset->url, pdfs.yearly)
     }
   },
-  "rooms": *[_type == "room"] | order(room_no asc){
+  "rooms": *[_type == "room" && !(_id in path("drafts.**"))] | order(room_no asc){
     ...,
     "photos": coalesce(photos[].asset->url, photos)
   },
-  "home": *[_type == "homePage"][0],
-  "hall": *[_type == "hallInfo"][0]{
+  "home": *[_type == "homePage" && !(_id in path("drafts.**"))][0],
+  "hall": *[_type == "hallInfo" && !(_id in path("drafts.**"))][0]{
     ...,
     "hall_photo": coalesce(hall_photo.asset->url, hall_photo),
     "hall_super_photo": coalesce(hall_super_photo.asset->url, hall_super_photo),
@@ -46,11 +46,11 @@ const SANITY_GROQ_QUERY = `{
       "photo": coalesce(photo.asset->url, photo, asset->url)
     }
   },
-  "developer": *[_type == "developerProfile"][0]{
+  "developer": *[_type == "developerProfile" && !(_id in path("drafts.**"))][0]{
     ...,
     "portrait": coalesce(portrait.asset->url, portrait)
   },
-  "gallery": *[_type == "galleryItem"] | order(position asc, _createdAt desc){
+  "gallery": *[_type == "galleryItem" && !(_id in path("drafts.**"))] | order(position asc, _createdAt desc){
     ...,
     "photo": coalesce(photo.asset->url, photo)
   }
@@ -58,15 +58,21 @@ const SANITY_GROQ_QUERY = `{
 
 /**
  * Fetches all site content from Sanity Content Lake.
- * Uses cache: "no-store" and timestamp to bypass any browser cache.
+ * Connects directly to live API (api.sanity.io) with cache: "no-store".
  */
 async function fetchSanityCms() {
   const host = SANITY_CONFIG.useCdn ? "apicdn.sanity.io" : "api.sanity.io";
-  const timestamp = Date.now();
-  const endpoint = `https://${SANITY_CONFIG.projectId}.${host}/v${SANITY_CONFIG.apiVersion}/data/query/${SANITY_CONFIG.dataset}?query=${encodeURIComponent(SANITY_GROQ_QUERY)}&_t=${timestamp}`;
+  const endpoint = `https://${SANITY_CONFIG.projectId}.${host}/v${SANITY_CONFIG.apiVersion}/data/query/${SANITY_CONFIG.dataset}?query=${encodeURIComponent(SANITY_GROQ_QUERY)}`;
 
   try {
-    const res = await fetch(endpoint, { cache: "no-store" });
+    const controller = typeof AbortController !== "undefined" ? new AbortController() : null;
+    const timeoutId = controller ? setTimeout(() => controller.abort(), 6000) : null;
+    const res = await fetch(endpoint, {
+      cache: "no-store",
+      signal: controller ? controller.signal : undefined
+    });
+    if (timeoutId) clearTimeout(timeoutId);
+
     if (!res.ok) {
       console.warn(`Sanity API responded with status ${res.status}`);
       return null;

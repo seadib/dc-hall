@@ -1,53 +1,6 @@
 {
   "hostel_title_en": "Hall Information",
-  "hostel_title_bn": "হল তথ্য",
   "hostel_subtitle_en": "History, notable students, admission success and location preview.",
-  "hostel_subtitle_bn": "ইতিহাস, খ্যাতিমান শিক্ষার্থী, ভর্তি সাফল্য এবং অবস্থান।",
-  "history_title_en": "A hall connected to Dhaka College legacy",
-  "history_title_bn": "ঢাকা কলেজের ঐতিহ্যের সঙ্গে যুক্ত একটি হল",
-  "history_text_en": "Dhaka College, established in 1841, is one of the oldest and most influential educational institutions in Bangladesh. International Hall carries that academic spirit through shared study, discipline and student community life.",
-  "history_text_bn": "১৮৪১ সালে প্রতিষ্ঠিত ঢাকা কলেজ বাংলাদেশের অন্যতম প্রাচীন ও প্রভাবশালী শিক্ষাপ্রতিষ্ঠান। আন্তর্জাতিক ছাত্রাবাস যৌথ শিক্ষা, শৃঙ্খলা ও ছাত্র জীবনের মাধ্যমে সেই ঐতিহ্যকে লালন করে।",
-  "hall_photo": "images/hall.jpg",
-  "history_places": [
-    {
-      "name_en": "New Market",
-      "name_bn": "নিউ মার্কেট"
-    },
-    {
-      "name_en": "Science Lab",
-      "name_bn": "সাইন্স ল্যাব"
-    },
-    {
-      "name_en": "Dhanmondi",
-      "name_bn": "ধানমন্ডি"
-    }
-  ],
-  "hall_photos": [
-    {
-      "photo": "images/hall1.jpg",
-      "title_en": "Hall Photo 01",
-      "title_bn": "হল ফটো ০১",
-      "desc_en": "Replace this demo file later with hall1.jpg.",
-      "desc_bn": "পরবর্তীতে hall1.jpg দিয়ে এটি পরিবর্তন করুন।"
-    },
-    {
-      "photo": "images/hall2.jpg",
-      "title_en": "Hall Photo 02",
-      "title_bn": "হল ফটো ০২",
-      "desc_en": "Replace this demo file later with hall2.jpg.",
-      "desc_bn": "পরবর্তীতে hall2.jpg দিয়ে এটি পরিবর্তন করুন।"
-    },
-    {
-      "photo": "images/hall3.jpg",
-      "title_en": "Hall Photo 03",
-      "title_bn": "হল ফটো ০৩",
-      "desc_en": "Upload hall3.jpg later and it will show here.",
-      "desc_bn": "পরবর্তীতে hall3.jpg আপলোড করলে এখানে দেখাবে।"
-    }
-  ],
-  "success_title_en": "Admission success overview",
-  "success_title_bn": "ভর্তি পরীক্ষার সাফল্য",
-  "success_text_en": "Demo chart showing how many students received chances in engineering, medical and university admission.",
   "success_text_bn": "ইঞ্জিনিয়ারিং, মেডিকেল এবং বিশ্ববিদ্যালয়ে সুযোগ পাওয়া শিক্ষার্থীদের তথ্যচিত্র।",
   "success_chart": [
     {
@@ -75,36 +28,99 @@
       "text_bn": "বুয়েট ১৪ · মেডিকেল ২৪ · বিশ্ববিদ্যালয় ৪৮"
     }
   ],
-  "location_title_en": "International Hall Location",
-  "location_title_bn": "আন্তর্জাতিক ছাত্রাবাসের অবস্থান",
-  "location_text_en": "Exact location: International Hall, Dhaka College. The live Google map below can be viewed directly on the website.",
-  "location_text_bn": "সঠিক অবস্থান: আন্তর্জাতিক ছাত্রাবাস, ঢাকা কলেজ। নিচের লাইভ গুগল ম্যাপটি সরাসরি ওয়েবসাইট থেকে দেখা যাবে।",
-  "map_url": "https://www.google.com/maps?q=International%20Hall,%20Dhaka%20College&output=embed",
-  "alumni_profiles": [
+  "hostel_title_bn": "হল তথ্য",
+  "hostel_subtitle_bn": "ইতিহাস, খ্যাতিমান শিক্ষার্থী, ভর্তি সাফল্য এবং অবস্থান।",
+  "hall_photos": [
     {
-      "position": 1,
-      "name_en": "Dr. Anis Rahman",
-      "name_bn": "ড. আনিস রহমান",
-      "photo": "images/famousppl1..jpg",
-      "role_en": "Former International Hall student and public health researcher",
-      "role_bn": "সাবেক হল শিক্ষার্থী ও জনস্বাস্থ্য গবেষক",
-      "biography_en": "Alumni biography can be edited from the admin panel.",
-      "biography_bn": "অ্যালামনাই জীবনী admin panel থেকে edit করা যাবে।",
-      "career_en": "Career success details can be edited here.",
-      "career_bn": "কর্মজীবনের সাফল্যের তথ্য এখানে edit করা যাবে।",
-      "hall_memory_en": "Hall memories can be written here.",
-      "hall_memory_bn": "হলের স্মৃতি এখানে লেখা যাবে।",
-      "hall_contribution_en": "Hall contribution details can be written here.",
-      "hall_contribution_bn": "হলের অবদান এখানে লেখা যাবে।"
+      "photo": "/assets/uploads/hall1-compressed.jpg",
+      "title_en": "Hall Photo 01",
+      "title_bn": "হল ফটো ০১",
+      "desc_en": "Replace this demo file later with hall1.jpg.",
+      "desc_bn": "পরবর্তীতে hall1.jpg দিয়ে এটি পরিবর্তন করুন।"
+    },
+    {
+      "photo": "/assets/uploads/hall2-compressed.jpg",
+      "title_en": "Hall Photo 02",
+      "title_bn": "হল ফটো ০২",
+      "desc_en": "Replace this demo file later with hall2.jpg.",
+      "desc_bn": "পরবর্তীতে hall2.jpg দিয়ে এটি পরিবর্তন করুন।"
+    },
+    {
+      "photo": "/assets/uploads/hall3-compressed.jpg",
+      "title_en": "Hall Photo 03",
+      "title_bn": "হল ফটো ০৩",
+      "desc_en": "Upload hall3.jpg later and it will show here.",
+      "desc_bn": "পরবর্তীতে hall3.jpg আপলোড করলে এখানে দেখাবে।"
     }
   ],
+  "alumni_profiles": [
+    {
+      "name_bn": "মামুন আবদুল গাইয়ুম",
+      "hall_memory_en": "-",
+      "hall_memory_bn": "-",
+      "position": 1,
+      "career_en": "Served six consecutive terms as the President of the Maldives and played a significant role in developing the nation's tourism sector.",
+      "career_bn": "মালদ্বীপের ইতিহাসে টানা ছয়বার রাষ্ট্রপতি হিসেবে নির্বাচিত হওয়া এবং দেশটির পর্যটন শিল্পের প্রসার ঘটানো।",
+      "role_en": " He obtained his B.A. and M.A. degrees in Islamic Sharia and Law from Al-Azhar University in Cairo, Egypt. (He did not study at Dhaka College).",
+      "photo": "/assets/uploads/maumoon_abdul_gayoom.jpeg",
+      "hall_contribution_en": "-",
+      "biography_en": "Former President of the Republic of Maldives. He served as the head of state for 30 years, from 1978 to 2008.",
+      "role_bn": "মিশরের কায়রোর আল-আজহার বিশ্ববিদ্যালয় থেকে ইসলামিক শরিয়াহ ও আইনে স্নাতক এবং স্নাতকোত্তর সম্পন্ন করেন।",
+      "hall_contribution_bn": "-",
+      "biography_bn": "মালদ্বীপের সাবেক রাষ্ট্রপতি। তিনি ১৯৭৮ থেকে ২০০৮ সাল পর্যন্ত দীর্ঘ ৩০ বছর মালদ্বীপের রাষ্ট্রপ্রধান হিসেবে দায়িত্ব পালন করেন।",
+      "name_en": "Maumoon Abdul Gayoom"
+    },
+    {
+      "name_bn": "মাহমুদুল হাসান সোহাগ",
+      "hall_memory_en": "-",
+      "hall_memory_bn": "-",
+      "position": 2,
+      "career_en": "Founded 'Udvash-Unmesh', which brought a massive transformation to the shadow education and ed-tech sector in Bangladesh.",
+      "career_bn": "'উদ্ভাস-উন্মেষ' প্রতিষ্ঠা এবং বাংলাদেশের শিক্ষাক্ষেত্রে যুগান্তকারী পরিবর্তন সাধন।",
+      "role_en": "HSC from Dhaka College. BSc in Electrical and Electronic Engineering (EEE) from BUET.",
+      "photo": "/assets/uploads/sohag.jpg",
+      "hall_contribution_en": "-",
+      "biography_en": "Chairman of Onnorokom Group and Co-founder of Rokomari.com.",
+      "role_bn": "ঢাকা কলেজ থেকে উচ্চমাধ্যমিক এবং বুয়েটের ইলেকট্রিক্যাল অ্যান্ড ইলেকট্রনিক ইঞ্জিনিয়ারিং (EEE) বিভাগ থেকে স্নাতক।",
+      "hall_contribution_bn": "-",
+      "biography_bn": "অন্যরকম গ্রুপ'-এর চেয়ারম্যান এবং রকমারি.কম-এর সহ-প্রতিষ্ঠাতা।",
+      "name_en": "Mahmudul Hasan Sohag"
+    }
+  ],
+  "map_url": "https://www.google.com/maps?q=International%20Hall,%20Dhaka%20College&output=embed",
+  "success_title_en": "Admission success overview",
+  "hall_photo": "/assets/uploads/hall-compressed.jpg",
+  "success_title_bn": "ভর্তি পরীক্ষার সাফল্য",
+  "history_text_en": "Dhaka College, established in 1841, is one of the oldest and most influential educational institutions in Bangladesh. International Hall carries that academic spirit through shared study, discipline and student community life.",
+  "location_text_en": "Exact location: International Hall, Dhaka College. The live Google map below can be viewed directly on the website.",
+  "history_text_bn": "১৮৪১ সালে প্রতিষ্ঠিত ঢাকা কলেজ বাংলাদেশের অন্যতম প্রাচীন ও প্রভাবশালী শিক্ষাপ্রতিষ্ঠান। আন্তর্জাতিক ছাত্রাবাস যৌথ শিক্ষা, শৃঙ্খলা ও ছাত্র জীবনের মাধ্যমে সেই ঐতিহ্যকে লালন করে।",
+  "location_text_bn": "সঠিক অবস্থান: আন্তর্জাতিক ছাত্রাবাস, ঢাকা কলেজ। নিচের লাইভ গুগল ম্যাপটি সরাসরি ওয়েবসাইট থেকে দেখা যাবে।",
+  "history_places": [
+    {
+      "name_en": "New Market",
+      "name_bn": "নিউ মার্কেট"
+    },
+    {
+      "name_en": "Science Lab",
+      "name_bn": "সাইন্স ল্যাব"
+    },
+    {
+      "name_en": "Dhanmondi",
+      "name_bn": "ধানমন্ডি"
+    }
+  ],
+  "location_title_en": "International Hall Location",
+  "history_title_en": "A hall connected to Dhaka College legacy",
+  "location_title_bn": "আন্তর্জাতিক ছাত্রাবাসের অবস্থান",
+  "history_title_bn": "ঢাকা কলেজের ঐতিহ্যের সঙ্গে যুক্ত একটি হল",
+  "success_text_en": "Demo chart showing how many students received chances in engineering, medical and university admission.",
   "hall_super_eyebrow_en": "Respectful Leadership",
   "hall_super_eyebrow_bn": "সম্মানিত নেতৃত্ব",
-  "hall_super_name_en": "Prof. Md. Rahman",
-  "hall_super_name_bn": "প্রটেন্সর মো. রহমান",
-  "hall_super_photo": "images/hallsuper1.jpg",
-  "hall_super_bio_en": "Demo profile: the hall super guides students with discipline, care and academic encouragement. He works to keep the hall organized, safe and study-friendly.",
-  "hall_super_bio_bn": "হল সুপারের ডেমো বায়োগ্রাফি: তিনি শিক্ষার্থীদের শৃঙ্খলা, আন্তরিকতা এবং একাডেমিক উৎসাহের মাধ্যমে দিকনির্দেশনা প্রদান করেন।",
+  "hall_super_name_en": "Prof. Md. Kamruzzaman",
+  "hall_super_name_bn": "অধ্যাপক মোঃ কামরুজ্জামান",
+  "hall_super_photo": "/assets/uploads/md-kamruzzaman.webp",
+  "hall_super_bio_en": "Prof. Md. Kamruzzaman serves as the Provost of Dhaka College International Hall. He is committed to maintaining a disciplined, secure, and student-friendly residential environment while supporting students' academic success, personal development, and overall well-being.\n",
+  "hall_super_bio_bn": "অধ্যাপক মোঃ কামরুজ্জামান ঢাকা কলেজ ইন্টারন্যাশনাল হলের প্রভোস্ট হিসেবে দায়িত্ব পালন করছেন। তিনি শিক্ষার্থীদের জন্য একটি শৃঙ্খলাবদ্ধ, নিরাপদ ও শিক্ষাবান্ধব আবাসিক পরিবেশ নিশ্চিত করতে এবং তাদের একাডেমিক ও ব্যক্তিগত উন্নয়নে সহায়তা করতে কাজ করে যাচ্ছেন।",
   "hall_super_info_boxes": [
     {
       "title_en": "Joined Hall Duty",

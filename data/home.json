@@ -1,8 +1,14 @@
 {
+  "info_title_en": "Legacy, achievement and student life",
+  "success_text_bn": "মেডিকেল, বিশ্ববিদ্যালয় ও ইঞ্জিনিয়ারিং এডমিশন সাফল্যের প্রিভিউ।",
+  "info_title_bn": "ঐতিহ্য, অর্জন ও ছাত্রজীবন",
   "hero_eyebrow_en": "Dhaka College",
   "hero_eyebrow_bn": "ঢাকা কলেজ",
-  "hero_title_en": "International Hall",
-  "hero_title_bn": "আন্তর্জাতিক ছাত্রাবাস",
+  "map_url": "https://www.google.com/maps?q=International%20Hall,%20Dhaka%20College&output=embed",
+  "history_text_en": "A short look at Dhaka College's academic legacy and hall life.",
+  "location_text_en": "Use the live Google map below to view the exact International Hall location directly from the website.",
+  "history_text_bn": "ঢাকা কলেজের একাডেমিক ঐতিহ্য ও হল জীবনের সংক্ষিপ্ত পরিচয়।",
+  "location_text_bn": "ওয়েবসাইট থেকেই International Hall, Dhaka College-এর লাইভ গুগল ম্যাপ দেখা যাবে।",
   "hero_phrases": [
     {
       "text_en": "Together we learn, together we succeed.",
@@ -25,19 +31,13 @@
       "text_bn": "ঢাকা কলেজ থেকে বড় স্বপ্নের শুরু।"
     }
   ],
-  "info_title_en": "Legacy, achievement and student life",
-  "info_title_bn": "ঐতিহ্য, অর্জন ও ছাত্রজীবন",
-  "info_lead_en": "International Hall brings student profiles, room assignments, result records and important hall stories into a clean digital hub.",
-  "info_lead_bn": "আন্তর্জাতিক ছাত্রাবাসে শিক্ষার্থী প্রোফাইল, রুম বরাদ্দ, ফলাফল ও গুরুত্বপূর্ণ হল তথ্য এক জায়গায় রাখা হয়েছে।",
-  "history_text_en": "A short look at Dhaka College's academic legacy and hall life.",
-  "history_text_bn": "ঢাকা কলেজের একাডেমিক ঐতিহ্য ও হল জীবনের সংক্ষিপ্ত পরিচয়।",
+  "hero_title_en": "International Hall",
   "famous_text_en": "Demo profiles for notable former students and their achievements.",
-  "famous_text_bn": "কৃতি সাবেক শিক্ষার্থীদের ডেমো প্রোফাইল ও অর্জনের পরিচয়।",
-  "success_text_en": "Medical, university and engineering admission success preview.",
-  "success_text_bn": "মেডিকেল, বিশ্ববিদ্যালয় ও ইঞ্জিনিয়ারিং এডমিশন সাফল্যের প্রিভিউ।",
+  "hero_title_bn": "আন্তর্জাতিক ছাত্রাবাস",
   "location_title_en": "International Hall, Dhaka College",
+  "famous_text_bn": "কৃতি সাবেক শিক্ষার্থীদের ডেমো প্রোফাইল ও অর্জনের পরিচয়।",
+  "info_lead_en": "International Hall brings student profiles, room assignments, result records and important hall stories into a clean digital hub.",
   "location_title_bn": "আন্তর্জাতিক ছাত্রাবাস লোকেশন",
-  "location_text_en": "Use the live Google map below to view the exact International Hall location directly from the website.",
-  "location_text_bn": "ওয়েবসাইট থেকেই International Hall, Dhaka College-এর লাইভ গুগল ম্যাপ দেখা যাবে।",
-  "map_url": "https://www.google.com/maps?q=International%20Hall,%20Dhaka%20College&output=embed"
+  "info_lead_bn": "আন্তর্জাতিক ছাত্রাবাসে শিক্ষার্থী প্রোফাইল, রুম বরাদ্দ, ফলাফল ও গুরুত্বপূর্ণ হল তথ্য এক জায়গায় রাখা হয়েছে।",
+  "success_text_en": "Medical, university and engineering admission success preview."
 }

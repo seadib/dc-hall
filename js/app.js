@@ -491,101 +491,1320 @@ const byId = (id) => document.getElementById(id);
 const groups = ["science", "commerce", "arts"];
 const bloodGroups = ["B+", "A+", "O+", "AB+", "A-", "B-", "O-", "AB-"];
 
-const studentSeeds = [
-  ["adib1", "Adib Rahman", "আদিব রহমান"],
-  ["santo2", "Santo Islam", "সান্ত ইসলাম"],
-  ["jahid3", "Jahid Hasan", "জাহিদ হাসান"],
-  ["sakil4", "Sakil Ahmed", "সাকিল আহমেদ"],
-  ["sasfkat5", "Sasfkat Hossain", "সাসফকাত হোসেন"],
-  ["munsi6", "Munsi Karim", "মুন্সি করিম"],
-  ["musfik7", "Musfik Rahman", "মুশফিক রহমান"],
-  ["esty8", "Esty Hasan", "এস্টি হাসান"],
-  ["nafis9", "Nafis Mahmud", "নাফিস মাহমুদ"],
-  ["kayes10", "Kayes Ahmed", "কায়েস আহমেদ"],
-  ["jahid11", "Jahidul Islam", "জাহিদুল ইসলাম"],
-  ["siam12", "Siam Rahman", "সিয়াম রহমান"],
-  ["siam13", "Siam Hossain", "সিয়াম হোসেন"],
-  ["saimun14", "Saimun Islam", "সাইমুন ইসলাম"],
-  ["pranto15", "Pranto Das", "প্রান্ত দাস"],
-  ["nayem18", "Nayem Islam", "নাঈম ইসলাম"],
-  ["alauddin17", "Alauddin Khan", "আলাউদ্দিন খান"],
-  ["rafiq18", "Rafiq Hasan", "রফিক হাসান"],
-  ["riyad19", "Riyad Ahmed", "রিয়াদ আহমেদ"],
-  ["mosih20", "Mosih Rahman", "মসিহ রহমান"],
-  ["abrar21", "Abrar Hossain", "আবরার হোসেন"],
-  ["rudro22", "Rudro Mahmud", "রুদ্র মাহমুদ"],
-  ["riasad23", "Riasad Karim", "রিয়াসাদ করিম"],
-  ["musa24", "Musa Islam", "মুসা ইসলাম"],
-  ["ariful25", "Ariful Hasan", "আরিফুল হাসান"],
-  ["rejawl26", "Rejawl Ahmed", "রেজাউল আহমেদ"],
-  ["sabit27", "Sabit Rahman", "সাবিত রহমান"],
-  ["alif28", "Alif Mahmud", "আলিফ মাহমুদ"]
-];
-
-const sheetOverrides = {
-  "adib1": { name: "Abdullah Al Adib", bnName: "আবদুল্যাহ আল আদিব", fullRoll: "1202526010139", roll: "139", room: "103", group: "science", section: "A", practicalGroup: "A2", blood: "A+", address: "Hatia, Noakhali", phone: "01625329874", email: "seadibpc@gmail.com", fb: "https://www.facebook.com/seadix", bio: "" },
-  "santo2": { name: "Naimul Islam", bnName: "নাইমুল ইসলাম", fullRoll: "1202526010161", roll: "161", room: "105", group: "science", section: "B", practicalGroup: "B1", blood: "O+", address: "Hatia, Noakhali", phone: "01613601161", email: "mistersanto1000@gmail.com", bio: "" },
-  "jahid3": { name: "Md Zahidul Islam", bnName: "মোঃ জাহিদুল ইসলাম", fullRoll: "1202526010164", roll: "164", room: "102", group: "science", section: "B", practicalGroup: "B1", blood: "A+", address: "Hatia, Noakhali", phone: "01844474892", email: "zahidsigma164@gmail.com", fb: "https://www.facebook.com/share/1BABcH2cjn/", bio: "I'm SIGMA The Zahid" },
-  "sasfkat5": { name: "Shafkat Rahman", bnName: "শাফকাত রহমান", fullRoll: "1202526010008", roll: "008", room: "104", group: "science", section: "A", practicalGroup: "A1", blood: "O+", address: "Deboi, Rupganj, Narayanganj", phone: "01996569688", email: "shafkatrahmandkam@gmail.com", fb: "https://www.facebook.com/share/18oRrju5zF/", bio: "CT-1= Absent, CT-2= Absent, Half yearly = Absent, CT-3= loading, Year FINAL= Loading" },
-  "sakil4": { name: "Md. Shakil Sheikh", bnName: "মোঃ শাকিল শেখ", fullRoll: "1202526010326", roll: "326", room: "103", group: "science", section: "C", practicalGroup: "C1", blood: "O+", address: "Kanchan, Rupganj, Narayanganj", phone: "01739554600", fatherPhone: "01758684640", bio: "" },
-  "pranto15": { name: "Ratul Hassan Pranto", bnName: "রাতুল হাসান প্রান্ত", fullRoll: "1202526010863", roll: "863", room: "106", group: "science", section: "F", practicalGroup: "F2", blood: "O+", address: "Kushtia Sadar, Kushtia", phone: "01995393323", fatherPhone: "01755729078", email: "rh597040@gmail.com", fb: "https://www.facebook.com/share/1T3gCxVk6J/", bio: "" },
-  "musfik7": { name: "Md. Mushfiqur Rahman", bnName: "মোঃ মুশফিকুর রহমান", fullRoll: "1202526010122", roll: "122", room: "107", group: "science", section: "A", practicalGroup: "A2", blood: "A+", address: "South Sakuchia, Monpura, Bhola", phone: "01577390514", email: "mushfiq88bd@gmail.com", fb: "https://www.facebook.com/share/18osDPmvYU/", bio: "" },
-  "siam12": { name: "Siam Hasan", bnName: "সিয়াম হাসান", fullRoll: "1202526010195", roll: "195", room: "107", group: "science", section: "B", practicalGroup: "B1", blood: "B+", address: "Moshinda Majpara, Gurudaspur, Natore", phone: "01804692801", fatherPhone: "01761866285", email: "siamhasananik01@gmail.com", fb: "https://www.facebook.com/siam.hasan.anik.402132", bio: "I am a Crazy Boy." },
-  "alif28": { name: "Alimuzzamann Alif", bnName: "আলিমুজ্জামান আলিফ", fullRoll: "1202526010153", roll: "153", room: "110", group: "science", section: "B", practicalGroup: "B1", blood: "AB+", address: "সুন্দরগঞ্জ, গাইবান্ধা", phone: "01758173284", fatherPhone: "1540759625", email: "mdalimuzzamanalif890@gmail.com", fb: "https://www.facebook.com/share/18MFvaQuS2/", bio: "What an amazing website it is for our international hall which created by meritorious adib. Keep going higher. Truly appreciating for such kind of initiatives. With all are staying with it . Hoping main target Will fulfill with it's modern development." },
-  "nafis9": { name: "Nafis Alam Tarif", bnName: "নাফিস আলম তারিফ", fullRoll: "1202526010141", roll: "141", room: "108", group: "science", section: "A", practicalGroup: "A2", blood: "O+", address: "Ranisonkail, Thakurgaon", phone: "01346588124", fatherPhone: "01738770330", email: "tarifalam265@gmail.com", fb: "https://www.facebook.com/share/1EDVSWD95F/", bio: "Competition, I'm The Competition...." },
-  "kayes10": { name: "Riasadul Islam Kayes", bnName: "রিয়াসাদুল ইসলাম কায়েস", fullRoll: "1202526010882", roll: "882", room: "108", group: "science", section: "F", practicalGroup: "F2", blood: "A+", address: "Chakaria, Cox's bazar.", phone: "01629171207", email: "riasadulislamkayes@gmail.com", bio: "\"প্রত্যেক প্রাণীই মৃত্যুর স্বাদ গ্রহণ করবে\"" },
-  "ariful25": { name: "Ariful Islam", bnName: "আরিফুল ইসলাম", fullRoll: "1202526010050", roll: "050", room: "109", group: "science", section: "A", practicalGroup: "A1", blood: "O+", address: "Rohanpur, Gomastapur, Chapainawabganj", phone: "01848631025", email: "arifulislam20238086@gmail.com", fb: "https://www.facebook.com/profile.php?id=100093029856067", bio: "" },
-  "rejawl26": { name: "Md Rezaul Karim", bnName: "মোঃ রেজাউল করিম", fullRoll: "1202526030098", roll: "098", room: "110", group: "arts", section: "", practicalGroup: "", blood: "A+", address: "Titas, Cumilla", phone: "01641659606", email: "rkdc8989@gmail.com", bio: "Sports lover" }
-};
-
-let students = studentSeeds.map(([slug, name, bnName], index) => {
-  const overrides = sheetOverrides[slug] || {};
-  
-  const group = overrides.group || groups[index % groups.length];
-  const section = overrides.section || (group === "science" ? ["A", "B", "C", "D", "E"][index % 5] : "");
-  const room = overrides.room || String(101 + Math.floor(index / 2));
-  const roll = overrides.roll || String(101 + index).padStart(3, "0");
-  
-  const fullRoll = overrides.fullRoll || (group === "science" ? `1202526010${roll}` : roll);
-  
-  const practicalGroup = overrides.practicalGroup || (section ? `${section}${(index % 2) + 1}` : "");
-  const phone = overrides.phone || `0170000${String(index + 1).padStart(4, "0")}`;
-
-  return {
-    id: index + 1,
-    slug,
-    position: index + 1,
-    name: overrides.name || name,
-    room,
-    roll,
-    fullRoll,
-    classNo: "11",
-    group,
-    section,
-    practicalGroup,
-    college: "Dhaka College",
-    phone,
-    fatherPhone: overrides.fatherPhone || `0180000${String(index + 1).padStart(4, "0")}`,
-    email: overrides.email || `${slug}@gmail.com`,
-    img: `images/${slug}.jpg`,
-    fb: overrides.fb || "https://facebook.com/",
-    address: overrides.address || ["Kaliganj, Dhaka", "Narayanganj", "Cumilla", "Gazipur", "Mymensingh", "Sylhet", "Barishal", "Tangail"][index % 8],
-    blood: overrides.blood || bloodGroups[index % bloodGroups.length],
-    bio: overrides.bio || "Demo student profile for International Hall. Detailed information can be updated later from the student sheet.",
-    result: {
-      gpa: Number((4.7 + (index % 6) * 0.05).toFixed(2)),
-      physics: 84 + (index % 13),
-      chemistry: 82 + (index % 14),
-      math: 86 + (index % 12)
+let students = [
+  {
+    "id": 1,
+    "slug": "adib1",
+    "position": 1,
+    "roommateIds": [
+      "sakil4"
+    ],
+    "name": "Abdullah Al Adib",
+    "room": "325",
+    "roll": "139",
+    "fullRoll": "1202526010139",
+    "classNo": "12",
+    "group": "science",
+    "groupEn": "Science",
+    "groupBn": "বিজ্ঞান",
+    "section": "A",
+    "practicalGroup": "A2",
+    "college": "Dhaka College",
+    "phone": "01625329874",
+    "fatherPhone": "-",
+    "email": "quantelixvero@gmail.com",
+    "img": "images/adib1.jpg",
+    "fb": "https://www.facebook.com/seadix",
+    "messenger": "seadix/",
+    "address": "Hatia, Noakhali",
+    "blood": "A+",
+    "bio": "Goal — to create something no one has done before! ",
+    "pdfs": {
+      "ct1": "pdfs/adib1-11-ct1.pdf",
+      "ct2": "pdfs/adib1-11-ct2.pdf",
+      "hy": "pdfs/adib1-11-hy.pdf",
+      "ct3": "pdfs/adib1-11-ct3.pdf",
+      "yearly": "pdfs/adib1-11-y.pdf"
     },
-    bn: {
-      name: overrides.bnName || bnName,
-      college: "ঢাকা কলেজ",
-      address: overrides.address || ["কালীগঞ্জ, ঢাকা", "নারায়ণগঞ্জ", "কুমিল্লা", "গাজীপুর", "ময়মনসিংহ", "সিলেট", "বরিশাল", "টাঙ্গাইল"][index % 8],
-      bio: overrides.bio || "আন্তর্জাতিক ছাত্রাবাসের ডেমো শিক্ষার্থী প্রোফাইল। পরে sheet থেকে বিস্তারিত তথ্য আপডেট করা যাবে।"
+    "result": {
+      "gpa": 0,
+      "physics": 0,
+      "chemistry": 0,
+      "math": 0
+    },
+    "bn": {
+      "name": "আবদুল্যাহ আল আদিব",
+      "college": "ঢাকা কলেজ",
+      "address": "হাতিয়া, নোয়াখালী",
+      "bio": "লক্ষ্য — এমন কিছু তৈরি করা যা আগে কেউ কখনও করেনি!"
     }
-  };
-});
+  },
+  {
+    "id": 2,
+    "slug": "santo2",
+    "position": 2,
+    "roommateIds": [
+      "jahid3"
+    ],
+    "name": "Naimul Islam (Shanto)",
+    "room": "317",
+    "roll": "161",
+    "fullRoll": "1202526010161",
+    "classNo": "12",
+    "group": "science",
+    "groupEn": "Science",
+    "groupBn": "বিজ্ঞান",
+    "section": "B",
+    "practicalGroup": "B1",
+    "college": "Dhaka College",
+    "phone": "01613601161",
+    "fatherPhone": "-",
+    "email": "mistersanto1000@gmail.com",
+    "img": "/assets/uploads/shanto.png",
+    "fb": "https://www.facebook.com/naimul.islam55",
+    "messenger": "naimul.islam55/",
+    "address": "Hatia, Noakhali",
+    "blood": "O+",
+    "bio": "A dedicated student of Dhaka College, striving for academic excellence and pursuing personal growth with a focus on future goals",
+    "pdfs": {
+      "ct1": "pdfs/santo2-11-ct1.pdf",
+      "ct2": "pdfs/santo2-11-ct2.pdf",
+      "hy": "pdfs/santo2-11-hy.pdf",
+      "ct3": "pdfs/santo2-11-ct3.pdf",
+      "yearly": "pdfs/santo2-11-y.pdf"
+    },
+    "result": {
+      "gpa": 0,
+      "physics": 0,
+      "chemistry": 0,
+      "math": 0
+    },
+    "bn": {
+      "name": "নাইমুল ইসলাম (সান্ত)",
+      "college": "ঢাকা কলেজ",
+      "address": "হাতিয়া, নোয়াখালী",
+      "bio": "ঢাকা কলেজের একজন ডেডিকেটেড শিক্ষার্থী, যিনি একাডেমিক উৎকর্ষতা অর্জন এবং ভবিষ্যতের লক্ষ্যকে সামনে রেখে নিজের সামগ্রিক উন্নয়নে বিশ্বাসী।"
+    }
+  },
+  {
+    "id": 3,
+    "slug": "jahid3",
+    "position": 3,
+    "roommateIds": [
+      "santo2"
+    ],
+    "name": "Md Zahidul Islam",
+    "room": "317",
+    "roll": "164",
+    "fullRoll": "1202526010164",
+    "classNo": "12",
+    "group": "science",
+    "groupEn": "Science",
+    "groupBn": "বিজ্ঞান",
+    "section": "B",
+    "practicalGroup": "B1",
+    "college": "Dhaka College",
+    "phone": "01844474892",
+    "fatherPhone": "-",
+    "email": "zahidsigma164@gmail.com",
+    "img": "/assets/uploads/jahid.jpg",
+    "fb": "https://www.facebook.com/share/1BABcH2cjn/",
+    "messenger": "1BABcH2cjn",
+    "address": "Hatia, Noakhali",
+    "blood": "A+",
+    "bio": "I'm SIGMA The Zahid",
+    "pdfs": {
+      "ct1": "pdfs/jahid3-11-ct1.pdf",
+      "ct2": "pdfs/jahid3-11-ct2.pdf",
+      "hy": "pdfs/jahid3-11-hy.pdf",
+      "ct3": "pdfs/jahid3-11-ct3.pdf",
+      "yearly": "pdfs/jahid3-11-y.pdf"
+    },
+    "result": {
+      "gpa": 0,
+      "physics": 0,
+      "chemistry": 0,
+      "math": 0
+    },
+    "bn": {
+      "name": "মোঃ জাহিদুল ইসলাম",
+      "college": "ঢাকা কলেজ",
+      "address": "হাতিয়া, নোয়াখালী",
+      "bio": "I'm SIGMA The Zahid"
+    }
+  },
+  {
+    "id": 4,
+    "slug": "sakil4",
+    "position": 4,
+    "roommateIds": [
+      "adib1"
+    ],
+    "name": "Md. Shakil Sheikh",
+    "room": "325",
+    "roll": "326",
+    "fullRoll": "1202526010326",
+    "classNo": "12",
+    "group": "science",
+    "groupEn": "Science",
+    "groupBn": "বিজ্ঞান",
+    "section": "C",
+    "practicalGroup": "C1",
+    "college": "Dhaka College",
+    "phone": "01739554600",
+    "fatherPhone": "01758684640",
+    "email": "-",
+    "img": "images/sakil4.jpg",
+    "fb": "https://facebook.com/",
+    "messenger": "",
+    "address": "Kanchan, Rupganj, Narayanganj",
+    "blood": "O+",
+    "bio": "CT-1 Pass",
+    "pdfs": {
+      "ct1": "pdfs/sakil4-11-ct1.pdf",
+      "ct2": "pdfs/sakil4-11-ct2.pdf",
+      "hy": "pdfs/sakil4-11-hy.pdf",
+      "ct3": "pdfs/sakil4-11-ct3.pdf",
+      "yearly": "pdfs/sakil4-11-y.pdf"
+    },
+    "result": {
+      "gpa": 0,
+      "physics": 0,
+      "chemistry": 0,
+      "math": 0
+    },
+    "bn": {
+      "name": "মোঃ শাকিল শেখ",
+      "college": "ঢাকা কলেজ",
+      "address": "কাঞ্চন, রূপগঞ্জ, নারায়ণগঞ্জ",
+      "bio": "CT-1 Pass"
+    }
+  },
+  {
+    "id": 5,
+    "slug": "sasfkat5",
+    "position": 5,
+    "roommateIds": [
+      "riyad19"
+    ],
+    "name": "Shafkat Rahman",
+    "room": "318",
+    "roll": "008",
+    "fullRoll": "1202526010008",
+    "classNo": "12",
+    "group": "science",
+    "groupEn": "Science",
+    "groupBn": "বিজ্ঞান",
+    "section": "A",
+    "practicalGroup": "A1",
+    "college": "Dhaka College",
+    "phone": "01996569688",
+    "fatherPhone": "-",
+    "email": "shafkatrahmandkam@gmail.com",
+    "img": "images/sasfkat5.jpg",
+    "fb": "https://www.facebook.com/share/18oRrju5zF/",
+    "messenger": "18oRrju5zF",
+    "address": "Deboi, Rupganj, Narayanganj",
+    "blood": "O+",
+    "bio": "CT-1= Absent, CT-2= Absent, Half yearly = Absent, CT-3= loading, Year FINAL= Loading",
+    "pdfs": {
+      "ct1": "pdfs/sasfkat5-11-ct1.pdf",
+      "ct2": "pdfs/sasfkat5-11-ct2.pdf",
+      "hy": "pdfs/sasfkat5-11-hy.pdf",
+      "ct3": "pdfs/sasfkat5-11-ct3.pdf",
+      "yearly": "pdfs/sasfkat5-11-y.pdf"
+    },
+    "result": {
+      "gpa": 0,
+      "physics": 0,
+      "chemistry": 0,
+      "math": 0
+    },
+    "bn": {
+      "name": "শাফকাত রহমান",
+      "college": "ঢাকা কলেজ",
+      "address": "দেবই, রূপগঞ্জ, নারায়ণগঞ্জ",
+      "bio": "CT-1= Absent, CT-2= Absent, Half yearly = Absent, CT-3= loading, Year FINAL= Loading"
+    }
+  },
+  {
+    "id": 6,
+    "slug": "munsi6",
+    "position": 6,
+    "roommateIds": [
+      "rejawl26"
+    ],
+    "name": "Shahriar Al Sakib Munshi",
+    "room": "315",
+    "roll": "022",
+    "fullRoll": "1202526010022",
+    "classNo": "12",
+    "group": "science",
+    "groupEn": "Science",
+    "groupBn": "বিজ্ঞান",
+    "section": "A",
+    "practicalGroup": "A1",
+    "college": "Dhaka College",
+    "phone": "01577203120",
+    "fatherPhone": "01319061472",
+    "email": "usage3913@gmail.com",
+    "img": "/assets/uploads/munsi.png",
+    "fb": "https://facebook.com/",
+    "messenger": "",
+    "address": "Choto Alampur, Debidwar, Cumilla",
+    "blood": "B+",
+    "bio": "Demo student profile for International Hall. Detailed information can be updated later from the student sheet.",
+    "pdfs": {
+      "ct1": "pdfs/munsi6-11-ct1.pdf",
+      "ct2": "pdfs/munsi6-11-ct2.pdf",
+      "hy": "pdfs/munsi6-11-hy.pdf",
+      "ct3": "pdfs/munsi6-11-ct3.pdf",
+      "yearly": "pdfs/munsi6-11-y.pdf"
+    },
+    "result": {
+      "gpa": 0,
+      "physics": 0,
+      "chemistry": 0,
+      "math": 0
+    },
+    "bn": {
+      "name": "শাহরিয়ার আল সাকিব মুন্সি",
+      "college": "ঢাকা কলেজ",
+      "address": "ছোট আলমপুর, দেবিদ্বার, কুমিল্লা",
+      "bio": "আন্তর্জাতিক ছাত্রাবাসের ডেমো শিক্ষার্থী প্রোফাইল। পরে sheet থেকে বিস্তারিত তথ্য আপডেট করা যাবে।"
+    }
+  },
+  {
+    "id": 7,
+    "slug": "musfik7",
+    "position": 7,
+    "roommateIds": [
+      "nafis9"
+    ],
+    "name": "Md. Mushfiqur Rahman",
+    "room": "316",
+    "roll": "122",
+    "fullRoll": "1202526010122",
+    "classNo": "12",
+    "group": "science",
+    "groupEn": "Science",
+    "groupBn": "বিজ্ঞান",
+    "section": "A",
+    "practicalGroup": "A2",
+    "college": "Dhaka College",
+    "phone": "01577390514",
+    "fatherPhone": "-",
+    "email": "mushfiq88bd@gmail.com",
+    "img": "images/musfik7.jpg",
+    "fb": "https://www.facebook.com/share/18osDPmvYU/",
+    "messenger": "18osDPmvYU",
+    "address": "South Sakuchia, Monpura, Bhola",
+    "blood": "A+",
+    "bio": "Demo student profile for International Hall. Detailed information can be updated later from the student sheet.",
+    "pdfs": {
+      "ct1": "pdfs/musfik7-11-ct1.pdf",
+      "ct2": "pdfs/musfik7-11-ct2.pdf",
+      "hy": "pdfs/musfik7-11-hy.pdf",
+      "ct3": "pdfs/musfik7-11-ct3.pdf",
+      "yearly": "pdfs/musfik7-11-y.pdf"
+    },
+    "result": {
+      "gpa": 0,
+      "physics": 0,
+      "chemistry": 0,
+      "math": 0
+    },
+    "bn": {
+      "name": "মোঃ মুশফিকুর রহমান",
+      "college": "ঢাকা কলেজ",
+      "address": "দক্ষিণ সাকুচিয়া, মনপুরা, ভোলা",
+      "bio": "আন্তর্জাতিক ছাত্রাবাসের ডেমো শিক্ষার্থী প্রোফাইল। পরে sheet থেকে বিস্তারিত তথ্য আপডেট করা যাবে।"
+    }
+  },
+  {
+    "id": 8,
+    "slug": "esty8",
+    "position": 8,
+    "roommateIds": [
+      "alauddin17"
+    ],
+    "name": "Taskin Rahman Esty",
+    "room": "322",
+    "roll": "870",
+    "fullRoll": "1202526010870",
+    "classNo": "12",
+    "group": "science",
+    "groupEn": "Science",
+    "groupBn": "বিজ্ঞান",
+    "section": "F",
+    "practicalGroup": "F2",
+    "college": "Dhaka College",
+    "phone": "01974097612",
+    "fatherPhone": "01714097613",
+    "email": "dhakaiyyaesty@gmail.com",
+    "img": "/assets/uploads/taskin.jpg",
+    "fb": "https://facebook.com/",
+    "messenger": "",
+    "address": "Chattogram",
+    "blood": "O+",
+    "bio": "Demo student profile for International Hall. Detailed information can be updated later from the student sheet.",
+    "pdfs": {
+      "ct1": "pdfs/esty8-11-ct1.pdf",
+      "ct2": "pdfs/esty8-11-ct2.pdf",
+      "hy": "pdfs/esty8-11-hy.pdf",
+      "ct3": "pdfs/esty8-11-ct3.pdf",
+      "yearly": "pdfs/esty8-11-y.pdf"
+    },
+    "result": {
+      "gpa": 0,
+      "physics": 0,
+      "chemistry": 0,
+      "math": 0
+    },
+    "bn": {
+      "name": "তাসকিন রহমান ইশতি",
+      "college": "ঢাকা কলেজ",
+      "address": "চট্টগ্রাম",
+      "bio": "আন্তর্জাতিক ছাত্রাবাসের ডেমো শিক্ষার্থী প্রোফাইল। পরে sheet থেকে বিস্তারিত তথ্য আপডেট করা যাবে।"
+    }
+  },
+  {
+    "id": 9,
+    "slug": "nafis9",
+    "position": 9,
+    "roommateIds": [
+      "musfiq7"
+    ],
+    "name": "Nafis Alam Tarif",
+    "room": "316",
+    "roll": "141",
+    "fullRoll": "1202526010141",
+    "classNo": "12",
+    "group": "science",
+    "groupEn": "Science",
+    "groupBn": "বিজ্ঞান",
+    "section": "A",
+    "practicalGroup": "A2",
+    "college": "Dhaka College",
+    "phone": "01346588124",
+    "fatherPhone": "01738770330",
+    "email": "tarifalam265@gmail.com",
+    "img": "/assets/uploads/img_20260509_184212-tarif-alam-1-.jpg",
+    "fb": "https://www.facebook.com/share/1EDVSWD95F/",
+    "messenger": "1EDVSWD95F",
+    "address": "Ranisonkail, Thakurgaon",
+    "blood": "O+",
+    "bio": "Competition, I'm The Competition....",
+    "pdfs": {
+      "ct1": "pdfs/nafis9-11-ct1.pdf",
+      "ct2": "pdfs/nafis9-11-ct2.pdf",
+      "hy": "pdfs/nafis9-11-hy.pdf",
+      "ct3": "pdfs/nafis9-11-ct3.pdf",
+      "yearly": "pdfs/nafis9-11-y.pdf"
+    },
+    "result": {
+      "gpa": 0,
+      "physics": 0,
+      "chemistry": 0,
+      "math": 0
+    },
+    "bn": {
+      "name": "নাফিস আলম তারিফ",
+      "college": "ঢাকা কলেজ",
+      "address": "রাণীশংকৈল, ঠাকুরগাঁও",
+      "bio": "Competition, I'm The Competition...."
+    }
+  },
+  {
+    "id": 10,
+    "slug": "kayes10",
+    "position": 10,
+    "roommateIds": [
+      "siam12"
+    ],
+    "name": "Riasadul Islam Kayes",
+    "room": "314",
+    "roll": "882",
+    "fullRoll": "1202526010882",
+    "classNo": "12",
+    "group": "science",
+    "groupEn": "Science",
+    "groupBn": "বিজ্ঞান",
+    "section": "F",
+    "practicalGroup": "F2",
+    "college": "Dhaka College",
+    "phone": "01629171207",
+    "fatherPhone": "-",
+    "email": "riasadulislamkayes@gmail.com",
+    "img": "/assets/uploads/whatsapp-image-2026-05-09-at-7.20.39-pm-naimul-islam-1-.jpeg",
+    "fb": "https://facebook.com/",
+    "messenger": "",
+    "address": "Chakaria, Cox's bazar.",
+    "blood": "A+",
+    "bio": "\"Every soul shall taste death.\"",
+    "pdfs": {
+      "ct1": "pdfs/kayes10-11-ct1.pdf",
+      "ct2": "pdfs/kayes10-11-ct2.pdf",
+      "hy": "pdfs/kayes10-11-hy.pdf",
+      "ct3": "pdfs/kayes10-11-ct3.pdf",
+      "yearly": "pdfs/kayes10-11-y.pdf"
+    },
+    "result": {
+      "gpa": 0,
+      "physics": 0,
+      "chemistry": 0,
+      "math": 0
+    },
+    "bn": {
+      "name": "রিয়াসাদুল ইসলাম কায়েস",
+      "college": "ঢাকা কলেজ",
+      "address": "চকরিয়া, কক্সবাজার",
+      "bio": "\"প্রত্যেক প্রাণীই মৃত্যুর স্বাদ গ্রহণ করবে\""
+    }
+  },
+  {
+    "id": 11,
+    "slug": "jahid11",
+    "position": 11,
+    "roommateIds": [
+      "musa24"
+    ],
+    "name": "Md. Jahidul Islam",
+    "room": "328",
+    "roll": "223",
+    "fullRoll": "1202526010223",
+    "classNo": "12",
+    "group": "science",
+    "groupEn": "Science",
+    "groupBn": "বিজ্ঞান",
+    "section": "B",
+    "practicalGroup": "B1",
+    "college": "Dhaka College",
+    "phone": "01828246239",
+    "fatherPhone": "-",
+    "email": " jkjahidultaskin10@gmail.com",
+    "img": "/assets/uploads/jahidvay.jpg",
+    "fb": "https://facebook.com/",
+    "messenger": "",
+    "address": "Narsingdi",
+    "blood": "O+",
+    "bio": "Demo student profile for International Hall. Detailed information can be updated later from the student sheet.",
+    "pdfs": {
+      "ct1": "pdfs/jahid11-11-ct1.pdf",
+      "ct2": "pdfs/jahid11-11-ct2.pdf",
+      "hy": "pdfs/jahid11-11-hy.pdf",
+      "ct3": "pdfs/jahid11-11-ct3.pdf",
+      "yearly": "pdfs/jahid11-11-y.pdf"
+    },
+    "result": {
+      "gpa": 0,
+      "physics": 0,
+      "chemistry": 0,
+      "math": 0
+    },
+    "bn": {
+      "name": "মোঃ জাহিদুল ইসলাম",
+      "college": "ঢাকা কলেজ",
+      "address": "নরসিংদী",
+      "bio": "আন্তর্জাতিক ছাত্রাবাসের ডেমো শিক্ষার্থী প্রোফাইল। পরে sheet থেকে বিস্তারিত তথ্য আপডেট করা যাবে।"
+    }
+  },
+  {
+    "id": 12,
+    "slug": "siam12",
+    "position": 12,
+    "roommateIds": [],
+    "name": "Siam Hasan (Nator)",
+    "room": "319",
+    "roll": "195",
+    "fullRoll": "1202526010195",
+    "classNo": "12",
+    "group": "science",
+    "groupEn": "Science",
+    "groupBn": "বিজ্ঞান",
+    "section": "B",
+    "practicalGroup": "B1",
+    "college": "Dhaka College",
+    "phone": "01804692801",
+    "fatherPhone": "01761866285",
+    "email": "siamhasananik01@gmail.com",
+    "img": "images/siam12.jpg",
+    "fb": "https://www.facebook.com/siam.hasan.anik.402132",
+    "messenger": "siam.hasan.anik.402132",
+    "address": "Moshinda Majpara, Gurudaspur, Natore",
+    "blood": "B+",
+    "bio": "I am a Crazy Boy.",
+    "pdfs": {
+      "ct1": "pdfs/siam12-11-ct1.pdf",
+      "ct2": "pdfs/siam12-11-ct2.pdf",
+      "hy": "pdfs/siam12-11-hy.pdf",
+      "ct3": "pdfs/siam12-11-ct3.pdf",
+      "yearly": "pdfs/siam12-11-y.pdf"
+    },
+    "result": {
+      "gpa": 0,
+      "physics": 0,
+      "chemistry": 0,
+      "math": 0
+    },
+    "bn": {
+      "name": "সিয়াম হাসান (নাটোর)",
+      "college": "ঢাকা কলেজ",
+      "address": "মশিন্দা মাঝপাড়া, গুরুদাসপুর, নাটোর",
+      "bio": "I am a Crazy Boy."
+    }
+  },
+  {
+    "id": 13,
+    "slug": "siam13",
+    "position": 13,
+    "roommateIds": [
+      "kayes10"
+    ],
+    "name": "Md. Siam Ali (Kustia)",
+    "room": "314",
+    "roll": "881",
+    "fullRoll": "1202526010881",
+    "classNo": "12",
+    "group": "science",
+    "groupEn": "Science",
+    "groupBn": "বিজ্ঞান",
+    "section": "F",
+    "practicalGroup": "F2",
+    "college": "Dhaka College",
+    "phone": "01705310841",
+    "fatherPhone": "01705633292",
+    "email": "-",
+    "img": "/assets/uploads/siamkustia.jpg",
+    "fb": "https://facebook.com/",
+    "messenger": "",
+    "address": "Khorda Ailchara, Kushtia Sadar, Kushtia",
+    "blood": "O+",
+    "bio": "Demo student profile for International Hall. Detailed information can be updated later from the student sheet.",
+    "pdfs": {
+      "ct1": "pdfs/siam13-11-ct1.pdf",
+      "ct2": "pdfs/siam13-11-ct2.pdf",
+      "hy": "pdfs/siam13-11-hy.pdf",
+      "ct3": "pdfs/siam13-11-ct3.pdf",
+      "yearly": "pdfs/siam13-11-y.pdf"
+    },
+    "result": {
+      "gpa": 0,
+      "physics": 0,
+      "chemistry": 0,
+      "math": 0
+    },
+    "bn": {
+      "name": "মোঃ সিয়াম আলী (কুষ্টিয়া)",
+      "college": "ঢাকা কলেজ",
+      "address": "খোরদা আইলচারা, কুষ্টিয়া সদর, কুষ্টিয়া",
+      "bio": "আন্তর্জাতিক ছাত্রাবাসের ডেমো শিক্ষার্থী প্রোফাইল। পরে sheet থেকে বিস্তারিত তথ্য আপডেট করা যাবে।"
+    }
+  },
+  {
+    "id": 14,
+    "slug": "saimun14",
+    "position": 14,
+    "roommateIds": [
+      "alif28"
+    ],
+    "name": "Saimun Islam",
+    "room": "326",
+    "roll": "322",
+    "fullRoll": "1202526010322",
+    "classNo": "12",
+    "group": "science",
+    "groupEn": "Science",
+    "groupBn": "বিজ্ঞান",
+    "section": "C",
+    "practicalGroup": "C1",
+    "college": "Dhaka College",
+    "phone": "01772589255",
+    "fatherPhone": "-",
+    "email": "-",
+    "img": "/assets/uploads/saimun3.jpg",
+    "fb": "https://facebook.com/",
+    "messenger": "",
+    "address": "Baipail, Savar, Dhaka",
+    "blood": "AB+",
+    "bio": "Demo student profile for International Hall. Detailed information can be updated later from the student sheet.",
+    "pdfs": {
+      "ct1": "pdfs/saimun14-11-ct1.pdf",
+      "ct2": "pdfs/saimun14-11-ct2.pdf",
+      "hy": "pdfs/saimun14-11-hy.pdf",
+      "ct3": "pdfs/saimun14-11-ct3.pdf",
+      "yearly": "pdfs/saimun14-11-y.pdf"
+    },
+    "result": {
+      "gpa": 0,
+      "physics": 0,
+      "chemistry": 0,
+      "math": 0
+    },
+    "bn": {
+      "name": "সাইমুন ইসলাম",
+      "college": "ঢাকা কলেজ",
+      "address": "বাইপাইল, সাভার, ঢাকা",
+      "bio": "আন্তর্জাতিক ছাত্রাবাসের ডেমো শিক্ষার্থী প্রোফাইল। পরে sheet থেকে বিস্তারিত তথ্য আপডেট করা যাবে।"
+    }
+  },
+  {
+    "id": 15,
+    "slug": "pranto15",
+    "position": 15,
+    "roommateIds": [
+      "nayem18"
+    ],
+    "name": "Ratul Hassan Pranto",
+    "room": "323",
+    "roll": "863",
+    "fullRoll": "1202526010863",
+    "classNo": "12",
+    "group": "science",
+    "groupEn": "Science",
+    "groupBn": "বিজ্ঞান",
+    "section": "F",
+    "practicalGroup": "F2",
+    "college": "Dhaka College",
+    "phone": "01995393323",
+    "fatherPhone": "01755729078",
+    "email": "rh597040@gmail.com",
+    "img": "images/pranto15.jpg",
+    "fb": "https://www.facebook.com/share/1T3gCxVk6J/",
+    "messenger": "1T3gCxVk6J",
+    "address": "Kushtia Sadar, Kushtia",
+    "blood": "O+",
+    "bio": "Demo student profile for International Hall. Detailed information can be updated later from the student sheet.",
+    "pdfs": {
+      "ct1": "pdfs/pranto15-11-ct1.pdf",
+      "ct2": "pdfs/pranto15-11-ct2.pdf",
+      "hy": "pdfs/pranto15-11-hy.pdf",
+      "ct3": "pdfs/pranto15-11-ct3.pdf",
+      "yearly": "pdfs/pranto15-11-y.pdf"
+    },
+    "result": {
+      "gpa": 0,
+      "physics": 0,
+      "chemistry": 0,
+      "math": 0
+    },
+    "bn": {
+      "name": "রাতুল হাসান প্রান্ত",
+      "college": "ঢাকা কলেজ",
+      "address": "কুষ্টিয়া সদর, কুষ্টিয়া",
+      "bio": "আন্তর্জাতিক ছাত্রাবাসের ডেমো শিক্ষার্থী প্রোফাইল। পরে sheet থেকে বিস্তারিত তথ্য আপডেট করা যাবে।"
+    }
+  },
+  {
+    "id": 16,
+    "slug": "nayem18",
+    "position": 16,
+    "roommateIds": [
+      "pranto15"
+    ],
+    "name": "Nayeem Sarwar",
+    "room": "323",
+    "roll": "639",
+    "fullRoll": "1202526010639",
+    "classNo": "12",
+    "group": "science",
+    "groupEn": "Science",
+    "groupBn": "বিজ্ঞান",
+    "section": "E",
+    "practicalGroup": "E1",
+    "college": "Dhaka College",
+    "phone": "01331198715",
+    "fatherPhone": "01711985399",
+    "email": "-",
+    "img": "/assets/uploads/nayeem.jpg",
+    "fb": "https://facebook.com/",
+    "messenger": "",
+    "address": "Alamdanga, Chuadanga",
+    "blood": "O+",
+    "bio": "Demo student profile for International Hall. Detailed information can be updated later from the student sheet.",
+    "pdfs": {
+      "ct1": "pdfs/nayem18-11-ct1.pdf",
+      "ct2": "pdfs/nayem18-11-ct2.pdf",
+      "hy": "pdfs/nayem18-11-hy.pdf",
+      "ct3": "pdfs/nayem18-11-ct3.pdf",
+      "yearly": "pdfs/nayem18-11-y.pdf"
+    },
+    "result": {
+      "gpa": 0,
+      "physics": 0,
+      "chemistry": 0,
+      "math": 0
+    },
+    "bn": {
+      "name": "নাঈম সরওয়ার",
+      "college": "ঢাকা কলেজ",
+      "address": "আলমডাঙ্গা, চুয়াডাঙ্গা",
+      "bio": "আন্তর্জাতিক ছাত্রাবাসের ডেমো শিক্ষার্থী প্রোফাইল। পরে sheet থেকে বিস্তারিত তথ্য আপডেট করা যাবে।"
+    }
+  },
+  {
+    "id": 17,
+    "slug": "alauddin17",
+    "position": 17,
+    "roommateIds": [
+      "esty8"
+    ],
+    "name": "Md. Alauddin Mollah",
+    "room": "322",
+    "roll": "140",
+    "fullRoll": "1202526030140",
+    "classNo": "13",
+    "group": "arts",
+    "groupEn": "Humanities",
+    "groupBn": "মানবিক",
+    "section": "-",
+    "practicalGroup": "-",
+    "college": "Dhaka College",
+    "phone": "01914476860",
+    "fatherPhone": "01956324329",
+    "email": "ah247556@gmail.com",
+    "img": "/assets/uploads/alauddin-hosain.jpg",
+    "fb": "https://www.facebook.com/share/1EPCEFWqMG/",
+    "messenger": "1EPCEFWqMG/",
+    "address": "Kalisongkorpur, Joshobontopur, Mohammadpur, Magura",
+    "blood": "O+",
+    "bio": "Demo student profile for International Hall. Detailed information can be updated later from the student sheet.",
+    "pdfs": {
+      "ct1": "pdfs/alauddin17-11-ct1.pdf",
+      "ct2": "pdfs/alauddin17-11-ct2.pdf",
+      "hy": "pdfs/alauddin17-11-hy.pdf",
+      "ct3": "pdfs/alauddin17-11-ct3.pdf",
+      "yearly": "pdfs/alauddin17-11-y.pdf"
+    },
+    "result": {
+      "gpa": 0,
+      "physics": 0,
+      "chemistry": 0,
+      "math": 0
+    },
+    "bn": {
+      "name": "মোঃ আলাউদ্দীন মোল্যা",
+      "college": "ঢাকা কলেজ",
+      "address": "কালিশংকরপুর, যশোবন্তপুর, মোহাম্মদপুর, মাগুরা",
+      "bio": "আন্তর্জাতিক ছাত্রাবাসের ডেমো শিক্ষার্থী প্রোফাইল। পরে sheet থেকে বিস্তারিত তথ্য আপডেট করা যাবে।"
+    }
+  },
+  {
+    "id": 18,
+    "slug": "rafiq18",
+    "position": 18,
+    "roommateIds": [],
+    "name": "Md. Rafiq Bin Nizam",
+    "room": "321",
+    "roll": "872",
+    "fullRoll": "1202526010872",
+    "classNo": "12",
+    "group": "science",
+    "groupEn": "Science",
+    "groupBn": "মানবিক",
+    "section": "F",
+    "practicalGroup": "F2",
+    "college": "Dhaka College",
+    "phone": "01342909383",
+    "fatherPhone": "01775208547",
+    "email": "-",
+    "img": "/assets/uploads/rafi.jpg",
+    "fb": "https://facebook.com/",
+    "messenger": "",
+    "address": "Rifaitpur, Daulatpur, Kushtia",
+    "blood": "O+",
+    "bio": "Demo student profile for International Hall. Detailed information can be updated later from the student sheet.",
+    "pdfs": {
+      "ct1": "pdfs/rafiq18-11-ct1.pdf",
+      "ct2": "pdfs/rafiq18-11-ct2.pdf",
+      "hy": "pdfs/rafiq18-11-hy.pdf",
+      "ct3": "pdfs/rafiq18-11-ct3.pdf",
+      "yearly": "pdfs/rafiq18-11-y.pdf"
+    },
+    "result": {
+      "gpa": 0,
+      "physics": 0,
+      "chemistry": 0,
+      "math": 0
+    },
+    "bn": {
+      "name": "মো: রফিক বিন নিজাম",
+      "college": "ঢাকা কলেজ",
+      "address": "রিফায়েতপুর, দৌলতপুর, কুষ্টিয়া",
+      "bio": "আন্তর্জাতিক ছাত্রাবাসের ডেমো শিক্ষার্থী প্রোফাইল। পরে sheet থেকে বিস্তারিত তথ্য আপডেট করা যাবে।"
+    }
+  },
+  {
+    "id": 19,
+    "slug": "riyad19",
+    "position": 19,
+    "roommateIds": [
+      "sasfkat5"
+    ],
+    "name": "Tashfiqur Rahman Riyad",
+    "room": "318",
+    "roll": "596",
+    "fullRoll": "1202526010596",
+    "classNo": "12",
+    "group": "science",
+    "groupEn": "Science",
+    "groupBn": "বিজ্ঞান",
+    "section": "D",
+    "practicalGroup": "D2",
+    "college": "Dhaka College",
+    "phone": "01871571833",
+    "fatherPhone": "01732168077",
+    "email": "tashfiqurrahmanriyad2009@gmail.com",
+    "img": "/assets/uploads/img-20260625-wa0006-tashfiqur-rahman-riyad-1-.jpg",
+    "fb": "https://facebook.com/1C6xNqU8bA/",
+    "messenger": "m.me/1C6xNqU8bA/",
+    "address": "Purbachal, Rupganj , Narayanganj ",
+    "blood": "B+",
+    "bio": "My lawyer told me to leave this section blank. ⚖️🤐",
+    "pdfs": {
+      "ct1": "pdfs/riyad19-11-ct1.pdf",
+      "ct2": "pdfs/riyad19-11-ct2.pdf",
+      "hy": "pdfs/riyad19-11-hy.pdf",
+      "ct3": "pdfs/riyad19-11-ct3.pdf",
+      "yearly": "pdfs/riyad19-11-y.pdf"
+    },
+    "result": {
+      "gpa": 0,
+      "physics": 0,
+      "chemistry": 0,
+      "math": 0
+    },
+    "bn": {
+      "name": "তাশফিকুর রহমান রিয়াদ",
+      "college": "ঢাকা কলেজ",
+      "address": "পূর্বাচল, রূপগঞ্জ, নারায়ণগঞ্জ",
+      "bio": "আমার আইনজীবী আমাকে এই অংশটি খালি রাখতে বলেছেন। ⚖️🤐"
+    }
+  },
+  {
+    "id": 20,
+    "slug": "mosih20",
+    "position": 20,
+    "roommateIds": [
+      "abrar21"
+    ],
+    "name": "Md. Chisty Islam Mosih",
+    "room": "320",
+    "roll": "332",
+    "fullRoll": "1202526010332",
+    "classNo": "12",
+    "group": "science",
+    "groupEn": "Science",
+    "groupBn": "বিজ্ঞান",
+    "section": "C",
+    "practicalGroup": "C1",
+    "college": "Dhaka College",
+    "phone": "01320823354",
+    "fatherPhone": "01763073516",
+    "email": "-",
+    "img": "/assets/uploads/mosih.jpg",
+    "fb": "https://facebook.com/",
+    "messenger": "",
+    "address": "Dokkin Lalpur, Lalpur, Natore",
+    "blood": "A+",
+    "bio": "Demo student profile for International Hall. Detailed information can be updated later from the student sheet.",
+    "pdfs": {
+      "ct1": "pdfs/mosih20-11-ct1.pdf",
+      "ct2": "pdfs/mosih20-11-ct2.pdf",
+      "hy": "pdfs/mosih20-11-hy.pdf",
+      "ct3": "pdfs/mosih20-11-ct3.pdf",
+      "yearly": "pdfs/mosih20-11-y.pdf"
+    },
+    "result": {
+      "gpa": 0,
+      "physics": 0,
+      "chemistry": 0,
+      "math": 0
+    },
+    "bn": {
+      "name": "মোঃ চিশতী ইসলাম মসীহ",
+      "college": "ঢাকা কলেজ",
+      "address": "দক্ষিণ লালপুর, লালপুর, নাটোর",
+      "bio": "আন্তর্জাতিক ছাত্রাবাসের ডেমো শিক্ষার্থী প্রোফাইল। পরে sheet থেকে বিস্তারিত তথ্য আপডেট করা যাবে।"
+    }
+  },
+  {
+    "id": 21,
+    "slug": "abrar21",
+    "position": 21,
+    "roommateIds": [
+      "mosih20"
+    ],
+    "name": "Md. Ahanaf Abrar",
+    "room": "320",
+    "roll": "200",
+    "fullRoll": "1202526010200",
+    "classNo": "12",
+    "group": "science",
+    "groupEn": "Science",
+    "groupBn": "বিজ্ঞান",
+    "section": "B",
+    "practicalGroup": "B1",
+    "college": "Dhaka College",
+    "phone": "01515288692",
+    "fatherPhone": "01723510651",
+    "email": "abrarislam0723@gmail.com",
+    "img": "/assets/uploads/abrar2.jpg",
+    "fb": "https://facebook.com/",
+    "messenger": "",
+    "address": "429/B Malibag Chowdhury para, Near by Matir Mosjid, Rampura, Dhaka",
+    "blood": "B+",
+    "bio": "Demo student profile for International Hall. Detailed information can be updated later from the student sheet.",
+    "pdfs": {
+      "ct1": "pdfs/abrar21-11-ct1.pdf",
+      "ct2": "pdfs/abrar21-11-ct2.pdf",
+      "hy": "pdfs/abrar21-11-hy.pdf",
+      "ct3": "pdfs/abrar21-11-ct3.pdf",
+      "yearly": "pdfs/abrar21-11-y.pdf"
+    },
+    "result": {
+      "gpa": 0,
+      "physics": 0,
+      "chemistry": 0,
+      "math": 0
+    },
+    "bn": {
+      "name": "মো: আহনাফ আবরার",
+      "college": "ঢাকা কলেজ",
+      "address": "৪২৯/বি মালিবাগ চৌধুরী পাড়া, মাটির মসজিদের কাছে, রামপুরা, ঢাকা",
+      "bio": "আন্তর্জাতিক ছাত্রাবাসের ডেমো শিক্ষার্থী প্রোফাইল। পরে sheet থেকে বিস্তারিত তথ্য আপডেট করা যাবে।"
+    }
+  },
+  {
+    "id": 22,
+    "slug": "rudro22",
+    "position": 22,
+    "roommateIds": [
+      "ariful25"
+    ],
+    "name": "M M Tanvir (Rudro)",
+    "room": "324",
+    "roll": "100",
+    "fullRoll": "1202526020100",
+    "classNo": "12",
+    "group": "commerce",
+    "groupEn": "Commerce ",
+    "groupBn": "বিজ্ঞান",
+    "section": "-",
+    "practicalGroup": "-",
+    "college": "Dhaka College",
+    "phone": "01516547125",
+    "fatherPhone": "01751723978",
+    "email": "-",
+    "img": "/assets/uploads/100-rudro.jpg",
+    "fb": "https://facebook.com/",
+    "messenger": "",
+    "address": "Boalia, Sujanagar, Pabna",
+    "blood": "B+",
+    "bio": "Demo student profile for International Hall. Detailed information can be updated later from the student sheet.",
+    "pdfs": {
+      "ct1": "pdfs/rudro22-11-ct1.pdf",
+      "ct2": "pdfs/rudro22-11-ct2.pdf",
+      "hy": "pdfs/rudro22-11-hy.pdf",
+      "ct3": "pdfs/rudro22-11-ct3.pdf",
+      "yearly": "pdfs/rudro22-11-y.pdf"
+    },
+    "result": {
+      "gpa": 0,
+      "physics": 0,
+      "chemistry": 0,
+      "math": 0
+    },
+    "bn": {
+      "name": "এম এম তানভীর (রুদ্র)",
+      "college": "ঢাকা কলেজ",
+      "address": "বোয়ালিয়া, সুজানগর, পাবনা",
+      "bio": "আন্তর্জাতিক ছাত্রাবাসের ডেমো শিক্ষার্থী প্রোফাইল। পরে sheet থেকে বিস্তারিত তথ্য আপডেট করা যাবে।"
+    }
+  },
+  {
+    "id": 23,
+    "slug": "riasad23",
+    "position": 23,
+    "roommateIds": [
+      "sabit27"
+    ],
+    "name": "Sobhan Mahmud Khan (Riasad)",
+    "room": "327",
+    "roll": "337",
+    "fullRoll": "1202526010337",
+    "classNo": "12",
+    "group": "science",
+    "groupEn": "Science",
+    "groupBn": "বিজ্ঞান",
+    "section": "C",
+    "practicalGroup": "C1",
+    "college": "Dhaka College",
+    "phone": "01922407329",
+    "fatherPhone": "01739269792",
+    "email": "-",
+    "img": "/assets/uploads/riasad1.jpg",
+    "fb": "https://facebook.com/",
+    "messenger": "",
+    "address": "Notun Amdoho Allardarga, Daulatpur, Kushtia",
+    "blood": "O+",
+    "bio": "Demo student profile for International Hall. Detailed information can be updated later from the student sheet.",
+    "pdfs": {
+      "ct1": "pdfs/riasad23-11-ct1.pdf",
+      "ct2": "pdfs/riasad23-11-ct2.pdf",
+      "hy": "pdfs/riasad23-11-hy.pdf",
+      "ct3": "pdfs/riasad23-11-ct3.pdf",
+      "yearly": "pdfs/riasad23-11-y.pdf"
+    },
+    "result": {
+      "gpa": 0,
+      "physics": 0,
+      "chemistry": 0,
+      "math": 0
+    },
+    "bn": {
+      "name": "সোবহান মাহমুদ খাঁন (রিয়াসাদ)",
+      "college": "ঢাকা কলেজ",
+      "address": "নতুন আমদহ আল্লারদর্গা, দৌলতপুর, কুষ্টিয়া ",
+      "bio": "আন্তর্জাতিক ছাত্রাবাসের ডেমো শিক্ষার্থী প্রোফাইল। পরে sheet থেকে বিস্তারিত তথ্য আপডেট করা যাবে।"
+    }
+  },
+  {
+    "id": 24,
+    "slug": "musa24",
+    "position": 23,
+    "roommateIds": [
+      "jahid11"
+    ],
+    "name": "Mahbubur Rahman Musa",
+    "room": "328",
+    "roll": "213",
+    "fullRoll": "1202526010213",
+    "classNo": "12",
+    "group": "science",
+    "groupEn": "Science",
+    "groupBn": "বিজ্ঞান",
+    "section": "B",
+    "practicalGroup": "B1",
+    "college": "Dhaka College",
+    "phone": "01737844314",
+    "fatherPhone": "01718450916",
+    "email": "mahbuburrahmanmusa99@gmail.com",
+    "img": "/assets/uploads/musa.png",
+    "fb": "https://www.facebook.com/mahbubur.rahman.musa.2024",
+    "messenger": "mahbubur.rahman.musa.2024",
+    "address": "Jhalakati\n",
+    "blood": "A+",
+    "bio": "Demo student profile for International Hall. Detailed information can be updated later from the student sheet.",
+    "pdfs": {
+      "ct1": "pdfs/musa24-11-ct1.pdf",
+      "ct2": "pdfs/musa24-11-ct2.pdf",
+      "hy": "pdfs/musa24-11-hy.pdf",
+      "ct3": "pdfs/musa24-11-ct3.pdf",
+      "yearly": "pdfs/musa24-11-y.pdf"
+    },
+    "result": {
+      "gpa": 0,
+      "physics": 0,
+      "chemistry": 0,
+      "math": 0
+    },
+    "bn": {
+      "name": "মাহবুবুর রহমান মুছা ",
+      "college": "ঢাকা কলেজ",
+      "address": "ঝালকাঠি \n",
+      "bio": "আন্তর্জাতিক ছাত্রাবাসের ডেমো শিক্ষার্থী প্রোফাইল। পরে sheet থেকে বিস্তারিত তথ্য আপডেট করা যাবে।"
+    }
+  },
+  {
+    "id": 25,
+    "slug": "ariful25",
+    "position": 25,
+    "roommateIds": [
+      "rudro22"
+    ],
+    "name": "Ariful Islam",
+    "room": "324",
+    "roll": "050",
+    "fullRoll": "1202526010050",
+    "classNo": "12",
+    "group": "science",
+    "groupEn": "Science",
+    "groupBn": "বিজ্ঞান",
+    "section": "A",
+    "practicalGroup": "A1",
+    "college": "Dhaka College",
+    "phone": "01848631025",
+    "fatherPhone": "-",
+    "email": "arifulislam20238086@gmail.com",
+    "img": "/assets/uploads/img_20260503_130625_624-ariful-islam-1-.jpg",
+    "fb": "https://www.facebook.com/profile.php?id=100093029856067",
+    "messenger": "100093029856067",
+    "address": "Rohanpur, Gomastapur, Chapainawabganj",
+    "blood": "O+",
+    "bio": "Demo student profile for International Hall. Detailed information can be updated later from the student sheet.",
+    "pdfs": {
+      "ct1": "pdfs/ariful25-11-ct1.pdf",
+      "ct2": "pdfs/ariful25-11-ct2.pdf",
+      "hy": "pdfs/ariful25-11-hy.pdf",
+      "ct3": "pdfs/ariful25-11-ct3.pdf",
+      "yearly": "pdfs/ariful25-11-y.pdf"
+    },
+    "result": {
+      "gpa": 0,
+      "physics": 0,
+      "chemistry": 0,
+      "math": 0
+    },
+    "bn": {
+      "name": "আরিফুল ইসলাম",
+      "college": "ঢাকা কলেজ",
+      "address": "রোহনপুর, গোমস্তাপুর, চাঁপাইনবাবগঞ্জ",
+      "bio": "আন্তর্জাতিক ছাত্রাবাসের ডেমো শিক্ষার্থী প্রোফাইল। পরে sheet থেকে বিস্তারিত তথ্য আপডেট করা যাবে।"
+    }
+  },
+  {
+    "id": 26,
+    "slug": "rejawl26",
+    "position": 26,
+    "roommateIds": [
+      "munsi6"
+    ],
+    "name": "Md Rezaul Karim",
+    "room": "315",
+    "roll": "098",
+    "fullRoll": "1202526030098",
+    "classNo": "12",
+    "group": "arts",
+    "groupEn": "Humanities",
+    "groupBn": "মানবিক",
+    "section": "",
+    "practicalGroup": "",
+    "college": "Dhaka College",
+    "phone": "01641659606",
+    "fatherPhone": "-",
+    "email": "rkdc8989@gmail.com",
+    "img": "/assets/uploads/img-20260328-wa0060-rezaul-karim-1-.jpg",
+    "fb": "https://facebook.com/",
+    "messenger": "",
+    "address": "Titas, Cumilla",
+    "blood": "A+",
+    "bio": "Sports lover",
+    "pdfs": {
+      "ct1": "pdfs/rejawl26-11-ct1.pdf",
+      "ct2": "pdfs/rejawl26-11-ct2.pdf",
+      "hy": "pdfs/rejawl26-11-hy.pdf",
+      "ct3": "pdfs/rejawl26-11-ct3.pdf",
+      "yearly": "pdfs/rejawl26-11-y.pdf"
+    },
+    "result": {
+      "gpa": 0,
+      "physics": 0,
+      "chemistry": 0,
+      "math": 0
+    },
+    "bn": {
+      "name": "মোঃ রেজাউল করিম",
+      "college": "ঢাকা কলেজ",
+      "address": "তিতাস, কুমিল্লা",
+      "bio": "Sports lover"
+    }
+  },
+  {
+    "id": 27,
+    "slug": "sabit27",
+    "position": 27,
+    "roommateIds": [
+      "riasad23"
+    ],
+    "name": "Muhammad Rayhanoor Sabit",
+    "room": "327",
+    "roll": "171",
+    "fullRoll": "1202526010171",
+    "classNo": "12",
+    "group": "science",
+    "groupEn": "Science",
+    "groupBn": "বিজ্ঞান",
+    "section": "B",
+    "practicalGroup": "B1",
+    "college": "Dhaka College",
+    "phone": "01852223068",
+    "fatherPhone": "01971444941",
+    "email": "-",
+    "img": "/assets/uploads/sabit.jpg",
+    "fb": "https://facebook.com/",
+    "messenger": "",
+    "address": "Marich Pasha, Lohagara, Narail\n",
+    "blood": "AB+",
+    "bio": "Demo student profile for International Hall. Detailed information can be updated later from the student sheet.",
+    "pdfs": {
+      "ct1": "pdfs/sabit27-11-ct1.pdf",
+      "ct2": "pdfs/sabit27-11-ct2.pdf",
+      "hy": "pdfs/sabit27-11-hy.pdf",
+      "ct3": "pdfs/sabit27-11-ct3.pdf",
+      "yearly": "pdfs/sabit27-11-y.pdf"
+    },
+    "result": {
+      "gpa": 0,
+      "physics": 0,
+      "chemistry": 0,
+      "math": 0
+    },
+    "bn": {
+      "name": "মুহাম্মদ রায়হানুর সাবিত ",
+      "college": "ঢাকা কলেজ",
+      "address": "মরিচ পাশা, লোহাগড়া, নড়াইল",
+      "bio": "আন্তর্জাতিক ছাত্রাবাসের ডেমো শিক্ষার্থী প্রোফাইল। পরে sheet থেকে বিস্তারিত তথ্য আপডেট করা যাবে।"
+    }
+  },
+  {
+    "id": 28,
+    "slug": "alif28",
+    "position": 28,
+    "roommateIds": [
+      "saimun14"
+    ],
+    "name": "Alimuzzamann Alif",
+    "room": "326",
+    "roll": "153",
+    "fullRoll": "1202526010153",
+    "classNo": "12",
+    "group": "science",
+    "groupEn": "Science",
+    "groupBn": "বিজ্ঞান",
+    "section": "B",
+    "practicalGroup": "B1",
+    "college": "Dhaka College",
+    "phone": "01758173284",
+    "fatherPhone": "01540759625",
+    "email": "mdalimuzzamanalif890@gmail.com",
+    "img": "images/alif28.jpg",
+    "fb": "https://www.facebook.com/share/18MFvaQuS2/",
+    "messenger": "18MFvaQuS2",
+    "address": "Sundarganj, Gaibandha",
+    "blood": "AB+",
+    "bio": "What an amazing website it is for our international hall which created by meritorious adib. Keep going higher. Truly appreciating for such kind of initiatives. With all are staying with it . Hoping main target Will fulfill with it's modern development.",
+    "pdfs": {
+      "ct1": "pdfs/alif28-11-ct1.pdf",
+      "ct2": "pdfs/alif28-11-ct2.pdf",
+      "hy": "pdfs/alif28-11-hy.pdf",
+      "ct3": "pdfs/alif28-11-ct3.pdf",
+      "yearly": "pdfs/alif28-11-y.pdf"
+    },
+    "result": {
+      "gpa": 0,
+      "physics": 0,
+      "chemistry": 0,
+      "math": 0
+    },
+    "bn": {
+      "name": "আলিমুজ্জামান আলিফ",
+      "college": "ঢাকা কলেজ",
+      "address": "সুন্দরগঞ্জ, গাইবান্ধা",
+      "bio": "What an amazing website it is for our international hall which created by meritorious adib. Keep going higher. Truly appreciating for such kind of initiatives. With all are staying with it . Hoping main target Will fulfill with it's modern development."
+    }
+  }
+];
 
 const famousProfiles = {
   one: {
@@ -630,7 +1849,132 @@ const famousProfiles = {
 };
 
 let cmsSettings = null;
-let roomsData = [];
+let cmsGalleryData = null;
+let cmsHallData = null;
+let cmsDevData = null;
+let cmsHomeData = null;
+let roomsData = [
+  {
+    "room_no": "314",
+    "title_en": "Room 314",
+    "title_bn": "রুম ৩১৪",
+    "description_en": "Demo room details. Later you can replace the room photos and add bed, table, window and seat information.",
+    "description_bn": "রুমের ডেমো বিবরণ। পরে আপনি রুমের ছবি পরিবর্তন করতে এবং বিছানা, টেবিল, জানালা ও সিটের তথ্য যুক্ত করতে পারবেন।",
+    "photos": []
+  },
+  {
+    "room_no": "315",
+    "title_en": "Room 315",
+    "title_bn": "রুম ৩১৫",
+    "description_en": "Demo room details. Later you can replace the room photos and add bed, table, window and seat information.",
+    "description_bn": "রুমের ডেমো বিবরণ। পরে আপনি রুমের ছবি পরিবর্তন করতে এবং বিছানা, টেবিল, জানালা ও সিটের তথ্য যুক্ত করতে পারবেন।",
+    "photos": []
+  },
+  {
+    "room_no": "316",
+    "title_en": "Room 316",
+    "title_bn": "রুম ৩১৬",
+    "description_en": "Demo room details. Later you can replace the room photos and add bed, table, window and seat information.",
+    "description_bn": "রুমের ডেমো বিবরণ। পরে আপনি রুমের ছবি পরিবর্তন করতে এবং বিছানা, টেবিল, জানালা ও সিটের তথ্য যুক্ত করতে পারবেন।",
+    "photos": []
+  },
+  {
+    "room_no": "317",
+    "title_en": "Room 317",
+    "title_bn": "রুম ৩১৭",
+    "description_en": "Demo room details. Later you can replace the room photos and add bed, table, window and seat information.",
+    "description_bn": "রুমের ডেমো বিবরণ। পরে আপনি রুমের ছবি পরিবর্তন করতে এবং বিছানা, টেবিল, জানালা ও সিটের তথ্য যুক্ত করতে পারবেন।",
+    "photos": []
+  },
+  {
+    "room_no": "318",
+    "title_en": "Room 318",
+    "title_bn": "রুম ৩১৮",
+    "description_en": "Demo room details. Later you can replace the room photos and add bed, table, window and seat information.",
+    "description_bn": "রুমের ডেমো বিবরণ। পরে আপনি রুমের ছবি পরিবর্তন করতে এবং বিছানা, টেবিল, জানালা ও সিটের তথ্য যুক্ত করতে পারবেন।",
+    "photos": []
+  },
+  {
+    "room_no": "319",
+    "title_en": "Room 319",
+    "title_bn": "রুম ৩১৯",
+    "description_en": "Demo room details. Later you can replace the room photos and add bed, table, window and seat information.",
+    "description_bn": "রুমের ডেমো বিবরণ। পরে আপনি রুমের ছবি পরিবর্তন করতে এবং বিছানা, টেবিল, জানালা ও সিটের তথ্য যুক্ত করতে পারবেন।",
+    "photos": []
+  },
+  {
+    "room_no": "320",
+    "title_en": "Room 320",
+    "title_bn": "রুম ৩২০",
+    "description_en": "Demo room details. Later you can replace the room photos and add bed, table, window and seat information.",
+    "description_bn": "রুমের ডেমো বিবরণ। পরে আপনি রুমের ছবি পরিবর্তন করতে এবং বিছানা, টেবিল, জানালা ও সিটের তথ্য যুক্ত করতে পারবেন।",
+    "photos": []
+  },
+  {
+    "room_no": "321",
+    "title_en": "Room 321",
+    "title_bn": "রুম ৩২১",
+    "description_en": "Demo room details. Later you can replace the room photos and add bed, table, window and seat information.",
+    "description_bn": "রুমের ডেমো বিবরণ। পরে আপনি রুমের ছবি পরিবর্তন করতে এবং বিছানা, টেবিল, জানালা ও সিটের তথ্য যুক্ত করতে পারবেন।",
+    "photos": []
+  },
+  {
+    "room_no": "322",
+    "title_en": "Room 322",
+    "title_bn": "রুম ৩২২",
+    "description_en": "Demo room details. Later you can replace the room photos and add bed, table, window and seat information.",
+    "description_bn": "রুমের ডেমো বিবরণ। পরে আপনি রুমের ছবি পরিবর্তন করতে এবং বিছানা, টেবিল, জানালা ও সিটের তথ্য যুক্ত করতে পারবেন।",
+    "photos": []
+  },
+  {
+    "room_no": "323",
+    "title_en": "Room 323",
+    "title_bn": "রুম ৩২৩",
+    "description_en": "Demo room details. Later you can replace the room photos and add bed, table, window and seat information.",
+    "description_bn": "রুমের ডেমো বিবরণ। পরে আপনি রুমের ছবি পরিবর্তন করতে এবং বিছানা, টেবিল, জানালা ও সিটের তথ্য যুক্ত করতে পারবেন।",
+    "photos": []
+  },
+  {
+    "room_no": "324",
+    "title_en": "Room 324",
+    "title_bn": "রুম ৩২৪",
+    "description_en": "Demo room details. Later you can replace the room photos and add bed, table, window and seat information.",
+    "description_bn": "রুমের ডেমো বিবরণ। পরে আপনি রুমের ছবি পরিবর্তন করতে এবং বিছানা, টেবিল, জানালা ও সিটের তথ্য যুক্ত করতে পারবেন।",
+    "photos": []
+  },
+  {
+    "room_no": "325",
+    "title_en": "Room 325",
+    "title_bn": "রুম ৩২৫",
+    "description_en": "Demo room details. Later you can replace the room photos and add bed, table, window and seat information.",
+    "description_bn": "রুমের ডেমো বিবরণ। পরে আপনি রুমের ছবি পরিবর্তন করতে এবং বিছানা, টেবিল, জানালা ও সিটের তথ্য যুক্ত করতে পারবেন।",
+    "photos": []
+  },
+  {
+    "room_no": "326",
+    "title_en": "Room 326",
+    "title_bn": "রুম ৩২৬",
+    "description_en": "Demo room details. Later you can replace the room photos and add bed, table, window and seat information.",
+    "description_bn": "রুমের ডেমো বিবরণ। পরে আপনি রুমের ছবি পরিবর্তন করতে এবং বিছানা, টেবিল, জানালা ও সিটের তথ্য যুক্ত করতে পারবেন।",
+    "photos": []
+  },
+  {
+    "room_no": "327",
+    "title_en": "Room 327",
+    "title_bn": "রুম ৩২৭",
+    "description_en": "Demo room details. Later you can replace the room photos and add bed, table, window and seat information.",
+    "description_bn": "রুমের ডেমো বিবরণ। পরে আপনি রুমের ছবি পরিবর্তন করতে এবং বিছানা, টেবিল, জানালা ও সিটের তথ্য যুক্ত করতে পারবেন।",
+    "photos": []
+  },
+  {
+    "room_no": "328",
+    "title_en": "Room 328",
+    "title_bn": "রুম ৩২৮ ",
+    "description_en": "Demo room details. Later you can replace the room photos and add bed, table, window and seat information.",
+    "description_bn": "রুমের ডেমো বিবরণ। পরে আপনি রুমের ছবি পরিবর্তন করতে এবং বিছানা, টেবিল, জানালা ও সিটের তথ্য যুক্ত করতে পারবেন।",
+    "photos": []
+  }
+];
 
 async function fetchJson(path) {
   try {
@@ -642,12 +1986,27 @@ async function fetchJson(path) {
   }
 }
 
+function parseSanityAssetRef(ref, projectId = "w16kaeyg", dataset = "production") {
+  if (typeof ref !== "string") return "";
+  const match = ref.match(/^image-([a-f0-9]+)-([0-9]+x[0-9]+)-([a-z]+)$/);
+  if (match) {
+    return `https://cdn.sanity.io/images/${projectId}/${dataset}/${match[1]}-${match[2]}.${match[3]}`;
+  }
+  const fileMatch = ref.match(/^file-([a-f0-9]+)-([a-z0-9]+)$/);
+  if (fileMatch) {
+    return `https://cdn.sanity.io/files/${projectId}/${dataset}/${fileMatch[1]}.${fileMatch[2]}`;
+  }
+  return "";
+}
+
 function normalizeCmsPath(path) {
   if (!path) return "";
   if (typeof path === "object") {
     if (path.url) path = path.url;
     else if (path.asset && path.asset.url) path = path.asset.url;
-    else if (path.photo) path = typeof path.photo === "object" ? (path.photo.url || path.photo.asset?.url || "") : path.photo;
+    else if (path.asset && path.asset._ref) path = parseSanityAssetRef(path.asset._ref);
+    else if (path._ref) path = parseSanityAssetRef(path._ref);
+    else if (path.photo) path = typeof path.photo === "object" ? (path.photo.url || path.photo.asset?.url || parseSanityAssetRef(path.photo.asset?._ref || path.photo._ref) || "") : path.photo;
   }
   if (typeof path !== "string") return "";
   if (path.startsWith("http://") || path.startsWith("https://") || path.startsWith("//")) {
@@ -658,7 +2017,7 @@ function normalizeCmsPath(path) {
 
 function mapCmsStudent(item, index) {
   const slug = item.student_id || `student-${index + 1}`;
-  const group = item.group || "science";
+  const group = (item.group || "science").toLowerCase();
   const shortRoll = item.short_roll || "";
   const fullRoll = item.full_roll || shortRoll;
 
@@ -668,7 +2027,7 @@ function mapCmsStudent(item, index) {
     position: Number(item.position || index + 1),
     roommateIds: item.roommate_ids || [],
     name: item.name_en || slug,
-    room: item.room_no || "",
+    room: (item.room_no || "").trim(),
     roll: shortRoll,
     fullRoll,
     classNo: item.class_no || "11",
@@ -831,19 +2190,16 @@ async function loadCmsContent() {
   }
 
   if (studentData?.students?.length) {
-    const fallbackStudents = students;
-    const cmsStudents = studentData.students.map(mapCmsStudent);
-    const cmsBySlug = new Map(cmsStudents.map((student) => [student.slug, student]));
-    const merged = fallbackStudents.map((student) => cmsBySlug.get(student.slug) || student);
-    cmsStudents.forEach((student) => {
-      if (!fallbackStudents.some((item) => item.slug === student.slug)) merged.push(student);
-    });
-    students = merged.sort((a, b) => (a.position || 9999) - (b.position || 9999));
-    
+    students = studentData.students.map(mapCmsStudent).sort((a, b) => (a.position || 9999) - (b.position || 9999));
     students.forEach((student, idx) => {
       student.id = idx + 1;
     });
   }
+
+  cmsGalleryData = galleryData;
+  cmsHallData = hallData;
+  cmsDevData = devData;
+  cmsHomeData = homeData;
 
   // Render CMS page data
   await renderGalleryPage(galleryData);
@@ -1505,6 +2861,18 @@ function renderDynamicContent() {
   renderResults();
   renderDcSocialPage();
   renderDcClubsPage();
+  if (cmsGalleryData) {
+    renderGalleryPage(cmsGalleryData);
+    renderHomeGallery(cmsGalleryData);
+  }
+  if (cmsHallData) {
+    renderHallInfoPage(cmsHallData);
+    renderAlumniList(cmsHallData.alumni_profiles);
+    renderHallSuperPage(cmsHallData);
+  }
+  if (cmsDevData) {
+    renderDeveloperPage(cmsDevData);
+  }
   initImageFallbacks();
 
   if (activeStudentId) {
@@ -2203,8 +3571,8 @@ async function renderGalleryPage(galleryData) {
     const items = data.items.slice().sort((a, b) => Number(a.position || 0) - Number(b.position || 0));
     grid.innerHTML = items.map((item, index) => {
       const photo = normalizeCmsPath(item.photo) || "images/hostel-building.jpg";
-      const title = currentLang === "bn" ? item.title_bn : item.title_en;
-      const desc = currentLang === "bn" ? item.description_bn : item.description_en;
+      const title = currentLang === "bn" ? (item.title_bn || item.title_en || "") : (item.title_en || item.title_bn || "");
+      const desc = currentLang === "bn" ? (item.description_bn || item.description_en || "") : (item.description_en || item.description_bn || "");
       return `
         <article class="gallery-card" data-aos="fade-up" data-aos-delay="${(index % 6) * 50}">
           <button type="button" data-gallery-src="${photo}" data-gallery-title="${title || ""}" data-gallery-desc="${desc || ""}">

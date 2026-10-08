@@ -1,13 +1,4 @@
 {
-  "site_title_en": "International Hall",
-  "site_title_bn": "আন্তর্জাতিক ছাত্রাবাস",
-  "logo": "images/logo.png",
-  "hero_title_en": "International Hall",
-  "hero_title_bn": "আন্তর্জাতিক ছাত্রাবাস",
-  "hero_subtitle_en": "Together we learn, together we succeed.",
-  "hero_subtitle_bn": "একসাথে শিখি, একসাথে সফল হই।",
-  "hero_image": "images/hostel-hero.jpg",
-  "notice_pdf": "",
   "menu_items": [
     {
       "position": 1,
@@ -58,6 +49,7 @@
       "link": "developer.html"
     }
   ],
+  "site_title_en": "International Hall",
   "contact_logos": {
     "phone": "images/phonelogo.png",
     "whatsapp": "images/whatsapplogo.png",
@@ -65,7 +57,11 @@
     "facebook": "images/facebooklogo.png",
     "messenger": "images/messengerlogo.png"
   },
-  "password": "102103104",
+  "hero_subtitle_en": "Together we learn, together we succeed.",
+  "site_title_bn": "আন্তর্জাতিক ছাত্রাবাস",
+  "logo": "images/logo.png",
+  "notice_pdf": "",
+  "hero_subtitle_bn": "একসাথে শিখি, একসাথে সফল হই।",
   "global_visibility": false,
   "locked_fields": {
     "lock_phone": true,
@@ -75,19 +71,12 @@
     "lock_socials": true,
     "lock_results": true
   },
+  "hero_title_en": "International Hall",
+  "hero_image": "images/hostel-hero.jpg",
+  "hero_title_bn": "আন্তর্জাতিক ছাত্রাবাস",
+  "password": "102103104",
   "dhaka_college": {
-    "official_site_title_en": "Dhaka College Website",
-    "official_site_title_bn": "ঢাকা কলেজ ওয়েবসাইট",
-    "official_site_url": "https://www.dhakacollege.edu.bd/",
-    "notice_title_en": "Dhaka College Notice",
-    "notice_title_bn": "ঢাকা কলেজ নোটিশ",
-    "notice_url": "https://www.dhakacollege.edu.bd/en/notice?limit=100&page=1",
-    "result_admit_title_en": "DC Result & Admit Card",
-    "result_admit_title_bn": "রেজাল্ট ও এডমিট কার্ড",
     "result_admit_url": "https://dhakacollege.eshiksabd.com/",
-    "archive_title_en": "The DC Archive Website",
-    "archive_title_bn": "দা ডিসি আর্কাইভ",
-    "archive_url": "https://thedcarchive.pages.dev/",
     "social_links": [
       {
         "title_en": "DCian Freaks Page",
@@ -108,6 +97,16 @@
         "is_group": true
       }
     ],
+    "notice_url": "https://www.dhakacollege.edu.bd/en/notice?limit=100&page=1",
+    "official_site_url": "https://www.dhakacollege.edu.bd/",
+    "archive_title_en": "The DC Archive Website",
+    "archive_title_bn": "দা ডিসি আর্কাইভ",
+    "archive_url": "https://thedcarchive.pages.dev/",
+    "official_site_title_en": "Dhaka College Website",
+    "notice_title_en": "Dhaka College Notice",
+    "official_site_title_bn": "ঢাকা কলেজ ওয়েবসাইট",
+    "notice_title_bn": "ঢাকা কলেজ নোটিশ",
+    "result_admit_title_en": "DC Result & Admit Card",
     "clubs": [
       {
         "name_en": "Dhaka College Cultural Club",
@@ -158,6 +157,7 @@
         "desc_bn": "পাবলিক স্পিকিং, বিতর্ক, পেশাদার লেখা এবং ইংরেজি যোগাযোগ দক্ষতা বৃদ্ধি করা।",
         "facebook_url": "https://www.facebook.com/dcelc.official"
       }
-    ]
+    ],
+    "result_admit_title_bn": "রেজাল্ট ও এডমিট কার্ড"
   }
 }
