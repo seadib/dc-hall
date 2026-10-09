@@ -2093,9 +2093,11 @@ h3 {
   }
 
   .student-card img {
-    aspect-ratio: 4 / 3;
-    max-height: 250px;
-    object-position: top center;
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    max-height: 280px;
+    object-fit: cover;
+    object-position: center center !important;
   }
 
   .student-body {
