@@ -1,168 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta name="description" content="Dhaka College International Hall Website (DC Hall Website). Explore student directory, room details, roommates search, academic results, club directory, and official social pages. Searchable for adib dchall, hostel info, and international hall students.">
-  <meta name="keywords" content="dhaka college international hall wbsite, dc hall website, adib dchall, international hall info, hostel, dhaka college hostel, dc hostel, dhaka college, adib">
-  <link rel="icon" href="images/favicon.png" type="image/png" sizes="192x192">
-  <link rel="icon" href="images/favicon.png" type="image/png" sizes="96x96">
-  <link rel="icon" href="images/favicon.png" type="image/png" sizes="48x48">
-  <link rel="icon" href="images/favicon.png" type="image/png" sizes="32x32">
-  <link rel="icon" href="images/favicon.png" type="image/png" sizes="16x16">
-  <link rel="shortcut icon" href="images/favicon.png" type="image/png">
-  <link rel="apple-touch-icon" href="images/favicon.png" sizes="180x180">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>International Hall | Hall Super | Dhaka College International Hall | DC Hall Website</title>
+  <title>International Hall | Hall Super</title>
+  <meta http-equiv="refresh" content="0; url=hostel.html#hallsuper">
+  <link rel="canonical" href="https://dchall.pro.bd/hostel.html#hallsuper">
   <script>
-    (function () {
-      try {
-        if (localStorage.getItem("dc-hostel-theme") === "dark") {
-          document.documentElement.classList.add("dark");
-          document.documentElement.dataset.theme = "dark";
-        }
-      } catch (error) {}
-    })();
+    window.location.replace("hostel.html#hallsuper");
   </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700;800&family=Noto+Serif+Bengali:wght@400;500;600;700&family=Outfit:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
 </head>
-<body data-page="hallsuper">
-  <header class="navbar" id="navbar">
-    <div class="container nav-inner">
-      <a class="logo" href="index.html" aria-label="International Hall home">
-        <img class="logo-img" src="images/logo.png" alt="International Hall logo" loading="lazy">
-        <span data-i18n="nav.logo">International Hall</span>
-      </a>
-      <nav class="nav-links" aria-label="Primary navigation">
-        <a href="index.html" data-i18n="nav.home">Home</a>
-        <a href="students.html" data-i18n="nav.students">Students</a>
-        <a href="roommates.html" data-i18n="nav.roommates">Roommates</a>
-        <a href="results.html" data-i18n="nav.results">Results</a>
-        <a href="hostel.html" data-i18n="nav.hostel">Hall Info</a>
-      </nav>
-      <div class="nav-actions">
-        <div class="language-switch" aria-label="Language selector">
-          <button type="button" data-lang-option="en">English</button>
-          <button type="button" data-lang-option="bn">বাংলা</button>
-        </div>
-        <a href="profile.html" class="profile-toggle" id="profileBtn" aria-label="Profile Status / Login">
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-          </svg>
-        </a>
-        <button class="theme-toggle" id="toggle" type="button" aria-label="Toggle dark mode">
-          <span aria-hidden="true">&#9789;</span>
-        </button>
-      </div>
-    </div>
-  </header>
-
-  <main class="page-main">
-    <section class="page-hero compact">
-      <div class="container" data-aos="fade-up">
-        <p class="eyebrow" data-i18n="nav.hallSuper">Hall Super</p>
-        <h1 data-i18n="hallSuper.title">Hall Super</h1>
-        <p data-i18n="hallSuper.subtitle">Important information for students about the respected hall superintendent.</p>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <div class="split" style="align-items: center;">
-          <figure class="hostel-photo" data-aos="zoom-in" style="max-width: 380px;">
-            <img src="images/hall/hallsuper1.webp" alt="Hall super portrait" loading="lazy" style="border-radius: 18px; box-shadow: var(--shadow); width: 100%; object-fit: cover;">
-          </figure>
-          <div data-aos="fade-up">
-            <p class="eyebrow" data-i18n="hallSuper.eyebrow">Respectful Leadership</p>
-            <h2 data-i18n="hallSuper.name">Prof. Md. Kamruzzaman</h2>
-            <p style="display:inline-block; margin-bottom: 14px; font-weight: 700; color: var(--accent); background: var(--accent-soft); padding: 4px 14px; border-radius: 999px; font-size: 0.88rem;">
-              Provost · International Hall, Dhaka College
-            </p>
-            <p class="lead" data-i18n="hallSuper.bio">
-              Prof. Md. Kamruzzaman serves as the Provost of Dhaka College International Hall. He is committed to maintaining a disciplined, secure, and student-friendly residential environment while supporting students' academic success, personal development, and overall well-being.
-            </p>
-
-            <!-- Direct Contact Actions -->
-            <div class="hall-super-contact-actions" style="display: flex; flex-wrap: wrap; gap: 10px; margin: 20px 0 24px;">
-              <a class="btn primary" id="superCallBtn" href="tel:+8801711000000" style="gap: 8px;">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-                <span>Call Phone</span>
-              </a>
-              <a class="btn secondary" id="superWaBtn" href="https://wa.me/8801711000000" target="_blank" rel="noopener" style="gap: 8px;">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16.75 13.96c.25.13.41.2.46.3.06.11.04.61-.21 1.18-.2.56-1.24 1.1-1.7 1.12-.46.02-.47.36-2.96-.73-2.49-1.09-3.99-3.75-4.11-3.92-.12-.17-.99-1.32-.99-2.55 0-1.22.65-1.81.9-2.07.25-.26.6-.32.8-.32.2 0 .4.01.58.02.19.01.44-.07.69.53.25.6.86 2.09.93 2.25.07.16.12.35.02.55-.1.2-.16.32-.31.5-.15.18-.32.4-.46.54-.15.15-.31.32-.13.63.18.31.8 1.33 1.72 2.15 1.19 1.06 2.19 1.39 2.5 1.54.31.15.5.13.68-.08.18-.21.78-.91.99-1.22.21-.31.42-.26.7-.16zM12 2a10 10 0 0 0-8.62 15.08L2 22l5.05-1.33A10 10 0 1 0 12 2z"/></svg>
-                <span>WhatsApp</span>
-              </a>
-              <a class="btn secondary" id="superFbBtn" href="https://www.facebook.com/dhakacollegeofficial" target="_blank" rel="noopener" style="gap: 8px;">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95C18.05 21.45 22 17.19 22 12z"/></svg>
-                <span>Facebook</span>
-              </a>
-              <a class="btn secondary" id="superEmailBtn" href="mailto:hallsuper@dhakacollege.edu.bd" style="gap: 8px;">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-                <span>Email</span>
-              </a>
-            </div>
-
-            <div class="info-grid">
-              <article class="info-box">
-                <h3 data-i18n="hallSuper.joinedTitle">Joined Hall Duty</h3>
-                <p data-i18n="hallSuper.joinedText">Serving students since 2022 with dedication and leadership.</p>
-              </article>
-              <article class="info-box">
-                <h3 data-i18n="hallSuper.contributionTitle">Contribution</h3>
-                <p data-i18n="hallSuper.contributionText">Improved discipline, student communication and admission preparation culture.</p>
-              </article>
-              <article class="info-box">
-                <h3 data-i18n="hallSuper.noticeTitle">Student Support</h3>
-                <p data-i18n="hallSuper.noticeText">Students can contact the hall office for room, attendance and emergency support.</p>
-              </article>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Consultation & Emergency Helpdesk -->
-    <section class="section tinted" id="contact">
-      <div class="container">
-        <div class="section-head">
-          <div data-aos="fade-up">
-            <p class="eyebrow">Office & Helpdesk</p>
-            <h2>Contact & Consultation Hours</h2>
-          </div>
-          <p class="location-copy" data-aos="fade-up" data-aos-delay="100">
-            Official visiting schedule and emergency communication guidelines for residential students.
-          </p>
-        </div>
-        <div class="info-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
-          <article class="info-box" data-aos="fade-up">
-            <span class="info-icon">01</span>
-            <h3>Office Location</h3>
-            <p id="superOfficeRoom">Provost Office, Ground Floor, International Hall, Dhaka College</p>
-          </article>
-          <article class="info-box" data-aos="fade-up" data-aos-delay="100">
-            <span class="info-icon">02</span>
-            <h3>Visiting / Consultation Hours</h3>
-            <p id="superVisitingHours">Saturday – Thursday: 5:00 PM – 8:00 PM (Prior hall appointment preferred)</p>
-          </article>
-          <article class="info-box" data-aos="fade-up" data-aos-delay="200">
-            <span class="info-icon">03</span>
-            <h3>Emergency Resident Protocol</h3>
-            <p>For urgent nighttime medical or security emergencies, notify the Hall Monitor or Ground Floor Duty Guard immediately.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="container footer-inner"></div>
-  </footer>
-
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-  <script src="js/sanity-client.js"></script>
-  <script src="js/app.js"></script>
+<body style="font-family: sans-serif; text-align: center; padding: 40px; background: #0c101d; color: #f1f5f9;">
+  <p>Redirecting to <a href="hostel.html#hallsuper" style="color: #10c9a8; font-weight: bold;">Hall Super in Hall Info</a>...</p>
+  <script>
+    window.location.replace("hostel.html#hallsuper");
+  </script>
 </body>
 </html>

@@ -20,24 +20,24 @@
 }
 
 .dark {
-  --bg: #080d1a;
-  --bg-alt: #0d1425;
-  --text: #e8eeff;
+  --bg: #0c101d;
+  --bg-alt: #101526;
+  --text: #f1f5f9;
   --text-strong: #ffffff;
-  --text-muted: #8e9bba;
-  --muted: #8e9bba;
-  --surface: #0d1425;
-  --surface-strong: #121b30;
-  --surface-light: #16223d;
-  --border: rgba(232, 238, 255, 0.08);
-  --border-soft: rgba(232, 238, 255, 0.04);
+  --text-muted: #94a3b8;
+  --muted: #94a3b8;
+  --surface: #131929;
+  --surface-strong: #172033;
+  --surface-light: #1c273e;
+  --border: rgba(255, 255, 255, 0.08);
+  --border-soft: rgba(255, 255, 255, 0.05);
   --accent: #10c9a8;
-  --accent-strong: #3de8cc;
-  --accent-soft: rgba(16, 201, 168, 0.12);
-  --warm: #e06c75;
-  --shadow: 0 20px 48px rgba(0, 0, 0, 0.55);
-  --nav-bg: rgba(8, 13, 26, 0.92);
-  --overlay: rgba(4, 7, 15, 0.82);
+  --accent-strong: #38bdf8;
+  --accent-soft: rgba(16, 201, 168, 0.15);
+  --warm: #f59e0b;
+  --shadow: 0 20px 48px rgba(0, 0, 0, 0.50);
+  --nav-bg: rgba(12, 16, 29, 0.92);
+  --overlay: rgba(6, 9, 17, 0.82);
   color-scheme: dark;
 }
 
@@ -557,9 +557,14 @@ h3 {
 }
 
 .student-card img {
-  height: 245px;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  height: auto;
+  max-height: 320px;
   object-fit: cover;
+  object-position: top center;
   background: var(--surface);
+  display: block;
 }
 
 .student-body {
@@ -1075,6 +1080,7 @@ h3 {
   height: 320px;
   border-radius: 8px;
   object-fit: cover;
+  object-position: top center;
 }
 
 .profile h2 {
@@ -1229,15 +1235,34 @@ h3 {
 }
 
 .person-card img,
-.gallery-card img,
 .developer-card img {
-  height: 250px;
+  width: 100%;
+  aspect-ratio: 4 / 3.2;
+  height: auto;
+  max-height: 260px;
   object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
+.gallery-card img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  height: auto;
+  max-height: 260px;
+  object-fit: cover;
+  object-position: center;
+  display: block;
 }
 
 .hall-photo-demo .gallery-card img {
-  height: 270px;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  height: auto;
+  max-height: 270px;
   object-fit: cover;
+  object-position: center;
+  display: block;
 }
 
 .person-card h3,
@@ -1704,11 +1729,9 @@ h3 {
     flex-wrap: wrap;
   }
 
-  .student-grid,
   .info-grid.three,
   .roommate-grid.wide,
   .split,
-  .filter-panel,
   .person-grid,
   .gallery-grid,
   .developer-layout,
@@ -1722,6 +1745,17 @@ h3 {
     grid-template-columns: 1fr;
   }
 
+  .student-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .filter-panel {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 14px;
+    padding: 18px;
+  }
+
   .section-head {
     align-items: flex-start;
     flex-direction: column;
@@ -1732,7 +1766,13 @@ h3 {
   }
 
   .profile img {
-    height: 280px;
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    object-position: top center;
+    margin: 0 auto;
   }
 
   .developer-hero {
@@ -1827,11 +1867,17 @@ h3 {
   }
 
   .student-grid {
+    grid-template-columns: 1fr;
     gap: 16px;
   }
 
   .student-card img {
-    height: 220px;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    max-height: 340px;
+    object-fit: cover;
+    object-position: top center;
   }
 
   .room-pair {
@@ -2383,8 +2429,8 @@ body:not([data-page="home"]) .profile-toggle,
 }
 
 .track-badge.secondary {
-  background: rgba(224, 108, 117, 0.15);
-  color: var(--warm);
+  background: var(--accent-soft);
+  color: var(--accent);
 }
 
 .track-exams {
@@ -2574,12 +2620,18 @@ body:not([data-page="home"]) .profile-toggle,
   transition: all 0.2s ease;
 }
 
-.gallery-filter-btn:hover,
+.gallery-filter-btn:hover {
+  border-color: var(--accent);
+  color: var(--text-strong);
+  transform: translateY(-1px);
+}
+
 .gallery-filter-btn.active {
   background: var(--accent);
-  color: #ffffff;
+  color: #0c101d;
+  font-weight: 700;
   border-color: var(--accent);
-  box-shadow: 0 4px 12px var(--accent-soft);
+  box-shadow: 0 4px 14px var(--accent-soft);
 }
 
 .dcsc-event-section {

@@ -2834,7 +2834,7 @@ function ensureNavigation() {
         <a href="roommates.html" class="${page === "roommates" ? "active" : ""}">${t("nav.roommates")}</a>
         <a href="results.html" class="${page === "results" ? "active" : ""}">${t("nav.results")}</a>
         <a href="hostel.html" class="${page === "hostel" ? "active" : ""}">${t("nav.hostel")}</a>
-        <a href="hallsuper.html" class="${page === "hallsuper" ? "active" : ""}">${t("nav.hallSuper")}</a>
+        <a href="hostel.html#hallsuper" class="${page === "hallsuper" ? "active" : ""}">${t("nav.hallSuper")}</a>
         <a href="gallery.html" class="${page === "gallery" ? "active" : ""}">${t("nav.gallery")}</a>
       </div>
     </div>
@@ -2883,7 +2883,7 @@ function renderFooter() {
     <div class="footer-links">
       <h3>${t("footer.hallLinks")}</h3>
       <a href="hostel.html">${t("nav.hostel")}</a>
-      <a href="hallsuper.html">${t("nav.hallSuper")}</a>
+      <a href="hostel.html#hallsuper">${t("nav.hallSuper")}</a>
       <a href="gallery.html">${t("nav.gallery")}</a>
       <a href="developer.html">${t("nav.developer")}</a>
     </div>
@@ -4028,18 +4028,10 @@ function initImageFallbacks() {
   document.querySelectorAll("img").forEach((img) => {
     if (img.closest(".contact-btn")) return; // Skip contact buttons, handled inline
 
-    if (img.complete && img.naturalWidth === 0) {
-      if (!img.dataset.fallbackApplied) {
-        img.dataset.fallbackApplied = "true";
-        img.src = "images/hall/hostel-building.jpg";
-      }
-      return;
-    }
-
     img.addEventListener("error", () => {
       if (!img.dataset.fallbackApplied) {
         img.dataset.fallbackApplied = "true";
-        img.src = "images/hostel-building.jpg";
+        img.src = "images/hall/hostel-building.jpg";
       }
     });
   });
@@ -4547,27 +4539,27 @@ async function renderHallInfoPage(hallData) {
 }
 
 async function renderHallSuperPage(hallData) {
-  if (document.body.dataset.page !== "hallsuper") return;
+  if (document.body.dataset.page !== "hallsuper" && document.body.dataset.page !== "hostel") return;
 
   const data = hallData || await fetchJson("data/hall.json");
   if (!data) return;
 
   // 1. Hall Super Photo
-  const superImg = document.querySelector(".hostel-photo img");
+  const superImg = byId("superPhotoImg") || document.querySelector("#hallsuper img") || (document.body.dataset.page === "hallsuper" ? document.querySelector(".hostel-photo img") : null);
   if (superImg && data.hall_super_photo) {
     superImg.src = normalizeCmsPath(data.hall_super_photo);
   }
 
   // 2. Eyebrow, Name and Bio
-  const eyebrow = document.querySelector(".split .eyebrow");
+  const eyebrow = document.querySelector("#hallsuper .eyebrow") || document.querySelector(".split .eyebrow");
   if (eyebrow) {
     eyebrow.textContent = currentLang === "bn" ? (data.hall_super_eyebrow_bn || "সম্মানিত নেতৃত্ব") : (data.hall_super_eyebrow_en || "Respectful Leadership");
   }
-  const nameEl = document.querySelector("[data-i18n='hallSuper.name']");
+  const nameEl = byId("hallSuperName") || document.querySelector("[data-i18n='hallSuper.name']");
   if (nameEl) {
     nameEl.textContent = currentLang === "bn" ? (data.hall_super_name_bn || "অধ্যাপক মোঃ কামরুজ্জামান") : (data.hall_super_name_en || "Prof. Md. Kamruzzaman");
   }
-  const bioEl = document.querySelector("[data-i18n='hallSuper.bio']");
+  const bioEl = byId("hallSuperBio") || document.querySelector("[data-i18n='hallSuper.bio']");
   if (bioEl) {
     const bio = currentLang === "bn" ? (data.hall_super_bio_bn || data.hall_super_bio_en) : (data.hall_super_bio_en || data.hall_super_bio_bn);
     if (bio) bioEl.textContent = bio;
@@ -4591,7 +4583,7 @@ async function renderHallSuperPage(hallData) {
   }
 
   // 4. Info grid (info boxes)
-  const infoGrid = document.querySelector(".info-grid");
+  const infoGrid = document.querySelector("#hallsuper .info-grid") || (document.body.dataset.page === "hallsuper" ? document.querySelector(".info-grid") : null);
   if (infoGrid && data.hall_super_info_boxes && data.hall_super_info_boxes.length) {
     infoGrid.innerHTML = data.hall_super_info_boxes.map((box) => {
       const title = currentLang === "bn" ? box.title_bn : box.title_en;
