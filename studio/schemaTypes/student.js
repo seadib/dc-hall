@@ -230,12 +230,12 @@ export default defineType({
       description: 'খালি থাকলে ইংরেজি ঠিকানা দেখাবে।',
     }),
     defineField({
-      name: 'facebook_username',
-      title: 'Facebook Username (ফেসবুক ইউজারনেম)',
+      name: 'facebook',
+      title: 'Facebook Profile URL or Username (ফেসবুক লিংক বা ইউজারনেম)',
       type: 'string',
       group: 'contact',
-      description: 'শুধু ইউজারনেম লিখুন। যেমন: seadix → facebook.com/seadix ও m.me/seadix অটো তৈরি হবে।',
-      placeholder: 'seadix',
+      description: 'ফেসবুক লিংক (যেমন: https://www.facebook.com/seadix) অথবা শুধু ইউজারনেম (যেমন: seadix) — যেকোনোটি লিখলেই ফেসবুক ও মেসেঞ্জার দুটোই তৈরি হবে।',
+      placeholder: 'seadix বা https://facebook.com/seadix',
     }),
 
     // ═══════════════════════════════════════════
@@ -431,14 +431,16 @@ export default defineType({
       batch: 'batch',
       group: 'group',
       media: 'photo',
+      class_no: 'class_no',
     },
-    prepare({ title, roll, room, batch, group, media }) {
+    prepare({ title, roll, room, batch, group, media, class_no }) {
       const groupCode = group === 'science' ? 'Sci' : group === 'commerce' ? 'B.St' : group === 'arts' ? 'Hum' : '';
-      const parts = [batch, groupCode, room ? `R${room}` : '', roll ? `Roll ${roll}` : ''].filter(Boolean);
+      const displayBatch = batch || (class_no === '12' ? 'HSC-27' : class_no === '11' ? 'HSC-28' : 'HSC-27');
+      const parts = [displayBatch, groupCode, room ? `R${room}` : '', roll ? `Roll ${roll}` : ''].filter(Boolean);
       return {
         title: title || 'Unnamed Student',
         subtitle: parts.join(' · '),
-        media: (media && typeof media === 'object' && media.asset) ? media : undefined,
+        media: media,
       }
     },
   },

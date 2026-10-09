@@ -2478,10 +2478,20 @@ function mapCmsStudent(item, index) {
   const paddedRoll = shortRoll.padStart(4, '0');
   const fullRoll = item.full_roll || `120${batchCode}${groupCode}${paddedRoll}`;
 
-  // Facebook username → auto URLs
-  const fbUsername = item.facebook_username || '';
-  const fbUrl = fbUsername ? `https://www.facebook.com/${fbUsername}` : (item.facebook || '');
-  const messengerUrl = fbUsername ? `https://m.me/${fbUsername}` : (item.messenger || '');
+  // Facebook username / URL → auto URLs
+  const fbRaw = (item.facebook || item.facebook_username || '').trim();
+  let fbUrl = '';
+  let fbUsername = '';
+  if (fbRaw) {
+    if (fbRaw.includes('facebook.com/')) {
+      fbUrl = fbRaw.startsWith('http') ? fbRaw : `https://${fbRaw}`;
+      fbUsername = fbUrl.replace(/^https?:\/\/(www\.)?facebook\.com\/?/, '').replace(/\/.*$/, '');
+    } else {
+      fbUsername = fbRaw.replace(/[^a-zA-Z0-9._-]/g, '');
+      fbUrl = `https://www.facebook.com/${fbUsername}`;
+    }
+  }
+  const messengerUrl = fbUsername ? `https://m.me/${fbUsername}` : (item.messenger ? (item.messenger.startsWith('http') ? item.messenger : `https://m.me/${item.messenger}`) : '');
 
   // WhatsApp / Telegram logic
   const mainPhone = item.phone || '';
@@ -2527,7 +2537,7 @@ function mapCmsStudent(item, index) {
     hasTelegram: !!telegramId,
     fatherPhone: item.father_phone || "",
     email: item.email || "",
-    img: studentProfilePhotos[slug] || normalizeCmsPath(item.photo) || `images/profile/${slug}.jpg`,
+    img: normalizeCmsPath(item.photo) || studentProfilePhotos[slug] || `images/profile/${slug}.jpg`,
     fb: fbUrl,
     fbUsername,
     messenger: messengerUrl,
