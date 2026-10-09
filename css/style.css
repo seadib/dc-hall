@@ -607,6 +607,64 @@ h3 {
   font-weight: 700;
 }
 
+/* Batch Section Header */
+.batch-section-header {
+  grid-column: 1 / -1;
+  margin: 32px 0 16px;
+}
+
+.batch-header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 20px;
+  border-radius: 12px;
+  background: var(--surface-strong);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.batch-heading {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+
+.batch-icon {
+  font-size: 1.35rem;
+  line-height: 1;
+}
+
+.batch-badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 6px;
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+  font-weight: 800;
+  font-size: 1.12rem;
+  letter-spacing: 0.02em;
+}
+
+.batch-count-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 14px;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  font-weight: 700;
+  font-size: 0.88rem;
+}
+
 .profile a {
   color: var(--accent);
   font-weight: 700;
@@ -842,7 +900,7 @@ h3 {
 .info-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 18px;
+  gap: 12px;
 }
 
 .info-grid.three {
@@ -850,15 +908,26 @@ h3 {
 }
 
 .info-box {
-  padding: 24px;
+  padding: 16px 20px;
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius: 12px;
   background: var(--surface-strong);
-  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.05);
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.info-box h3 {
+  margin: 0 0 4px;
+  font-size: 1.05rem;
+  font-weight: 700;
 }
 
 .info-box p {
   margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.45;
   color: var(--muted);
 }
 
@@ -866,13 +935,14 @@ h3 {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 38px;
-  height: 30px;
-  margin-bottom: 16px;
-  border-radius: 8px;
+  min-width: 32px;
+  height: 24px;
+  margin-bottom: 8px;
+  border-radius: 6px;
   background: var(--accent-soft);
   color: var(--accent-strong);
   font-weight: 800;
+  font-size: 0.82rem;
 }
 
 .map-wrap {
@@ -2014,15 +2084,21 @@ h3 {
   }
 
   .gallery-card img {
-    height: 160px;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    object-fit: cover;
   }
 
   .dcsc-photo-card {
-    flex: 0 0 240px;
+    flex: 0 0 280px;
   }
 
   .dcsc-photo-card img {
-    height: 170px;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    object-fit: cover;
   }
 
   .room-number {
@@ -2121,8 +2197,16 @@ h3 {
     line-height: 1.55;
   }
 
-  .gallery-card img {
-    height: 200px;
+  .gallery-card img,
+  .dcsc-photo-card img {
+    width: 100% !important;
+    aspect-ratio: 16 / 9 !important;
+    height: auto !important;
+    max-height: none !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+    border-radius: 14px !important;
+    display: block !important;
   }
 }
 
@@ -2152,6 +2236,18 @@ h3 {
     object-fit: cover;
     object-position: center 25% !important;
     display: block;
+  }
+
+  .gallery-card img,
+  .dcsc-photo-card img {
+    width: 100% !important;
+    aspect-ratio: 16 / 9 !important;
+    height: auto !important;
+    max-height: none !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+    border-radius: 14px !important;
+    display: block !important;
   }
 
   .person-card h3,
@@ -3214,11 +3310,38 @@ body:not([data-page="home"]) .profile-toggle,
 }
 
 @media (max-width: 600px) {
+  .gallery-grid,
   .dcsc-memories-grid,
   .event-detail-grid,
   .event-video-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
   }
+
+  .gallery-card img,
+  .dcsc-photo-card img,
+  .dcsc-memories-grid .dcsc-photo-card img,
+  .event-detail-grid .dcsc-photo-card img {
+    width: 100% !important;
+    aspect-ratio: 16 / 9 !important;
+    height: auto !important;
+    max-height: none !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+    border-radius: 14px !important;
+    display: block !important;
+  }
+
+  .dcsc-event-grid .dcsc-photo-card {
+    flex: 0 0 88vw;
+    max-width: 88vw;
+  }
+
+  .dcsc-event-grid .dcsc-photo-card img {
+    aspect-ratio: 16 / 9 !important;
+    height: auto !important;
+  }
+
   .dcsc-event-title {
     font-size: 1.25rem;
   }

@@ -1,56 +1,105 @@
 {
+  "name_en": "Abdullah Al Adib",
   "name_bn": "আবদুল্যাহ আল আদিব",
+  "eyebrow_en": "Aspiring Software Engineer",
+  "eyebrow_bn": "সফটওয়্যার প্রকৌশল প্রত্যাশী",
+  "subtitle_en": "Dhaka College • HSC 2027",
+  "subtitle_bn": "ঢাকা কলেজ • এইচএসসি ২০২৭",
+  "lead_en": "I'm studying in the science department at Dhaka College. I build small apps and websites, and I try to learn something new every day. Goal — to create something no one has done before!",
+  "lead_bn": "ঢাকা কলেজের বিজ্ঞান বিভাগের শিক্ষার্থী। ছোট ছোট অ্যাপ ও ওয়েবসাইট তৈরি করি এবং প্রতিদিন নতুন কিছু শেখার চেষ্টা করি। লক্ষ্য — এমন কিছু তৈরি করা যা আগে কেউ করেনি!",
+  "portrait": "images/developer/developer.jpg",
+  "about_title_en": "About Me",
+  "about_title_bn": "আমার সম্পর্কে",
+  "about_text_en": "I'm studying in the science department at Dhaka College. I build small apps and websites, and I try to learn something new every day. Goal — to create something no one has done before!",
+  "about_text_bn": "ঢাকা কলেজের বিজ্ঞান বিভাগের শিক্ষার্থী। ছোট ছোট অ্যাপ ও ওয়েবসাইট তৈরি করি এবং প্রতিদিন নতুন কিছু শেখার চেষ্টা করি। লক্ষ্য — এমন কিছু তৈরি করা যা আগে কেউ করেনি!",
+  "contact_title_en": "Contact & Location",
+  "contact_title_bn": "যোগাযোগ ও ঠিকানা",
+  "contact_text_en": "drseadib@gmail.com\nHatiya Island, Noakhali, Bangladesh\nDhaka College — HSC 2027",
+  "contact_text_bn": "drseadib@gmail.com\nহাতিয়া দ্বীপ, নোয়াখালী, বাংলাদেশ\nঢাকা কলেজ — এইচএসসি ২০২৭",
+  "focus_title_en": "What I Do",
+  "focus_title_bn": "আমার দক্ষতা ও ক্ষেত্র",
+  "focus_text_en": "Web Design, Responsive UI, Blogging, AI & Automation, Student Data Systems and Dynamic Web Utilities.",
+  "focus_text_bn": "ওয়েব ডিজাইন, রেসপনসিভ ইউআই, ব্লগিং, এআই ও অটোমেশন, শিক্ষার্থী ডাটাবেজ এবং ডায়নামিক ওয়েব ইউটিলিটি।",
+  "skills": [
+    { "skill": "HTML5" },
+    { "skill": "CSS3" },
+    { "skill": "JavaScript" },
+    { "skill": "C Programming" },
+    { "skill": "Web Design" },
+    { "skill": "Responsive UI" },
+    { "skill": "Blogging" },
+    { "skill": "AI & Automation" }
+  ],
+  "projects": [
+    {
+      "title_en": "Dhaka College Science Club",
+      "url": "dhakacollegescienceclub.github.io",
+      "link": "https://dhakacollegescienceclub.github.io/",
+      "desc_en": "Official science club portal with event galleries and club highlights.",
+      "desc_bn": "ঢাকা কলেজ সায়েন্স ক্লাবের অফিসিয়াল পোর্টাল ও ইভেন্ট গ্যালারি।"
+    },
+    {
+      "title_en": "Dhaka College Hall Website",
+      "url": "dchall.pro.bd",
+      "link": "https://dchall.pro.bd/",
+      "desc_en": "International Hall central student directory, room finder, results and gallery.",
+      "desc_bn": "আন্তর্জাতিক ছাত্রাবাসের পূর্ণাঙ্গ স্টুডেন্ট ডিরেক্টরি, রুমমেট ফাইন্ডার ও রেজাল্ট সিস্টেম।"
+    },
+    {
+      "title_en": "CourseLink — Free Academic Courses",
+      "url": "adi.pro.bd/courselink",
+      "link": "https://adi.pro.bd/courselink",
+      "desc_en": "Free academic video lectures and organized learning resources.",
+      "desc_bn": "বিনামূল্যে একাডেমিক ভিডিও ক্লাস ও সুসংগঠিত রিসোর্স প্ল্যাটফর্ম।"
+    },
+    {
+      "title_en": "DrX Voice Typing",
+      "url": "seadib.github.io/voicetyping",
+      "link": "https://seadib.github.io/voicetyping/",
+      "desc_en": "Browser-based voice-to-text typing tool for fast Bengali & English typing.",
+      "desc_bn": "ব্রাউজারভিত্তিক দ্রুত বাংলা ও ইংরেজি ভয়েস টাইপিং টুল।"
+    },
+    {
+      "title_en": "Personal Blog",
+      "url": "seadib.blogspot.com",
+      "link": "https://seadib.blogspot.com/",
+      "desc_en": "Personal reflections, technology writings and learning documentation.",
+      "desc_bn": "ব্যক্তিগত ভাবনা, প্রযুক্তি ও শেখার নোটের ব্লগ।"
+    },
+    {
+      "title_en": "Literature Website",
+      "url": "drsahitto.blogspot.com",
+      "link": "https://drsahitto.blogspot.com/",
+      "desc_en": "Creative writing, literature archives and Bangla cultural articles.",
+      "desc_bn": "সৃজনশীল সাহিত্যচর্চা ও বাংলা লেখালেখির সংগ্রহশালা।"
+    }
+  ],
   "timeline": [
     {
-      "step_en": "Collect",
-      "step_bn": "তথ্য সংগ্রহ",
-      "desc_en": "Gather student, hall and project information.",
-      "desc_bn": "শিক্ষার্থী, হল এবং প্রজেক্টের যাবতীয় তথ্য সংগ্রহ করা।"
+      "step_en": "2022 — Start",
+      "step_bn": "২০২২ — শুরু",
+      "desc_en": "Tech foundation with HTML5 & CSS3 basics.",
+      "desc_bn": "HTML5 ও CSS3 দিয়ে টেকনিক্যাল যাত্রার সূচনা।"
     },
     {
-      "step_en": "Build",
-      "step_bn": "তৈরি করা",
-      "desc_en": "Turn the information into clean pages and useful features.",
-      "desc_bn": "সংগৃহীত তথ্যগুলোকে পরিষ্কার পেইজ ও প্রয়োজনীয় ফিচারে রূপান্তর করা।"
+      "step_en": "2023 — Blogging",
+      "step_bn": "২০২৩ — ব্লগিং",
+      "desc_en": "First web presence and content presentation.",
+      "desc_bn": "প্রথম ওয়েবসাইট উপস্থিতি এবং কনটেন্ট উপস্থাপনা।"
     },
     {
-      "step_en": "Improve",
-      "step_bn": "উন্নতি সাধন",
-      "desc_en": "Update design, mobile view and content based on real feedback.",
-      "desc_bn": "বাস্তব মতামতের ভিত্তিতে ডিজাইন, মোবাইল ভিউ এবং কনটেন্ট আপডেট করা।"
+      "step_en": "2025 — Code",
+      "step_bn": "২০২৫ — প্রোগ্রামিং",
+      "desc_en": "Logic building and core programming with C.",
+      "desc_bn": "C ল্যাঙ্গুয়েজের মাধ্যমে প্রোগ্রামিং লজিক গঠন।"
+    },
+    {
+      "step_en": "2026 — Apps",
+      "step_bn": "২০২৬ — অ্যাপস ও সিস্টেম",
+      "desc_en": "Dynamic web utilities, hall database and experimental web tools.",
+      "desc_bn": "ডায়নামিক ওয়েব ইউটিলিটি, হল ডেটাবেজ এবং এক্সপেরিমেন্টাল অ্যাপস তৈরি।"
     }
   ],
-  "skills": [
-    {
-      "skill": "HTML"
-    },
-    {
-      "skill": "CSS"
-    },
-    {
-      "skill": "JavaScript"
-    },
-    {
-      "skill": "Responsive UI"
-    },
-    {
-      "skill": "Student Data"
-    },
-    {
-      "skill": "Static Websites"
-    }
-  ],
-  "about_title_en": "About",
-  "about_title_bn": "পরিচিতি",
-  "about_text_en": "I am Abdullah Al Adib, a student of Dhaka College and the developer of this International Hall website. I like building clean, helpful and easy-to-use web projects for students.",
-  "lead_en": "Student developer from Dhaka College, building useful web tools, hall information systems and small experimental apps.",
-  "about_text_bn": "আমি আবদুল্লাহ আল আদিব, ঢাকা কলেজের ছাত্র এবং এই আন্তর্জাতিক ছাত্রাবাস ওয়েবসাইটের ডেভেলপার। আমি শিক্ষার্থীদের জন্য পরিষ্কার, দরকারী এবং সহজে ব্যবহারযোগ্য ওয়েব প্রজেক্ট তৈরি করতে পছন্দ করি।",
-  "lead_bn": "ঢাকা কলেজের student developer, useful web tools, hall information system এবং ছোট experimental app তৈরি করি।",
-  "contact_title_en": "Contact",
-  "contact_title_bn": "যোগাযোগ",
-  "focus_text_en": "Student profiles, result links, gallery systems, responsive UI, language switching and practical web tools for daily use.",
-  "focus_text_bn": "শিক্ষার্থী প্রোফাইল, ফলাফল লিংক, গ্যালারি সিস্টেম, রেসপন্সিভ ইউআই, ভাষা পরিবর্তন এবং দৈনন্দিন ব্যবহারের জন্য ব্যবহারিক ওয়েব টুলস।",
-  "focus_title_en": "Focus",
   "contributors": [
     {
       "name_en": "Content Helper",
@@ -66,40 +115,5 @@
       "desc_en": "Supports the project with hall and student event photos.",
       "desc_bn": "হল এবং শিক্ষার্থীদের বিভিন্ন অনুষ্ঠানের ছবি দিয়ে প্রজেক্টকে সমৃদ্ধ করে।"
     }
-  ],
-  "projects": [
-    {
-      "title_en": "Blog",
-      "url": "seadib.blogspot.com",
-      "link": "https://seadib.blogspot.com/",
-      "desc_en": "Personal writing, learning notes and web presence.",
-      "desc_bn": "ব্যক্তিগত লেখালেখি, শেখার নোট এবং ওয়েব উপস্থিতি।"
-    },
-    {
-      "title_en": "Literature",
-      "url": "drsahitto.blogspot.com",
-      "link": "https://drsahitto.blogspot.com/",
-      "desc_en": "Creative writing and Bangla content project.",
-      "desc_bn": "সৃজনশীল লেখালেখি এবং বাংলা কনটেন্ট প্রজেক্ট।"
-    },
-    {
-      "title_en": "Tool",
-      "url": "Voice Project",
-      "link": "https://seadib.github.io/voice/",
-      "desc_en": "Experimental browser-based voice tool.",
-      "desc_bn": "ব্রাউজারভিত্তিক পরীক্ষামূলক ভয়েস টুল।"
-    },
-    {
-      "title_en": "Hall",
-      "url": "International Hall Website",
-      "link": "https://seadib.github.io/hall/",
-      "desc_en": "Student, room, result, gallery and hall information hub.",
-      "desc_bn": "শিক্ষার্থী, রুম, ফলাফল, গ্যালারি এবং হল তথ্য হাব।"
-    }
-  ],
-  "focus_title_bn": "মূল লক্ষ্য",
-  "portrait": "images/developer/developer.jpg",
-  "contact_text_en": "drseadib@gmail.com\nDhaka College — Science",
-  "name_en": "Abdullah Al Adib",
-  "contact_text_bn": "drseadib@gmail.com\nঢাকা কলেজ — বিজ্ঞান বিভাগ"
+  ]
 }

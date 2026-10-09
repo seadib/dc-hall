@@ -3000,6 +3000,9 @@ function renderFooter() {
       <h3>${t("footer.quickLinks")}</h3>
       <a href="index.html#students-preview">${t("home.studentsPreview")}</a>
       <a href="index.html#roommates-preview">${t("home.roommatePreview")}</a>
+      <a href="index.html#hallsuper-preview">${t("nav.hallSuper")}</a>
+      <a href="index.html#gallery-preview">${t("nav.gallery")}</a>
+      <a href="index.html#dc-resources">${currentLang === "bn" ? "কলেজ রিসোর্স" : "College Resources"}</a>
       <a href="index.html#location">${t("common.location")}</a>
     </div>
     <div class="footer-links">
@@ -3007,12 +3010,16 @@ function renderFooter() {
       <a href="students.html">${t("nav.students")}</a>
       <a href="roommates.html">${t("nav.roommates")}</a>
       <a href="results.html">${t("nav.results")}</a>
+      <a href="profile.html">${currentLang === "bn" ? "প্রোফাইল / লগইন" : "Profile / Login"}</a>
     </div>
     <div class="footer-links">
       <h3>${t("footer.hallLinks")}</h3>
       <a href="hostel.html">${t("nav.hostel")}</a>
       <a href="hostel.html#hallsuper">${t("nav.hallSuper")}</a>
+      <a href="hostel.html#famous">${currentLang === "bn" ? "বিশিষ্ট প্রাক্তনী" : "Notable Alumni"}</a>
       <a href="gallery.html">${t("nav.gallery")}</a>
+      <a href="dc-clubs.html">${currentLang === "bn" ? "কলেজ ক্লাবসমূহ" : "College Clubs"}</a>
+      <a href="dc-social.html">${currentLang === "bn" ? "সোশ্যাল মিডিয়া" : "Social Links"}</a>
       <a href="developer.html">${t("nav.developer")}</a>
     </div>
   `;
@@ -3229,12 +3236,14 @@ function renderStudentCards(list = getFilteredStudents()) {
   batches.forEach((b) => {
     const count = batchMap[b].length;
     html += `
-      <div class="batch-section-header" style="grid-column: 1 / -1; margin-top: 24px; margin-bottom: 8px;" data-aos="fade-up">
-        <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 2px solid var(--border); padding-bottom: 10px;">
-          <h2 style="margin: 0; font-size: 1.35rem; color: var(--text); display: flex; align-items: center; gap: 8px;">
-            <span style="color: var(--accent);">🎓</span> Batch: ${b}
+      <div class="batch-section-header" data-aos="fade-up">
+        <div class="batch-header-inner">
+          <h2 class="batch-heading">
+            <span class="batch-icon">🎓</span>
+            <span class="batch-label">Batch:</span>
+            <span class="batch-badge">${b}</span>
           </h2>
-          <span class="pill" style="font-weight: 700; background: var(--surface-strong); border: 1px solid var(--border); color: var(--text);">${count} ${currentLang === 'bn' ? 'জন শিক্ষার্থী' : 'Students'}</span>
+          <span class="batch-count-pill">${count} ${currentLang === 'bn' ? 'জন শিক্ষার্থী' : 'Students'}</span>
         </div>
       </div>
     `;
@@ -4759,6 +4768,12 @@ async function renderDeveloperPage(devData) {
   const dev = devData || await fetchJson("data/developer.json");
   if (!dev) return;
 
+  const eyebrowEl = document.querySelector(".developer-intro .eyebrow");
+  if (eyebrowEl && (dev.eyebrow_en || dev.eyebrow_bn)) eyebrowEl.textContent = currentLang === "bn" ? (dev.eyebrow_bn || dev.eyebrow_en) : (dev.eyebrow_en || dev.eyebrow_bn);
+
+  const subEl = document.querySelector(".developer-subtitle");
+  if (subEl && (dev.subtitle_en || dev.subtitle_bn)) subEl.textContent = currentLang === "bn" ? (dev.subtitle_bn || dev.subtitle_en) : (dev.subtitle_en || dev.subtitle_bn);
+
   const nameEl = document.querySelector(".developer-intro h1");
   if (nameEl) nameEl.textContent = currentLang === "bn" ? dev.name_bn : dev.name_en;
 
@@ -4770,13 +4785,17 @@ async function renderDeveloperPage(devData) {
 
   const panels = document.querySelectorAll(".developer-info-grid .developer-panel");
   if (panels.length >= 3) {
-    panels[0].querySelector("h2").textContent = currentLang === "bn" ? dev.about_title_bn : dev.about_title_en;
+    panels[0].querySelector("h2").textContent = currentLang === "bn" ? (dev.about_title_bn || "আমার সম্পর্কে") : (dev.about_title_en || "About Me");
     panels[0].querySelector("p").textContent = currentLang === "bn" ? dev.about_text_bn : dev.about_text_en;
 
-    panels[1].querySelector("h2").textContent = currentLang === "bn" ? dev.contact_title_bn : dev.contact_title_en;
-    panels[1].querySelector("p").innerHTML = (currentLang === "bn" ? dev.contact_text_bn : dev.contact_text_en).replace(/\n/g, "<br>");
+    panels[1].querySelector("h2").textContent = currentLang === "bn" ? (dev.contact_title_bn || "যোগাযোগ ও ঠিকানা") : (dev.contact_title_en || "Contact & Location");
+    const contactLines = (currentLang === "bn" ? dev.contact_text_bn : dev.contact_text_en).split("\n");
+    panels[1].querySelector("p").innerHTML = contactLines.map((line) => {
+      if (line.includes("@")) return `<a href="mailto:${line.trim()}">${line.trim()}</a>`;
+      return `<span>${line.trim()}</span>`;
+    }).join("<br>");
 
-    panels[2].querySelector("h2").textContent = currentLang === "bn" ? dev.focus_title_bn : dev.focus_title_en;
+    panels[2].querySelector("h2").textContent = currentLang === "bn" ? (dev.focus_title_bn || "আমার দক্ষতা") : (dev.focus_title_en || "What I Do");
     panels[2].querySelector("p").textContent = currentLang === "bn" ? dev.focus_text_bn : dev.focus_text_en;
   }
 
