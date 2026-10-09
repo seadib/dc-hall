@@ -63,29 +63,33 @@
   <main class="page-main">
     <section class="page-hero compact">
       <div class="container" data-aos="fade-up">
-        <p class="eyebrow" data-i18n="nav.gallery">Gallery</p>
-        <h1 data-i18n="gallery.title">Hall Gallery</h1>
-        <p data-i18n="gallery.subtitle">Event highlights, campus moments, and residential student memories.</p>
+        <p class="eyebrow" data-i18n="gallery.eyebrow">Event & Photo Gallery</p>
+        <h1 data-i18n="gallery.title">International Hall Gallery</h1>
+        <p data-i18n="gallery.subtitle">Memories, celebrations, and life at Dhaka College International Hall.</p>
       </div>
     </section>
 
     <section class="section">
       <div class="container">
-        <!-- Event Category Filters -->
-        <div class="gallery-filter-bar" data-aos="fade-up">
-          <button type="button" class="gallery-filter-btn active" data-filter="all">All Photos (সকল স্মৃতি)</button>
-          <button type="button" class="gallery-filter-btn" data-filter="events">Events (ইভেন্ট)</button>
-          <button type="button" class="gallery-filter-btn" data-filter="sports">Sports (খেলাধুলা)</button>
-          <button type="button" class="gallery-filter-btn" data-filter="tours">Tour (ট্যুর)</button>
-          <button type="button" class="gallery-filter-btn" data-filter="memories">Daily Life (দৈনন্দিন)</button>
-        </div>
+        <!-- Event Detail Full View (When 'View Event' is clicked) -->
+        <div id="eventDetailView" style="display: none;"></div>
 
-        <div id="galleryEventsContainer">
-          <!-- Dynamic Event Albums rendered by js/app.js -->
-        </div>
+        <!-- Main Gallery View -->
+        <div id="mainGalleryView">
+          <!-- Event Category Filters -->
+          <div class="gallery-filter-bar" data-aos="fade-up">
+            <button type="button" class="gallery-filter-btn active" data-filter="all">All Events (সকল ইভেন্ট)</button>
+            <button type="button" class="gallery-filter-btn" data-filter="events">Events (ইভেন্ট)</button>
+            <button type="button" class="gallery-filter-btn" data-filter="sports">Sports (খেলাধুলা)</button>
+            <button type="button" class="gallery-filter-btn" data-filter="tours">Tour (ট্যুর)</button>
+            <button type="button" class="gallery-filter-btn" data-filter="memories">Memories (দৈনন্দিন স্মৃতি)</button>
+          </div>
 
-        <div class="gallery-grid" style="display: none;">
-          <!-- Fallback -->
+          <!-- Dynamic DCSC Event Sections -->
+          <div id="galleryEventsContainer"></div>
+
+          <!-- DCSC Memories / Gallery Section at bottom -->
+          <div id="galleryMemoriesContainer"></div>
         </div>
       </div>
     </section>

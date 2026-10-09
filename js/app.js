@@ -202,7 +202,8 @@ const i18n = {
       noticeText: "Students can contact the hall office for room, attendance and emergency support."
     },
     gallery: {
-      title: "Hall Gallery",
+      eyebrow: "Event & Photo Gallery",
+      title: "International Hall Gallery",
       subtitle: "Event highlights, campus moments, and residential student memories.",
       demoText: "International Hall campus and student memories."
     },
@@ -444,8 +445,9 @@ const i18n = {
       noticeText: "রুম, উপস্থিতি ও জরুরি সহায়তার জন্য শিক্ষার্থীরা হল অফিসে যোগাযোগ করতে পারে।"
     },
     gallery: {
-      title: "হল গ্যালারি",
-      subtitle: "ইভেন্ট মুহূর্ত, ক্যাম্পাস জীবনের স্মৃতি ও শিক্ষার্থীদের বিভিন্ন কার্যক্রম।",
+      eyebrow: "ইভেন্ট ও ফটো গ্যালারি",
+      title: "আন্তর্জাতিক ছাত্রাবাস গ্যালারি",
+      subtitle: "ইভেন্ট মুহূর্ত, ক্যাম্পাস জীবনের স্মৃতি ও শিক্ষার্থীদের সোনালী কার্যক্রম।",
       demoText: "আন্তর্জাতিক ছাত্রাবাসের ক্যাম্পাস ও শিক্ষার্থীদের সোনালী স্মৃতি।"
     },
     developer: {
@@ -3425,29 +3427,33 @@ function initStudentClicks() {
 function openFamousModal(profileId) {
   const modal = byId("studentModal");
   const content = byId("modalContent");
-  const profile = famousProfiles[profileId];
   
   let finalProfile = null;
   if (profileId.startsWith("alumni-")) {
     const index = Number(profileId.split("-")[1]);
     const cmsAlumni = famousProfiles.alumni && famousProfiles.alumni[index];
     if (cmsAlumni) {
+      const fallbackPhoto = index === 1 ? "images/hall/alumni2.jpg" : "images/hall/alumni1.jpg";
+      const photoPath = normalizeCmsPath(cmsAlumni.photo) || fallbackPhoto;
       finalProfile = {
-        img: normalizeCmsPath(cmsAlumni.photo) || "images/hostel-building.jpg",
+        img: photoPath,
+        fallback: fallbackPhoto,
         name: currentLang === "bn" ? cmsAlumni.name_bn : cmsAlumni.name_en,
-        role: currentLang === "bn" ? cmsAlumni.role_bn : cmsAlumni.role_en,
-        success: currentLang === "bn" ? cmsAlumni.biography_bn : cmsAlumni.biography_en,
-        education: currentLang === "bn" ? cmsAlumni.career_bn : cmsAlumni.career_en,
-        contribution: currentLang === "bn" ? cmsAlumni.hall_contribution_bn : cmsAlumni.hall_contribution_en,
-        achievements: [],
-        biography: currentLang === "bn" ? cmsAlumni.biography_bn : cmsAlumni.biography_en,
-        career: currentLang === "bn" ? cmsAlumni.career_bn : cmsAlumni.career_en,
-        hallMemory: currentLang === "bn" ? cmsAlumni.hall_memory_bn : cmsAlumni.hall_memory_en,
-        hallContribution: currentLang === "bn" ? cmsAlumni.hall_contribution_bn : cmsAlumni.hall_contribution_en
+        shortBio: currentLang === "bn" ? (cmsAlumni.short_bio_bn || cmsAlumni.role_bn) : (cmsAlumni.short_bio_en || cmsAlumni.role_en),
+        details: currentLang === "bn" ? (cmsAlumni.details_bn || cmsAlumni.biography_bn || cmsAlumni.career_bn) : (cmsAlumni.details_en || cmsAlumni.biography_en || cmsAlumni.career_en)
       };
     }
   } else {
-    finalProfile = profile;
+    const profile = famousProfiles[profileId];
+    if (profile) {
+      finalProfile = {
+        img: profile.img,
+        fallback: "images/hall/hostel-building.jpg",
+        name: profile.name,
+        shortBio: profile.role,
+        details: profile.biography || profile.career || profile.education || ""
+      };
+    }
   }
 
   if (!modal || !content || !finalProfile) return;
@@ -3457,51 +3463,24 @@ function openFamousModal(profileId) {
 
   content.innerHTML = `
     <div class="profile famous-profile">
-      <img src="${finalProfile.img}" alt="${finalProfile.name}" loading="lazy">
+      <img src="${finalProfile.img}" alt="${finalProfile.name}" loading="lazy" onerror="this.src='${finalProfile.fallback}'" style="border-radius: 16px; object-fit: cover; width: 100%; max-height: 380px;">
       <div>
-        <p class="eyebrow">${t("common.famousStudents")}</p>
-        <h2 id="modalName">${finalProfile.name}</h2>
-        <p class="lead">${finalProfile.role}</p>
-
-        <div class="profile-grid">
-          <div class="profile-item"><span>${t("alumni.success")}</span><strong>${finalProfile.success || "-"}</strong></div>
-          <div class="profile-item"><span>${t("alumni.education")}</span><strong>${finalProfile.education || "-"}</strong></div>
-          <div class="profile-item"><span>${t("alumni.contribution")}</span><strong>${finalProfile.contribution || "-"}</strong></div>
-        </div>
-
-        ${finalProfile.achievements && finalProfile.achievements.length ? `
-          <h3>Achievements</h3>
-          <ul class="achievement-list">
-            ${finalProfile.achievements.map((item) => `<li>${item}</li>`).join("")}
-          </ul>
+        <p class="eyebrow">${currentLang === "bn" ? "প্রাক্তন কৃতি শিক্ষার্থী" : "Notable Alumni"}</p>
+        <h2 id="modalName" style="margin: 4px 0 10px; font-size: 1.8rem;">${finalProfile.name}</h2>
+        ${finalProfile.shortBio ? `
+          <p class="lead" style="margin-bottom: 20px; color: var(--accent); font-weight: 600; font-size: 1.05rem;">
+            ${finalProfile.shortBio}
+          </p>
         ` : ""}
 
-        <div class="alumni-story">
-          ${finalProfile.biography ? `
-            <section>
-              <h3>${t("alumni.biography")}</h3>
-              <p>${finalProfile.biography}</p>
-            </section>
-          ` : ""}
-          ${finalProfile.career ? `
-            <section>
-              <h3>${t("alumni.career")}</h3>
-              <p>${finalProfile.career}</p>
-            </section>
-          ` : ""}
-          ${finalProfile.hallMemory ? `
-            <section>
-              <h3>${t("alumni.hallMemory")}</h3>
-              <p>${finalProfile.hallMemory}</p>
-            </section>
-          ` : ""}
-          ${finalProfile.hallContribution ? `
-            <section>
-              <h3>${t("alumni.hallContribution")}</h3>
-              <p>${finalProfile.hallContribution}</p>
-            </section>
-          ` : ""}
-        </div>
+        ${finalProfile.details ? `
+          <div class="alumni-details-wrap" style="padding-top: 14px; border-top: 1px solid var(--border);">
+            <h3 style="font-size: 1.1rem; margin-bottom: 10px; color: var(--text-strong);">${currentLang === "bn" ? "বিস্তারিত তথ্য" : "Details & Legacy"}</h3>
+            <p style="line-height: 1.8; color: var(--text-muted); font-size: 0.98rem; margin: 0;">
+              ${finalProfile.details}
+            </p>
+          </div>
+        ` : ""}
       </div>
     </div>
   `;
@@ -4117,80 +4096,215 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 });
 
+let currentGalleryData = null;
+
 async function renderGalleryPage(galleryData) {
   if (document.body.dataset.page !== "gallery") return;
-  const container = document.getElementById("galleryEventsContainer") || document.querySelector(".gallery-grid");
-  if (!container) return;
+  const eventsContainer = document.getElementById("galleryEventsContainer");
+  const memoriesContainer = document.getElementById("galleryMemoriesContainer");
+  const mainGalleryView = document.getElementById("mainGalleryView");
+  const eventDetailView = document.getElementById("eventDetailView");
+  if (!eventsContainer) return;
 
   const data = galleryData || await fetchJson("data/gallery.json");
   if (!data) return;
+  currentGalleryData = data;
 
-  if (data.events && data.events.length) {
-    const sortedEvents = data.events.slice().sort((a, b) => Number(a.position || 0) - Number(b.position || 0));
+  let events = data.events ? data.events.slice().sort((a, b) => Number(a.position || 0) - Number(b.position || 0)) : [];
+  
+  // Separate pure daily memories from formal events
+  const formalEvents = events.filter(e => e.category !== "memories" && e.id !== "daily-memories");
+  const memoriesEvent = events.find(e => e.category === "memories" || e.id === "daily-memories");
 
-    container.innerHTML = sortedEvents.map((ev, evIdx) => {
-      const title = currentLang === "bn" ? (ev.title_bn || ev.title_en) : (ev.title_en || ev.title_bn);
-      const desc = currentLang === "bn" ? (ev.description_bn || ev.description_en) : (ev.description_en || ev.description_bn);
-      const date = currentLang === "bn" ? (ev.date_formatted_bn || ev.date_formatted_en) : (ev.date_formatted_en || ev.date_formatted_bn);
-      const cat = ev.category || "events";
+  // 1. Render formal events in authentic DCSC style
+  eventsContainer.innerHTML = formalEvents.map((ev, evIdx) => {
+    const title = currentLang === "bn" ? (ev.title_bn || ev.title_en) : (ev.title_en || ev.title_bn);
+    const cat = ev.category || "events";
 
-      const photosHtml = ev.photos.map((p, pIdx) => {
-        const photoSrc = normalizeCmsPath(p.photo) || "images/hostel-building.jpg";
-        const caption = currentLang === "bn" ? (p.caption_bn || p.caption_en || title) : (p.caption_en || p.caption_bn || title);
-        return `
-          <article class="gallery-card" data-aos="fade-up" data-aos-delay="${(pIdx % 6) * 50}">
-            <button type="button" data-gallery-src="${photoSrc}" data-gallery-title="${caption}" data-gallery-desc="${title}">
-              <img src="${photoSrc}" alt="${caption}" loading="lazy">
-              <div class="gallery-card-overlay">
-                <span>${caption}</span>
-              </div>
-            </button>
-          </article>
-        `;
-      }).join("");
-
+    // Show first 3 or 4 photos in the preview row
+    const previewPhotos = (ev.photos || []).slice(0, 3);
+    const photosHtml = previewPhotos.map((p, pIdx) => {
+      const photoSrc = normalizeCmsPath(p.photo) || "images/hostel-building.jpg";
+      const caption = currentLang === "bn" ? (p.caption_bn || p.caption_en || title) : (p.caption_en || p.caption_bn || title);
       return `
-        <div class="gallery-event-group" data-category="${cat}" data-aos="fade-up" style="margin-bottom: 48px;">
-          <div class="gallery-event-header" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 12px; margin-bottom: 20px; padding-bottom: 14px; border-bottom: 2px solid var(--border);">
-            <div>
-              <span class="gallery-event-tag" style="display: inline-block; padding: 4px 14px; background: var(--accent-soft); color: var(--accent); border-radius: 999px; font-size: 0.82rem; font-weight: 700; text-transform: uppercase; margin-bottom: 8px;">${cat}</span>
-              <h2 style="margin: 0 0 6px; font-size: 1.55rem;">${title}</h2>
-              ${desc ? `<p style="margin: 0; color: var(--muted); font-size: 0.95rem;">${desc}</p>` : ''}
-            </div>
-            <div style="display: flex; align-items: center; gap: 10px;">
-              ${date ? `<span style="font-size: 0.85rem; color: var(--muted); background: var(--surface); padding: 4px 12px; border-radius: 8px; border: 1px solid var(--border); font-weight: 600;">${date}</span>` : ''}
-              <span style="font-size: 0.85rem; color: var(--accent); font-weight: 700;">${ev.photos.length} Photos</span>
-            </div>
-          </div>
-          <div class="gallery-grid">
-            ${photosHtml}
-          </div>
-        </div>
-      `;
-    }).join("");
-
-    initGalleryFilters();
-    return;
-  }
-
-  // Fallback to flat items if no events
-  if (data.items && data.items.length) {
-    const items = data.items.slice().sort((a, b) => Number(a.position || 0) - Number(b.position || 0));
-    container.innerHTML = items.map((item, index) => {
-      const photo = normalizeCmsPath(item.photo) || "images/hostel-building.jpg";
-      const title = currentLang === "bn" ? (item.title_bn || item.title_en || "") : (item.title_en || item.title_bn || "");
-      const desc = currentLang === "bn" ? (item.description_bn || item.description_en || "") : (item.description_en || item.description_bn || "");
-      return `
-        <article class="gallery-card" data-aos="fade-up" data-aos-delay="${(index % 6) * 50}">
-          <button type="button" data-gallery-src="${photo}" data-gallery-title="${title || ""}" data-gallery-desc="${desc || ""}">
-            <img src="${photo}" alt="${title || "Gallery photo"}" loading="lazy">
-            <div class="gallery-card-overlay">
-              <span>${title}</span>
-            </div>
+        <article class="dcsc-photo-card" data-aos="fade-up" data-aos-delay="${pIdx * 80}">
+          <button type="button" data-gallery-src="${photoSrc}" data-gallery-title="${caption}" data-gallery-desc="${title}">
+            <img src="${photoSrc}" alt="${caption}" loading="lazy">
           </button>
         </article>
       `;
     }).join("");
+
+    return `
+      <section class="dcsc-event-section" data-event-id="${ev.id}" data-category="${cat}">
+        <div class="dcsc-event-header">
+          <div class="dcsc-event-title-wrap">
+            <div class="dcsc-accent-bar"></div>
+            <div>
+              <span class="dcsc-eyebrow">${currentLang === "bn" ? "ইভেন্ট গ্যালারি" : "EVENT GALLERY"}</span>
+              <h2 class="dcsc-event-title">${title}</h2>
+            </div>
+          </div>
+          <button type="button" class="dcsc-view-event-btn" data-event-id="${ev.id}">
+            <span>${currentLang === "bn" ? "সম্পূর্ণ ইভেন্ট দেখুন" : "View Event"}</span> &rarr;
+          </button>
+        </div>
+        <div class="dcsc-event-grid">
+          ${photosHtml}
+        </div>
+      </section>
+    `;
+  }).join("");
+
+  // 2. Render Memories / Gallery at bottom
+  let memoryPhotos = [];
+  if (memoriesEvent && memoriesEvent.photos && memoriesEvent.photos.length) {
+    memoryPhotos = memoriesEvent.photos;
+  } else if (data.items && data.items.length) {
+    memoryPhotos = data.items;
+  }
+
+  if (memoriesContainer && memoryPhotos.length) {
+    const memoriesHtml = memoryPhotos.map((p, pIdx) => {
+      const photoSrc = normalizeCmsPath(p.photo) || "images/hostel-building.jpg";
+      const caption = currentLang === "bn" ? (p.caption_bn || p.caption_en || "স্মৃতি") : (p.caption_en || p.caption_bn || "Memory");
+      return `
+        <article class="dcsc-photo-card" data-aos="fade-up" data-aos-delay="${(pIdx % 4) * 60}">
+          <button type="button" data-gallery-src="${photoSrc}" data-gallery-title="${caption}" data-gallery-desc="${currentLang === "bn" ? "হল জীবন ও দৈনন্দিন স্মৃতি" : "Daily Hall Life"}">
+            <img src="${photoSrc}" alt="${caption}" loading="lazy">
+          </button>
+        </article>
+      `;
+    }).join("");
+
+    memoriesContainer.innerHTML = `
+      <section class="dcsc-event-section dcsc-memories-section" data-category="memories">
+        <div class="dcsc-event-header">
+          <div class="dcsc-event-title-wrap">
+            <div class="dcsc-accent-bar memories-bar"></div>
+            <div>
+              <span class="dcsc-eyebrow memories-eyebrow">${currentLang === "bn" ? "দৈনন্দিন স্মৃতি" : "MEMORIES"}</span>
+              <h2 class="dcsc-event-title">${currentLang === "bn" ? "স্মৃতি ও সাধারণ গ্যালারি" : "GALLERY"}</h2>
+            </div>
+          </div>
+        </div>
+        <div class="dcsc-memories-grid">
+          ${memoriesHtml}
+        </div>
+      </section>
+    `;
+  }
+
+  // 3. Attach click handlers for 'View Event' buttons
+  document.querySelectorAll(".dcsc-view-event-btn").forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      const eventId = btn.dataset.eventId;
+      showEventDetailView(eventId);
+    });
+  });
+
+  initGalleryFilters();
+
+  // Check URL hash for direct event link (e.g. #event=freshers-2025)
+  handleGalleryHash();
+}
+
+function handleGalleryHash() {
+  const hash = window.location.hash;
+  if (hash.startsWith("#event=")) {
+    const eventId = hash.replace("#event=", "");
+    if (eventId) {
+      showEventDetailView(eventId);
+    }
+  } else if (!hash || hash === "#") {
+    closeEventDetailView();
+  }
+}
+
+window.addEventListener("hashchange", () => {
+  if (document.body.dataset.page === "gallery") {
+    handleGalleryHash();
+  }
+});
+
+function showEventDetailView(eventId) {
+  if (!currentGalleryData || !currentGalleryData.events) return;
+  const ev = currentGalleryData.events.find(e => e.id === eventId);
+  if (!ev) return;
+
+  const mainView = document.getElementById("mainGalleryView");
+  const detailView = document.getElementById("eventDetailView");
+  if (!mainView || !detailView) return;
+
+  const title = currentLang === "bn" ? (ev.title_bn || ev.title_en) : (ev.title_en || ev.title_bn);
+  const desc = currentLang === "bn" ? (ev.description_bn || ev.description_en) : (ev.description_en || ev.description_bn);
+  const date = currentLang === "bn" ? (ev.date_formatted_bn || ev.date_formatted_en) : (ev.date_formatted_en || ev.date_formatted_bn);
+
+  detailView.innerHTML = `
+    <div class="event-detail-header">
+      <button type="button" class="event-back-btn" id="eventBackBtn">
+        &larr; ${currentLang === "bn" ? "সকল ইভেন্টে ফিরে যান" : "Back to All Events"}
+      </button>
+      <span class="dcsc-eyebrow">${currentLang === "bn" ? "ইভেন্ট শোকেস" : "EVENT SHOWCASE"}</span>
+      <h1 class="event-detail-title">${title}</h1>
+      <div class="event-detail-meta">
+        ${date ? `<span style="font-size: 0.88rem; color: var(--muted); background: var(--surface); padding: 5px 14px; border-radius: 999px; border: 1px solid var(--border); font-weight: 600;">${date}</span>` : ""}
+        <span style="font-size: 0.88rem; color: var(--accent); background: var(--accent-soft); padding: 5px 14px; border-radius: 999px; font-weight: 700;">${(ev.photos || []).length} ${currentLang === "bn" ? "টি ফটো" : "Photos"}</span>
+      </div>
+      ${desc ? `<p class="event-detail-desc">${desc}</p>` : ""}
+    </div>
+
+    ${ev.videos && ev.videos.length ? `
+      <div class="event-video-wrap">
+        <h3 style="margin-bottom: 16px; font-size: 1.25rem;">${currentLang === "bn" ? "ইভেন্ট ভিডিও" : "Event Videos"}</h3>
+        <div class="event-video-grid">
+          ${ev.videos.map(v => `
+            <div style="border-radius: 14px; overflow: hidden; border: 1px solid var(--border); aspect-ratio: 16/9; background: #000;">
+              <iframe src="${v.url}" style="width: 100%; height: 100%; border: 0;" allowfullscreen></iframe>
+            </div>
+          `).join("")}
+        </div>
+      </div>
+    ` : ""}
+
+    <div class="event-detail-grid">
+      ${(ev.photos || []).map((p, pIdx) => {
+        const photoSrc = normalizeCmsPath(p.photo) || "images/hostel-building.jpg";
+        const caption = currentLang === "bn" ? (p.caption_bn || p.caption_en || title) : (p.caption_en || p.caption_bn || title);
+        return `
+          <article class="dcsc-photo-card" data-aos="fade-up" data-aos-delay="${(pIdx % 6) * 50}">
+            <button type="button" data-gallery-src="${photoSrc}" data-gallery-title="${caption}" data-gallery-desc="${title}">
+              <img src="${photoSrc}" alt="${caption}" loading="lazy">
+            </button>
+          </article>
+        `;
+      }).join("")}
+    </div>
+  `;
+
+  mainView.style.display = "none";
+  detailView.style.display = "block";
+  window.location.hash = `#event=${eventId}`;
+  window.scrollTo({ top: 0, behavior: "smooth" });
+
+  const backBtn = document.getElementById("eventBackBtn");
+  if (backBtn) {
+    backBtn.addEventListener("click", () => {
+      closeEventDetailView();
+    });
+  }
+}
+
+function closeEventDetailView() {
+  const mainView = document.getElementById("mainGalleryView");
+  const detailView = document.getElementById("eventDetailView");
+  if (mainView && detailView) {
+    detailView.style.display = "none";
+    mainView.style.display = "block";
+    if (window.location.hash.startsWith("#event=")) {
+      history.pushState("", document.title, window.location.pathname + window.location.search);
+    }
   }
 }
 
@@ -4203,13 +4317,13 @@ function initGalleryFilters() {
       filterBtns.forEach((b) => b.classList.remove("active"));
       btn.classList.add("active");
       const filter = btn.dataset.filter;
-      const groups = document.querySelectorAll(".gallery-event-group");
+      const sections = document.querySelectorAll(".dcsc-event-section");
 
-      groups.forEach((group) => {
-        if (filter === "all" || group.dataset.category === filter) {
-          group.style.display = "block";
+      sections.forEach((sec) => {
+        if (filter === "all" || sec.dataset.category === filter) {
+          sec.style.display = "block";
         } else {
-          group.style.display = "none";
+          sec.style.display = "none";
         }
       });
     });
@@ -4222,19 +4336,34 @@ function renderHomeGallery(galleryData) {
 
   let items = [];
   if (galleryData && galleryData.events && galleryData.events.length) {
-    // Pick first 6 photos from the newest events
-    for (const ev of galleryData.events) {
-      for (const p of ev.photos) {
+    // 1st photo of each formal event from newest to oldest
+    const formalEvents = galleryData.events.filter(e => e.category !== "memories" && e.id !== "daily-memories");
+    for (const ev of formalEvents) {
+      if (ev.photos && ev.photos.length) {
         items.push({
-          photo: p.photo,
-          title_en: p.caption_en || ev.title_en,
-          title_bn: p.caption_bn || ev.title_bn,
-          description_en: ev.title_en,
-          description_bn: ev.title_bn
+          photo: ev.photos[0].photo,
+          title_en: ev.title_en,
+          title_bn: ev.title_bn,
+          eventId: ev.id
         });
-        if (items.length >= 6) break;
       }
       if (items.length >= 6) break;
+    }
+
+    // If fewer than 6 events, backfill with memories
+    if (items.length < 6) {
+      const memoriesEvent = galleryData.events.find(e => e.category === "memories" || e.id === "daily-memories");
+      if (memoriesEvent && memoriesEvent.photos) {
+        for (const p of memoriesEvent.photos) {
+          items.push({
+            photo: p.photo,
+            title_en: p.caption_en || "Hall Memory",
+            title_bn: p.caption_bn || "হল স্মৃতি",
+            eventId: null
+          });
+          if (items.length >= 6) break;
+        }
+      }
     }
   } else if (galleryData && galleryData.items) {
     items = galleryData.items.slice(0, 6);
@@ -4245,15 +4374,26 @@ function renderHomeGallery(galleryData) {
   grid.innerHTML = items.map((item, index) => {
     const photo = normalizeCmsPath(item.photo) || "images/hostel-building.jpg";
     const title = currentLang === "bn" ? (item.title_bn || item.title_en) : (item.title_en || item.title_bn);
-    const desc = currentLang === "bn" ? (item.description_bn || item.description_en) : (item.description_en || item.description_bn);
+    const linkUrl = item.eventId ? `gallery.html#event=${item.eventId}` : `gallery.html`;
+    const label = item.eventId 
+      ? (currentLang === "bn" ? "ইভেন্ট দেখুন &rarr;" : "View Event &rarr;") 
+      : (currentLang === "bn" ? "গ্যালারি দেখুন &rarr;" : "View Gallery &rarr;");
+
     return `
       <article class="gallery-card" data-aos="fade-up" data-aos-delay="${(index % 6) * 60}">
-        <button type="button" data-gallery-src="${photo}" data-gallery-title="${title || ""}" data-gallery-desc="${desc || ""}">
-          <img src="${photo}" alt="${title || "Gallery photo"}" loading="lazy">
+        <a href="${linkUrl}" style="display: block; position: relative;">
+          <img src="${photo}" alt="${title}" loading="lazy">
           <div class="gallery-card-overlay">
-            <span>${title}</span>
+            <div>
+              <span style="display: block; font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); font-weight: 700; margin-bottom: 3px;">
+                ${label}
+              </span>
+              <span style="font-size: 0.95rem; font-weight: 700; line-height: 1.3; display: block;">
+                ${title}
+              </span>
+            </div>
           </div>
-        </button>
+        </a>
       </article>
     `;
   }).join("");
@@ -4274,12 +4414,15 @@ async function renderAlumniList(alumniData) {
     famousProfiles.alumni = sortedProfiles;
 
     grid.innerHTML = sortedProfiles.map((p, index) => {
-      const photo = normalizeCmsPath(p.photo) || "images/hostel-building.jpg";
+      const fallback = index === 1 ? "images/hall/alumni2.jpg" : "images/hall/alumni1.jpg";
+      const photo = normalizeCmsPath(p.photo) || fallback;
       const name = currentLang === "bn" ? p.name_bn : p.name_en;
+      const shortBio = currentLang === "bn" ? (p.short_bio_bn || p.role_bn) : (p.short_bio_en || p.role_en);
       return `
         <article class="person-card" data-aos="fade-up" data-aos-delay="${index * 120}" data-famous-id="alumni-${index}" tabindex="0" role="button">
-          <img src="${photo}" alt="${name}" loading="lazy">
+          <img src="${photo}" alt="${name}" loading="lazy" onerror="this.src='${fallback}'">
           <h3>${name}</h3>
+          ${shortBio ? `<p>${shortBio}</p>` : ""}
         </article>
       `;
     }).join("");
@@ -4374,13 +4517,9 @@ async function renderHallInfoPage(hallData) {
   if (galleryGrid && data.hall_photos && data.hall_photos.length) {
     galleryGrid.innerHTML = data.hall_photos.map((item, index) => {
       const photo = normalizeCmsPath(item.photo);
-      const title = currentLang === "bn" ? item.title_bn : item.title_en;
-      const desc = currentLang === "bn" ? item.desc_bn : item.desc_en;
       return `
         <article class="gallery-card" data-aos="fade-up" data-aos-delay="${index * 120}">
-          <img src="${photo}" alt="${title}" loading="lazy">
-          <h3>${title}</h3>
-          <p>${desc}</p>
+          <img src="${photo}" alt="Hall Photo" loading="lazy">
         </article>
       `;
     }).join("");
