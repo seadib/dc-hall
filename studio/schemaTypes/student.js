@@ -354,6 +354,52 @@ export default defineType({
         { name: 'yearly', title: 'Yearly', type: 'file' },
       ],
     }),
+    defineField({
+      name: 'custom_links',
+      title: 'Legacy Custom Links',
+      type: 'array',
+      of: [{ type: 'object', fields: [{ name: 'title', type: 'string' }, { name: 'url', type: 'url' }] }],
+      hidden: true,
+    }),
+    defineField({
+      name: 'dob_bn',
+      title: 'Legacy DOB BN',
+      type: 'string',
+      hidden: true,
+    }),
+    defineField({
+      name: 'generated_pdf_names',
+      title: 'Legacy Generated PDF Names',
+      type: 'object',
+      fields: [
+        { name: 'ct1', type: 'string' },
+        { name: 'ct2', type: 'string' },
+        { name: 'hy', type: 'string' },
+        { name: 'ct3', type: 'string' },
+        { name: 'yearly', type: 'string' },
+        { name: 'test', type: 'string' },
+      ],
+      hidden: true,
+    }),
+    defineField({
+      name: 'group_bn',
+      title: 'Legacy Group BN',
+      type: 'string',
+      hidden: true,
+    }),
+    defineField({
+      name: 'group_en',
+      title: 'Legacy Group EN',
+      type: 'string',
+      hidden: true,
+    }),
+    defineField({
+      name: 'roommate_ids',
+      title: 'Legacy Roommate IDs',
+      type: 'array',
+      of: [{ type: 'string' }],
+      hidden: true,
+    }),
   ],
 
   orderings: [
