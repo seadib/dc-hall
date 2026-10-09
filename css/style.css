@@ -1123,21 +1123,23 @@ h3 {
 
 .profile {
   display: grid;
-  grid-template-columns: 260px minmax(0, 1fr);
-  gap: 28px;
+  grid-template-columns: 300px minmax(0, 1fr);
+  gap: 32px;
   padding: 30px;
+  align-items: start;
 }
 
 .profile-photo-wrapper {
   position: relative;
   width: 100%;
-  max-width: 260px;
-  margin: 0 auto;
+  max-width: 300px;
 }
 
 .profile img {
   width: 100%;
-  aspect-ratio: 1 / 1;
+  height: auto;
+  aspect-ratio: 3 / 4;
+  max-height: 480px;
   border-radius: 12px;
   object-fit: cover;
   object-position: top center;
@@ -1869,17 +1871,25 @@ h3 {
 
   .profile {
     grid-template-columns: 1fr;
+    padding: 24px;
+    gap: 20px;
+  }
+
+  .profile-photo-wrapper {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 0 16px 0;
   }
 
   .profile img {
     width: 100%;
-    max-width: 250px;
-    height: auto;
-    aspect-ratio: 1 / 1;
+    max-width: 100%;
+    height: clamp(260px, 46vh, 340px);
+    aspect-ratio: auto;
     border-radius: 12px;
     object-fit: cover;
     object-position: top center;
-    margin: 0 auto;
+    margin: 0;
     display: block;
   }
 
@@ -2100,9 +2110,24 @@ h3 {
     font-size: 0.92rem;
   }
 
-  .profile-photo-wrapper,
+  .profile {
+    padding: 16px;
+  }
+
+  .profile-photo-wrapper {
+    width: 100%;
+    max-width: 100% !important;
+    margin: 0 0 14px 0;
+  }
+
   .profile img {
-    max-width: 240px;
+    width: 100%;
+    max-width: 100% !important;
+    height: clamp(240px, 44vh, 320px);
+    border-radius: 10px;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
   }
 }
 
