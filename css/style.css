@@ -32,7 +32,7 @@
   --border: rgba(255, 255, 255, 0.08);
   --border-soft: rgba(255, 255, 255, 0.05);
   --accent: #10c9a8;
-  --accent-strong: #38bdf8;
+  --accent-strong: #3de8cc;
   --accent-soft: rgba(16, 201, 168, 0.15);
   --warm: #f59e0b;
   --shadow: 0 20px 48px rgba(0, 0, 0, 0.55);
@@ -593,13 +593,22 @@ h3 {
   font-weight: 700;
 }
 
-.profile a,
+.profile a {
+  color: var(--accent);
+  font-weight: 700;
+  text-decoration: none;
+  transition: color 0.18s ease, text-decoration 0.18s ease;
+}
+.profile a:hover {
+  color: var(--accent-strong);
+  text-decoration: underline;
+}
+
 .developer-content a {
   color: inherit;
   font-weight: 700;
   text-decoration: none;
 }
-.profile a:hover,
 .developer-content a:hover {
   text-decoration: underline;
   opacity: 0.85;
