@@ -119,7 +119,13 @@ const i18n = {
       famousText: "Demo profiles for notable former students and their achievements.",
       successText: "Medical, university and engineering admission success preview.",
       locationTitle: "International Hall, Dhaka College",
-      locationText: "Use the live Google map below to view the exact International Hall location directly from the website."
+      locationText: "Use the live Google map below to view the exact International Hall location directly from the website.",
+      resultCardTitle: "Verified Result Archive",
+      resultCardSub: "Term Marksheets & Digital Records",
+      statTerms: "Official Terms",
+      statDigital: "Digital Archive",
+      dcResourcesEyebrow: "Dhaka College",
+      dcResourcesTitle: "Official Portals & Resources"
     },
     heroPhrases: [
       "Together we learn, together we succeed.",
@@ -2610,6 +2616,15 @@ async function loadCmsContent() {
       i18n.en.home.locationTitle = homeData.location_title_en || i18n.en.home.locationTitle;
       i18n.en.home.locationText = homeData.location_text_en || i18n.en.home.locationText;
     }
+    if (i18n.en.results) {
+      i18n.en.results.eyebrow = homeData.results_eyebrow_en || i18n.en.results.eyebrow;
+      i18n.en.results.title = homeData.results_title_en || i18n.en.results.title;
+      i18n.en.results.subtitle = homeData.results_lead_en || i18n.en.results.subtitle;
+    }
+    if (i18n.en.gallery) {
+      i18n.en.gallery.eyebrow = homeData.gallery_eyebrow_en || i18n.en.gallery.eyebrow;
+      i18n.en.gallery.title = homeData.gallery_title_en || i18n.en.gallery.title;
+    }
     if (i18n.bn.home) {
       i18n.bn.home.heroEyebrow = homeData.hero_eyebrow_bn || i18n.bn.home.heroEyebrow;
       i18n.bn.home.heroTitle = homeData.hero_title_bn || i18n.bn.home.heroTitle;
@@ -2620,6 +2635,15 @@ async function loadCmsContent() {
       i18n.bn.home.successText = homeData.success_text_bn || i18n.bn.home.successText;
       i18n.bn.home.locationTitle = homeData.location_title_bn || i18n.bn.home.locationTitle;
       i18n.bn.home.locationText = homeData.location_text_bn || i18n.bn.home.locationText;
+    }
+    if (i18n.bn.results) {
+      i18n.bn.results.eyebrow = homeData.results_eyebrow_bn || i18n.bn.results.eyebrow;
+      i18n.bn.results.title = homeData.results_title_bn || i18n.bn.results.title;
+      i18n.bn.results.subtitle = homeData.results_lead_bn || i18n.bn.results.subtitle;
+    }
+    if (i18n.bn.gallery) {
+      i18n.bn.gallery.eyebrow = homeData.gallery_eyebrow_bn || i18n.bn.gallery.eyebrow;
+      i18n.bn.gallery.title = homeData.gallery_title_bn || i18n.bn.gallery.title;
     }
     if (homeData.hero_phrases?.length) {
       i18n.en.heroPhrases = homeData.hero_phrases.map(p => p.text_en);
@@ -3384,6 +3408,76 @@ async function renderDcClubsPage() {
   }
 }
 
+// Render DC Resources cards on homepage using CMS settings
+function renderHomeDcResources() {
+  const grid = byId('dcResourceGrid');
+  if (!grid) return;
+
+  const dc = cmsSettings?.dhaka_college || {};
+  const lang = currentLang;
+
+  const resources = [
+    {
+      href: dc.official_site_url || 'https://www.dhakacollege.edu.bd/',
+      title: lang === 'bn' ? (dc.official_site_title_bn || 'ঢাকা কলেজ ওয়েবসাইট') : (dc.official_site_title_en || 'Dhaka College Website'),
+      desc: lang === 'bn' ? 'ঢাকা কলেজের অফিসিয়াল পোর্টাল — শাসন ও ঘোষণা।' : 'Official portal of Dhaka College containing institutional governance and announcements.',
+      external: true,
+      svgPath: 'M12 2L1 7l11 5 9-4.09V17h2V7L12 2zm0 3.66L18.42 8 12 10.91 5.58 8 12 5.66zM5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z'
+    },
+    {
+      href: dc.notice_url || 'https://www.dhakacollege.edu.bd/en/notice?limit=100&page=1',
+      title: lang === 'bn' ? (dc.notice_title_bn || 'নোটিশ বোর্ড') : (dc.notice_title_en || 'Dhaka College Notice'),
+      desc: lang === 'bn' ? 'অফিসিয়াল নোটিশ, সার্কুলার, শিডিউল ও আপডেট।' : 'Official notices, administrative circulars, schedules, and college updates.',
+      external: true,
+      svgPath: 'M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z'
+    },
+    {
+      href: dc.result_admit_url || 'https://dhakacollege.eshiksabd.com/',
+      title: lang === 'bn' ? (dc.result_admit_title_bn || 'রেজাল্ট ও এডমিট কার্ড') : (dc.result_admit_title_en || 'DC Result & Admit Card'),
+      desc: lang === 'bn' ? 'পরীক্ষার ফলাফল চেক ও এডমিট কার্ড ডাউনলোডের অনলাইন পোর্টাল।' : 'Online portal for checking college examinations results and downloading admit cards.',
+      external: true,
+      svgPath: 'M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12z'
+    },
+    {
+      href: dc.archive_url || 'https://thedcarchive.pages.dev/',
+      title: lang === 'bn' ? (dc.archive_title_bn || 'দা ডিসি আর্কাইভ') : (dc.archive_title_en || 'The DC Archive Website'),
+      desc: lang === 'bn' ? 'ঐতিহাসিক রেকর্ড, ম্যাগাজিন ও স্মৃতিভাণ্ডার।' : 'Comprehensive historical records, magazines, memory vaults, and publications.',
+      external: true,
+      svgPath: 'M4 6h16v2H4zm2 4h12v2H6zm3 4h6v2H9zm-7 6h20v-2H2v2z'
+    },
+    {
+      href: 'dc-social.html',
+      title: lang === 'bn' ? 'ডিসি ফেসবুক পেজ' : 'DC Facebook Pages',
+      desc: lang === 'bn' ? 'ঢাকা কলেজের অফিসিয়াল ফেসবুক পেজ ও গ্রুপ।' : 'Official Facebook communities, student clubs, and updates from the student body.',
+      external: false,
+      svgPath: 'M12 2.04C6.5 2.04 2 6.53 2 12.06C2 17.06 5.66 21.21 10.44 21.96V14.96H7.9V12.06H10.44V9.85C10.44 7.34 11.93 5.96 14.22 5.96C15.31 5.96 16.45 6.15 16.45 6.15V8.62H15.19C13.95 8.62 13.56 9.39 13.56 10.18V12.06H16.34L15.89 14.96H13.56V21.96A10 10 0 0 0 22 12.06C22 6.53 17.5 2.04 12 2.04Z'
+    },
+    {
+      href: 'dc-clubs.html',
+      title: lang === 'bn' ? 'ঢাকা কলেজ ক্লাবসমূহ' : 'Dhaka College Clubs',
+      desc: lang === 'bn' ? 'ঢাকা কলেজের বিভিন্ন ক্লাব ও কো-কারিকুলার অ্যাক্টিভিটি।' : 'Explore cultural, science, IT, debate, business, and language clubs of Dhaka College.',
+      external: false,
+      svgPath: 'M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'
+    }
+  ];
+
+  grid.innerHTML = resources.map((r, i) => `
+    <a href="${r.href}" ${r.external ? 'target="_blank" rel="noopener"' : ''} class="dc-resource-card" data-aos="fade-up" data-aos-delay="${50 + i * 50}">
+      <div class="dc-resource-card-top">
+        <div class="dc-resource-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="${r.svgPath}"/></svg>
+        </div>
+        <span class="dc-resource-arrow">&rarr;</span>
+      </div>
+      <div class="dc-resource-body">
+        <h3>${r.title}</h3>
+        <p>${r.desc}</p>
+      </div>
+    </a>
+  `).join('');
+}
+
+
 function renderDynamicContent() {
   initImageFallbacks();
   renderStudentCards();
@@ -3404,7 +3498,7 @@ function renderDynamicContent() {
   if (cmsDevData) {
     renderDeveloperPage(cmsDevData);
   }
-  initImageFallbacks();
+  renderHomeDcResources();
 
   if (activeStudentId) {
     const student = students.find((item) => item.id === activeStudentId);

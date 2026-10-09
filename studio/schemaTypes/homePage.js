@@ -154,6 +154,74 @@ export default defineType({
       type: 'url',
       group: 'stats_location',
     }),
+
+    // --- Group: Results Preview ---
+    defineField({
+      name: 'results_eyebrow_en',
+      title: 'Results Eyebrow EN',
+      type: 'string',
+      group: 'stats_location',
+      description: 'e.g. "Academic Performance"',
+    }),
+    defineField({
+      name: 'results_eyebrow_bn',
+      title: 'ফলাফল আইব্রো বাংলা',
+      type: 'string',
+      group: 'stats_location',
+    }),
+    defineField({
+      name: 'results_title_en',
+      title: 'Results Section Title EN',
+      type: 'string',
+      group: 'stats_location',
+    }),
+    defineField({
+      name: 'results_title_bn',
+      title: 'ফলাফল সেকশন শিরোনাম বাংলা',
+      type: 'string',
+      group: 'stats_location',
+    }),
+    defineField({
+      name: 'results_lead_en',
+      title: 'Results Lead Text EN',
+      type: 'text',
+      rows: 2,
+      group: 'stats_location',
+    }),
+    defineField({
+      name: 'results_lead_bn',
+      title: 'ফলাফল সাবটাইটেল বাংলা',
+      type: 'text',
+      rows: 2,
+      group: 'stats_location',
+    }),
+
+    // --- Gallery Preview ---
+    defineField({
+      name: 'gallery_eyebrow_en',
+      title: 'Gallery Eyebrow EN',
+      type: 'string',
+      group: 'stats_location',
+      description: 'e.g. "Moments & Memories"',
+    }),
+    defineField({
+      name: 'gallery_eyebrow_bn',
+      title: 'গ্যালারি আইব্রো বাংলা',
+      type: 'string',
+      group: 'stats_location',
+    }),
+    defineField({
+      name: 'gallery_title_en',
+      title: 'Gallery Section Title EN',
+      type: 'string',
+      group: 'stats_location',
+    }),
+    defineField({
+      name: 'gallery_title_bn',
+      title: 'গ্যালারি সেকশন শিরোনাম বাংলা',
+      type: 'string',
+      group: 'stats_location',
+    }),
   ],
   preview: {
     select: {
