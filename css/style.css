@@ -569,20 +569,34 @@ h3 {
 
 .student-body {
   display: block;
-  padding: 22px;
+  padding: 16px 18px 18px;
+}
+
+.student-body h3 {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .student-body p {
   margin: 4px 0 0;
   color: var(--muted);
   font-weight: 600;
+  font-size: 0.88rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .student-meta {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 14px;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
 }
 
 .student-lines {
@@ -1114,11 +1128,48 @@ h3 {
   padding: 30px;
 }
 
+.profile-photo-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 260px;
+  margin: 0 auto;
+}
+
 .profile img {
-  height: 320px;
-  border-radius: 8px;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 12px;
   object-fit: cover;
   object-position: top center;
+  display: block;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+}
+
+.expand-photo-btn {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: rgba(8, 12, 20, 0.72);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.18s ease, background 0.18s ease, color 0.18s ease;
+  z-index: 2;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.expand-photo-btn:hover {
+  transform: scale(1.1);
+  background: var(--accent);
+  color: #080c14;
 }
 
 .profile h2 {
@@ -1822,12 +1873,14 @@ h3 {
 
   .profile img {
     width: 100%;
-    max-width: 240px;
+    max-width: 250px;
     height: auto;
-    aspect-ratio: 3 / 4;
+    aspect-ratio: 1 / 1;
+    border-radius: 12px;
     object-fit: cover;
-    object-position: center center;
+    object-position: top center;
     margin: 0 auto;
+    display: block;
   }
 
   .developer-hero {
@@ -2020,6 +2073,36 @@ h3 {
 
   .project-tile {
     min-height: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .student-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px;
+  }
+
+  .student-card img {
+    aspect-ratio: 4 / 3;
+    max-height: 250px;
+    object-position: top center;
+  }
+
+  .student-body {
+    padding: 16px;
+  }
+
+  .student-body h3 {
+    font-size: 1.12rem;
+  }
+
+  .student-body p {
+    font-size: 0.92rem;
+  }
+
+  .profile-photo-wrapper,
+  .profile img {
+    max-width: 240px;
   }
 }
 

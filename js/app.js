@@ -3189,7 +3189,7 @@ function renderSingleStudentCard(student, index) {
         <span class="student-meta">
           <span class="pill" style="font-weight: 700;">${student.batch || 'HSC-27'}</span>
           <span class="pill">${groupLabel(student.group)}</span>
-          ${student.section ? `<span class="pill">${t("common.section")} ${student.section}</span>` : ""}
+          ${student.section ? `<span class="pill">${student.section}</span>` : ""}
         </span>
       </span>
     </button>
@@ -3629,6 +3629,15 @@ function initStudentClicks() {
           }, 2000);
         }
       });
+      return;
+    }
+
+    const expandBtn = event.target.closest(".expand-photo-btn");
+    if (expandBtn) {
+      event.preventDefault();
+      event.stopPropagation();
+      const imgUrl = expandBtn.dataset.img;
+      if (imgUrl) window.open(imgUrl, "_blank");
       return;
     }
 
@@ -4079,7 +4088,17 @@ function openStudentModal(student) {
 
   content.innerHTML = `
     <div class="profile">
-      <img src="${student.img}" alt="${studentValue(student, "name")}" loading="lazy">
+      <div class="profile-photo-wrapper">
+        <img src="${student.img}" alt="${studentValue(student, "name")}" loading="lazy">
+        <button type="button" class="expand-photo-btn" data-img="${student.img}" aria-label="${currentLang === 'bn' ? 'সম্পূর্ণ ছবি দেখুন' : 'View Full Photo'}" title="${currentLang === 'bn' ? 'সম্পূর্ণ ছবি দেখুন' : 'View Full Photo'}">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 3 21 3 21 9"></polyline>
+            <polyline points="9 21 3 21 3 15"></polyline>
+            <line x1="21" y1="3" x2="14" y2="10"></line>
+            <line x1="3" y1="21" x2="10" y2="14"></line>
+          </svg>
+        </button>
+      </div>
       <div>
         <p class="eyebrow">${t("common.fullProfile")}</p>
         <h2 id="modalName">${studentValue(student, "name")}</h2>
