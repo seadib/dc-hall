@@ -44,7 +44,9 @@
       "student_id": "adib1",
       "group": "science",
       "dob": "04-Oct",
-      "dob_bn": "০৪ অক্টোবর"
+      "dob_bn": "০৪ অক্টোবর",
+      "batch": "hsc27",
+      "session": "2025-2027"
     },
     {
       "short_roll": "161",
@@ -90,7 +92,9 @@
       "student_id": "santo2",
       "group": "science",
       "dob": "08-Dec",
-      "dob_bn": "০৮ ডিসেম্বর"
+      "dob_bn": "০৮ ডিসেম্বর",
+      "batch": "hsc27",
+      "session": "2025-2027"
     },
     {
       "short_roll": "164",
@@ -136,7 +140,9 @@
       "student_id": "jahid3",
       "group": "science",
       "dob": "07-Jan",
-      "dob_bn": "০৭ জানুয়ারি"
+      "dob_bn": "০৭ জানুয়ারি",
+      "batch": "hsc27",
+      "session": "2025-2027"
     },
     {
       "short_roll": "326",
@@ -181,7 +187,9 @@
       "student_id": "sakil4",
       "group": "science",
       "dob": "08-Oct",
-      "dob_bn": "০৮ অক্টোবর"
+      "dob_bn": "০৮ অক্টোবর",
+      "batch": "hsc27",
+      "session": "2025-2027"
     },
     {
       "short_roll": "008",
@@ -227,7 +235,9 @@
       "student_id": "sasfkat5",
       "group": "science",
       "dob": "01-Jan",
-      "dob_bn": "০১ জানুয়ারি"
+      "dob_bn": "০১ জানুয়ারি",
+      "batch": "hsc27",
+      "session": "2025-2027"
     },
     {
       "short_roll": "022",
@@ -272,7 +282,9 @@
       "student_id": "munsi6",
       "group": "science",
       "dob": "23-Dec",
-      "dob_bn": "২৩ ডিসেম্বর"
+      "dob_bn": "২৩ ডিসেম্বর",
+      "batch": "hsc27",
+      "session": "2025-2027"
     },
     {
       "short_roll": "122",
@@ -318,7 +330,9 @@
       "student_id": "musfik7",
       "group": "science",
       "dob": "21-Aug",
-      "dob_bn": "২১ আগস্ট"
+      "dob_bn": "২১ আগস্ট",
+      "batch": "hsc27",
+      "session": "2025-2027"
     },
     {
       "short_roll": "870",
@@ -363,7 +377,9 @@
       "student_id": "esty8",
       "group": "science",
       "dob": "21-Aug",
-      "dob_bn": "২১ আগস্ট"
+      "dob_bn": "২১ আগস্ট",
+      "batch": "hsc27",
+      "session": "2025-2027"
     },
     {
       "short_roll": "141",
@@ -409,7 +425,9 @@
       "student_id": "nafis9",
       "group": "science",
       "dob": "12-Oct",
-      "dob_bn": "১২ অক্টোবর"
+      "dob_bn": "১২ অক্টোবর",
+      "batch": "hsc27",
+      "session": "2025-2027"
     },
     {
       "short_roll": "882",
@@ -454,7 +472,9 @@
       "student_id": "kayes10",
       "group": "science",
       "dob": "13-Dec",
-      "dob_bn": "১৩ ডিসেম্বর"
+      "dob_bn": "১৩ ডিসেম্বর",
+      "batch": "hsc27",
+      "session": "2025-2027"
     },
     {
       "short_roll": "223",
@@ -499,7 +519,9 @@
       "student_id": "jahid11",
       "group": "science",
       "dob": "04-Apr",
-      "dob_bn": "০৪ এপ্রিল"
+      "dob_bn": "০৪ এপ্রিল",
+      "batch": "hsc27",
+      "session": "2025-2027"
     },
     {
       "short_roll": "195",
@@ -545,7 +567,9 @@
       "student_id": "siam12",
       "group": "science",
       "dob": "17-Dec",
-      "dob_bn": "১৭ ডিসেম্বর"
+      "dob_bn": "১৭ ডিসেম্বর",
+      "batch": "hsc27",
+      "session": "2025-2027"
     },
     {
       "short_roll": "881",
@@ -590,7 +614,9 @@
       "student_id": "siam13",
       "group": "science",
       "dob": "05-Oct",
-      "dob_bn": "০৫ অক্টোবর"
+      "dob_bn": "০৫ অক্টোবর",
+      "batch": "hsc27",
+      "session": "2025-2027"
     },
     {
       "short_roll": "322",
@@ -635,7 +661,9 @@
       "student_id": "saimun14",
       "group": "science",
       "dob": "15-Sep",
-      "dob_bn": "১৫ সেপ্টেম্বর"
+      "dob_bn": "১৫ সেপ্টেম্বর",
+      "batch": "hsc27",
+      "session": "2025-2027"
     },
     {
       "short_roll": "863",
@@ -681,7 +709,9 @@
       "student_id": "pranto15",
       "group": "science",
       "dob": "07-Feb",
-      "dob_bn": "০৭ ফেব্রুয়ারি"
+      "dob_bn": "০৭ ফেব্রুয়ারি",
+      "batch": "hsc27",
+      "session": "2025-2027"
     },
     {
       "short_roll": "639",
@@ -726,7 +756,9 @@
       "student_id": "nayem18",
       "group": "science",
       "dob": "31-Dec",
-      "dob_bn": "৩১ ডিসেম্বর"
+      "dob_bn": "৩১ ডিসেম্বর",
+      "batch": "hsc27",
+      "session": "2025-2027"
     },
     {
       "short_roll": "140",
@@ -772,7 +804,9 @@
       "student_id": "alauddin17",
       "group": "arts",
       "dob": "09-Sep",
-      "dob_bn": "০৯ সেপ্টেম্বর"
+      "dob_bn": "০৯ সেপ্টেম্বর",
+      "batch": "hsc27",
+      "session": "2025-2027"
     },
     {
       "short_roll": "872",
@@ -817,7 +851,9 @@
       "student_id": "rafiq18",
       "group": "science",
       "dob": "24-Dec",
-      "dob_bn": "২৪ ডিসেম্বর"
+      "dob_bn": "২৪ ডিসেম্বর",
+      "batch": "hsc27",
+      "session": "2025-2027"
     },
     {
       "short_roll": "596",
@@ -863,7 +899,9 @@
       "student_id": "riyad19",
       "group": "science",
       "dob": "17-May",
-      "dob_bn": "১৭ মে"
+      "dob_bn": "১৭ মে",
+      "batch": "hsc27",
+      "session": "2025-2027"
     },
     {
       "short_roll": "332",
@@ -908,7 +946,9 @@
       "student_id": "mosih20",
       "group": "science",
       "dob": "30-May",
-      "dob_bn": "৩০ মে"
+      "dob_bn": "৩০ মে",
+      "batch": "hsc27",
+      "session": "2025-2027"
     },
     {
       "short_roll": "200",
@@ -953,7 +993,9 @@
       "student_id": "abrar21",
       "group": "science",
       "dob": "01-Jan",
-      "dob_bn": "০১ জানুয়ারি"
+      "dob_bn": "০১ জানুয়ারি",
+      "batch": "hsc27",
+      "session": "2025-2027"
     },
     {
       "short_roll": "100",
@@ -998,7 +1040,9 @@
       "student_id": "rudro22",
       "group": "commerce",
       "dob": "04-Jun",
-      "dob_bn": "০৪ জুন"
+      "dob_bn": "০৪ জুন",
+      "batch": "hsc27",
+      "session": "2025-2027"
     },
     {
       "short_roll": "337",
@@ -1043,7 +1087,9 @@
       "student_id": "riasad23",
       "group": "science",
       "dob": "26-Jul",
-      "dob_bn": "২৬ জুলাই"
+      "dob_bn": "২৬ জুলাই",
+      "batch": "hsc27",
+      "session": "2025-2027"
     },
     {
       "short_roll": "213",
@@ -1089,7 +1135,9 @@
       "student_id": "musa24",
       "group": "science",
       "dob": "10-Apr",
-      "dob_bn": "১০ এপ্রিল"
+      "dob_bn": "১০ এপ্রিল",
+      "batch": "hsc27",
+      "session": "2025-2027"
     },
     {
       "short_roll": "050",
@@ -1135,7 +1183,9 @@
       "student_id": "ariful25",
       "group": "science",
       "dob": "21-Sep",
-      "dob_bn": "২১ সেপ্টেম্বর"
+      "dob_bn": "২১ সেপ্টেম্বর",
+      "batch": "hsc27",
+      "session": "2025-2027"
     },
     {
       "short_roll": "098",
@@ -1180,7 +1230,9 @@
       "student_id": "rejawl26",
       "group": "arts",
       "dob": "10-Sep",
-      "dob_bn": "১০ সেপ্টেম্বর"
+      "dob_bn": "১০ সেপ্টেম্বর",
+      "batch": "hsc27",
+      "session": "2025-2027"
     },
     {
       "short_roll": "171",
@@ -1225,7 +1277,9 @@
       "student_id": "sabit27",
       "group": "science",
       "dob": "11-Feb",
-      "dob_bn": "১১ ফেব্রুয়ারি"
+      "dob_bn": "১১ ফেব্রুয়ারি",
+      "batch": "hsc27",
+      "session": "2025-2027"
     },
     {
       "short_roll": "153",
@@ -1271,7 +1325,9 @@
       "student_id": "alif28",
       "group": "science",
       "dob": "11-Nov",
-      "dob_bn": "১১ নভেম্বর"
+      "dob_bn": "১১ নভেম্বর",
+      "batch": "hsc27",
+      "session": "2025-2027"
     },
     {
       "short_roll": "031",
@@ -1317,7 +1373,9 @@
         "ct3": "pdfs/sohan29-11-ct3.pdf",
         "yearly": "pdfs/sohan29-11-y.pdf"
       },
-      "full_roll": "1202526020031"
+      "full_roll": "1202526020031",
+      "batch": "hsc27",
+      "session": "2025-2027"
     },
     {
       "short_roll": "001",
@@ -1363,7 +1421,9 @@
         "ct3": "pdfs/bayezid30-11-ct3.pdf",
         "yearly": "pdfs/bayezid30-11-y.pdf"
       },
-      "full_roll": "1202526020001"
+      "full_roll": "1202526020001",
+      "batch": "hsc27",
+      "session": "2025-2027"
     }
   ]
 }

@@ -145,6 +145,7 @@ const i18n = {
       subtitle: "Room-based student pairs with class, group, section and blood group filters."
     },
     results: {
+      eyebrow: "ACADEMIC PERFORMANCE",
       title: "Academic Results",
       subtitle: "Demo result overview. Detailed CT and yearly PDF files are linked from student profiles."
     },
@@ -191,10 +192,10 @@ const i18n = {
       title: "Hall Super",
       subtitle: "Important information for students about the respected hall superintendent.",
       eyebrow: "Respectful Leadership",
-      name: "Prof. Md. Rahman",
-      bio: "Demo profile: the hall super guides students with discipline, care and academic encouragement. He works to keep the hall organized, safe and study-friendly.",
+      name: "Prof. Md. Kamruzzaman",
+      bio: "Prof. Md. Kamruzzaman serves as the Provost of Dhaka College International Hall. He is committed to maintaining a disciplined, secure, and student-friendly residential environment while supporting students' academic success, personal development, and overall well-being.",
       joinedTitle: "Joined Hall Duty",
-      joinedText: "Serving students since 2022 as a demo timeline entry.",
+      joinedText: "Serving students since 2022 with dedication and leadership.",
       contributionTitle: "Contribution",
       contributionText: "Improved discipline, student communication and admission preparation culture.",
       noticeTitle: "Student Support",
@@ -202,8 +203,8 @@ const i18n = {
     },
     gallery: {
       title: "Hall Gallery",
-      subtitle: "Event photos, group moments and student activities. Replace these demo files later with real photos.",
-      demoText: "Headline and short event description will be added here."
+      subtitle: "Event highlights, campus moments, and residential student memories.",
+      demoText: "International Hall campus and student memories."
     },
     developer: {
       title: "Developer Profile",
@@ -227,7 +228,8 @@ const i18n = {
       ct2: "CT-2",
       hy: "Half Yearly",
       ct3: "CT-3",
-      yearly: "Yearly"
+      yearly: "Yearly",
+      test: "Test Exam"
     },
     footer: {
       aboutPrefix: "This website is developed by",
@@ -385,6 +387,7 @@ const i18n = {
       subtitle: "শ্রেণী, গ্রুপ, সেকশন ও রক্তের গ্রুপ ফিল্টারসহ রুমভিত্তিক শিক্ষার্থী তালিকা।"
     },
     results: {
+      eyebrow: "একাডেমিক ফলাফল",
       title: "একাডেমিক ফলাফল",
       subtitle: "ডেমো ফলাফল প্রিভিউ। বিস্তারিত CT ও yearly PDF শিক্ষার্থী প্রোফাইলে যুক্ত আছে।"
     },
@@ -430,11 +433,11 @@ const i18n = {
     hallSuper: {
       title: "হল সুপার",
       subtitle: "শিক্ষার্থীদের জন্য সম্মানিত হল সুপারের গুরুত্বপূর্ণ তথ্য।",
-      eyebrow: "Respectful Leadership",
-      name: "প্রফেসর মো. রহমান",
-      bio: "ডেমো প্রোফাইল: হল সুপার শৃঙ্খলা, যত্ন ও একাডেমিক উৎসাহ দিয়ে শিক্ষার্থীদের গাইড করেন। তিনি হলকে গুছানো, নিরাপদ ও পড়াশোনাবান্ধব রাখতে কাজ করেন।",
+      eyebrow: "সম্মানিত নেতৃত্ব",
+      name: "অধ্যাপক মোঃ কামরুজ্জামান",
+      bio: "অধ্যাপক মোঃ কামরুজ্জামান ঢাকা কলেজ ইন্টারন্যাশনাল হলের প্রভোস্ট হিসেবে দায়িত্ব পালন করছেন। তিনি শিক্ষার্থীদের জন্য একটি শৃঙ্খলাবদ্ধ, নিরাপদ ও শিক্ষাবান্ধব আবাসিক পরিবেশ নিশ্চিত করতে এবং তাদের একাডেমিক ও ব্যক্তিগত উন্নয়নে সহায়তা করতে কাজ করে যাচ্ছেন।",
       joinedTitle: "হল দায়িত্বে যোগদান",
-      joinedText: "২০২২ সাল থেকে শিক্ষার্থীদের সেবা দিচ্ছেন - ডেমো টাইমলাইন।",
+      joinedText: "২০২২ সাল থেকে শিক্ষার্থীদের একনিষ্ঠ সেবা ও নেতৃত্ব দিয়ে যাচ্ছেন।",
       contributionTitle: "অবদান",
       contributionText: "শৃঙ্খলা, শিক্ষার্থী যোগাযোগ ও এডমিশন প্রস্তুতির পরিবেশ উন্নত করা।",
       noticeTitle: "শিক্ষার্থী সহায়তা",
@@ -442,8 +445,8 @@ const i18n = {
     },
     gallery: {
       title: "হল গ্যালারি",
-      subtitle: "ইভেন্ট ছবি, দলীয় মুহূর্ত ও শিক্ষার্থী কার্যক্রম। পরে demo file-এর জায়গায় real photo add করা যাবে।",
-      demoText: "এখানে event headline ও সংক্ষিপ্ত description যোগ করা হবে।"
+      subtitle: "ইভেন্ট মুহূর্ত, ক্যাম্পাস জীবনের স্মৃতি ও শিক্ষার্থীদের বিভিন্ন কার্যক্রম।",
+      demoText: "আন্তর্জাতিক ছাত্রাবাসের ক্যাম্পাস ও শিক্ষার্থীদের সোনালী স্মৃতি।"
     },
     developer: {
       title: "ডেভেলপার প্রোফাইল",
@@ -467,7 +470,8 @@ const i18n = {
       ct2: "CT-2",
       hy: "Half Yearly",
       ct3: "CT-3",
-      yearly: "Yearly"
+      yearly: "Yearly",
+      test: "Test Exam"
     },
     footer: {
       about: "আন্তর্জাতিক ছাত্রাবাসের student portal demo - profile, room, result, gallery ও hall information এক জায়গায়।",
@@ -2448,6 +2452,8 @@ function mapCmsStudent(item, index) {
     room: (item.room_no || "").trim(),
     roll: shortRoll,
     fullRoll,
+    batch: item.batch || "hsc27",
+    session: item.session || "2025-2027",
     classNo: item.class_no || "11",
     group,
     groupEn: item.group_en || "",
@@ -2630,6 +2636,7 @@ async function loadCmsContent() {
   await renderDeveloperPage(devData);
   await renderHallInfoPage(hallData);
   await renderHallSuperPage(hallData);
+  renderHomeHallSuper(hallData);
   renderDynamicContent();
 }
 
@@ -2654,26 +2661,38 @@ function sectionText(student) {
 }
 
 function resultFiles(student) {
-  if (student.pdfs && Object.keys(student.pdfs).length) {
-    const valid = [
-      ["ct1", normalizeCmsPath(student.pdfs.ct1)],
-      ["ct2", normalizeCmsPath(student.pdfs.ct2)],
-      ["hy", normalizeCmsPath(student.pdfs.hy)],
-      ["ct3", normalizeCmsPath(student.pdfs.ct3)],
-      ["yearly", normalizeCmsPath(student.pdfs.yearly)]
-    ].filter(([, file]) => file);
-    if (valid.length) return valid;
+  const isSecondYear = String(student.class_no || "11") === "12";
+  const pdfObj = (student.pdfs && Object.keys(student.pdfs).length) ? student.pdfs :
+                 (student.generated_pdf_names && Object.keys(student.generated_pdf_names).length) ? student.generated_pdf_names : null;
+
+  if (isSecondYear) {
+    if (pdfObj) {
+      const valid = [
+        ["ct1", normalizeCmsPath(pdfObj.ct1)],
+        ["ct2", normalizeCmsPath(pdfObj.ct2)],
+        ["ct3", normalizeCmsPath(pdfObj.ct3)],
+        ["test", normalizeCmsPath(pdfObj.test)]
+      ].filter(([, file]) => file);
+      if (valid.length) return valid;
+    }
+    return [
+      ["ct1", `pdfs/${student.slug}-12-ct1.pdf`],
+      ["ct2", `pdfs/${student.slug}-12-ct2.pdf`],
+      ["ct3", `pdfs/${student.slug}-12-ct3.pdf`],
+      ["test", `pdfs/${student.slug}-12-test.pdf`]
+    ];
   }
 
-  if (student.generated_pdf_names && Object.keys(student.generated_pdf_names).length) {
-    const validGen = [
-      ["ct1", normalizeCmsPath(student.generated_pdf_names.ct1)],
-      ["ct2", normalizeCmsPath(student.generated_pdf_names.ct2)],
-      ["hy", normalizeCmsPath(student.generated_pdf_names.hy)],
-      ["ct3", normalizeCmsPath(student.generated_pdf_names.ct3)],
-      ["yearly", normalizeCmsPath(student.generated_pdf_names.yearly)]
+  // 1st Year (Class 11)
+  if (pdfObj) {
+    const valid = [
+      ["ct1", normalizeCmsPath(pdfObj.ct1)],
+      ["ct2", normalizeCmsPath(pdfObj.ct2)],
+      ["hy", normalizeCmsPath(pdfObj.hy)],
+      ["ct3", normalizeCmsPath(pdfObj.ct3)],
+      ["yearly", normalizeCmsPath(pdfObj.yearly)]
     ].filter(([, file]) => file);
-    if (validGen.length) return validGen;
+    if (valid.length) return valid;
   }
 
   return [
@@ -3002,6 +3021,7 @@ function studentMatches(student, query) {
 
 function getActiveFilters() {
   return {
+    batch: byId("filterBatch")?.value || "",
     classNo: byId("filterClass")?.value || "",
     group: byId("filterGroup")?.value || "",
     section: byId("filterSection")?.value || "",
@@ -3010,6 +3030,7 @@ function getActiveFilters() {
 }
 
 function studentPassesFilters(student, filters = getActiveFilters()) {
+  if (filters.batch && student.batch !== filters.batch) return false;
   if (filters.classNo && student.classNo !== filters.classNo) return false;
   if (filters.group && student.group !== filters.group) return false;
   if (filters.section && student.section !== filters.section) return false;
@@ -3177,7 +3198,7 @@ function initMoreMenu() {
   });
 }
 
-function renderResults() {
+function renderResults(filterClass = "all") {
   const table = byId("resultTable");
   if (!table) return;
 
@@ -3186,20 +3207,46 @@ function renderResults() {
   const showResults = !lockResults || isUnlocked;
   const lockIconSvg = `<svg viewBox="0 0 24 24" width="12" height="12" fill="#10b981" style="display:inline-block; vertical-align:middle; margin-left:4px;"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>`;
 
-  table.innerHTML = students.map((student, index) => `
-    <tr>
-      <td>${index + 1}</td>
-      <td><button type="button" data-student-id="${student.id}">${studentValue(student, "name")}</button></td>
-      <td title="${student.fullRoll}">${student.roll}</td>
-      ${resultFiles(student).map(([key, file]) => {
-        const fileHref = showResults ? file : "profile.html";
-        const targetAttr = showResults ? 'target="_blank" rel="noopener"' : '';
-        const lockIcon = showResults ? '' : ` ${lockIconSvg}`;
-        const linkClass = showResults ? "table-pdf-link" : "table-pdf-link locked";
-        return `<td><a class="${linkClass}" href="${fileHref}" ${targetAttr}>${t(`pdf.${key}`)}${lockIcon}</a></td>`;
-      }).join("")}
-    </tr>
-  `).join("");
+  const filteredStudents = students.filter((s) => {
+    if (filterClass === "all") return true;
+    return String(s.class_no || "11") === String(filterClass);
+  });
+
+  table.innerHTML = filteredStudents.map((student, index) => {
+    const isAuthorized = canViewStudentPrivateData(student);
+    const showStudentResults = !lockResults || isAuthorized;
+    return `
+      <tr>
+        <td>${index + 1}</td>
+        <td><button type="button" data-student-id="${student.id}">${studentValue(student, "name")}</button></td>
+        <td title="${student.fullRoll}">${student.roll}</td>
+        ${resultFiles(student).map(([key, file]) => {
+          const fileHref = showStudentResults ? file : "profile.html";
+          const targetAttr = showStudentResults ? 'target="_blank" rel="noopener"' : '';
+          const lockIcon = showStudentResults ? '' : ` ${lockIconSvg}`;
+          const linkClass = showStudentResults ? "table-pdf-link" : "table-pdf-link locked";
+          return `<td><a class="${linkClass}" href="${fileHref}" ${targetAttr}>${t(`pdf.${key}`)}${lockIcon}</a></td>`;
+        }).join("")}
+      </tr>
+    `;
+  }).join("");
+}
+
+function initResultClassFilter() {
+  const btns = document.querySelectorAll(".result-class-btn");
+  if (!btns.length) return;
+  btns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      btns.forEach((b) => {
+        b.classList.remove("active", "primary");
+        b.classList.add("secondary");
+      });
+      btn.classList.add("active", "primary");
+      btn.classList.remove("secondary");
+      const cls = btn.dataset.class;
+      renderResults(cls);
+    });
+  });
 }
 
 async function renderDcSocialPage() {
@@ -3304,6 +3351,7 @@ function renderDynamicContent() {
     renderHallInfoPage(cmsHallData);
     renderAlumniList(cmsHallData.alumni_profiles);
     renderHallSuperPage(cmsHallData);
+    renderHomeHallSuper(cmsHallData);
   }
   if (cmsDevData) {
     renderDeveloperPage(cmsDevData);
@@ -3494,19 +3542,51 @@ function maskData(val) {
   return "••••••••";
 }
 
+function getAuthRole() {
+  const role = localStorage.getItem("dc-auth-role");
+  if (role) return role;
+  const savedPassword = localStorage.getItem("dc-student-password");
+  if (savedPassword) {
+    if (savedPassword === (cmsSettings?.master_password || cmsSettings?.password)) return "master";
+    if (cmsSettings?.batch_passwords) {
+      for (const [bKey, bPass] of Object.entries(cmsSettings.batch_passwords)) {
+        if (savedPassword === bPass) return bKey;
+      }
+    }
+  }
+  return "guest";
+}
+
 function getAuthStatus() {
   if (!cmsSettings) return false;
   if (cmsSettings.global_visibility === true) return true;
-  const savedPassword = localStorage.getItem("dc-student-password");
-  if (savedPassword && savedPassword === cmsSettings.password) return true;
-  return false;
+  const role = getAuthRole();
+  return role !== "guest";
+}
+
+function canViewStudentPrivateData(student) {
+  if (!cmsSettings) return false;
+  if (cmsSettings.global_visibility === true) return true;
+  const role = getAuthRole();
+  if (role === "master") return true; // Master Admin sees all batches
+  if (role === "guest") return false;
+  // Junior batch or batch user can only view their own batch
+  return role === (student.batch || "hsc27");
 }
 
 function checkSessionValidity() {
   if (!cmsSettings) return;
+  const role = getAuthRole();
+  if (role === "guest") return;
   const savedPassword = localStorage.getItem("dc-student-password");
-  if (savedPassword && savedPassword !== cmsSettings.password) {
+  const masterPass = cmsSettings.master_password || cmsSettings.password;
+  let isValid = savedPassword === masterPass;
+  if (!isValid && cmsSettings.batch_passwords) {
+    isValid = Object.values(cmsSettings.batch_passwords).includes(savedPassword);
+  }
+  if (!isValid) {
     localStorage.removeItem("dc-student-password");
+    localStorage.removeItem("dc-auth-role");
     location.reload();
   }
 }
@@ -3516,6 +3596,7 @@ function initAuth() {
   if (page !== "profile") return;
 
   const isUnlocked = getAuthStatus();
+  const currentRole = getAuthRole();
   const loginFormCard = byId("loginFormCard");
   const statusCard = byId("statusCard");
   const loginForm = byId("loginForm");
@@ -3528,11 +3609,23 @@ function initAuth() {
   const noticeText = byId("noticeText");
 
   if (noticeText) noticeText.textContent = t("auth.notice");
-  if (successMsg) successMsg.textContent = t("auth.successMessage");
 
   if (isUnlocked) {
     if (loginFormCard) loginFormCard.style.display = "none";
-    if (statusCard) statusCard.style.display = "block";
+    if (statusCard) {
+      statusCard.style.display = "block";
+      if (successMsg) {
+        if (currentRole === "master") {
+          successMsg.textContent = currentLang === "bn"
+            ? "তুমি মাস্টার এডমিন হিসেবে লগইন করে আছো! সকল ব্যাচের যাবতীয় তথ্য ও লক করা নম্বর আনলক রয়েছে।"
+            : "You are logged in as Master Admin. Full access unlocked across all batches.";
+        } else {
+          successMsg.textContent = currentLang === "bn"
+            ? `তুমি ${currentRole.toUpperCase()} ব্যাচ হিসেবে লগইন আছো! তোমার নিজস্ব ব্যাচের তথ্য দৃশ্যমান (অন্যান্য ব্যাচ সুরক্ষিত)।`
+            : `You are logged in under ${currentRole.toUpperCase()}. Your batch records are unlocked (other batches protected).`;
+        }
+      }
+    }
   } else {
     if (loginFormCard) loginFormCard.style.display = "block";
     if (statusCard) statusCard.style.display = "none";
@@ -3556,14 +3649,30 @@ function initAuth() {
     loginForm.addEventListener("submit", (e) => {
       e.preventDefault();
       const enteredPassword = passwordInput.value.trim();
-      if (enteredPassword === cmsSettings.password) {
+      const masterPass = cmsSettings.master_password || cmsSettings.password;
+      const batchPasswords = cmsSettings.batch_passwords || { "hsc27": "dc27hall", "hsc28": "dc28hall" };
+
+      if (enteredPassword === masterPass) {
+        localStorage.setItem("dc-auth-role", "master");
         localStorage.setItem("dc-student-password", enteredPassword);
-        if (errorMsg) errorMsg.style.display = "none";
         location.reload();
       } else {
-        if (errorMsg) {
-          errorMsg.style.display = "block";
-          errorMsg.textContent = t("auth.error");
+        let matchedBatch = null;
+        for (const [bKey, bPass] of Object.entries(batchPasswords)) {
+          if (enteredPassword === bPass) {
+            matchedBatch = bKey;
+            break;
+          }
+        }
+        if (matchedBatch) {
+          localStorage.setItem("dc-auth-role", matchedBatch);
+          localStorage.setItem("dc-student-password", enteredPassword);
+          location.reload();
+        } else {
+          if (errorMsg) {
+            errorMsg.style.display = "block";
+            errorMsg.textContent = t("auth.error");
+          }
         }
       }
     });
@@ -3572,6 +3681,7 @@ function initAuth() {
   if (logoutBtn) {
     logoutBtn.addEventListener("click", () => {
       localStorage.removeItem("dc-student-password");
+      localStorage.removeItem("dc-auth-role");
       location.reload();
     });
   }
@@ -3660,7 +3770,7 @@ function openStudentModal(student) {
 
   const smallLockIconSvg = `<svg viewBox="0 0 24 24" width="14" height="14" fill="#10b981" style="display:inline-block; vertical-align:middle; margin-left:6px;"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>`;
 
-  const isUnlocked = getAuthStatus();
+  const isUnlocked = canViewStudentPrivateData(student);
   const lockPhone = cmsSettings?.locked_fields?.lock_phone !== false;
   const lockFather = cmsSettings?.locked_fields?.lock_father_phone !== false;
   const lockEmail = cmsSettings?.locked_fields?.lock_email !== false;
@@ -3993,6 +4103,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   initStudentSearch();
   initRoommateFilters();
   initStudentClicks();
+  initResultClassFilter();
   initModal();
   initImageFallbacks();
   initAos();
@@ -4007,13 +4118,65 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 async function renderGalleryPage(galleryData) {
-  const grid = document.querySelector(".gallery-grid");
-  if (!grid || document.body.dataset.page !== "gallery") return;
+  if (document.body.dataset.page !== "gallery") return;
+  const container = document.getElementById("galleryEventsContainer") || document.querySelector(".gallery-grid");
+  if (!container) return;
 
   const data = galleryData || await fetchJson("data/gallery.json");
-  if (data && data.items && data.items.length) {
+  if (!data) return;
+
+  if (data.events && data.events.length) {
+    const sortedEvents = data.events.slice().sort((a, b) => Number(a.position || 0) - Number(b.position || 0));
+
+    container.innerHTML = sortedEvents.map((ev, evIdx) => {
+      const title = currentLang === "bn" ? (ev.title_bn || ev.title_en) : (ev.title_en || ev.title_bn);
+      const desc = currentLang === "bn" ? (ev.description_bn || ev.description_en) : (ev.description_en || ev.description_bn);
+      const date = currentLang === "bn" ? (ev.date_formatted_bn || ev.date_formatted_en) : (ev.date_formatted_en || ev.date_formatted_bn);
+      const cat = ev.category || "events";
+
+      const photosHtml = ev.photos.map((p, pIdx) => {
+        const photoSrc = normalizeCmsPath(p.photo) || "images/hostel-building.jpg";
+        const caption = currentLang === "bn" ? (p.caption_bn || p.caption_en || title) : (p.caption_en || p.caption_bn || title);
+        return `
+          <article class="gallery-card" data-aos="fade-up" data-aos-delay="${(pIdx % 6) * 50}">
+            <button type="button" data-gallery-src="${photoSrc}" data-gallery-title="${caption}" data-gallery-desc="${title}">
+              <img src="${photoSrc}" alt="${caption}" loading="lazy">
+              <div class="gallery-card-overlay">
+                <span>${caption}</span>
+              </div>
+            </button>
+          </article>
+        `;
+      }).join("");
+
+      return `
+        <div class="gallery-event-group" data-category="${cat}" data-aos="fade-up" style="margin-bottom: 48px;">
+          <div class="gallery-event-header" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 12px; margin-bottom: 20px; padding-bottom: 14px; border-bottom: 2px solid var(--border);">
+            <div>
+              <span class="gallery-event-tag" style="display: inline-block; padding: 4px 14px; background: var(--accent-soft); color: var(--accent); border-radius: 999px; font-size: 0.82rem; font-weight: 700; text-transform: uppercase; margin-bottom: 8px;">${cat}</span>
+              <h2 style="margin: 0 0 6px; font-size: 1.55rem;">${title}</h2>
+              ${desc ? `<p style="margin: 0; color: var(--muted); font-size: 0.95rem;">${desc}</p>` : ''}
+            </div>
+            <div style="display: flex; align-items: center; gap: 10px;">
+              ${date ? `<span style="font-size: 0.85rem; color: var(--muted); background: var(--surface); padding: 4px 12px; border-radius: 8px; border: 1px solid var(--border); font-weight: 600;">${date}</span>` : ''}
+              <span style="font-size: 0.85rem; color: var(--accent); font-weight: 700;">${ev.photos.length} Photos</span>
+            </div>
+          </div>
+          <div class="gallery-grid">
+            ${photosHtml}
+          </div>
+        </div>
+      `;
+    }).join("");
+
+    initGalleryFilters();
+    return;
+  }
+
+  // Fallback to flat items if no events
+  if (data.items && data.items.length) {
     const items = data.items.slice().sort((a, b) => Number(a.position || 0) - Number(b.position || 0));
-    grid.innerHTML = items.map((item, index) => {
+    container.innerHTML = items.map((item, index) => {
       const photo = normalizeCmsPath(item.photo) || "images/hostel-building.jpg";
       const title = currentLang === "bn" ? (item.title_bn || item.title_en || "") : (item.title_en || item.title_bn || "");
       const desc = currentLang === "bn" ? (item.description_bn || item.description_en || "") : (item.description_en || item.description_bn || "");
@@ -4021,7 +4184,9 @@ async function renderGalleryPage(galleryData) {
         <article class="gallery-card" data-aos="fade-up" data-aos-delay="${(index % 6) * 50}">
           <button type="button" data-gallery-src="${photo}" data-gallery-title="${title || ""}" data-gallery-desc="${desc || ""}">
             <img src="${photo}" alt="${title || "Gallery photo"}" loading="lazy">
-            <h3>${title || ""}</h3>
+            <div class="gallery-card-overlay">
+              <span>${title}</span>
+            </div>
           </button>
         </article>
       `;
@@ -4029,12 +4194,52 @@ async function renderGalleryPage(galleryData) {
   }
 }
 
+function initGalleryFilters() {
+  const filterBtns = document.querySelectorAll(".gallery-filter-btn");
+  if (!filterBtns.length) return;
+
+  filterBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      filterBtns.forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+      const filter = btn.dataset.filter;
+      const groups = document.querySelectorAll(".gallery-event-group");
+
+      groups.forEach((group) => {
+        if (filter === "all" || group.dataset.category === filter) {
+          group.style.display = "block";
+        } else {
+          group.style.display = "none";
+        }
+      });
+    });
+  });
+}
+
 function renderHomeGallery(galleryData) {
   const grid = document.getElementById("homeGalleryGrid");
   if (!grid) return;
 
-  const rawItems = (galleryData && galleryData.items ? galleryData.items : []);
-  const items = rawItems.slice().sort((a, b) => Number(a.position || 0) - Number(b.position || 0)).slice(0, 6);
+  let items = [];
+  if (galleryData && galleryData.events && galleryData.events.length) {
+    // Pick first 6 photos from the newest events
+    for (const ev of galleryData.events) {
+      for (const p of ev.photos) {
+        items.push({
+          photo: p.photo,
+          title_en: p.caption_en || ev.title_en,
+          title_bn: p.caption_bn || ev.title_bn,
+          description_en: ev.title_en,
+          description_bn: ev.title_bn
+        });
+        if (items.length >= 6) break;
+      }
+      if (items.length >= 6) break;
+    }
+  } else if (galleryData && galleryData.items) {
+    items = galleryData.items.slice(0, 6);
+  }
+
   if (!items.length) return;
 
   grid.innerHTML = items.map((item, index) => {
@@ -4045,8 +4250,9 @@ function renderHomeGallery(galleryData) {
       <article class="gallery-card" data-aos="fade-up" data-aos-delay="${(index % 6) * 60}">
         <button type="button" data-gallery-src="${photo}" data-gallery-title="${title || ""}" data-gallery-desc="${desc || ""}">
           <img src="${photo}" alt="${title || "Gallery photo"}" loading="lazy">
-          <h3>${title || ""}</h3>
-          <p>${desc || ""}</p>
+          <div class="gallery-card-overlay">
+            <span>${title}</span>
+          </div>
         </button>
       </article>
     `;
@@ -4213,13 +4419,39 @@ async function renderHallSuperPage(hallData) {
     superImg.src = normalizeCmsPath(data.hall_super_photo);
   }
 
-  // 2. Eyebrow translation override
+  // 2. Eyebrow, Name and Bio
   const eyebrow = document.querySelector(".split .eyebrow");
   if (eyebrow) {
     eyebrow.textContent = currentLang === "bn" ? (data.hall_super_eyebrow_bn || "সম্মানিত নেতৃত্ব") : (data.hall_super_eyebrow_en || "Respectful Leadership");
   }
+  const nameEl = document.querySelector("[data-i18n='hallSuper.name']");
+  if (nameEl) {
+    nameEl.textContent = currentLang === "bn" ? (data.hall_super_name_bn || "অধ্যাপক মোঃ কামরুজ্জামান") : (data.hall_super_name_en || "Prof. Md. Kamruzzaman");
+  }
+  const bioEl = document.querySelector("[data-i18n='hallSuper.bio']");
+  if (bioEl) {
+    const bio = currentLang === "bn" ? (data.hall_super_bio_bn || data.hall_super_bio_en) : (data.hall_super_bio_en || data.hall_super_bio_bn);
+    if (bio) bioEl.textContent = bio;
+  }
 
-  // 3. Info grid (info boxes)
+  // 3. Contact Actions
+  if (data.hall_super_contact) {
+    const c = data.hall_super_contact;
+    const callBtn = byId("superCallBtn");
+    const waBtn = byId("superWaBtn");
+    const fbBtn = byId("superFbBtn");
+    const emailBtn = byId("superEmailBtn");
+    if (callBtn && c.phone) callBtn.href = `tel:${c.phone}`;
+    if (waBtn && c.whatsapp) waBtn.href = `https://wa.me/${c.whatsapp.replace(/[^0-9]/g, "")}`;
+    if (fbBtn && c.facebook) fbBtn.href = c.facebook;
+    if (emailBtn && c.email) emailBtn.href = `mailto:${c.email}`;
+    const officeEl = byId("superOfficeRoom");
+    if (officeEl) officeEl.textContent = currentLang === "bn" ? (c.office_room_bn || c.office_room_en) : (c.office_room_en || c.office_room_bn);
+    const hoursEl = byId("superVisitingHours");
+    if (hoursEl) hoursEl.textContent = currentLang === "bn" ? (c.visiting_hours_bn || c.visiting_hours_en) : (c.visiting_hours_en || c.visiting_hours_bn);
+  }
+
+  // 4. Info grid (info boxes)
   const infoGrid = document.querySelector(".info-grid");
   if (infoGrid && data.hall_super_info_boxes && data.hall_super_info_boxes.length) {
     infoGrid.innerHTML = data.hall_super_info_boxes.map((box) => {
@@ -4232,6 +4464,24 @@ async function renderHallSuperPage(hallData) {
         </article>
       `;
     }).join("");
+  }
+}
+
+function renderHomeHallSuper(hallData) {
+  if (document.body.dataset.page !== "home") return;
+  if (!hallData) return;
+  const nameEl = byId("homeHallSuperName");
+  if (nameEl) {
+    nameEl.textContent = currentLang === "bn" ? (hallData.hall_super_name_bn || "অধ্যাপক মোঃ কামরুজ্জামান") : (hallData.hall_super_name_en || "Prof. Md. Kamruzzaman");
+  }
+  const bioEl = byId("homeHallSuperBio");
+  if (bioEl) {
+    const bio = currentLang === "bn" ? (hallData.hall_super_bio_bn || hallData.hall_super_bio_en) : (hallData.hall_super_bio_en || hallData.hall_super_bio_bn);
+    if (bio) bioEl.textContent = bio;
+  }
+  const img = document.querySelector("#hallsuper-preview img");
+  if (img && hallData.hall_super_photo) {
+    img.src = normalizeCmsPath(hallData.hall_super_photo);
   }
 }
 

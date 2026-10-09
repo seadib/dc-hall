@@ -72,9 +72,14 @@
     "lock_results": true
   },
   "hero_title_en": "International Hall",
-  "hero_image": "images/hostel-hero.jpg",
+  "hero_image": "images/hall/hostel-hero.jpg",
   "hero_title_bn": "আন্তর্জাতিক ছাত্রাবাস",
   "password": "102103104",
+  "master_password": "102103104",
+  "batch_passwords": {
+    "hsc27": "dc27hall",
+    "hsc28": "dc28hall"
+  },
   "dhaka_college": {
     "result_admit_url": "https://dhakacollege.eshiksabd.com/",
     "social_links": [

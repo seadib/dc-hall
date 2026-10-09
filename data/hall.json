@@ -33,24 +33,24 @@
   "hall_photos": [
     {
       "photo": "images/hall/hall1.jpg",
-      "title_en": "Hall Photo 01",
-      "title_bn": "হল ফটো ০১",
-      "desc_en": "Replace this demo file later with hall1.jpg.",
-      "desc_bn": "পরবর্তীতে hall1.jpg দিয়ে এটি পরিবর্তন করুন।"
+      "title_en": "International Hall Campus",
+      "title_bn": "আন্তর্জাতিক ছাত্রাবাস প্রাঙ্গণ",
+      "desc_en": "Front corridor and historic college premises.",
+      "desc_bn": "সম্মুখ করিডোর ও ঐতিহাসিক কলেজ প্রাঙ্গণ।"
     },
     {
       "photo": "images/hall/hall2.jpg",
-      "title_en": "Hall Photo 02",
-      "title_bn": "হল ফটো ০২",
-      "desc_en": "Replace this demo file later with hall2.jpg.",
-      "desc_bn": "পরবর্তীতে hall2.jpg দিয়ে এটি পরিবর্তন করুন।"
+      "title_en": "Residential Blocks",
+      "title_bn": "আবাসিক ব্লক",
+      "desc_en": "Peaceful academic environment for student residents.",
+      "desc_bn": "আবাসিক শিক্ষার্থীদের জন্য শান্ত ও সুশৃঙ্খল পড়ার পরিবেশ।"
     },
     {
       "photo": "images/hall/hall3.jpg",
-      "title_en": "Hall Photo 03",
-      "title_bn": "হল ফটো ০৩",
-      "desc_en": "Upload hall3.jpg later and it will show here.",
-      "desc_bn": "পরবর্তীতে hall3.jpg আপলোড করলে এখানে দেখাবে।"
+      "title_en": "Hall Common Grounds",
+      "title_bn": "হল প্রাঙ্গণ ও চত্বর",
+      "desc_en": "Community life, shared study and mutual camaraderie.",
+      "desc_bn": "শিক্ষার্থীদের সহমর্মিতা, গ্রুপ স্টাডি ও স্মৃতিময় দিনগুলি।"
     }
   ],
   "alumni_profiles": [
@@ -140,5 +140,15 @@
       "text_en": "Students can contact the hall office for room, attendance and emergency support.",
       "text_bn": "রুম, উপস্থিতি এবং যেকোনো জরুরি সহায়তার জন্য হল অফিসে যোগাযোগ করা যাবে।"
     }
-  ]
+  ],
+  "hall_super_contact": {
+    "phone": "+880 1711-000000",
+    "whatsapp": "+8801711000000",
+    "facebook": "https://www.facebook.com/dhakacollegeofficial",
+    "email": "hallsuper@dhakacollege.edu.bd",
+    "office_room_en": "Provost Office, Ground Floor, International Hall",
+    "office_room_bn": "প্রভোস্ট অফিস, নিচতলা, আন্তর্জাতিক ছাত্রাবাস",
+    "visiting_hours_en": "Saturday - Thursday: 5:00 PM - 8:00 PM",
+    "visiting_hours_bn": "শনিবার - বৃহস্পতিবার: বিকাল ৫:০০ - রাত ৮:০০"
+  }
 }

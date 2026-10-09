@@ -393,7 +393,7 @@ body:not([data-page="home"]) .theme-toggle,
   display: flex;
   align-items: center;
   overflow: hidden;
-  background: url("../images/hostel-hero.jpg") center / cover no-repeat;
+  background: url("../images/hall/hostel-hero.jpg") center / cover no-repeat;
 }
 
 .hero-overlay {
@@ -2461,3 +2461,82 @@ body:not([data-page="home"]) .profile-toggle,
     grid-template-columns: 1fr;
   }
 }
+
+/* Gallery Event Groups & Filters */
+.gallery-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 36px;
+  justify-content: center;
+}
+
+.gallery-filter-btn {
+  padding: 8px 18px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 0.92rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.gallery-filter-btn:hover,
+.gallery-filter-btn.active {
+  background: var(--accent);
+  color: #ffffff;
+  border-color: var(--accent);
+  box-shadow: 0 4px 12px var(--accent-soft);
+}
+
+.gallery-card {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.gallery-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+}
+
+.gallery-card button {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+.gallery-card img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.35s ease;
+}
+
+.gallery-card:hover img {
+  transform: scale(1.04);
+}
+
+.gallery-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.75) 0%, transparent 60%);
+  display: flex;
+  align-items: flex-end;
+  padding: 14px;
+  color: #ffffff;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+.gallery-card:hover .gallery-card-overlay {
+  opacity: 1;
+}
+

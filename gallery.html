@@ -65,14 +65,27 @@
       <div class="container" data-aos="fade-up">
         <p class="eyebrow" data-i18n="nav.gallery">Gallery</p>
         <h1 data-i18n="gallery.title">Hall Gallery</h1>
-        <p data-i18n="gallery.subtitle">Event photos, group moments and student activities. Replace these demo files later with real photos.</p>
+        <p data-i18n="gallery.subtitle">Event highlights, campus moments, and residential student memories.</p>
       </div>
     </section>
 
     <section class="section">
       <div class="container">
-        <div class="gallery-grid">
-          <!-- Dynamic CMS items rendered by js/app.js -->
+        <!-- Event Category Filters -->
+        <div class="gallery-filter-bar" data-aos="fade-up">
+          <button type="button" class="gallery-filter-btn active" data-filter="all">All Photos (সকল স্মৃতি)</button>
+          <button type="button" class="gallery-filter-btn" data-filter="events">Events (ইভেন্ট)</button>
+          <button type="button" class="gallery-filter-btn" data-filter="sports">Sports (খেলাধুলা)</button>
+          <button type="button" class="gallery-filter-btn" data-filter="tours">Tour (ট্যুর)</button>
+          <button type="button" class="gallery-filter-btn" data-filter="memories">Daily Life (দৈনন্দিন)</button>
+        </div>
+
+        <div id="galleryEventsContainer">
+          <!-- Dynamic Event Albums rendered by js/app.js -->
+        </div>
+
+        <div class="gallery-grid" style="display: none;">
+          <!-- Fallback -->
         </div>
       </div>
     </section>
