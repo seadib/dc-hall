@@ -1,10 +1,40 @@
 {
   "events": [
     {
-      "id": "freshers-2025",
+      "id": "iftar-reunion-2026",
       "position": 1,
+      "title_en": "Grand Iftar Mahfil & Reunion 2026",
+      "title_bn": "গ্র্যান্ড ইফতার মাহফিল ও পুনর্মিলনী ২০২৬",
+      "date": "2026-03-25",
+      "date_formatted_en": "March 2026",
+      "date_formatted_bn": "মার্চ ২০২৬",
+      "category": "events",
+      "description_en": "Spiritual gathering, collective iftar and joyful reunion of residential students at Dhaka College International Hall.",
+      "description_bn": "ঢাকা কলেজ আন্তর্জাতিক ছাত্রাবাসে আবাসিক শিক্ষার্থীদের পবিত্র ইফতার মাহফিল, দোয়ার অনুষ্ঠান ও সৌহার্দ্যপূর্ণ মিলনমেলা।",
+      "photos": [
+        {
+          "photo": "images/gallery/gallery2.jpg",
+          "caption_en": "Evening Lake Gathering",
+          "caption_bn": "সন্ধ্যার প্রাঙ্গণ আড্ডা"
+        },
+        {
+          "photo": "images/gallery/gallery3.jpg",
+          "caption_en": "Night Gathering & Camaraderie",
+          "caption_bn": "রাত্রিকালীন স্মৃতি ও সহমর্মিতা"
+        },
+        {
+          "photo": "images/gallery/gallery1.jpg",
+          "caption_en": "College Batchmates Gathering",
+          "caption_bn": "কলেজ ব্যাচমেটদের পুনর্মিলনী"
+        }
+      ],
+      "videos": []
+    },
+    {
+      "id": "freshers-2025",
+      "position": 2,
       "title_en": "Freshers Reception & Cultural Evening",
-      "title_bn": "নবীন বরণ ও সাংস্কৃতিক সন্ধ্যা",
+      "title_bn": "নবীন বরণ ও সাংস্কৃতিক সন্ধ্যা ২০২৫",
       "date": "2025-11-20",
       "date_formatted_en": "November 2025",
       "date_formatted_bn": "নভেম্বর ২০২৫",
@@ -13,94 +43,49 @@
       "description_bn": "ঢাকা কলেজ আন্তর্জাতিক ছাত্রাবাসে নবীন আবাসিক শিক্ষার্থীদের বরণ এবং মনোজ্ঞ সাংস্কৃতিক অনুষ্ঠান।",
       "photos": [
         {
-          "photo": "images/gallery/gallery1.jpg",
-          "caption_en": "Freshers Reception Celebration",
-          "caption_bn": "নবীন বরণ উৎসবের আনন্দক্ষণ"
+          "photo": "images/gallery/gallery4.jpg",
+          "caption_en": "Freshers Celebration & Smiles",
+          "caption_bn": "নবীন বরণের আনন্দক্ষণ"
         },
         {
-          "photo": "images/gallery/gallery2.jpg",
+          "photo": "images/gallery/gallery1.jpg",
           "caption_en": "Resident Student Gathering",
           "caption_bn": "আবাসিক শিক্ষার্থীদের মিলনমেলা"
         },
         {
-          "photo": "images/gallery/gallery3.jpg",
+          "photo": "images/gallery/gallery2.jpg",
           "caption_en": "Cultural Evening Highlights",
           "caption_bn": "সাংস্কৃতিক সন্ধ্যার মুহূর্ত"
-        },
-        {
-          "photo": "/assets/uploads/g10.jpg",
-          "caption_en": "Hall auditorium gathering",
-          "caption_bn": "হল মিলনায়তন মুহূর্ত"
-        },
-        {
-          "photo": "/assets/uploads/g11.jpg",
-          "caption_en": "Celebration memories",
-          "caption_bn": "আনন্দময় মুহূর্ত"
         }
       ],
       "videos": []
     },
     {
-      "id": "sports-meet-2025",
-      "position": 2,
-      "title_en": "Annual Hall Cricket & Sports Meet",
-      "title_bn": "বার্ষিক হল ক্রিকেট ও ক্রীড়া উৎসব",
-      "date": "2025-10-15",
-      "date_formatted_en": "October 2025",
-      "date_formatted_bn": "অক্টোবর ২০২৫",
-      "category": "sports",
-      "description_en": "Thrilling inter-room matches fostering brotherhood and sportsman spirit on college grounds.",
-      "description_bn": "কলেজ মাঠে অনুষ্ঠিত আন্তঃরুম ও ব্যাচভিত্তিক রোমাঞ্চকর ক্রিকেট ও ক্রীড়া উৎসব।",
-      "photos": [
-        {
-          "photo": "images/gallery/gallery4.jpg",
-          "caption_en": "Tournament Action",
-          "caption_bn": "মাঠের উত্তেজনাপূর্ণ মুহূর্ত"
-        },
-        {
-          "photo": "images/gallery/gallery5.jpg",
-          "caption_en": "Participant Teams",
-          "caption_bn": "টুর্নামেন্টের দলসমূহ"
-        },
-        {
-          "photo": "/assets/uploads/g12.jpg",
-          "caption_en": "Celebration after match",
-          "caption_bn": "ম্যাচ শেষে উদযাপন"
-        },
-        {
-          "photo": "/assets/uploads/g13.jpg",
-          "caption_en": "Prize distribution moments",
-          "caption_bn": "পুরস্কার বিতরণী স্মৃতি"
-        }
-      ],
-      "videos": []
-    },
-    {
-      "id": "tour-picnic-2025",
+      "id": "lalbagh-tour-2025",
       "position": 3,
-      "title_en": "Hall Study Tour & Get-Together",
-      "title_bn": "হল স্টাডি ট্যুর ও মিলনমেলা",
-      "date": "2025-08-10",
+      "title_en": "Hall Study Tour & Heritage Outing",
+      "title_bn": "হল স্টাডি ট্যুর ও লালবাগ কেল্লা ভ্রমণ",
+      "date": "2025-08-15",
       "date_formatted_en": "August 2025",
       "date_formatted_bn": "আগস্ট ২০২৫",
       "category": "tours",
-      "description_en": "Annual student outing and scenic study tour creating unforgettable hostel memories.",
-      "description_bn": "আবাসিক শিক্ষার্থীদের বার্ষিক শিক্ষা সফর ও আনন্দঘন মিলনমেলা।",
+      "description_en": "Annual heritage outing and scenic study tour creating unforgettable hostel brotherhood memories.",
+      "description_bn": "ঐতিহাসিক লালবাগ কেল্লায় আবাসিক শিক্ষার্থীদের বার্ষিক শিক্ষা সফর ও আনন্দঘন স্মৃতিময় দিন।",
       "photos": [
         {
-          "photo": "/assets/uploads/g14.jpg",
-          "caption_en": "Study tour gathering",
-          "caption_bn": "ট্যুরের গ্রুপ ছবি"
+          "photo": "images/gallery/gallery5.jpg",
+          "caption_en": "Lalbagh Fort Group Memorial",
+          "caption_bn": "লালবাগ কেল্লা চত্বরে দলগত স্মৃতি"
         },
         {
-          "photo": "/assets/uploads/g15.jpg",
-          "caption_en": "Scenic journey",
-          "caption_bn": "মনোরম ভ্রমণ স্মৃতি"
+          "photo": "images/gallery/gallery6.jpg",
+          "caption_en": "Garden Hangout & Conversations",
+          "caption_bn": "বাগান চত্বরে আড্ডা ও আলাপচারিতা"
         },
         {
-          "photo": "/assets/uploads/g16.jpg",
-          "caption_en": "Group photo at destination",
-          "caption_bn": "গন্তব্যে দলগত ছবি"
+          "photo": "images/gallery/gallery7.jpg",
+          "caption_en": "Corridor & Campus Moments",
+          "caption_bn": "ক্যাম্পাসের মনোরম মুহূর্ত"
         }
       ],
       "videos": []
@@ -119,78 +104,33 @@
       "photos": [
         {
           "photo": "images/gallery/gallery6.jpg",
-          "caption_en": "Corridor gathering",
-          "caption_bn": "করিডোরের আড্ডা"
+          "caption_en": "Campus Lawn Chat",
+          "caption_bn": "সবুজ ঘাসের চত্বরে বন্ধুদের আড্ডা"
         },
         {
           "photo": "images/gallery/gallery7.jpg",
-          "caption_en": "Campus study night",
-          "caption_bn": "রাত্রিকালীন অধ্যয়ন"
+          "caption_en": "Hostel Corridor Life",
+          "caption_bn": "হলের করিডোরে বন্ধুদের সাথে সময়"
         },
         {
-          "photo": "/assets/uploads/g1.jpg",
-          "caption_en": "Rooftop moments",
-          "caption_bn": "ছাদের স্মৃতি"
+          "photo": "images/gallery/gallery3.jpg",
+          "caption_en": "Study Night Friendship",
+          "caption_bn": "রাত্রিকালীন অধ্যয়ন ও বন্ধুতা"
         },
         {
-          "photo": "/assets/uploads/g2.jpeg",
-          "caption_en": "Student interactions",
-          "caption_bn": "বন্ধুদের সাথে মুহূর্ত"
+          "photo": "images/gallery/gallery1.jpg",
+          "caption_en": "College Uniform Gathering",
+          "caption_bn": "পোশাকের শৃঙ্খলায় কলেজ প্রাঙ্গণে"
         },
         {
-          "photo": "/assets/uploads/g3.jpg",
-          "caption_en": "Hostel yard",
-          "caption_bn": "হল চত্বর"
+          "photo": "images/gallery/gallery4.jpg",
+          "caption_en": "Memorable Smiles",
+          "caption_bn": "চিরস্মরণীয় হাসি ও আনন্দ"
         },
         {
-          "photo": "/assets/uploads/g4.jpg",
-          "caption_en": "Evening gathering",
-          "caption_bn": "সন্ধ্যার মুহূর্ত"
-        },
-        {
-          "photo": "/assets/uploads/g5.jpeg",
-          "caption_en": "Friends forever",
-          "caption_bn": "বন্ধুদের আড্ডা"
-        },
-        {
-          "photo": "/assets/uploads/g6.jpeg",
-          "caption_en": "Campus smile",
-          "caption_bn": "ক্যাম্পাসের আনন্দ"
-        },
-        {
-          "photo": "/assets/uploads/g17.jpg",
-          "caption_en": "Room life",
-          "caption_bn": "রুমের স্মৃতি"
-        },
-        {
-          "photo": "/assets/uploads/g18.jpg",
-          "caption_en": "Study session",
-          "caption_bn": "পড়াশোনার সময়"
-        },
-        {
-          "photo": "/assets/uploads/g19.jpg",
-          "caption_en": "Canteen chat",
-          "caption_bn": "ক্যান্টিনের আড্ডা"
-        },
-        {
-          "photo": "/assets/uploads/g20.jpg",
-          "caption_en": "Weekend vibe",
-          "caption_bn": "ছুটির দিনের আড্ডা"
-        },
-        {
-          "photo": "/assets/uploads/g21.jpg",
-          "caption_en": "Casual gathering",
-          "caption_bn": "সহপাঠীদের মিলন"
-        },
-        {
-          "photo": "/assets/uploads/g23.jpg",
-          "caption_en": "Campus grounds",
-          "caption_bn": "ক্যাম্পাস চত্বর"
-        },
-        {
-          "photo": "/assets/uploads/g24.jpg",
-          "caption_en": "Golden hostel days",
-          "caption_bn": "হল জীবনের সোনালী দিন"
+          "photo": "images/gallery/gallery5.jpg",
+          "caption_en": "Brotherhood Moments",
+          "caption_bn": "সহপাঠীদের অটুট বন্ধন"
         }
       ],
       "videos": []
@@ -199,245 +139,56 @@
   "items": [
     {
       "position": 1,
-      "photo": "images/gallery/gallery1.jpg",
-      "title_en": "Freshers Reception Celebration",
-      "title_bn": "নবীন বরণ উৎসবের আনন্দক্ষণ",
-      "description_en": "Freshers Reception & Cultural Evening",
-      "description_bn": "নবীন বরণ ও সাংস্কৃতিক সন্ধ্যা",
-      "event_id": "freshers-2025"
+      "photo": "images/gallery/gallery6.jpg",
+      "title_en": "Campus Lawn Chat",
+      "title_bn": "সবুজ ঘাসের চত্বরে বন্ধুদের আড্ডা",
+      "description_en": "Everyday moments at college grounds",
+      "description_bn": "কলেজ মাঠের দৈনন্দিন স্মৃতি",
+      "event_id": "daily-memories"
     },
     {
       "position": 2,
-      "photo": "images/gallery/gallery2.jpg",
-      "title_en": "Resident Student Gathering",
-      "title_bn": "আবাসিক শিক্ষার্থীদের মিলনমেলা",
-      "description_en": "Freshers Reception & Cultural Evening",
-      "description_bn": "নবীন বরণ ও সাংস্কৃতিক সন্ধ্যা",
-      "event_id": "freshers-2025"
+      "photo": "images/gallery/gallery7.jpg",
+      "title_en": "Hostel Corridor Life",
+      "title_bn": "হলের করিডোরে বন্ধুদের সাথে সময়",
+      "description_en": "Hostel block memories",
+      "description_bn": "হোস্টেল ব্লকের স্মৃতি",
+      "event_id": "daily-memories"
     },
     {
       "position": 3,
       "photo": "images/gallery/gallery3.jpg",
-      "title_en": "Cultural Evening Highlights",
-      "title_bn": "সাংস্কৃতিক সন্ধ্যার মুহূর্ত",
-      "description_en": "Freshers Reception & Cultural Evening",
-      "description_bn": "নবীন বরণ ও সাংস্কৃতিক সন্ধ্যা",
-      "event_id": "freshers-2025"
+      "title_en": "Study Night Friendship",
+      "title_bn": "রাত্রিকালীন অধ্যয়ন ও বন্ধুতা",
+      "description_en": "Late night study memories",
+      "description_bn": "রাত্রিকালীন পড়ার স্মৃতি",
+      "event_id": "daily-memories"
     },
     {
       "position": 4,
-      "photo": "/assets/uploads/g10.jpg",
-      "title_en": "Hall auditorium gathering",
-      "title_bn": "হল মিলনায়তন মুহূর্ত",
-      "description_en": "Freshers Reception & Cultural Evening",
-      "description_bn": "নবীন বরণ ও সাংস্কৃতিক সন্ধ্যা",
-      "event_id": "freshers-2025"
+      "photo": "images/gallery/gallery1.jpg",
+      "title_en": "College Uniform Gathering",
+      "title_bn": "পোশাকের শৃঙ্খলায় কলেজ প্রাঙ্গণে",
+      "description_en": "Daily college uniform life",
+      "description_bn": "কলেজ পোশাক ও প্রাঙ্গণের মুহূর্ত",
+      "event_id": "daily-memories"
     },
     {
       "position": 5,
-      "photo": "/assets/uploads/g11.jpg",
-      "title_en": "Celebration memories",
-      "title_bn": "আনন্দময় মুহূর্ত",
-      "description_en": "Freshers Reception & Cultural Evening",
-      "description_bn": "নবীন বরণ ও সাংস্কৃতিক সন্ধ্যা",
-      "event_id": "freshers-2025"
+      "photo": "images/gallery/gallery4.jpg",
+      "title_en": "Memorable Smiles",
+      "title_bn": "চিরস্মরণীয় হাসি ও আনন্দ",
+      "description_en": "Friendship memories",
+      "description_bn": "বন্ধুদের সাথে সোনালী সময়",
+      "event_id": "daily-memories"
     },
     {
       "position": 6,
-      "photo": "images/gallery/gallery4.jpg",
-      "title_en": "Tournament Action",
-      "title_bn": "মাঠের উত্তেজনাপূর্ণ মুহূর্ত",
-      "description_en": "Annual Hall Cricket & Sports Meet",
-      "description_bn": "বার্ষিক হল ক্রিকেট ও ক্রীড়া উৎসব",
-      "event_id": "sports-meet-2025"
-    },
-    {
-      "position": 7,
       "photo": "images/gallery/gallery5.jpg",
-      "title_en": "Participant Teams",
-      "title_bn": "টুর্নামেন্টের দলসমূহ",
-      "description_en": "Annual Hall Cricket & Sports Meet",
-      "description_bn": "বার্ষিক হল ক্রিকেট ও ক্রীড়া উৎসব",
-      "event_id": "sports-meet-2025"
-    },
-    {
-      "position": 8,
-      "photo": "/assets/uploads/g12.jpg",
-      "title_en": "Celebration after match",
-      "title_bn": "ম্যাচ শেষে উদযাপন",
-      "description_en": "Annual Hall Cricket & Sports Meet",
-      "description_bn": "বার্ষিক হল ক্রিকেট ও ক্রীড়া উৎসব",
-      "event_id": "sports-meet-2025"
-    },
-    {
-      "position": 9,
-      "photo": "/assets/uploads/g13.jpg",
-      "title_en": "Prize distribution moments",
-      "title_bn": "পুরস্কার বিতরণী স্মৃতি",
-      "description_en": "Annual Hall Cricket & Sports Meet",
-      "description_bn": "বার্ষিক হল ক্রিকেট ও ক্রীড়া উৎসব",
-      "event_id": "sports-meet-2025"
-    },
-    {
-      "position": 10,
-      "photo": "/assets/uploads/g14.jpg",
-      "title_en": "Study tour gathering",
-      "title_bn": "ট্যুরের গ্রুপ ছবি",
-      "description_en": "Hall Study Tour & Get-Together",
-      "description_bn": "হল স্টাডি ট্যুর ও মিলনমেলা",
-      "event_id": "tour-picnic-2025"
-    },
-    {
-      "position": 11,
-      "photo": "/assets/uploads/g15.jpg",
-      "title_en": "Scenic journey",
-      "title_bn": "মনোরম ভ্রমণ স্মৃতি",
-      "description_en": "Hall Study Tour & Get-Together",
-      "description_bn": "হল স্টাডি ট্যুর ও মিলনমেলা",
-      "event_id": "tour-picnic-2025"
-    },
-    {
-      "position": 12,
-      "photo": "/assets/uploads/g16.jpg",
-      "title_en": "Group photo at destination",
-      "title_bn": "গন্তব্যে দলগত ছবি",
-      "description_en": "Hall Study Tour & Get-Together",
-      "description_bn": "হল স্টাডি ট্যুর ও মিলনমেলা",
-      "event_id": "tour-picnic-2025"
-    },
-    {
-      "position": 13,
-      "photo": "images/gallery/gallery6.jpg",
-      "title_en": "Corridor gathering",
-      "title_bn": "করিডোরের আড্ডা",
-      "description_en": "Hall Life & Daily Moments",
-      "description_bn": "দৈনন্দিন হল জীবন ও বিবিধ স্মৃতি",
-      "event_id": "daily-memories"
-    },
-    {
-      "position": 14,
-      "photo": "images/gallery/gallery7.jpg",
-      "title_en": "Campus study night",
-      "title_bn": "রাত্রিকালীন অধ্যয়ন",
-      "description_en": "Hall Life & Daily Moments",
-      "description_bn": "দৈনন্দিন হল জীবন ও বিবিধ স্মৃতি",
-      "event_id": "daily-memories"
-    },
-    {
-      "position": 15,
-      "photo": "/assets/uploads/g1.jpg",
-      "title_en": "Rooftop moments",
-      "title_bn": "ছাদের স্মৃতি",
-      "description_en": "Hall Life & Daily Moments",
-      "description_bn": "দৈনন্দিন হল জীবন ও বিবিধ স্মৃতি",
-      "event_id": "daily-memories"
-    },
-    {
-      "position": 16,
-      "photo": "/assets/uploads/g2.jpeg",
-      "title_en": "Student interactions",
-      "title_bn": "বন্ধুদের সাথে মুহূর্ত",
-      "description_en": "Hall Life & Daily Moments",
-      "description_bn": "দৈনন্দিন হল জীবন ও বিবিধ স্মৃতি",
-      "event_id": "daily-memories"
-    },
-    {
-      "position": 17,
-      "photo": "/assets/uploads/g3.jpg",
-      "title_en": "Hostel yard",
-      "title_bn": "হল চত্বর",
-      "description_en": "Hall Life & Daily Moments",
-      "description_bn": "দৈনন্দিন হল জীবন ও বিবিধ স্মৃতি",
-      "event_id": "daily-memories"
-    },
-    {
-      "position": 18,
-      "photo": "/assets/uploads/g4.jpg",
-      "title_en": "Evening gathering",
-      "title_bn": "সন্ধ্যার মুহূর্ত",
-      "description_en": "Hall Life & Daily Moments",
-      "description_bn": "দৈনন্দিন হল জীবন ও বিবিধ স্মৃতি",
-      "event_id": "daily-memories"
-    },
-    {
-      "position": 19,
-      "photo": "/assets/uploads/g5.jpeg",
-      "title_en": "Friends forever",
-      "title_bn": "বন্ধুদের আড্ডা",
-      "description_en": "Hall Life & Daily Moments",
-      "description_bn": "দৈনন্দিন হল জীবন ও বিবিধ স্মৃতি",
-      "event_id": "daily-memories"
-    },
-    {
-      "position": 20,
-      "photo": "/assets/uploads/g6.jpeg",
-      "title_en": "Campus smile",
-      "title_bn": "ক্যাম্পাসের আনন্দ",
-      "description_en": "Hall Life & Daily Moments",
-      "description_bn": "দৈনন্দিন হল জীবন ও বিবিধ স্মৃতি",
-      "event_id": "daily-memories"
-    },
-    {
-      "position": 21,
-      "photo": "/assets/uploads/g17.jpg",
-      "title_en": "Room life",
-      "title_bn": "রুমের স্মৃতি",
-      "description_en": "Hall Life & Daily Moments",
-      "description_bn": "দৈনন্দিন হল জীবন ও বিবিধ স্মৃতি",
-      "event_id": "daily-memories"
-    },
-    {
-      "position": 22,
-      "photo": "/assets/uploads/g18.jpg",
-      "title_en": "Study session",
-      "title_bn": "পড়াশোনার সময়",
-      "description_en": "Hall Life & Daily Moments",
-      "description_bn": "দৈনন্দিন হল জীবন ও বিবিধ স্মৃতি",
-      "event_id": "daily-memories"
-    },
-    {
-      "position": 23,
-      "photo": "/assets/uploads/g19.jpg",
-      "title_en": "Canteen chat",
-      "title_bn": "ক্যান্টিনের আড্ডা",
-      "description_en": "Hall Life & Daily Moments",
-      "description_bn": "দৈনন্দিন হল জীবন ও বিবিধ স্মৃতি",
-      "event_id": "daily-memories"
-    },
-    {
-      "position": 24,
-      "photo": "/assets/uploads/g20.jpg",
-      "title_en": "Weekend vibe",
-      "title_bn": "ছুটির দিনের আড্ডা",
-      "description_en": "Hall Life & Daily Moments",
-      "description_bn": "দৈনন্দিন হল জীবন ও বিবিধ স্মৃতি",
-      "event_id": "daily-memories"
-    },
-    {
-      "position": 25,
-      "photo": "/assets/uploads/g21.jpg",
-      "title_en": "Casual gathering",
-      "title_bn": "সহপাঠীদের মিলন",
-      "description_en": "Hall Life & Daily Moments",
-      "description_bn": "দৈনন্দিন হল জীবন ও বিবিধ স্মৃতি",
-      "event_id": "daily-memories"
-    },
-    {
-      "position": 26,
-      "photo": "/assets/uploads/g23.jpg",
-      "title_en": "Campus grounds",
-      "title_bn": "ক্যাম্পাস চত্বর",
-      "description_en": "Hall Life & Daily Moments",
-      "description_bn": "দৈনন্দিন হল জীবন ও বিবিধ স্মৃতি",
-      "event_id": "daily-memories"
-    },
-    {
-      "position": 27,
-      "photo": "/assets/uploads/g24.jpg",
-      "title_en": "Golden hostel days",
-      "title_bn": "হল জীবনের সোনালী দিন",
-      "description_en": "Hall Life & Daily Moments",
-      "description_bn": "দৈনন্দিন হল জীবন ও বিবিধ স্মৃতি",
+      "title_en": "Brotherhood Moments",
+      "title_bn": "সহপাঠীদের অটুট বন্ধন",
+      "description_en": "Hostel brotherhood",
+      "description_bn": "হলের ভাতৃত্ববোধ ও স্মৃতি",
       "event_id": "daily-memories"
     }
   ]

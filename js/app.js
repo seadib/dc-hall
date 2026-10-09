@@ -2403,7 +2403,25 @@ function normalizeCmsPath(path) {
   if (path.startsWith("http://") || path.startsWith("https://") || path.startsWith("//")) {
     return path;
   }
-  return path.replace(/^\/+/, "");
+  let clean = path.replace(/^\/+/, "");
+
+  // Safe mapping for legacy Sanity CMS / demo uploads to ensure live site always loads real files
+  const lower = clean.toLowerCase();
+  if (lower.includes("contributor1")) return "images/developer/contributor1.png";
+  if (lower.includes("contributor2")) return "images/developer/contributor2.jpg";
+  if (lower.includes("hall1")) return "images/hall/hall1.jpg";
+  if (lower.includes("hall2")) return "images/hall/hall2.jpg";
+  if (lower.includes("hall3")) return "images/hall/hall3.jpg";
+  if (lower.includes("hallsuper") || lower.includes("kamruzzaman")) return "images/hall/hallsuper1.webp";
+  if (lower.includes("maumoon") || lower.includes("alumni1")) return "images/hall/alumni1.jpg";
+  if (lower.includes("sohag") || lower.includes("alumni2")) return "images/hall/alumni2.jpg";
+  if (lower.includes("hostel-building") || lower.includes("hostel_building")) return "images/hall/hostel-building.jpg";
+
+  if (clean.startsWith("images/contributor")) {
+    clean = clean.replace("images/contributor", "images/developer/contributor");
+  }
+
+  return clean;
 }
 
 const studentProfilePhotos = {
@@ -4102,26 +4120,34 @@ async function renderGalleryPage(galleryData) {
   if (!data) return;
   currentGalleryData = data;
 
-  let events = data.events ? data.events.slice().sort((a, b) => Number(a.position || 0) - Number(b.position || 0)) : [];
+  // Sort events by date latest first
+  let events = data.events ? data.events.slice().sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0) || Number(a.position || 0) - Number(b.position || 0)) : [];
   
   // Separate pure daily memories from formal events
   const formalEvents = events.filter(e => e.category !== "memories" && e.id !== "daily-memories");
   const memoriesEvent = events.find(e => e.category === "memories" || e.id === "daily-memories");
 
-  // 1. Render formal events in authentic DCSC style
+  // 1. Render formal events in authentic DCSC style with horizontal scroll
   eventsContainer.innerHTML = formalEvents.map((ev, evIdx) => {
     const title = currentLang === "bn" ? (ev.title_bn || ev.title_en) : (ev.title_en || ev.title_bn);
     const cat = ev.category || "events";
 
-    // Show first 3 or 4 photos in the preview row
-    const previewPhotos = (ev.photos || []).slice(0, 3);
+    // All photos of that event in the horizontal scrolling strip
+    const previewPhotos = ev.photos || [];
     const photosHtml = previewPhotos.map((p, pIdx) => {
-      const photoSrc = normalizeCmsPath(p.photo) || "images/hostel-building.jpg";
+      const photoSrc = normalizeCmsPath(p.photo) || "images/hall/hostel-building.jpg";
       const caption = currentLang === "bn" ? (p.caption_bn || p.caption_en || title) : (p.caption_en || p.caption_bn || title);
       return `
-        <article class="dcsc-photo-card" data-aos="fade-up" data-aos-delay="${pIdx * 80}">
+        <article class="dcsc-photo-card" data-aos="fade-up" data-aos-delay="${(pIdx % 6) * 60}">
           <button type="button" data-gallery-src="${photoSrc}" data-gallery-title="${caption}" data-gallery-desc="${title}">
             <img src="${photoSrc}" alt="${caption}" loading="lazy">
+            <div class="gallery-card-overlay">
+              <div>
+                <span style="font-size: 0.88rem; font-weight: 700; line-height: 1.3; display: block; text-shadow: 0 1px 3px rgba(0,0,0,0.8);">
+                  ${caption}
+                </span>
+              </div>
+            </div>
           </button>
         </article>
       `;
@@ -4141,29 +4167,38 @@ async function renderGalleryPage(galleryData) {
             <span>${currentLang === "bn" ? "সম্পূর্ণ ইভেন্ট দেখুন" : "View Event"}</span> &rarr;
           </button>
         </div>
-        <div class="dcsc-event-grid">
-          ${photosHtml}
+        <div class="dcsc-event-scroll-wrap">
+          <div class="dcsc-event-grid">
+            ${photosHtml}
+          </div>
         </div>
       </section>
     `;
   }).join("");
 
-  // 2. Render Memories / Gallery at bottom
+  // 2. Render Memories / Gallery at bottom (latest photos first)
   let memoryPhotos = [];
   if (memoriesEvent && memoriesEvent.photos && memoriesEvent.photos.length) {
-    memoryPhotos = memoriesEvent.photos;
+    memoryPhotos = memoriesEvent.photos.slice().reverse();
   } else if (data.items && data.items.length) {
-    memoryPhotos = data.items;
+    memoryPhotos = data.items.slice().reverse();
   }
 
   if (memoriesContainer && memoryPhotos.length) {
     const memoriesHtml = memoryPhotos.map((p, pIdx) => {
-      const photoSrc = normalizeCmsPath(p.photo) || "images/hostel-building.jpg";
+      const photoSrc = normalizeCmsPath(p.photo) || "images/hall/hostel-building.jpg";
       const caption = currentLang === "bn" ? (p.caption_bn || p.caption_en || "স্মৃতি") : (p.caption_en || p.caption_bn || "Memory");
       return `
         <article class="dcsc-photo-card" data-aos="fade-up" data-aos-delay="${(pIdx % 4) * 60}">
           <button type="button" data-gallery-src="${photoSrc}" data-gallery-title="${caption}" data-gallery-desc="${currentLang === "bn" ? "হল জীবন ও দৈনন্দিন স্মৃতি" : "Daily Hall Life"}">
             <img src="${photoSrc}" alt="${caption}" loading="lazy">
+            <div class="gallery-card-overlay">
+              <div>
+                <span style="font-size: 0.88rem; font-weight: 700; line-height: 1.3; display: block; text-shadow: 0 1px 3px rgba(0,0,0,0.8);">
+                  ${caption}
+                </span>
+              </div>
+            </div>
           </button>
         </article>
       `;
@@ -4329,7 +4364,11 @@ function renderHomeGallery(galleryData) {
   let items = [];
   if (galleryData && galleryData.events && galleryData.events.length) {
     // 1st photo of each formal event from newest to oldest
-    const formalEvents = galleryData.events.filter(e => e.category !== "memories" && e.id !== "daily-memories");
+    const formalEvents = galleryData.events
+      .filter(e => e.category !== "memories" && e.id !== "daily-memories")
+      .slice()
+      .sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0) || Number(a.position || 0) - Number(b.position || 0));
+
     for (const ev of formalEvents) {
       if (ev.photos && ev.photos.length) {
         items.push({
@@ -4342,19 +4381,21 @@ function renderHomeGallery(galleryData) {
       if (items.length >= 6) break;
     }
 
-    // If fewer than 6 events, backfill with memories
+    // If fewer than 6 events, backfill with memories from newest to oldest
     if (items.length < 6) {
       const memoriesEvent = galleryData.events.find(e => e.category === "memories" || e.id === "daily-memories");
-      if (memoriesEvent && memoriesEvent.photos) {
-        for (const p of memoriesEvent.photos) {
+      const memoryPhotos = (memoriesEvent && memoriesEvent.photos ? memoriesEvent.photos : (galleryData.items || [])).slice().reverse();
+      for (const p of memoryPhotos) {
+        const norm = normalizeCmsPath(p.photo);
+        if (!items.some(it => normalizeCmsPath(it.photo) === norm)) {
           items.push({
             photo: p.photo,
-            title_en: p.caption_en || "Hall Memory",
-            title_bn: p.caption_bn || "হল স্মৃতি",
+            title_en: p.caption_en || p.title_en || "Hall Memory",
+            title_bn: p.caption_bn || p.title_bn || "হল স্মৃতি",
             eventId: null
           });
-          if (items.length >= 6) break;
         }
+        if (items.length >= 6) break;
       }
     }
   } else if (galleryData && galleryData.items) {
@@ -4364,7 +4405,7 @@ function renderHomeGallery(galleryData) {
   if (!items.length) return;
 
   grid.innerHTML = items.map((item, index) => {
-    const photo = normalizeCmsPath(item.photo) || "images/hostel-building.jpg";
+    const photo = normalizeCmsPath(item.photo) || "images/hall/hostel-building.jpg";
     const title = currentLang === "bn" ? (item.title_bn || item.title_en) : (item.title_en || item.title_bn);
     const linkUrl = item.eventId ? `gallery.html#event=${item.eventId}` : `gallery.html`;
     const label = item.eventId 

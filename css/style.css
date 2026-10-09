@@ -20,24 +20,24 @@
 }
 
 .dark {
-  --bg: #0c101d;
-  --bg-alt: #101526;
+  --bg: #080c14;
+  --bg-alt: #0b111c;
   --text: #f1f5f9;
   --text-strong: #ffffff;
   --text-muted: #94a3b8;
   --muted: #94a3b8;
-  --surface: #131929;
-  --surface-strong: #172033;
-  --surface-light: #1c273e;
+  --surface: #0f172a;
+  --surface-strong: #141e34;
+  --surface-light: #1e293b;
   --border: rgba(255, 255, 255, 0.08);
   --border-soft: rgba(255, 255, 255, 0.05);
   --accent: #10c9a8;
   --accent-strong: #38bdf8;
   --accent-soft: rgba(16, 201, 168, 0.15);
   --warm: #f59e0b;
-  --shadow: 0 20px 48px rgba(0, 0, 0, 0.50);
-  --nav-bg: rgba(12, 16, 29, 0.92);
-  --overlay: rgba(6, 9, 17, 0.82);
+  --shadow: 0 20px 48px rgba(0, 0, 0, 0.55);
+  --nav-bg: rgba(8, 12, 20, 0.92);
+  --overlay: rgba(4, 7, 14, 0.85);
   color-scheme: dark;
 }
 
@@ -558,11 +558,11 @@ h3 {
 
 .student-card img {
   width: 100%;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 3 / 4;
   height: auto;
-  max-height: 320px;
+  max-height: 380px;
   object-fit: cover;
-  object-position: top center;
+  object-position: center center;
   background: var(--surface);
   display: block;
 }
@@ -986,6 +986,29 @@ h3 {
 .hostel-photo img {
   aspect-ratio: 4 / 3;
   object-fit: cover;
+}
+
+#hallsuper .hostel-photo,
+#hallsuper-preview .hostel-photo {
+  max-width: 360px;
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  background: var(--surface);
+}
+
+#hallsuper .hostel-photo img,
+#hallsuper-preview .hostel-photo img,
+#superPhotoImg {
+  width: 100%;
+  height: auto;
+  aspect-ratio: auto;
+  max-height: 440px;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 20px;
+  display: block;
 }
 
 .nearby-list {
@@ -1874,10 +1897,10 @@ h3 {
   .student-card img {
     width: 100%;
     height: auto;
-    aspect-ratio: 1 / 1;
-    max-height: 340px;
+    aspect-ratio: 3 / 4;
+    max-height: none;
     object-fit: cover;
-    object-position: top center;
+    object-position: center center;
   }
 
   .room-pair {
@@ -2707,16 +2730,49 @@ body:not([data-page="home"]) .profile-toggle,
 
 .dcsc-view-event-btn:hover {
   background: var(--accent);
-  color: #ffffff;
+  color: #080c14;
   border-color: var(--accent);
   box-shadow: 0 4px 16px var(--accent-soft);
   transform: translateX(3px);
 }
 
+.dcsc-event-scroll-wrap {
+  position: relative;
+  width: 100%;
+}
+
 .dcsc-event-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 20px;
+  display: flex;
+  gap: 18px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  padding: 6px 2px 18px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-soft) transparent;
+}
+
+.dcsc-event-grid::-webkit-scrollbar {
+  height: 6px;
+}
+
+.dcsc-event-grid::-webkit-scrollbar-thumb {
+  background: var(--accent-soft);
+  border-radius: 999px;
+}
+
+.dcsc-event-grid .dcsc-photo-card {
+  flex: 0 0 310px;
+  max-width: 310px;
+  scroll-snap-align: start;
+}
+
+@media (max-width: 600px) {
+  .dcsc-event-grid .dcsc-photo-card {
+    flex: 0 0 260px;
+    max-width: 260px;
+  }
 }
 
 .dcsc-memories-grid {
@@ -2894,7 +2950,6 @@ body:not([data-page="home"]) .profile-toggle,
 }
 
 @media (max-width: 900px) {
-  .dcsc-event-grid,
   .event-detail-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -2904,7 +2959,6 @@ body:not([data-page="home"]) .profile-toggle,
 }
 
 @media (max-width: 600px) {
-  .dcsc-event-grid,
   .dcsc-memories-grid,
   .event-detail-grid,
   .event-video-grid {
