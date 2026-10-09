@@ -560,7 +560,7 @@ h3 {
   width: 100%;
   aspect-ratio: 3 / 4;
   height: auto;
-  max-height: 380px;
+  max-height: 280px;
   object-fit: cover;
   object-position: center center;
   background: var(--surface);
@@ -595,8 +595,14 @@ h3 {
 
 .profile a,
 .developer-content a {
-  color: var(--accent-strong);
-  font-weight: 800;
+  color: inherit;
+  font-weight: 700;
+  text-decoration: none;
+}
+.profile a:hover,
+.developer-content a:hover {
+  text-decoration: underline;
+  opacity: 0.85;
 }
 
 .room-profile {
@@ -1755,8 +1761,6 @@ h3 {
   .info-grid.three,
   .roommate-grid.wide,
   .split,
-  .person-grid,
-  .gallery-grid,
   .developer-layout,
   .developer-hero-inner,
   .developer-info-grid,
@@ -1766,6 +1770,21 @@ h3 {
   .room-info-grid,
   .room-photo-grid {
     grid-template-columns: 1fr;
+  }
+
+  .person-grid,
+  .gallery-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .person-card img,
+  .developer-card img {
+    max-height: 200px;
+  }
+
+  .gallery-card img {
+    max-height: 200px;
   }
 
   .student-grid {
@@ -1790,11 +1809,11 @@ h3 {
 
   .profile img {
     width: 100%;
-    max-width: 320px;
+    max-width: 240px;
     height: auto;
-    aspect-ratio: 1 / 1;
+    aspect-ratio: 3 / 4;
     object-fit: cover;
-    object-position: top center;
+    object-position: center center;
     margin: 0 auto;
   }
 
@@ -1890,21 +1909,44 @@ h3 {
   }
 
   .student-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
   }
 
   .student-card img {
     width: 100%;
     height: auto;
     aspect-ratio: 3 / 4;
-    max-height: none;
+    max-height: 220px;
     object-fit: cover;
     object-position: center center;
   }
 
   .room-pair {
     grid-template-columns: 1fr;
+  }
+
+  .person-grid,
+  .gallery-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .person-card img,
+  .developer-card img {
+    max-height: 160px;
+  }
+
+  .gallery-card img {
+    height: 160px;
+  }
+
+  .dcsc-photo-card {
+    flex: 0 0 240px;
+  }
+
+  .dcsc-photo-card img {
+    height: 170px;
   }
 
   .room-number {
