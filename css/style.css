@@ -2432,9 +2432,10 @@ body:not([data-page="home"]) .profile-toggle,
 
 .track-row {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 14px;
-  padding: 10px 16px;
+  gap: 10px;
+  padding: 12px 16px;
   border-radius: 10px;
   background: var(--surface);
   border: 1px solid var(--border);
@@ -2454,6 +2455,26 @@ body:not([data-page="home"]) .profile-toggle,
 .track-badge.secondary {
   background: var(--accent-soft);
   color: var(--accent);
+}
+
+.track-exam-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+
+.exam-pill {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--surface-strong);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  font-weight: 600;
+  white-space: nowrap;
+  letter-spacing: 0.01em;
 }
 
 .track-exams {
