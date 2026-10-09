@@ -53,6 +53,14 @@ const SANITY_GROQ_QUERY = `{
   "gallery": *[_type == "galleryItem" && !(_id in path("drafts.**"))] | order(position asc, _createdAt desc){
     ...,
     "photo": coalesce(photo.asset->url, photo)
+  },
+  "galleryEvents": *[_type == "galleryEvent" && !(_id in path("drafts.**"))] | order(date desc, position asc){
+    ...,
+    "event_id": event_id.current,
+    "photos": photos[]{
+      ...,
+      "photo": coalesce(photo.asset->url, photo)
+    }
   }
 }`;
 

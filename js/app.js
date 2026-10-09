@@ -2548,8 +2548,36 @@ async function loadCmsContent() {
     roomsList = { rooms: sanityData.rooms || [] };
     homeData = sanityData.home || {};
     devData = sanityData.developer || {};
-    galleryData = { items: sanityData.gallery || [] };
     hallData = sanityData.hall || {};
+
+    // Build galleryData: merge CMS galleryEvents (structured events) + galleryItems (flat photos)
+    const cmsEvents = (sanityData.galleryEvents || []).map(ev => ({
+      id: ev.event_id || ev._id,
+      position: ev.position || 999,
+      title_en: ev.title_en || '',
+      title_bn: ev.title_bn || '',
+      date: ev.date || '',
+      date_formatted_en: ev.date_formatted_en || '',
+      date_formatted_bn: ev.date_formatted_bn || '',
+      category: ev.category || 'events',
+      description_en: ev.description_en || '',
+      description_bn: ev.description_bn || '',
+      photos: (ev.photos || []).map(p => ({
+        photo: p.photo || '',
+        caption_en: p.caption_en || '',
+        caption_bn: p.caption_bn || '',
+      })),
+      videos: (ev.videos || []).map(v => ({
+        url: v.url || '',
+        title_en: v.title_en || '',
+        title_bn: v.title_bn || '',
+      })),
+    }));
+
+    galleryData = {
+      events: cmsEvents.length ? cmsEvents : undefined,
+      items: sanityData.gallery || [],
+    };
   } else {
     // Fallback to local static JSON files
     [settings, studentData, roomsList, homeData, devData, galleryData, hallData] = await Promise.all([

@@ -4,6 +4,7 @@ import siteSettings from './siteSettings'
 import homePage from './homePage'
 import hallInfo from './hallInfo'
 import galleryItem from './galleryItem'
+import galleryEvent from './galleryEvent'
 import developerProfile from './developerProfile'
 
 export const schemaTypes = [
@@ -13,5 +14,6 @@ export const schemaTypes = [
   homePage,
   hallInfo,
   galleryItem,
+  galleryEvent,
   developerProfile,
 ]
