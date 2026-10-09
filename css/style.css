@@ -1035,7 +1035,7 @@ h3 {
   aspect-ratio: auto;
   max-height: 440px;
   object-fit: cover;
-  object-position: center top;
+  object-position: center center;
   border-radius: 20px;
   display: block;
 }
@@ -1142,7 +1142,7 @@ h3 {
   max-height: 480px;
   border-radius: 12px;
   object-fit: cover;
-  object-position: top center;
+  object-position: center center;
   display: block;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
 }
@@ -1336,7 +1336,7 @@ h3 {
   height: auto;
   max-height: 260px;
   object-fit: cover;
-  object-position: top center;
+  object-position: center center;
   display: block;
 }
 
@@ -1888,7 +1888,7 @@ h3 {
     aspect-ratio: auto;
     border-radius: 12px;
     object-fit: cover;
-    object-position: top center;
+    object-position: center center;
     margin: 0;
     display: block;
   }
@@ -2128,7 +2128,7 @@ h3 {
     height: clamp(240px, 44vh, 320px);
     border-radius: 10px;
     object-fit: cover;
-    object-position: top center;
+    object-position: center center;
     display: block;
   }
 }
