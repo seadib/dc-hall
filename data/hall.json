@@ -32,21 +32,21 @@
   "hostel_subtitle_bn": "ইতিহাস, খ্যাতিমান শিক্ষার্থী, ভর্তি সাফল্য এবং অবস্থান।",
   "hall_photos": [
     {
-      "photo": "/assets/uploads/hall1-compressed.jpg",
+      "photo": "images/hall/hall1.jpg",
       "title_en": "Hall Photo 01",
       "title_bn": "হল ফটো ০১",
       "desc_en": "Replace this demo file later with hall1.jpg.",
       "desc_bn": "পরবর্তীতে hall1.jpg দিয়ে এটি পরিবর্তন করুন।"
     },
     {
-      "photo": "/assets/uploads/hall2-compressed.jpg",
+      "photo": "images/hall/hall2.jpg",
       "title_en": "Hall Photo 02",
       "title_bn": "হল ফটো ০২",
       "desc_en": "Replace this demo file later with hall2.jpg.",
       "desc_bn": "পরবর্তীতে hall2.jpg দিয়ে এটি পরিবর্তন করুন।"
     },
     {
-      "photo": "/assets/uploads/hall3-compressed.jpg",
+      "photo": "images/hall/hall3.jpg",
       "title_en": "Hall Photo 03",
       "title_bn": "হল ফটো ০৩",
       "desc_en": "Upload hall3.jpg later and it will show here.",
@@ -62,7 +62,7 @@
       "career_en": "Served six consecutive terms as the President of the Maldives and played a significant role in developing the nation's tourism sector.",
       "career_bn": "মালদ্বীপের ইতিহাসে টানা ছয়বার রাষ্ট্রপতি হিসেবে নির্বাচিত হওয়া এবং দেশটির পর্যটন শিল্পের প্রসার ঘটানো।",
       "role_en": " He obtained his B.A. and M.A. degrees in Islamic Sharia and Law from Al-Azhar University in Cairo, Egypt. (He did not study at Dhaka College).",
-      "photo": "/assets/uploads/maumoon_abdul_gayoom.jpeg",
+      "photo": "images/hall/alumni1.jpg",
       "hall_contribution_en": "-",
       "biography_en": "Former President of the Republic of Maldives. He served as the head of state for 30 years, from 1978 to 2008.",
       "role_bn": "মিশরের কায়রোর আল-আজহার বিশ্ববিদ্যালয় থেকে ইসলামিক শরিয়াহ ও আইনে স্নাতক এবং স্নাতকোত্তর সম্পন্ন করেন।",
@@ -78,7 +78,7 @@
       "career_en": "Founded 'Udvash-Unmesh', which brought a massive transformation to the shadow education and ed-tech sector in Bangladesh.",
       "career_bn": "'উদ্ভাস-উন্মেষ' প্রতিষ্ঠা এবং বাংলাদেশের শিক্ষাক্ষেত্রে যুগান্তকারী পরিবর্তন সাধন।",
       "role_en": "HSC from Dhaka College. BSc in Electrical and Electronic Engineering (EEE) from BUET.",
-      "photo": "/assets/uploads/sohag.jpg",
+      "photo": "images/hall/alumni2.jpg",
       "hall_contribution_en": "-",
       "biography_en": "Chairman of Onnorokom Group and Co-founder of Rokomari.com.",
       "role_bn": "ঢাকা কলেজ থেকে উচ্চমাধ্যমিক এবং বুয়েটের ইলেকট্রিক্যাল অ্যান্ড ইলেকট্রনিক ইঞ্জিনিয়ারিং (EEE) বিভাগ থেকে স্নাতক।",
@@ -89,7 +89,7 @@
   ],
   "map_url": "https://www.google.com/maps?q=International%20Hall,%20Dhaka%20College&output=embed",
   "success_title_en": "Admission success overview",
-  "hall_photo": "/assets/uploads/hall-compressed.jpg",
+  "hall_photo": "images/hall/hostel-building.jpg",
   "success_title_bn": "ভর্তি পরীক্ষার সাফল্য",
   "history_text_en": "Dhaka College, established in 1841, is one of the oldest and most influential educational institutions in Bangladesh. International Hall carries that academic spirit through shared study, discipline and student community life.",
   "location_text_en": "Exact location: International Hall, Dhaka College. The live Google map below can be viewed directly on the website.",
@@ -118,7 +118,7 @@
   "hall_super_eyebrow_bn": "সম্মানিত নেতৃত্ব",
   "hall_super_name_en": "Prof. Md. Kamruzzaman",
   "hall_super_name_bn": "অধ্যাপক মোঃ কামরুজ্জামান",
-  "hall_super_photo": "/assets/uploads/md-kamruzzaman.webp",
+  "hall_super_photo": "images/hall/hallsuper1.webp",
   "hall_super_bio_en": "Prof. Md. Kamruzzaman serves as the Provost of Dhaka College International Hall. He is committed to maintaining a disciplined, secure, and student-friendly residential environment while supporting students' academic success, personal development, and overall well-being.\n",
   "hall_super_bio_bn": "অধ্যাপক মোঃ কামরুজ্জামান ঢাকা কলেজ ইন্টারন্যাশনাল হলের প্রভোস্ট হিসেবে দায়িত্ব পালন করছেন। তিনি শিক্ষার্থীদের জন্য একটি শৃঙ্খলাবদ্ধ, নিরাপদ ও শিক্ষাবান্ধব আবাসিক পরিবেশ নিশ্চিত করতে এবং তাদের একাডেমিক ও ব্যক্তিগত উন্নয়নে সহায়তা করতে কাজ করে যাচ্ছেন।",
   "hall_super_info_boxes": [

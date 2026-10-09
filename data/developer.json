@@ -55,14 +55,14 @@
     {
       "name_en": "Content Helper",
       "name_bn": "কনটেন্ট হেল্পার",
-      "photo": "images/contributor2.jpg",
+      "photo": "images/developer/contributor2.jpg",
       "desc_en": "Helps collect student data, event descriptions and hall updates.",
       "desc_bn": "শিক্ষার্থী তথ্য, ইভেন্ট বিবরণ এবং হল আপডেট সংগ্রহ করতে সহায়তা করে।"
     },
     {
       "name_en": "Photographer",
       "name_bn": "ফটোগ্রাফার",
-      "photo": "images/contributor1..jpg",
+      "photo": "images/developer/contributor1.png",
       "desc_en": "Supports the project with hall and student event photos.",
       "desc_bn": "হল এবং শিক্ষার্থীদের বিভিন্ন অনুষ্ঠানের ছবি দিয়ে প্রজেক্টকে সমৃদ্ধ করে।"
     }
@@ -98,7 +98,7 @@
     }
   ],
   "focus_title_bn": "মূল লক্ষ্য",
-  "portrait": "images/adib1.jpg",
+  "portrait": "images/developer/developer.jpg",
   "contact_text_en": "drseadib@gmail.com\nDhaka College — Science",
   "name_en": "Abdullah Al Adib",
   "contact_text_bn": "drseadib@gmail.com\nঢাকা কলেজ — বিজ্ঞান বিভাগ"

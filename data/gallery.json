@@ -6,11 +6,11 @@
       "title_bn": "ইভেন্ট ০১",
       "description_en": "Headline and short event description will be added here.",
       "description_bn": "এখানে event headline ও সংক্ষিপ্ত description যোগ করা হবে।",
-      "photo": "/assets/uploads/g1.jpg"
+      "photo": "images/gallery/gallery1.jpg"
     },
     {
       "position": 2,
-      "photo": "/assets/uploads/g2.jpeg",
+      "photo": "images/gallery/gallery2.jpg",
       "title_en": "Event 02",
       "title_bn": "ইভেন্ট ০২ ",
       "description_en": "Headline and short event description will be added here.",
@@ -19,7 +19,7 @@
     {
       "position": 3,
       "title_en": "Event 03",
-      "photo": "/assets/uploads/g3.jpg",
+      "photo": "images/gallery/gallery3.jpg",
       "title_bn": ".",
       "description_en": ".",
       "description_bn": "."
@@ -27,25 +27,25 @@
     {
       "position": 4,
       "title_en": "Event 04",
-      "photo": "/assets/uploads/g4.jpg",
+      "photo": "images/gallery/gallery4.jpg",
       "title_bn": "."
     },
     {
       "position": 5,
       "title_en": "Event 05",
-      "photo": "/assets/uploads/g5.jpeg",
+      "photo": "images/gallery/gallery5.jpg",
       "title_bn": "."
     },
     {
       "position": 6,
       "title_en": "Event 06",
-      "photo": "/assets/uploads/g6.jpeg",
+      "photo": "images/gallery/gallery6.jpg",
       "title_bn": "."
     },
     {
       "position": 7,
       "title_en": "Event 07",
-      "photo": "/assets/uploads/g7.jpg",
+      "photo": "images/gallery/gallery7.jpg",
       "title_bn": "."
     },
     {
