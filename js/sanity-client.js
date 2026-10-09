@@ -20,6 +20,21 @@ const SANITY_GROQ_QUERY = `{
   "students": *[_type == "student" && !(_id in path("drafts.**"))] | order(position asc){
     ...,
     "photo": coalesce(photo.asset->url, photo),
+    "results_1st_year": {
+      ...,
+      "ct1_pdf": coalesce(results_1st_year.ct1_pdf.asset->url, results_1st_year.ct1_pdf),
+      "ct2_pdf": coalesce(results_1st_year.ct2_pdf.asset->url, results_1st_year.ct2_pdf),
+      "hy_pdf": coalesce(results_1st_year.hy_pdf.asset->url, results_1st_year.hy_pdf),
+      "ct3_pdf": coalesce(results_1st_year.ct3_pdf.asset->url, results_1st_year.ct3_pdf),
+      "yearly_pdf": coalesce(results_1st_year.yearly_pdf.asset->url, results_1st_year.yearly_pdf)
+    },
+    "results_2nd_year": {
+      ...,
+      "ct1_pdf": coalesce(results_2nd_year.ct1_pdf.asset->url, results_2nd_year.ct1_pdf),
+      "ct2_pdf": coalesce(results_2nd_year.ct2_pdf.asset->url, results_2nd_year.ct2_pdf),
+      "ct3_pdf": coalesce(results_2nd_year.ct3_pdf.asset->url, results_2nd_year.ct3_pdf),
+      "test_pdf": coalesce(results_2nd_year.test_pdf.asset->url, results_2nd_year.test_pdf)
+    },
     "pdfs": {
       "ct1": coalesce(pdfs.ct1.asset->url, pdfs.ct1),
       "ct2": coalesce(pdfs.ct2.asset->url, pdfs.ct2),
@@ -30,7 +45,8 @@ const SANITY_GROQ_QUERY = `{
   },
   "rooms": *[_type == "room" && !(_id in path("drafts.**"))] | order(room_no asc){
     ...,
-    "photos": coalesce(photos[].asset->url, photos)
+    "photos": coalesce(photos[].asset->url, photos),
+    "assigned_students": assigned_students[]->{ _id, name_en, short_roll, student_id }
   },
   "home": *[_type == "homePage" && !(_id in path("drafts.**"))][0],
   "hall": *[_type == "hallInfo" && !(_id in path("drafts.**"))][0]{

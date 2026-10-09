@@ -1170,6 +1170,10 @@ h3 {
   background: #0084ff;
 }
 
+.contact-btn.telegram {
+  background: #229ed9;
+}
+
 .contact-btn.missing-icon {
   opacity: 0.35;
   background: var(--surface);

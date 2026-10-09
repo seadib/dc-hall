@@ -2464,53 +2464,90 @@ const studentProfilePhotos = {
 };
 
 function mapCmsStudent(item, index) {
-  const slug = item.student_id || `student-${index + 1}`;
+  const nameEn = item.name_en || `Student ${index + 1}`;
+  const slug = item.student_id || nameEn.toLowerCase().replace(/[^a-z0-9]+/g, '').slice(0, 12) + (index + 1);
   const group = (item.group || "science").toLowerCase();
-  const shortRoll = item.short_roll || "";
-  const fullRoll = item.full_roll || shortRoll;
+  const shortRoll = (item.short_roll || "").replace(/^0+/, '') || "";
+  const batch = item.batch || "HSC-27";
+
+  // Auto-generate full roll: 120 + batchCode + groupCode + paddedRoll
+  const batchCodeMap = { 'HSC-27': '2526', 'HSC-28': '2627', 'HSC-29': '2728', 'HSC-30': '2829' };
+  const groupCodeMap = { 'science': '01', 'commerce': '02', 'arts': '03' };
+  const batchCode = batchCodeMap[batch] || '2526';
+  const groupCode = groupCodeMap[group] || '01';
+  const paddedRoll = shortRoll.padStart(4, '0');
+  const fullRoll = item.full_roll || `120${batchCode}${groupCode}${paddedRoll}`;
+
+  // Facebook username → auto URLs
+  const fbUsername = item.facebook_username || '';
+  const fbUrl = fbUsername ? `https://www.facebook.com/${fbUsername}` : (item.facebook || '');
+  const messengerUrl = fbUsername ? `https://m.me/${fbUsername}` : (item.messenger || '');
+
+  // WhatsApp / Telegram logic
+  const mainPhone = item.phone || '';
+  const hasWhatsApp = item.phone_has_whatsapp !== false; // default true
+  const hasTelegram = item.phone_has_telegram === true;
+  const whatsappNum = item.whatsapp_alt || (hasWhatsApp ? mainPhone : '');
+  const telegramId = item.telegram_alt || (hasTelegram ? mainPhone : '');
+
+  // Class from batch
+  const classNo = item.class_no || (batch === 'HSC-27' ? '12' : '11');
+
+  // Default bio
+  const defaultBio = 'A dedicated student of Dhaka College, striving for academic excellence and pursuing personal growth with a focus on future goals.';
+  const defaultBioBn = 'ঢাকা কলেজের একজন নিবেদিতপ্রাণ শিক্ষার্থী, একাডেমিক উৎকর্ষতা ও ভবিষ্যৎ লক্ষ্যে ব্যক্তিগত বিকাশের জন্য সচেষ্ট।';
+
+  // Merge old pdfs + new result structure
+  const oldPdfs = item.pdfs || {};
+  const r1 = item.results_1st_year || {};
+  const r2 = item.results_2nd_year || {};
 
   return {
     id: index + 1,
     slug,
     position: Number(item.position || index + 1),
     roommateIds: item.roommate_ids || [],
-    name: item.name_en || slug,
+    name: nameEn,
     room: (item.room_no || "").trim(),
     roll: shortRoll,
     fullRoll,
-    batch: item.batch || "hsc27",
-    session: item.session || "2025-2027",
-    classNo: item.class_no || "11",
+    batch,
+    session: item.session || "",
+    classNo,
     group,
     groupEn: item.group_en || "",
     groupBn: item.group_bn || "",
     section: item.section || "",
     practicalGroup: item.practical_group || "",
     college: "Dhaka College",
-    phone: item.phone || "",
+    phone: mainPhone,
+    whatsapp: whatsappNum,
+    telegram: telegramId,
+    hasWhatsApp: !!whatsappNum,
+    hasTelegram: !!telegramId,
     fatherPhone: item.father_phone || "",
     email: item.email || "",
     img: studentProfilePhotos[slug] || normalizeCmsPath(item.photo) || `images/profile/${slug}.jpg`,
-    fb: item.facebook || "https://facebook.com/",
-    messenger: item.messenger || "",
+    fb: fbUrl,
+    fbUsername,
+    messenger: messengerUrl,
     address: item.address_en || "",
     blood: item.blood_group || "",
-    bio: item.bio_en || "",
+    bio: item.bio_en || defaultBio,
     dob: item.dob || "",
     dobBn: item.dob_bn || "",
-    pdfs: item.pdfs || {},
+    pdfs: oldPdfs,
+    results_1st: r1,
+    results_2nd: r2,
     generated_pdf_names: item.generated_pdf_names || {},
     result: {
-      gpa: 0,
-      physics: 0,
-      chemistry: 0,
-      math: 0
+      gpa: 0, physics: 0, chemistry: 0, math: 0
     },
     bn: {
-      name: item.name_bn || item.name_en || slug,
+      name: item.name_bn || nameEn,
       college: "ঢাকা কলেজ",
       address: item.address_bn || item.address_en || "",
-      bio: item.bio_bn || item.bio_en || "",
+      bio: item.bio_bn || item.bio_en || defaultBioBn,
       dob: item.dob_bn || item.dob || ""
     }
   };
@@ -2694,6 +2731,22 @@ async function loadCmsContent() {
     students.forEach((student, idx) => {
       student.id = idx + 1;
     });
+
+    // Synchronize room assignments from both directions (student.room_no <=> room.assigned_students)
+    if (roomsList?.rooms?.length) {
+      roomsList.rooms.forEach((room) => {
+        const roomNum = String(room.room_no || "").trim();
+        if (!roomNum) return;
+        if (room.assigned_students && Array.isArray(room.assigned_students)) {
+          room.assigned_students.forEach((as) => {
+            const matched = students.find((s) => s.slug === as.student_id || (as.short_roll && String(s.roll) === String(as.short_roll)) || s.name === as.name_en);
+            if (matched && (!matched.room || matched.room === "")) {
+              matched.room = roomNum;
+            }
+          });
+        }
+      });
+    }
   }
 
   cmsGalleryData = galleryData;
@@ -2724,7 +2777,11 @@ function groupLabel(group) {
   return t(`groups.${group}`);
 }
 
-function classLabel(classNo) {
+function classLabel(classNo, student) {
+  // Show batch (HSC-27) if available, else fallback to Class XI/XII
+  if (student && student.batch && student.batch.startsWith('HSC')) {
+    return student.batch;
+  }
   return t(`studentClass.${classNo}`);
 }
 
@@ -2733,46 +2790,37 @@ function sectionText(student) {
 }
 
 function resultFiles(student) {
-  const isSecondYear = String(student.class_no || "11") === "12";
+  const isSecondYear = String(student.classNo || student.class_no || "11") === "12" || student.batch === "HSC-27";
+  const r1 = student.results_1st || {};
+  const r2 = student.results_2nd || {};
   const pdfObj = (student.pdfs && Object.keys(student.pdfs).length) ? student.pdfs :
                  (student.generated_pdf_names && Object.keys(student.generated_pdf_names).length) ? student.generated_pdf_names : null;
 
   if (isSecondYear) {
-    if (pdfObj) {
-      const valid = [
-        ["ct1", normalizeCmsPath(pdfObj.ct1)],
-        ["ct2", normalizeCmsPath(pdfObj.ct2)],
-        ["ct3", normalizeCmsPath(pdfObj.ct3)],
-        ["test", normalizeCmsPath(pdfObj.test)]
-      ].filter(([, file]) => file);
-      if (valid.length) return valid;
-    }
+    const ct1 = r2.ct1_link || normalizeCmsPath(r2.ct1_pdf) || normalizeCmsPath(pdfObj?.ct1) || `pdfs/${student.slug}-12-ct1.pdf`;
+    const ct2 = r2.ct2_link || normalizeCmsPath(r2.ct2_pdf) || normalizeCmsPath(pdfObj?.ct2) || `pdfs/${student.slug}-12-ct2.pdf`;
+    const ct3 = r2.ct3_link || normalizeCmsPath(r2.ct3_pdf) || normalizeCmsPath(pdfObj?.ct3) || `pdfs/${student.slug}-12-ct3.pdf`;
+    const test = r2.test_link || normalizeCmsPath(r2.test_pdf) || normalizeCmsPath(pdfObj?.test) || `pdfs/${student.slug}-12-test.pdf`;
     return [
-      ["ct1", `pdfs/${student.slug}-12-ct1.pdf`],
-      ["ct2", `pdfs/${student.slug}-12-ct2.pdf`],
-      ["ct3", `pdfs/${student.slug}-12-ct3.pdf`],
-      ["test", `pdfs/${student.slug}-12-test.pdf`]
+      ["ct1", ct1],
+      ["ct2", ct2],
+      ["ct3", ct3],
+      ["test", test]
     ];
   }
 
   // 1st Year (Class 11)
-  if (pdfObj) {
-    const valid = [
-      ["ct1", normalizeCmsPath(pdfObj.ct1)],
-      ["ct2", normalizeCmsPath(pdfObj.ct2)],
-      ["hy", normalizeCmsPath(pdfObj.hy)],
-      ["ct3", normalizeCmsPath(pdfObj.ct3)],
-      ["yearly", normalizeCmsPath(pdfObj.yearly)]
-    ].filter(([, file]) => file);
-    if (valid.length) return valid;
-  }
-
+  const ct1 = r1.ct1_link || normalizeCmsPath(r1.ct1_pdf) || normalizeCmsPath(pdfObj?.ct1) || `pdfs/${student.slug}-11-ct1.pdf`;
+  const ct2 = r1.ct2_link || normalizeCmsPath(r1.ct2_pdf) || normalizeCmsPath(pdfObj?.ct2) || `pdfs/${student.slug}-11-ct2.pdf`;
+  const hy = r1.hy_link || normalizeCmsPath(r1.hy_pdf) || normalizeCmsPath(pdfObj?.hy) || `pdfs/${student.slug}-11-hy.pdf`;
+  const ct3 = r1.ct3_link || normalizeCmsPath(r1.ct3_pdf) || normalizeCmsPath(pdfObj?.ct3) || `pdfs/${student.slug}-11-ct3.pdf`;
+  const yearly = r1.yearly_link || normalizeCmsPath(r1.yearly_pdf) || normalizeCmsPath(pdfObj?.yearly) || `pdfs/${student.slug}-11-y.pdf`;
   return [
-    ["ct1", `pdfs/${student.slug}-11-ct1.pdf`],
-    ["ct2", `pdfs/${student.slug}-11-ct2.pdf`],
-    ["hy", `pdfs/${student.slug}-11-hy.pdf`],
-    ["ct3", `pdfs/${student.slug}-11-ct3.pdf`],
-    ["yearly", `pdfs/${student.slug}-11-y.pdf`]
+    ["ct1", ct1],
+    ["ct2", ct2],
+    ["hy", hy],
+    ["ct3", ct3],
+    ["yearly", yearly]
   ];
 }
 
@@ -3102,7 +3150,11 @@ function getActiveFilters() {
 }
 
 function studentPassesFilters(student, filters = getActiveFilters()) {
-  if (filters.batch && student.batch !== filters.batch) return false;
+  if (filters.batch) {
+    const normFilter = filters.batch.toLowerCase().replace(/[^a-z0-9]/g, '');
+    const normStudent = (student.batch || 'HSC-27').toLowerCase().replace(/[^a-z0-9]/g, '');
+    if (normFilter && normStudent !== normFilter) return false;
+  }
   if (filters.classNo && student.classNo !== filters.classNo) return false;
   if (filters.group && student.group !== filters.group) return false;
   if (filters.section && student.section !== filters.section) return false;
@@ -3117,11 +3169,29 @@ function getFilteredStudents() {
   return students.filter((student) => studentPassesFilters(student, filters) && studentMatches(student, query));
 }
 
+function renderSingleStudentCard(student, index) {
+  return `
+    <button class="student-card" type="button" data-student-id="${student.id}" data-aos="fade-up" data-aos-delay="${Math.min(index * 60, 240)}">
+      <img src="${student.img}" alt="${studentValue(student, "name")}" loading="lazy">
+      <span class="student-body">
+        <h3>${studentValue(student, "name")}</h3>
+        <p>${t("common.room")} ${student.room || "-"} · ${t("common.roll")} ${student.roll}</p>
+        <span class="student-meta">
+          <span class="pill" style="font-weight: 700;">${student.batch || 'HSC-27'}</span>
+          <span class="pill">${groupLabel(student.group)}</span>
+          ${student.section ? `<span class="pill">${t("common.section")} ${student.section}</span>` : ""}
+        </span>
+      </span>
+    </button>
+  `;
+}
+
 function renderStudentCards(list = getFilteredStudents()) {
   const grid = byId("studentGrid");
   if (!grid) return;
 
   const limit = Number(grid.dataset.limit || list.length);
+  const isHomePage = !!grid.dataset.limit;
   const visibleStudents = list.slice(0, limit);
 
   if (!visibleStudents.length) {
@@ -3129,19 +3199,41 @@ function renderStudentCards(list = getFilteredStudents()) {
     return;
   }
 
-  grid.innerHTML = visibleStudents.map((student, index) => `
-    <button class="student-card" type="button" data-student-id="${student.id}" data-aos="fade-up" data-aos-delay="${Math.min(index * 60, 240)}">
-      <img src="${student.img}" alt="${studentValue(student, "name")}" loading="lazy">
-      <span class="student-body">
-        <h3>${studentValue(student, "name")}</h3>
-        <p>${t("common.room")} ${student.room} · ${t("common.roll")} ${student.roll}</p>
-        <span class="student-meta">
-          <span class="pill">${groupLabel(student.group)}</span>
-          ${student.section ? `<span class="pill">${t("common.section")} ${student.section}</span>` : ""}
-        </span>
-      </span>
-    </button>
-  `).join("");
+  if (isHomePage) {
+    grid.innerHTML = visibleStudents.map((student, index) => renderSingleStudentCard(student, index)).join("");
+    return;
+  }
+
+  // Group by batch for students page (Item 14)
+  const batchMap = {};
+  visibleStudents.forEach((student) => {
+    const b = student.batch || "HSC-27";
+    batchMap[b] = batchMap[b] || [];
+    batchMap[b].push(student);
+  });
+
+  const batches = Object.keys(batchMap).sort();
+  let html = "";
+  let globalIdx = 0;
+
+  batches.forEach((b) => {
+    const count = batchMap[b].length;
+    html += `
+      <div class="batch-section-header" style="grid-column: 1 / -1; margin-top: 24px; margin-bottom: 8px;" data-aos="fade-up">
+        <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 2px solid var(--border); padding-bottom: 10px;">
+          <h2 style="margin: 0; font-size: 1.35rem; color: var(--text); display: flex; align-items: center; gap: 8px;">
+            <span style="color: var(--accent);">🎓</span> Batch: ${b}
+          </h2>
+          <span class="pill" style="font-weight: 700; background: var(--surface-strong); border: 1px solid var(--border); color: var(--text);">${count} ${currentLang === 'bn' ? 'জন শিক্ষার্থী' : 'Students'}</span>
+        </div>
+      </div>
+    `;
+    batchMap[b].forEach((student) => {
+      html += renderSingleStudentCard(student, globalIdx++);
+    });
+  });
+
+  grid.innerHTML = html;
 }
 
 function initStudentSearch() {
@@ -3204,7 +3296,7 @@ function renderRoomPerson(student, animation) {
     <button class="room-person" type="button" data-student-id="${student.id}" data-aos="${animation}">
       <img src="${student.img}" alt="${studentValue(student, "name")}" loading="lazy">
       <strong>${studentValue(student, "name")}</strong>
-      <span>${classLabel(student.classNo)} · ${groupLabel(student.group)}${student.section ? ` · ${student.section}` : ""}</span>
+      <span>${classLabel(student.classNo, student)} · ${groupLabel(student.group)}${student.section ? ` · ${student.section}` : ""}</span>
     </button>
   `;
 }
@@ -3829,12 +3921,13 @@ function initDropdowns() {
   });
 }
 
-function contactActions(student, phoneHref, whatsappHref, emailHref, fbHref, messengerHref, lockStatus = {}) {
+function contactActions(student, phoneHref, whatsappHref, telegramHref, emailHref, fbHref, messengerHref, lockStatus = {}) {
   const savedLogos = cmsSettings?.contact_logos || {};
   
   const defaultSvgs = {
     call: `<svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 0 0-1.01.24l-2.2 2.2a15.045 15.045 0 0 1-6.59-6.59l2.2-2.2c.28-.28.36-.67.25-1.02A11.36 11.36 0 0 1 8.5 3.99c0-.55-.45-1-1-1H4.01c-.55 0-1 .45-1 1C3.01 12.63 11.38 21 20.01 21c.55 0 1-.45 1-1v-3.62c0-.55-.45-1-1-1z"/></svg>`,
     whatsapp: `<svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12.012 2c-5.506 0-9.988 4.482-9.988 9.988 0 1.761.459 3.472 1.332 4.988L2 22l5.163-1.355c1.464.798 3.111 1.218 4.793 1.218 5.506 0 9.988-4.482 9.988-9.988 0-2.662-1.036-5.164-2.918-7.046A9.923 9.923 0 0 0 12.012 2zm5.727 14.126c-.237.668-1.378 1.285-1.921 1.343-.492.052-1.127.086-1.808-.13-2.946-.931-4.992-3.83-5.139-4.026-.147-.197-1.203-1.603-1.203-3.059 0-1.456.759-2.171 1.03-2.464.271-.293.593-.367.791-.367.198 0 .395.003.568.011.183.008.431-.071.674.512.249.599.852 2.072.926 2.219.074.147.124.317.025.513-.099.197-.149.317-.297.492-.149.176-.312.39-.446.524-.149.149-.304.312-.13.612.174.3.774 1.277 1.66 2.067.886.79 1.636 1.036 1.933 1.183.297.147.469.122.642-.078.174-.2.742-.862.94-1.159.198-.297.395-.247.668-.147.272.099 1.73.816 2.027.964.297.149.495.223.568.349.074.127.074.729-.163 1.396z"/></svg>`,
+    telegram: `<svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 0 0-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.52 2.77-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>`,
     email: `<svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>`,
     facebook: `<svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>`,
     messenger: `<svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2C6.477 2 2 6.145 2 11.258c0 2.914 1.455 5.518 3.734 7.214V22l3.355-1.843c.902.25 1.859.386 2.911.386 5.523 0 10-4.146 10-9.258C22 6.145 17.523 2 12 2zm1.096 11.903L10.36 11.13l-4.903 2.695 5.385-5.719 2.736 2.77 4.903-2.695-5.385 5.722z"/></svg>`
@@ -3853,29 +3946,65 @@ function contactActions(student, phoneHref, whatsappHref, emailHref, fbHref, mes
     return defaultSvgs[key];
   };
 
-  const callClass = lockStatus.phone ? "contact-btn call locked" : "contact-btn call";
-  const whatsappClass = lockStatus.socials ? "contact-btn whatsapp locked" : "contact-btn whatsapp";
-  const emailClass = lockStatus.email ? "contact-btn email locked" : "contact-btn email";
-  const fbClass = lockStatus.socials ? "contact-btn facebook locked" : "contact-btn facebook";
-  const messengerClass = lockStatus.socials ? "contact-btn messenger locked" : "contact-btn messenger";
+  const buttons = [];
 
-  return `
-    <div class="contact-actions" aria-label="Contact links">
+  if (student.phone) {
+    const callClass = lockStatus.phone ? "contact-btn call locked" : "contact-btn call";
+    buttons.push(`
       <a class="${callClass}" href="${phoneHref}" aria-label="${t("common.tapCall")}" title="${t("common.tapCall")}">
         ${renderIcon("call", savedLogos.phone)}
       </a>
+    `);
+  }
+
+  if (student.hasWhatsApp || student.whatsapp) {
+    const whatsappClass = lockStatus.socials ? "contact-btn whatsapp locked" : "contact-btn whatsapp";
+    buttons.push(`
       <a class="${whatsappClass}" href="${whatsappHref}" ${!lockStatus.socials ? 'target="_blank" rel="noopener"' : ''} aria-label="${t("common.whatsapp")}" title="${t("common.whatsapp")}">
         ${renderIcon("whatsapp", savedLogos.whatsapp)}
       </a>
+    `);
+  }
+
+  if ((student.hasTelegram || student.telegram) && telegramHref) {
+    const telegramClass = lockStatus.socials ? "contact-btn telegram locked" : "contact-btn telegram";
+    buttons.push(`
+      <a class="${telegramClass}" href="${telegramHref}" ${!lockStatus.socials ? 'target="_blank" rel="noopener"' : ''} aria-label="Telegram" title="Telegram">
+        ${renderIcon("telegram", savedLogos.telegram)}
+      </a>
+    `);
+  }
+
+  if (student.email) {
+    const emailClass = lockStatus.email ? "contact-btn email locked" : "contact-btn email";
+    buttons.push(`
       <a class="${emailClass}" href="${emailHref}" aria-label="${t("common.email")}" title="${t("common.email")}">
         ${renderIcon("email", savedLogos.email)}
       </a>
+    `);
+  }
+
+  if (student.fb || student.fbUsername) {
+    const fbClass = lockStatus.socials ? "contact-btn facebook locked" : "contact-btn facebook";
+    buttons.push(`
       <a class="${fbClass}" href="${fbHref}" ${!lockStatus.socials ? 'target="_blank" rel="noopener"' : ''} aria-label="${t("common.viewFacebook")}" title="${t("common.viewFacebook")}">
         ${renderIcon("facebook", savedLogos.facebook)}
       </a>
+    `);
+  }
+
+  if (student.messenger || student.fbUsername) {
+    const messengerClass = lockStatus.socials ? "contact-btn messenger locked" : "contact-btn messenger";
+    buttons.push(`
       <a class="${messengerClass}" href="${messengerHref}" ${!lockStatus.socials ? 'target="_blank" rel="noopener"' : ''} aria-label="Messenger" title="Messenger">
         ${renderIcon("messenger", savedLogos.messenger)}
       </a>
+    `);
+  }
+
+  return `
+    <div class="contact-actions" aria-label="Contact links">
+      ${buttons.join("")}
     </div>
   `;
 }
@@ -3920,20 +4049,23 @@ function openStudentModal(student) {
   const emailHref = showEmail ? `mailto:${student.email}` : "profile.html";
   const addressHref = showAddress ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(studentValue(student, "address"))}` : "profile.html";
 
-  const fbUrl = student.fb || "https://facebook.com/";
-  const fbHref = showSocials ? fbUrl : "profile.html";
+  const fbUrl = student.fb || "";
+  const fbHref = showSocials && fbUrl ? fbUrl : "profile.html";
 
-  let baseMessenger = fbUrl;
-  if (student.messenger) {
-    baseMessenger = student.messenger.startsWith("http") ? student.messenger : `https://m.me/${student.messenger}`;
-  } else {
-    const messengerName = facebookUsername(fbUrl);
-    if (messengerName) {
-      baseMessenger = `https://m.me/${messengerName}`;
-    }
-  }
-  const messengerHref = showSocials ? baseMessenger : "profile.html";
-  const whatsappHref = showSocials ? `https://wa.me/${whatsappNumber(student.phone)}` : "profile.html";
+  const messengerUrl = student.messenger || "";
+  const messengerHref = showSocials && messengerUrl ? messengerUrl : "profile.html";
+
+  const whatsappNum = student.whatsapp || student.phone || "";
+  const whatsappHref = showSocials && whatsappNum ? `https://wa.me/${whatsappNumber(whatsappNum)}` : "profile.html";
+
+  const telegramId = student.telegram || "";
+  const telegramHref = showSocials && telegramId ? `https://t.me/${telegramId.replace(/[^a-zA-Z0-9_]/g, '')}` : "";
+
+  // Flags for icon visibility
+  const showFbIcon = !!fbUrl;
+  const showMessengerIcon = !!messengerUrl;
+  const showWhatsAppIcon = student.hasWhatsApp || !!student.whatsapp;
+  const showTelegramIcon = student.hasTelegram || !!student.telegram;
 
   content.innerHTML = `
     <div class="profile">
@@ -3942,7 +4074,7 @@ function openStudentModal(student) {
         <p class="eyebrow">${t("common.fullProfile")}</p>
         <h2 id="modalName">${studentValue(student, "name")}</h2>
         <p class="lead">${t("common.room")} ${student.room} · ${t("common.roll")} ${student.roll}</p>
-        ${contactActions(student, phoneHref, whatsappHref, emailHref, fbHref, messengerHref, lockStatus)}
+        ${contactActions(student, phoneHref, whatsappHref, telegramHref, emailHref, fbHref, messengerHref, lockStatus)}
 
         <div class="profile-grid">
           <div class="profile-item roll-item">
@@ -3955,23 +4087,31 @@ function openStudentModal(student) {
               </button>
             </strong>
           </div>
-          <div class="profile-item"><span>${t("common.classLabel")}</span><strong>${classLabel(student.classNo)}</strong></div>
+          <div class="profile-item"><span>${t("common.classLabel")}</span><strong>${classLabel(student.classNo, student)}</strong></div>
           <div class="profile-item"><span>${t("common.group")}</span><strong>${groupLabel(student.group)}</strong></div>
           <div class="profile-item"><span>${t("common.section")}</span><strong>${student.section || "-"}</strong></div>
           <div class="profile-item"><span>${t("common.practicalGroup")}</span><strong>${student.practicalGroup || "-"}</strong></div>
-          <div class="profile-item ${!showSocials ? 'locked-item' : ''}">
-            <span>${t("common.whatsapp")}</span>
+          ${showWhatsAppIcon ? `<div class="profile-item ${!showSocials ? 'locked-item' : ''}">
+            <span>WHATSAPP</span>
             <strong>
               <a href="${whatsappHref}" ${showSocials ? 'target="_blank" rel="noopener"' : ''}>
-                ${displayPhone}${!showSocials ? smallLockIconSvg : ''}
+                ${showSocials ? (student.whatsapp || student.phone || '-') : maskData(student.phone)}${!showSocials ? smallLockIconSvg : ''}
               </a>
             </strong>
-          </div>
+          </div>` : ''}
+          ${showTelegramIcon ? `<div class="profile-item ${!showSocials ? 'locked-item' : ''}">
+            <span>TELEGRAM</span>
+            <strong>
+              <a href="${telegramHref}" ${showSocials ? 'target="_blank" rel="noopener"' : ''}>
+                ${showSocials ? (student.telegram || '-') : maskData(student.telegram)}${!showSocials ? smallLockIconSvg : ''}
+              </a>
+            </strong>
+          </div>` : ''}
           <div class="profile-item ${!showPhone ? 'locked-item' : ''}">
             <span>${t("common.phone")}</span>
             <strong>
               <a href="${phoneHref}">
-                ${displayPhone}${!showPhone ? smallLockIconSvg : ''}
+                ${displayPhone || '-'}${!showPhone ? smallLockIconSvg : ''}
               </a>
             </strong>
           </div>
@@ -3979,7 +4119,7 @@ function openStudentModal(student) {
             <span>${t("common.fatherPhone")}</span>
             <strong>
               <a href="${fatherPhoneHref}">
-                ${displayFather}${!showFather ? smallLockIconSvg : ''}
+                ${displayFather || '-'}${!showFather ? smallLockIconSvg : ''}
               </a>
             </strong>
           </div>
@@ -3987,7 +4127,7 @@ function openStudentModal(student) {
             <span>${t("common.email")}</span>
             <strong>
               <a href="${emailHref}">
-                ${displayEmail}${!showEmail ? smallLockIconSvg : ''}
+                ${displayEmail || '-'}${!showEmail ? smallLockIconSvg : ''}
               </a>
             </strong>
           </div>
@@ -3995,12 +4135,12 @@ function openStudentModal(student) {
             <span>${t("common.address")}</span>
             <strong>
               <a href="${addressHref}" ${showAddress ? 'target="_blank" rel="noopener"' : ''}>
-                ${displayAddress}${!showAddress ? smallLockIconSvg : ''}
+                ${displayAddress || '-'}${!showAddress ? smallLockIconSvg : ''}
               </a>
             </strong>
           </div>
-          <div class="profile-item"><span>${t("common.blood")}</span><strong>${student.blood}</strong></div>
-          ${student.dob ? `<div class="profile-item"><span>${t("common.dob")}</span><strong>${studentValue(student, "dob") || student.dob}</strong></div>` : ""}
+          <div class="profile-item"><span>${t("common.blood")}</span><strong>${student.blood || "-"}</strong></div>
+          <div class="profile-item"><span>${t("common.dob")}</span><strong>${studentValue(student, "dob") || student.dob || "-"}</strong></div>
           <div class="profile-item"><span>${t("common.college")}</span><strong>${studentValue(student, "college")}</strong></div>
         </div>
 
@@ -4077,7 +4217,7 @@ function openRoomModal(room) {
                 <img class="occupant-img" src="${photo}" alt="" loading="lazy">
                 <div class="occupant-info">
                   <h4>${studentValue(student, "name")}</h4>
-                  <p>${t("common.roll")} ${student.roll} · Class ${classLabel(student.classNo)} · ${groupText}</p>
+                  <p>${t("common.roll")} ${student.roll} · Class ${classLabel(student.classNo, student)} · ${groupText}</p>
                 </div>
                 <div class="occupant-action">
                   <span>View Profile &rarr;</span>

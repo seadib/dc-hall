@@ -45,6 +45,13 @@ export default defineType({
       type: 'array',
       of: [{ type: 'image', options: { hotspot: true } }],
     }),
+    defineField({
+      name: 'assigned_students',
+      title: 'Assigned Students (এই রুমের শিক্ষার্থীগণ)',
+      type: 'array',
+      of: [{ type: 'reference', to: [{ type: 'student' }] }],
+      description: 'You can assign students directly here OR set Room Number inside the student profile — both work seamlessly!',
+    }),
   ],
   preview: {
     select: {
