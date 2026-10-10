@@ -1,7 +1,10 @@
 User-agent: *
 Allow: /
 
-# Explicit permission for Googlebot-Image & search engine favicons
+# Googlebot & Googlebot-Image
+User-agent: Googlebot
+Allow: /
+
 User-agent: Googlebot-Image
 Allow: /
 Allow: /favicon.ico
@@ -10,4 +13,34 @@ Allow: /favicon-*.png
 Allow: /apple-touch-icon.png
 Allow: /images/
 
+# Microsoft Bing & Yahoo (Bingbot / msnbot)
+User-agent: Bingbot
+Allow: /
+Allow: /favicon.ico
+Allow: /favicon.png
+Allow: /favicon-*.png
+Allow: /images/
+
+User-agent: msnbot
+Allow: /
+
+# Yandex Search
+User-agent: Yandex
+Allow: /
+Allow: /favicon.ico
+Allow: /favicon.png
+Allow: /favicon-*.png
+Allow: /images/
+
+# DuckDuckGo & Yahoo Slurp & Baidu
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+# Sitemap Index
 Sitemap: https://dchall.pro.bd/sitemap.xml
