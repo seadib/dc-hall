@@ -2573,6 +2573,7 @@ body:not([data-page="home"]) .dropdown-trigger {
 
 /* --- Profile Action & Toggle --- */
 .profile-toggle {
+  position: relative;
   display: grid;
   width: 42px;
   height: 42px;
@@ -2582,7 +2583,7 @@ body:not([data-page="home"]) .dropdown-trigger {
   background: rgba(255, 255, 255, 0.14);
   color: #ffffff;
   cursor: pointer;
-  transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease, border 0.2s ease;
+  transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease, border 0.2s ease, box-shadow 0.2s ease;
 }
 
 body:not([data-page="home"]) .profile-toggle,
@@ -2597,6 +2598,68 @@ body:not([data-page="home"]) .profile-toggle,
   background: var(--accent);
   color: #ffffff;
   border-color: var(--accent);
+}
+
+/* Logged-in profile state (active indicator with subtle emerald green tint) */
+.profile-toggle.logged-in {
+  border-color: #10b981 !important;
+  color: #10b981 !important;
+  background: rgba(16, 185, 129, 0.14) !important;
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.22);
+}
+
+body:not([data-page="home"]) .profile-toggle.logged-in,
+.navbar.scrolled .profile-toggle.logged-in {
+  border-color: #10b981 !important;
+  color: #10b981 !important;
+  background: rgba(16, 185, 129, 0.14) !important;
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.22);
+}
+
+.profile-toggle.logged-in:hover {
+  transform: translateY(-2px);
+  background: #10b981 !important;
+  color: #ffffff !important;
+  border-color: #10b981 !important;
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4);
+}
+
+/* Small tick badge on top right corner of profile icon */
+.profile-toggle .profile-badge-tick {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #10b981;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--surface-strong, #0b1120);
+  box-shadow: 0 2px 6px rgba(16, 185, 129, 0.5);
+  pointer-events: none;
+  animation: tickBadgePop 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.profile-toggle .profile-badge-tick svg {
+  width: 10px;
+  height: 10px;
+  stroke: #ffffff;
+}
+
+@keyframes tickBadgePop {
+  0% { transform: scale(0); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Instant logged-in state without page flash */
+html.user-logged-in #loginFormCard {
+  display: none !important;
+}
+html.user-logged-in #statusCard {
+  display: block !important;
 }
 
 /* --- Locked Indicators & Visual States (Premium Emerald Green) --- */
