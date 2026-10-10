@@ -73,6 +73,7 @@ const i18n = {
       roll: "Roll",
       room: "Room",
       rooms: "Rooms",
+      roomOccupants: "Room Occupants",
       section: "Section",
       searchPlaceholderFull: "Search by name, room, roll, phone, blood group or address",
       searchPlaceholderShort: "Search by name, room, roll, blood group or address",
@@ -322,6 +323,7 @@ const i18n = {
       roll: "রোল",
       room: "রুম",
       rooms: "রুম",
+      roomOccupants: "রুমের বাসিন্দাবৃন্দ",
       section: "সেকশন",
       searchPlaceholderFull: "নাম, রুম, রোল, ফোন, রক্তের গ্রুপ বা ঠিকানা দিয়ে খুঁজুন",
       searchPlaceholderShort: "নাম, রুম, রোল, রক্তের গ্রুপ বা ঠিকানা দিয়ে খুঁজুন",
@@ -3065,16 +3067,29 @@ function applyLanguage() {
     button.setAttribute("aria-label", t("common.closeProfile"));
   });
 
+  const successMsg = byId("successMessage");
+  if (successMsg && typeof isUnlocked !== "undefined" && isUnlocked) {
+    const role = localStorage.getItem("dc-auth-role") || "student";
+    if (role === "master") {
+      successMsg.textContent = currentLang === "bn"
+        ? "তুমি মাস্টার এডমিন হিসেবে লগইন করে আছো! সকল ব্যাচের যাবতীয় তথ্য ও লক করা নম্বর আনলক রয়েছে।"
+        : "You are logged in as Master Admin. Full access unlocked across all batches.";
+    } else {
+      successMsg.textContent = currentLang === "bn"
+        ? `তুমি ${role.toUpperCase()} ব্যাচ হিসেবে লগইন আছো! তোমার নিজস্ব ব্যাচের তথ্য দৃশ্যমান (অন্যান্য ব্যাচ সুরক্ষিত)।`
+        : `You are logged in under ${role.toUpperCase()}. Your batch records are unlocked (other batches protected).`;
+    }
+  }
+
   updateHeroPhrase(true);
   renderFooter();
 }
 
 function updateLanguageButtonLabels() {
-  const compact = window.matchMedia("(max-width: 920px)").matches;
-
   document.querySelectorAll("[data-lang-option]").forEach((button) => {
     const option = button.dataset.langOption;
-    button.textContent = compact ? (option === "en" ? "BN" : "EN") : (option === "en" ? "English" : "বাংলা");
+    button.textContent = option === "en" ? "EN" : "BN";
+    button.title = option === "en" ? "English" : "বাংলা";
   });
 }
 
@@ -4258,7 +4273,7 @@ function openRoomModal(room) {
                   <p>${t("common.roll")} ${student.roll} · Class ${classLabel(student.classNo, student)} · ${groupText}</p>
                 </div>
                 <div class="occupant-action">
-                  <span>View Profile &rarr;</span>
+                  <span>${currentLang === "bn" ? "প্রোফাইল দেখুন &rarr;" : "View Profile &rarr;"}</span>
                 </div>
               </div>
             `;
@@ -4378,17 +4393,19 @@ function initAos() {
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
+  initLanguage(); // Synchronous translation from saved localStorage language immediately
   ensureNavigation();
-  await loadCmsContent();
+  initTheme();
   checkSessionValidity();
   initAuth();
   initDropdowns();
-  initLanguage();
-  initTheme();
   initNavbar();
   initMoreMenu();
   initHeroRotator();
+
+  await loadCmsContent();
   renderDynamicContent();
+  applyLanguage(); // Re-apply for any CMS-provided titles or labels
   initStudentSearch();
   initRoommateFilters();
   initStudentClicks();
