@@ -997,9 +997,23 @@ h3 {
   color: var(--accent-strong);
 }
 
-.page-main {
+.page-main, main {
   min-height: 70vh;
   padding-top: 72px;
+  display: flex;
+  flex-direction: column;
+}
+
+.home-main {
+  padding-top: 0 !important;
+}
+
+.page-main > *, main > * {
+  width: 100%;
+}
+
+.hero, .page-hero, .developer-hero {
+  order: -100 !important;
 }
 
 .page-hero {

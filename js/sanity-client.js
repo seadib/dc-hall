@@ -20,6 +20,9 @@ const SANITY_GROQ_QUERY = `{
   "students": *[_type == "student" && !(_id in path("drafts.**"))] | order(position asc){
     ...,
     "photo": coalesce(photo.asset->url, photo),
+    "room_no": coalesce(room_ref->room_no, room_no),
+    "room_title_en": room_ref->title_en,
+    "room_title_bn": room_ref->title_bn,
     "results_1st_year": {
       ...,
       "ct1_pdf": coalesce(results_1st_year.ct1_pdf.asset->url, results_1st_year.ct1_pdf),
@@ -46,16 +49,16 @@ const SANITY_GROQ_QUERY = `{
   "rooms": *[_type == "room" && !(_id in path("drafts.**"))] | order(room_no asc){
     ...,
     "photos": coalesce(photos[].asset->url, photos),
-    "assigned_students": assigned_students[]->{ _id, name_en, short_roll, student_id }
+    "assigned_students": assigned_students[]->{ _id, name_en, name_bn, short_roll, student_id }
   },
   "home": *[_type == "homePage" && !(_id in path("drafts.**"))][0],
   "hall": *[_type == "hallInfo" && !(_id in path("drafts.**"))][0]{
     ...,
     "hall_photo": coalesce(hall_photo.asset->url, hall_photo),
     "hall_super_photo": coalesce(hall_super_photo.asset->url, hall_super_photo),
-    "hall_photos": hall_photos[]{
+    "campus_photos": campus_photos[]{
       ...,
-      "photo": coalesce(photo.asset->url, photo, asset->url)
+      "photo": coalesce(asset->url, photo)
     },
     "alumni_profiles": alumni_profiles[]{
       ...,
@@ -64,7 +67,11 @@ const SANITY_GROQ_QUERY = `{
   },
   "developer": *[_type == "developerProfile" && !(_id in path("drafts.**"))][0]{
     ...,
-    "portrait": coalesce(portrait.asset->url, portrait)
+    "portrait": coalesce(portrait.asset->url, portrait),
+    "contributors": contributors[]{
+      ...,
+      "photo": coalesce(photo.asset->url, photo, asset->url)
+    }
   },
   "gallery": *[_type == "galleryItem" && !(_id in path("drafts.**"))] | order(position asc, _createdAt desc){
     ...,

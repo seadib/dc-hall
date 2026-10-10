@@ -5,11 +5,97 @@ export default defineType({
   title: 'Home Page Content',
   type: 'document',
   groups: [
-    { name: 'hero', title: 'হিরো সেকশন (Hero Section)' },
-    { name: 'history_info', title: 'ইতিহাস ও হল তথ্য (History & Info)' },
-    { name: 'stats_location', title: 'সাফল্য ও অবস্থান (Stats & Location)' },
+    { name: 'sections_control', title: '① সেকশন কন্ট্রোল ও ক্রম (Section Visibility & Order)', default: true },
+    { name: 'hero', title: '② হিরো সেকশন (Hero Section)' },
+    { name: 'history_info', title: '③ ইতিহাস ও হল তথ্য (History & Info)' },
+    { name: 'stats_location', title: '④ সাফল্য ও অবস্থান (Stats & Location)' },
   ],
   fields: [
+    // ═══════════════════════════════════════════
+    // ① Homepage Sections Controls
+    // ═══════════════════════════════════════════
+    defineField({
+      name: 'sections_control',
+      title: 'Homepage Sections Visibility & Order (হোমপেজ সেকশনসমূহ অন/অফ ও ক্রম)',
+      type: 'object',
+      group: 'sections_control',
+      description: 'হোমপেজে কোন কোন সেকশন দেখাবেন এবং কোন সেকশনটি আগে ও কোনটি পরে আসবে তা এখান থেকে সহজে নিয়ন্ত্রণ করুন।',
+      fields: [
+        {
+          name: 'students_preview',
+          title: 'Students Preview (শিক্ষার্থী প্রিভিউ)',
+          type: 'object',
+          fields: [
+            { name: 'enabled', title: 'Show Section (প্রদর্শন করুন)', type: 'boolean', initialValue: true },
+            { name: 'order', title: 'Order (ক্রমিক নম্বর)', type: 'number', initialValue: 1 },
+          ],
+        },
+        {
+          name: 'roommates_preview',
+          title: 'Roommate Preview (রুমমেট প্রিভিউ)',
+          type: 'object',
+          fields: [
+            { name: 'enabled', title: 'Show Section (প্রদর্শন করুন)', type: 'boolean', initialValue: true },
+            { name: 'order', title: 'Order (ক্রমিক নম্বর)', type: 'number', initialValue: 2 },
+          ],
+        },
+        {
+          name: 'results_preview',
+          title: 'Results Preview (একাডেমিক ফলাফল প্রিভিউ)',
+          type: 'object',
+          fields: [
+            { name: 'enabled', title: 'Show Section (প্রদর্শন করুন)', type: 'boolean', initialValue: true },
+            { name: 'order', title: 'Order (ক্রমিক নম্বর)', type: 'number', initialValue: 3 },
+          ],
+        },
+        {
+          name: 'hall_super_preview',
+          title: 'Hall Super Preview (হল সুপার পরিচিতি ও বার্তা)',
+          type: 'object',
+          fields: [
+            { name: 'enabled', title: 'Show Section (প্রদর্শন করুন)', type: 'boolean', initialValue: true },
+            { name: 'order', title: 'Order (ক্রমিক নম্বর)', type: 'number', initialValue: 4 },
+          ],
+        },
+        {
+          name: 'hall_info_preview',
+          title: 'Hall Info & History (হলের ইতিহাস ও পরিচিতি)',
+          type: 'object',
+          fields: [
+            { name: 'enabled', title: 'Show Section (প্রদর্শন করুন)', type: 'boolean', initialValue: true },
+            { name: 'order', title: 'Order (ক্রমিক নম্বর)', type: 'number', initialValue: 5 },
+          ],
+        },
+        {
+          name: 'moments_preview',
+          title: 'Moments & Memories (ক্যাম্পাস ফটো গ্যালারি)',
+          type: 'object',
+          fields: [
+            { name: 'enabled', title: 'Show Section (প্রদর্শন করুন)', type: 'boolean', initialValue: true },
+            { name: 'order', title: 'Order (ক্রমিক নম্বর)', type: 'number', initialValue: 6 },
+          ],
+        },
+        {
+          name: 'resources_preview',
+          title: 'Dhaka College Portals & Resources (অফিশিয়াল রিসোর্স)',
+          type: 'object',
+          fields: [
+            { name: 'enabled', title: 'Show Section (প্রদর্শন করুন)', type: 'boolean', initialValue: true },
+            { name: 'order', title: 'Order (ক্রমিক নম্বর)', type: 'number', initialValue: 7 },
+          ],
+        },
+        {
+          name: 'location_preview',
+          title: 'Location & Map (অবস্থান ও লাইভ ম্যাপ)',
+          type: 'object',
+          fields: [
+            { name: 'enabled', title: 'Show Section (প্রদর্শন করুন)', type: 'boolean', initialValue: true },
+            { name: 'order', title: 'Order (ক্রমিক নম্বর)', type: 'number', initialValue: 8 },
+          ],
+        },
+      ],
+    }),
+
     // --- Group: Hero ---
     defineField({
       name: 'hero_eyebrow_en',

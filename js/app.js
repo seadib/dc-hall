@@ -2259,7 +2259,7 @@ let roomsData = [
     "room_no": "314",
     "title_en": "Room 314",
     "title_bn": "রুম ৩১৪",
-    "description_en": "Demo room details. Later you can replace the room photos and add bed, table, window and seat information.",
+    "description_en": "Spacious, well-ventilated residential room equipped with personal study tables, beds, ceiling fans, and high-speed Wi-Fi connectivity for an optimal study atmosphere.",
     "description_bn": "রুমের ডেমো বিবরণ। পরে আপনি রুমের ছবি পরিবর্তন করতে এবং বিছানা, টেবিল, জানালা ও সিটের তথ্য যুক্ত করতে পারবেন।",
     "photos": []
   },
@@ -2267,7 +2267,7 @@ let roomsData = [
     "room_no": "315",
     "title_en": "Room 315",
     "title_bn": "রুম ৩১৫",
-    "description_en": "Demo room details. Later you can replace the room photos and add bed, table, window and seat information.",
+    "description_en": "Spacious, well-ventilated residential room equipped with personal study tables, beds, ceiling fans, and high-speed Wi-Fi connectivity for an optimal study atmosphere.",
     "description_bn": "রুমের ডেমো বিবরণ। পরে আপনি রুমের ছবি পরিবর্তন করতে এবং বিছানা, টেবিল, জানালা ও সিটের তথ্য যুক্ত করতে পারবেন।",
     "photos": []
   },
@@ -2275,7 +2275,7 @@ let roomsData = [
     "room_no": "316",
     "title_en": "Room 316",
     "title_bn": "রুম ৩১৬",
-    "description_en": "Demo room details. Later you can replace the room photos and add bed, table, window and seat information.",
+    "description_en": "Spacious, well-ventilated residential room equipped with personal study tables, beds, ceiling fans, and high-speed Wi-Fi connectivity for an optimal study atmosphere.",
     "description_bn": "রুমের ডেমো বিবরণ। পরে আপনি রুমের ছবি পরিবর্তন করতে এবং বিছানা, টেবিল, জানালা ও সিটের তথ্য যুক্ত করতে পারবেন।",
     "photos": []
   },
@@ -2283,7 +2283,7 @@ let roomsData = [
     "room_no": "317",
     "title_en": "Room 317",
     "title_bn": "রুম ৩১৭",
-    "description_en": "Demo room details. Later you can replace the room photos and add bed, table, window and seat information.",
+    "description_en": "Spacious, well-ventilated residential room equipped with personal study tables, beds, ceiling fans, and high-speed Wi-Fi connectivity for an optimal study atmosphere.",
     "description_bn": "রুমের ডেমো বিবরণ। পরে আপনি রুমের ছবি পরিবর্তন করতে এবং বিছানা, টেবিল, জানালা ও সিটের তথ্য যুক্ত করতে পারবেন।",
     "photos": []
   },
@@ -2291,7 +2291,7 @@ let roomsData = [
     "room_no": "318",
     "title_en": "Room 318",
     "title_bn": "রুম ৩১৮",
-    "description_en": "Demo room details. Later you can replace the room photos and add bed, table, window and seat information.",
+    "description_en": "Spacious, well-ventilated residential room equipped with personal study tables, beds, ceiling fans, and high-speed Wi-Fi connectivity for an optimal study atmosphere.",
     "description_bn": "রুমের ডেমো বিবরণ। পরে আপনি রুমের ছবি পরিবর্তন করতে এবং বিছানা, টেবিল, জানালা ও সিটের তথ্য যুক্ত করতে পারবেন।",
     "photos": []
   },
@@ -2299,7 +2299,7 @@ let roomsData = [
     "room_no": "319",
     "title_en": "Room 319",
     "title_bn": "রুম ৩১৯",
-    "description_en": "Demo room details. Later you can replace the room photos and add bed, table, window and seat information.",
+    "description_en": "Spacious, well-ventilated residential room equipped with personal study tables, beds, ceiling fans, and high-speed Wi-Fi connectivity for an optimal study atmosphere.",
     "description_bn": "রুমের ডেমো বিবরণ। পরে আপনি রুমের ছবি পরিবর্তন করতে এবং বিছানা, টেবিল, জানালা ও সিটের তথ্য যুক্ত করতে পারবেন।",
     "photos": []
   },
@@ -2307,7 +2307,7 @@ let roomsData = [
     "room_no": "320",
     "title_en": "Room 320",
     "title_bn": "রুম ৩২০",
-    "description_en": "Demo room details. Later you can replace the room photos and add bed, table, window and seat information.",
+    "description_en": "Spacious, well-ventilated residential room equipped with personal study tables, beds, ceiling fans, and high-speed Wi-Fi connectivity for an optimal study atmosphere.",
     "description_bn": "রুমের ডেমো বিবরণ। পরে আপনি রুমের ছবি পরিবর্তন করতে এবং বিছানা, টেবিল, জানালা ও সিটের তথ্য যুক্ত করতে পারবেন।",
     "photos": []
   },
@@ -2315,7 +2315,7 @@ let roomsData = [
     "room_no": "321",
     "title_en": "Room 321",
     "title_bn": "রুম ৩২১",
-    "description_en": "Demo room details. Later you can replace the room photos and add bed, table, window and seat information.",
+    "description_en": "Spacious, well-ventilated residential room equipped with personal study tables, beds, ceiling fans, and high-speed Wi-Fi connectivity for an optimal study atmosphere.",
     "description_bn": "রুমের ডেমো বিবরণ। পরে আপনি রুমের ছবি পরিবর্তন করতে এবং বিছানা, টেবিল, জানালা ও সিটের তথ্য যুক্ত করতে পারবেন।",
     "photos": []
   },
@@ -2323,7 +2323,7 @@ let roomsData = [
     "room_no": "322",
     "title_en": "Room 322",
     "title_bn": "রুম ৩২২",
-    "description_en": "Demo room details. Later you can replace the room photos and add bed, table, window and seat information.",
+    "description_en": "Spacious, well-ventilated residential room equipped with personal study tables, beds, ceiling fans, and high-speed Wi-Fi connectivity for an optimal study atmosphere.",
     "description_bn": "রুমের ডেমো বিবরণ। পরে আপনি রুমের ছবি পরিবর্তন করতে এবং বিছানা, টেবিল, জানালা ও সিটের তথ্য যুক্ত করতে পারবেন।",
     "photos": []
   },
@@ -2331,7 +2331,7 @@ let roomsData = [
     "room_no": "323",
     "title_en": "Room 323",
     "title_bn": "রুম ৩২৩",
-    "description_en": "Demo room details. Later you can replace the room photos and add bed, table, window and seat information.",
+    "description_en": "Spacious, well-ventilated residential room equipped with personal study tables, beds, ceiling fans, and high-speed Wi-Fi connectivity for an optimal study atmosphere.",
     "description_bn": "রুমের ডেমো বিবরণ। পরে আপনি রুমের ছবি পরিবর্তন করতে এবং বিছানা, টেবিল, জানালা ও সিটের তথ্য যুক্ত করতে পারবেন।",
     "photos": []
   },
@@ -2339,7 +2339,7 @@ let roomsData = [
     "room_no": "324",
     "title_en": "Room 324",
     "title_bn": "রুম ৩২৪",
-    "description_en": "Demo room details. Later you can replace the room photos and add bed, table, window and seat information.",
+    "description_en": "Spacious, well-ventilated residential room equipped with personal study tables, beds, ceiling fans, and high-speed Wi-Fi connectivity for an optimal study atmosphere.",
     "description_bn": "রুমের ডেমো বিবরণ। পরে আপনি রুমের ছবি পরিবর্তন করতে এবং বিছানা, টেবিল, জানালা ও সিটের তথ্য যুক্ত করতে পারবেন।",
     "photos": []
   },
@@ -2347,7 +2347,7 @@ let roomsData = [
     "room_no": "325",
     "title_en": "Room 325",
     "title_bn": "রুম ৩২৫",
-    "description_en": "Demo room details. Later you can replace the room photos and add bed, table, window and seat information.",
+    "description_en": "Spacious, well-ventilated residential room equipped with personal study tables, beds, ceiling fans, and high-speed Wi-Fi connectivity for an optimal study atmosphere.",
     "description_bn": "রুমের ডেমো বিবরণ। পরে আপনি রুমের ছবি পরিবর্তন করতে এবং বিছানা, টেবিল, জানালা ও সিটের তথ্য যুক্ত করতে পারবেন।",
     "photos": []
   },
@@ -2355,7 +2355,7 @@ let roomsData = [
     "room_no": "326",
     "title_en": "Room 326",
     "title_bn": "রুম ৩২৬",
-    "description_en": "Demo room details. Later you can replace the room photos and add bed, table, window and seat information.",
+    "description_en": "Spacious, well-ventilated residential room equipped with personal study tables, beds, ceiling fans, and high-speed Wi-Fi connectivity for an optimal study atmosphere.",
     "description_bn": "রুমের ডেমো বিবরণ। পরে আপনি রুমের ছবি পরিবর্তন করতে এবং বিছানা, টেবিল, জানালা ও সিটের তথ্য যুক্ত করতে পারবেন।",
     "photos": []
   },
@@ -2363,7 +2363,7 @@ let roomsData = [
     "room_no": "327",
     "title_en": "Room 327",
     "title_bn": "রুম ৩২৭",
-    "description_en": "Demo room details. Later you can replace the room photos and add bed, table, window and seat information.",
+    "description_en": "Spacious, well-ventilated residential room equipped with personal study tables, beds, ceiling fans, and high-speed Wi-Fi connectivity for an optimal study atmosphere.",
     "description_bn": "রুমের ডেমো বিবরণ। পরে আপনি রুমের ছবি পরিবর্তন করতে এবং বিছানা, টেবিল, জানালা ও সিটের তথ্য যুক্ত করতে পারবেন।",
     "photos": []
   },
@@ -2371,7 +2371,7 @@ let roomsData = [
     "room_no": "328",
     "title_en": "Room 328",
     "title_bn": "রুম ৩২৮ ",
-    "description_en": "Demo room details. Later you can replace the room photos and add bed, table, window and seat information.",
+    "description_en": "Spacious, well-ventilated residential room equipped with personal study tables, beds, ceiling fans, and high-speed Wi-Fi connectivity for an optimal study atmosphere.",
     "description_bn": "রুমের ডেমো বিবরণ। পরে আপনি রুমের ছবি পরিবর্তন করতে এবং বিছানা, টেবিল, জানালা ও সিটের তথ্য যুক্ত করতে পারবেন।",
     "photos": []
   }
@@ -2467,6 +2467,12 @@ const studentProfilePhotos = {
   "bayezid30": "images/profile/bayazid-1.jpg"
 };
 
+function toBengaliDigits(numStr) {
+  if (numStr === null || numStr === undefined) return "";
+  const bnDigits = ["০", "১", "২", "৩", "৪", "৫", "৬", "৭", "৮", "৯"];
+  return String(numStr).replace(/[0-9]/g, (d) => bnDigits[Number(d)]);
+}
+
 function mapCmsStudent(item, index) {
   const nameEn = item.name_en || `Student ${index + 1}`;
   const slug = item.student_id || nameEn.toLowerCase().replace(/[^a-z0-9]+/g, '').slice(0, 12) + (index + 1);
@@ -2548,8 +2554,8 @@ function mapCmsStudent(item, index) {
     address: item.address_en || "",
     blood: item.blood_group || "",
     bio: item.bio_en || defaultBio,
-    dob: item.dob || "",
-    dobBn: item.dob_bn || "",
+    dob: (item.dob_day && item.dob_month) ? `${item.dob_day}/${item.dob_month}` : (item.dob || ""),
+    dobBn: (item.dob_day && item.dob_month) ? `${toBengaliDigits(item.dob_day)}/${toBengaliDigits(item.dob_month)}` : (item.dob_bn || (item.dob ? toBengaliDigits(item.dob) : "")),
     pdfs: oldPdfs,
     results_1st: r1,
     results_2nd: r2,
@@ -2562,7 +2568,7 @@ function mapCmsStudent(item, index) {
       college: "ঢাকা কলেজ",
       address: item.address_bn || item.address_en || "",
       bio: item.bio_bn || item.bio_en || defaultBioBn,
-      dob: item.dob_bn || item.dob || ""
+      dob: (item.dob_day && item.dob_month) ? `${toBengaliDigits(item.dob_day)}/${toBengaliDigits(item.dob_month)}` : (item.dob_bn || (item.dob ? toBengaliDigits(item.dob) : ""))
     }
   };
 }
@@ -2751,6 +2757,9 @@ async function loadCmsContent() {
       roomsList.rooms.forEach((room) => {
         const roomNum = String(room.room_no || "").trim();
         if (!roomNum) return;
+        if (!room.title_en) room.title_en = `Room ${roomNum}`;
+        if (!room.title_bn) room.title_bn = `রুম ${toBengaliDigits(roomNum)}`;
+        if (!room.capacity) room.capacity = 2;
         if (room.assigned_students && Array.isArray(room.assigned_students)) {
           room.assigned_students.forEach((as) => {
             const matched = students.find((s) => s.slug === as.student_id || (as.short_roll && String(s.roll) === String(as.short_roll)) || s.name === as.name_en);
@@ -2758,6 +2767,23 @@ async function loadCmsContent() {
               matched.room = roomNum;
             }
           });
+        }
+      });
+      // Bidirectional sync: if student profile has room assigned, sync it into room.assigned_students
+      students.forEach((s) => {
+        if (!s.room) return;
+        const targetRoom = roomsList.rooms.find((r) => String(r.room_no || "").trim() === String(s.room).trim());
+        if (targetRoom) {
+          if (!targetRoom.assigned_students) targetRoom.assigned_students = [];
+          const already = targetRoom.assigned_students.some((as) => as.student_id === s.slug || (as.short_roll && String(as.short_roll) === String(s.roll)) || as.name_en === s.name);
+          if (!already) {
+            targetRoom.assigned_students.push({
+              student_id: s.slug,
+              name_en: s.name,
+              name_bn: s.bn?.name || s.name,
+              short_roll: s.roll
+            });
+          }
         }
       });
     }
@@ -2777,6 +2803,62 @@ async function loadCmsContent() {
   await renderHallSuperPage(hallData);
   renderHomeHallSuper(hallData);
   renderDynamicContent();
+
+  // Apply Multi-Page Section Controls (Visibility & Reordering)
+  applyPageSectionControls();
+}
+
+function applyPageSectionControls() {
+  const page = document.body.dataset.page;
+  if (page === "home" && cmsHomeData?.sections_control) {
+    const homeMap = {
+      students_preview: byId("students-preview"),
+      roommates_preview: byId("roommates-preview"),
+      results_preview: byId("results-preview"),
+      hall_super_preview: byId("hallsuper-preview"),
+      hall_info_preview: byId("hostel-info-preview"),
+      moments_preview: byId("gallery-preview"),
+      resources_preview: byId("dc-resources"),
+      location_preview: byId("location")
+    };
+    applySectionMap(cmsHomeData.sections_control, homeMap);
+  } else if (page === "hostel" && cmsHallData?.sections_control) {
+    const hostelMap = {
+      history_nearby: byId("sec-history"),
+      campus_photos: byId("sec-campus-photos"),
+      hall_super: byId("hallsuper"),
+      helpdesk: byId("sec-helpdesk"),
+      alumni: byId("sec-alumni"),
+      success_chart: byId("sec-admission"),
+      location_map: byId("sec-location")
+    };
+    applySectionMap(cmsHallData.sections_control, hostelMap);
+  } else if (page === "developer" && cmsDevData?.sections_control) {
+    const devMap = {
+      hero_bio: byId("sec-hero-bio"),
+      overview_panels: byId("sec-overview-panels"),
+      featured_projects: byId("projects"),
+      skills_timeline: byId("sec-skills-timeline"),
+      contributors: byId("sec-contributors")
+    };
+    applySectionMap(cmsDevData.sections_control, devMap);
+  }
+}
+
+function applySectionMap(sectionsConfig, elementMap) {
+  if (!sectionsConfig || !elementMap) return;
+  Object.entries(sectionsConfig).forEach(([key, conf]) => {
+    const el = elementMap[key];
+    if (!el || typeof conf !== "object" || conf === null) return;
+    if (conf.enabled === false) {
+      el.style.display = "none";
+    } else {
+      el.style.display = "";
+    }
+    if (typeof conf.order === "number") {
+      el.style.order = conf.order;
+    }
+  });
 }
 
 function t(key) {
@@ -3887,8 +3969,10 @@ function canViewStudentPrivateData(student) {
   const role = getAuthRole();
   if (role === "master") return true; // Master Admin sees all batches
   if (role === "guest") return false;
-  // Junior batch or batch user can only view their own batch
-  return role === (student.batch || "hsc27");
+  // Batch user can only view their own batch
+  const sBatch = String(student?.batch || "HSC-27").toLowerCase().replace(/[^a-z0-9]/g, "");
+  const uRole = String(role).toLowerCase().replace(/[^a-z0-9]/g, "");
+  return uRole === sBatch;
 }
 
 function checkSessionValidity() {
@@ -4915,15 +4999,27 @@ async function renderDeveloperPage(devData) {
     `).join("");
   }
 
+  const devActions = document.querySelectorAll(".developer-actions a");
+  if (devActions.length >= 2) {
+    if (dev.projects_link) devActions[0].href = dev.projects_link;
+    if (dev.portfolio_link) devActions[1].href = dev.portfolio_link;
+  }
+
   const projectsGrid = document.querySelector(".project-grid");
   if (projectsGrid && dev.projects) {
-    projectsGrid.innerHTML = dev.projects.map((p, index) => `
-      <a class="project-tile" href="${p.link}" target="_blank" rel="noopener" data-aos="fade-up" data-aos-delay="${index * 80}">
-        <span>${p.title_en}</span>
-        <strong>${p.url}</strong>
-        <p>${currentLang === "bn" ? p.desc_bn : p.desc_en}</p>
-      </a>
-    `).join("");
+    projectsGrid.innerHTML = dev.projects.map((p, index) => {
+      const pTitle = currentLang === "bn" ? (p.title_bn || p.title || p.title_en) : (p.title || p.title_en || p.title_bn);
+      const pLink = p.url || p.link || "#";
+      const pDisplay = p.domain_display || p.url || pLink.replace(/^https?:\/\//, '');
+      const pDesc = currentLang === "bn" ? (p.desc_bn || p.desc_en) : (p.desc_en || p.desc_bn);
+      return `
+        <a class="project-tile" href="${pLink}" target="_blank" rel="noopener" data-aos="fade-up" data-aos-delay="${index * 80}">
+          <span>${pTitle}</span>
+          <strong>${pDisplay}</strong>
+          <p>${pDesc}</p>
+        </a>
+      `;
+    }).join("");
   }
 
   const contributorsGrid = document.querySelector(".contributor-grid");
@@ -4959,14 +5055,16 @@ async function renderHallInfoPage(hallData) {
     mainPhoto.src = normalizeCmsPath(data.hall_photo);
   }
 
-  // 3. Gallery Grid Photos
+  // 3. Gallery Grid Photos (Campus Photos Gallery)
   const galleryGrid = document.querySelector(".gallery-grid.hall-photo-demo");
-  if (galleryGrid && data.hall_photos && data.hall_photos.length) {
-    galleryGrid.innerHTML = data.hall_photos.map((item, index) => {
-      const photo = normalizeCmsPath(item.photo);
+  const campusPhotosList = (data.campus_photos && data.campus_photos.length) ? data.campus_photos : data.hall_photos;
+  if (galleryGrid && campusPhotosList && campusPhotosList.length) {
+    galleryGrid.innerHTML = campusPhotosList.map((item, index) => {
+      const photo = normalizeCmsPath(item.photo || item.asset?.url || item);
+      const caption = currentLang === "bn" ? (item.caption_bn || item.caption_en || "ক্যাম্পাস ছবি") : (item.caption_en || item.caption_bn || "Campus Photo");
       return `
         <article class="gallery-card" data-aos="fade-up" data-aos-delay="${index * 120}">
-          <img src="${photo}" alt="Hall Photo" loading="lazy">
+          <img src="${photo}" alt="${caption}" loading="lazy">
         </article>
       `;
     }).join("");
@@ -5005,7 +5103,7 @@ async function renderHallSuperPage(hallData) {
     superImg.src = normalizeCmsPath(data.hall_super_photo);
   }
 
-  // 2. Eyebrow, Name and Bio
+  // 2. Eyebrow, Name, Designation and Bio
   const eyebrow = document.querySelector("#hallsuper .eyebrow") || document.querySelector(".split .eyebrow");
   if (eyebrow) {
     eyebrow.textContent = currentLang === "bn" ? (data.hall_super_eyebrow_bn || "সম্মানিত নেতৃত্ব") : (data.hall_super_eyebrow_en || "Respectful Leadership");
@@ -5014,28 +5112,39 @@ async function renderHallSuperPage(hallData) {
   if (nameEl) {
     nameEl.textContent = currentLang === "bn" ? (data.hall_super_name_bn || "অধ্যাপক মোঃ কামরুজ্জামান") : (data.hall_super_name_en || "Prof. Md. Kamruzzaman");
   }
+  const designationEl = document.querySelector("#hallsuper .split > div > p[style*='font-weight: 700']");
+  if (designationEl && (data.hall_super_designation_bn || data.hall_super_designation_en)) {
+    designationEl.textContent = currentLang === "bn" ? (data.hall_super_designation_bn || data.hall_super_designation_en) : (data.hall_super_designation_en || data.hall_super_designation_bn);
+  }
   const bioEl = byId("hallSuperBio") || document.querySelector("[data-i18n='hallSuper.bio']");
   if (bioEl) {
     const bio = currentLang === "bn" ? (data.hall_super_bio_bn || data.hall_super_bio_en) : (data.hall_super_bio_en || data.hall_super_bio_bn);
     if (bio) bioEl.textContent = bio;
   }
 
-  // 3. Contact Actions
-  if (data.hall_super_contact) {
-    const c = data.hall_super_contact;
-    const callBtn = byId("superCallBtn");
-    const waBtn = byId("superWaBtn");
-    const fbBtn = byId("superFbBtn");
-    const emailBtn = byId("superEmailBtn");
-    if (callBtn && c.phone) callBtn.href = `tel:${c.phone}`;
-    if (waBtn && c.whatsapp) waBtn.href = `https://wa.me/${c.whatsapp.replace(/[^0-9]/g, "")}`;
-    if (fbBtn && c.facebook) fbBtn.href = c.facebook;
-    if (emailBtn && c.email) emailBtn.href = `mailto:${c.email}`;
-    const officeEl = byId("superOfficeRoom");
-    if (officeEl) officeEl.textContent = currentLang === "bn" ? (c.office_room_bn || c.office_room_en) : (c.office_room_en || c.office_room_bn);
-    const hoursEl = byId("superVisitingHours");
-    if (hoursEl) hoursEl.textContent = currentLang === "bn" ? (c.visiting_hours_bn || c.visiting_hours_en) : (c.visiting_hours_en || c.visiting_hours_bn);
-  }
+  // 3. Direct Contact Actions & Helpdesk
+  const phone = data.hall_super_phone || data.hall_super_contact?.phone;
+  const whatsapp = data.hall_super_whatsapp || data.hall_super_contact?.whatsapp;
+  const facebook = data.hall_super_facebook || data.hall_super_contact?.facebook;
+  const email = data.hall_super_email || data.hall_super_contact?.email;
+  const officeRoom = data.office_room || data.hall_super_contact?.office_room_en || data.hall_super_contact?.office_room_bn;
+  const visitingHours = data.visiting_hours || data.hall_super_contact?.visiting_hours_en || data.hall_super_contact?.visiting_hours_bn;
+  const emergencyText = data.emergency_contact_text || data.hall_super_contact?.emergency_contact;
+
+  const callBtn = byId("superCallBtn");
+  const waBtn = byId("superWaBtn");
+  const fbBtn = byId("superFbBtn");
+  const emailBtn = byId("superEmailBtn");
+  if (callBtn && phone) callBtn.href = `tel:${phone}`;
+  if (waBtn && whatsapp) waBtn.href = String(whatsapp).startsWith("http") ? whatsapp : `https://wa.me/${String(whatsapp).replace(/[^0-9]/g, "")}`;
+  if (fbBtn && facebook) fbBtn.href = facebook;
+  if (emailBtn && email) emailBtn.href = `mailto:${email}`;
+  const officeEl = byId("superOfficeRoom");
+  if (officeEl && officeRoom) officeEl.textContent = officeRoom;
+  const hoursEl = byId("superVisitingHours");
+  if (hoursEl && visitingHours) hoursEl.textContent = visitingHours;
+  const emergencyEl = byId("superEmergencyText");
+  if (emergencyEl && emergencyText) emergencyEl.textContent = emergencyText;
 
   // 4. Info grid (info boxes)
   const infoGrid = document.querySelector("#hallsuper .info-grid") || (document.body.dataset.page === "hallsuper" ? document.querySelector(".info-grid") : null);
