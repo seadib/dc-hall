@@ -3111,6 +3111,7 @@ function renderFooter() {
       <a href="dc-clubs.html">${currentLang === "bn" ? "কলেজ ক্লাবসমূহ" : "College Clubs"}</a>
       <a href="dc-social.html">${currentLang === "bn" ? "সোশ্যাল মিডিয়া" : "Social Links"}</a>
       <a href="developer.html">${t("nav.developer")}</a>
+      <a href="admin/index.html" target="_blank" rel="noopener">${currentLang === "bn" ? "অ্যাডমিন প্যানেল" : "Admin Panel"}</a>
     </div>
   `;
 }
@@ -4020,6 +4021,18 @@ function initAuth() {
           successMsg.textContent = currentLang === "bn"
             ? "তুমি মাস্টার এডমিন হিসেবে লগইন করে আছো! সকল ব্যাচের যাবতীয় তথ্য ও লক করা নম্বর আনলক রয়েছে।"
             : "You are logged in as Master Admin. Full access unlocked across all batches.";
+          let adminLinkBtn = byId("openAdminStudioBtn");
+          if (!adminLinkBtn && logoutBtn) {
+            adminLinkBtn = document.createElement("a");
+            adminLinkBtn.id = "openAdminStudioBtn";
+            adminLinkBtn.href = "https://dchall.sanity.studio/";
+            adminLinkBtn.target = "_blank";
+            adminLinkBtn.rel = "noopener";
+            adminLinkBtn.className = "auth-btn";
+            adminLinkBtn.style.cssText = "display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 12px; text-decoration: none; background: linear-gradient(135deg, #3b82f6, #2563eb); color: #fff; font-weight: 700;";
+            adminLinkBtn.innerHTML = `<span>${currentLang === "bn" ? "স্যানিটি অ্যাডমিন প্যানেল খুলুন" : "Open Sanity Studio Admin"}</span> &rarr;`;
+            logoutBtn.parentNode.insertBefore(adminLinkBtn, logoutBtn);
+          }
         } else {
           successMsg.textContent = currentLang === "bn"
             ? `তুমি ${currentRole.toUpperCase()} ব্যাচ হিসেবে লগইন আছো! তোমার নিজস্ব ব্যাচের তথ্য দৃশ্যমান (অন্যান্য ব্যাচ সুরক্ষিত)।`

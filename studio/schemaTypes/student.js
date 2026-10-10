@@ -350,12 +350,6 @@ export default defineType({
       hidden: true,
     }),
     defineField({
-      name: 'facebook',
-      title: 'Facebook URL (Legacy)',
-      type: 'url',
-      hidden: true,
-    }),
-    defineField({
       name: 'messenger',
       title: 'Messenger (Legacy)',
       type: 'string',
