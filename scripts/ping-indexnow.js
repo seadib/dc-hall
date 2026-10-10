@@ -19,25 +19,23 @@ const data = JSON.stringify({
   ]
 });
 
-const options = {
-  hostname: "api.indexnow.org",
-  port: 443,
-  path: "/IndexNow",
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json; charset=utf-8",
-    "Content-Length": Buffer.byteLength(data)
-  }
-};
+const endpoints = ["www.bing.com", "api.indexnow.org", "yandex.com"];
 
-const req = https.request(options, (res) => {
-  console.log(`IndexNow Ping Status: ${res.statusCode} (${res.statusMessage})`);
-  res.on("data", (d) => process.stdout.write(d));
+endpoints.forEach(host => {
+  const req = https.request({
+    hostname: host,
+    port: 443,
+    path: "/indexnow",
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": Buffer.byteLength(data)
+    }
+  }, (res) => {
+    console.log(`[IndexNow] ${host} -> Status: ${res.statusCode} (${res.statusMessage})`);
+  });
+
+  req.on("error", err => console.error(`[IndexNow] Error for ${host}:`, err.message));
+  req.write(data);
+  req.end();
 });
-
-req.on("error", (error) => {
-  console.error("Error pinging IndexNow:", error);
-});
-
-req.write(data);
-req.end();
