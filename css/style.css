@@ -1491,22 +1491,24 @@ body:not(.dark) .academic-year-header {
 }
 
 .pdf-grid {
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
   gap: 8px;
   margin: 0;
 }
 
-.pdf-grid.grid-5 {
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-}
-
+.pdf-grid.grid-5,
 .pdf-grid.grid-4 {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 .result-box {
-  min-height: 40px;
-  padding: 8px 10px;
+  flex: 1 1 calc(20% - 8px);
+  min-width: 80px;
+  min-height: 38px;
+  padding: 8px 12px;
   border-radius: 9px;
   background: rgba(16, 201, 168, 0.08);
   border: 1px solid rgba(16, 201, 168, 0.22);
@@ -1528,8 +1530,8 @@ body:not(.dark) .academic-year-header {
 
 .result-box .res-name {
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  overflow: visible;
+  text-overflow: clip;
 }
 
 .result-box .res-icon {
@@ -1588,12 +1590,6 @@ body:not(.dark) .result-box.locked:hover {
   .academic-section-title {
     flex-wrap: wrap;
     gap: 8px;
-  }
-  .pdf-grid.grid-5 {
-    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-  }
-  .pdf-grid.grid-4 {
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
   }
 }
 
@@ -2112,40 +2108,71 @@ body:not(.dark) .result-box.locked:hover {
     margin-left: auto;
   }
 
+  .nav-actions {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 7px !important;
+    height: 38px !important;
+    margin-left: auto;
+  }
+
+  .nav-actions > * {
+    width: 38px !important;
+    height: 38px !important;
+    min-width: 38px !important;
+    max-width: 38px !important;
+    min-height: 38px !important;
+    max-height: 38px !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
+    vertical-align: middle !important;
+    border-radius: 9px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-shrink: 0 !important;
+  }
+
   .language-switch {
-    width: 40px;
-    height: 40px;
-    padding: 2px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+    width: 38px !important;
+    height: 38px !important;
+    padding: 0 !important;
+    border: 1px solid rgba(255, 255, 255, 0.35) !important;
+    border-radius: 9px !important;
+    background: transparent !important;
+    overflow: hidden !important;
   }
 
   .language-switch button {
-    display: none;
-    width: 100%;
-    height: 100%;
-    padding: 0;
-    font-size: 0.8rem;
+    display: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
 
   .language-switch button.active {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    border-radius: 7px;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    height: 100% !important;
+    border: 0 !important;
+    border-radius: 8px !important;
+    background: var(--accent) !important;
+    color: #ffffff !important;
+    font-size: 0.8rem !important;
+    font-weight: 800 !important;
   }
 
   .profile-toggle {
-    width: 40px;
-    height: 40px;
+    width: 38px !important;
+    height: 38px !important;
+    border-radius: 9px !important;
   }
 
   .theme-toggle {
-    width: 40px;
-    height: 40px;
+    width: 38px !important;
+    height: 38px !important;
+    border-radius: 9px !important;
   }
 
   .nav-inner {
@@ -2837,27 +2864,29 @@ body:not([data-page="home"]) .profile-toggle.logged-in,
 /* Small tick badge on top right corner of profile icon */
 .profile-toggle .profile-badge-tick {
   position: absolute;
-  top: -4px;
-  right: -4px;
-  width: 16px;
-  height: 16px;
+  top: 2px;
+  right: 2px;
+  width: 11px;
+  height: 11px;
   border-radius: 50%;
   background: #10b981;
   color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid var(--surface-strong, #0b1120);
-  box-shadow: 0 2px 6px rgba(16, 185, 129, 0.5);
+  border: 1px solid var(--surface-strong, #0b1120);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
   pointer-events: none;
-  animation: tickBadgePop 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 3;
 }
 
 .profile-toggle .profile-badge-tick svg {
-  width: 10px;
-  height: 10px;
+  width: 7px;
+  height: 7px;
   stroke: #ffffff;
+  stroke-width: 3;
 }
+
 
 @keyframes tickBadgePop {
   0% { transform: scale(0); opacity: 0; }

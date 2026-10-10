@@ -3498,6 +3498,7 @@ function initMoreMenu() {
 
 function renderResults(filterClass = "all") {
   const table = byId("resultTable");
+  const thead = byId("resultThead");
   if (!table) return;
 
   const isUnlocked = getAuthStatus();
@@ -3509,6 +3510,38 @@ function renderResults(filterClass = "all") {
     if (filterClass === "all") return true;
     return String(s.class_no || "11") === String(filterClass);
   });
+
+  // Dynamically adapt table headers according to the selected year/class
+  const isSecondYear = filterClass === "12" || (filterClass === "all" && filteredStudents.length > 0 && filteredStudents.every(s => String(s.class_no || "11") === "12"));
+
+  if (thead) {
+    if (isSecondYear) {
+      thead.innerHTML = `
+        <tr>
+          <th>${t("resultTable.serial")}</th>
+          <th>${t("resultTable.student")}</th>
+          <th>${t("resultTable.roll")}</th>
+          <th>${t("pdf.ct1")}</th>
+          <th>${t("pdf.ct2")}</th>
+          <th>${t("pdf.ct3")}</th>
+          <th>${t("pdf.test")}</th>
+        </tr>
+      `;
+    } else {
+      thead.innerHTML = `
+        <tr>
+          <th>${t("resultTable.serial")}</th>
+          <th>${t("resultTable.student")}</th>
+          <th>${t("resultTable.roll")}</th>
+          <th>${t("pdf.ct1")}</th>
+          <th>${t("pdf.ct2")}</th>
+          <th>${t("pdf.hy")}</th>
+          <th>${t("pdf.ct3")}</th>
+          <th>${t("pdf.yearly")}</th>
+        </tr>
+      `;
+    }
+  }
 
   table.innerHTML = filteredStudents.map((student, index) => {
     const isAuthorized = canViewStudentPrivateData(student);
@@ -4465,7 +4498,6 @@ function openStudentModal(student) {
             </svg>
             <h3>${t("common.academicResult")}</h3>
           </div>
-          <span class="academic-title-badge">${showResults ? (currentLang === "bn" ? "মার্কশিট আর্কাইভ" : "Marksheet Archive") : (currentLang === "bn" ? "সুরক্ষিত" : "Protected")}</span>
         </div>
         <div class="student-academic-results">
           <div class="academic-year-card">
