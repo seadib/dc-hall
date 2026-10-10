@@ -4367,54 +4367,84 @@ function openStudentModal(student) {
           <div class="profile-item"><span>${t("common.group")}</span><strong>${groupLabel(student.group)}</strong></div>
           <div class="profile-item"><span>${t("common.section")}</span><strong>${student.section || "-"}</strong></div>
           <div class="profile-item"><span>${t("common.practicalGroup")}</span><strong>${student.practicalGroup || "-"}</strong></div>
-          ${showWhatsAppIcon ? `<div class="profile-item ${!showSocials ? 'locked-item' : ''}">
+          ${showWhatsAppIcon ? (!showSocials ? `
+          <a href="profile.html" class="profile-item locked-item" title="${currentLang === 'bn' ? 'লগইন করে দেখতে ক্লিক করুন' : 'Click to log in and view'}">
+            <span>WHATSAPP</span>
+            <strong>${maskData(student.phone)}${smallLockIconSvg}</strong>
+          </a>` : `
+          <div class="profile-item">
             <span>WHATSAPP</span>
             <strong>
-              <a href="${whatsappHref}" ${showSocials ? 'target="_blank" rel="noopener"' : ''}>
-                ${showSocials ? (student.whatsapp || student.phone || '-') : maskData(student.phone)}${!showSocials ? smallLockIconSvg : ''}
+              <a href="${whatsappHref}" target="_blank" rel="noopener">
+                ${student.whatsapp || student.phone || '-'}
               </a>
             </strong>
-          </div>` : ''}
-          ${showTelegramIcon ? `<div class="profile-item ${!showSocials ? 'locked-item' : ''}">
+          </div>`) : ''}
+          ${showTelegramIcon ? (!showSocials ? `
+          <a href="profile.html" class="profile-item locked-item" title="${currentLang === 'bn' ? 'লগইন করে দেখতে ক্লিক করুন' : 'Click to log in and view'}">
+            <span>TELEGRAM</span>
+            <strong>${maskData(student.telegram)}${smallLockIconSvg}</strong>
+          </a>` : `
+          <div class="profile-item">
             <span>TELEGRAM</span>
             <strong>
-              <a href="${telegramHref}" ${showSocials ? 'target="_blank" rel="noopener"' : ''}>
-                ${showSocials ? (student.telegram || '-') : maskData(student.telegram)}${!showSocials ? smallLockIconSvg : ''}
+              <a href="${telegramHref}" target="_blank" rel="noopener">
+                ${student.telegram || '-'}
               </a>
             </strong>
-          </div>` : ''}
-          <div class="profile-item ${!showPhone ? 'locked-item' : ''}">
+          </div>`) : ''}
+          ${!showPhone ? `
+          <a href="profile.html" class="profile-item locked-item" title="${currentLang === 'bn' ? 'লগইন করে দেখতে ক্লিক করুন' : 'Click to log in and view'}">
+            <span>${t("common.phone")}</span>
+            <strong>${maskData(student.phone)}${smallLockIconSvg}</strong>
+          </a>` : `
+          <div class="profile-item">
             <span>${t("common.phone")}</span>
             <strong>
               <a href="${phoneHref}">
-                ${displayPhone || '-'}${!showPhone ? smallLockIconSvg : ''}
+                ${student.phone || '-'}
               </a>
             </strong>
-          </div>
-          <div class="profile-item ${!showFather ? 'locked-item' : ''}">
+          </div>`}
+          ${!showFather ? `
+          <a href="profile.html" class="profile-item locked-item" title="${currentLang === 'bn' ? 'লগইন করে দেখতে ক্লিক করুন' : 'Click to log in and view'}">
+            <span>${t("common.fatherPhone")}</span>
+            <strong>${maskData(student.fatherPhone)}${smallLockIconSvg}</strong>
+          </a>` : `
+          <div class="profile-item">
             <span>${t("common.fatherPhone")}</span>
             <strong>
               <a href="${fatherPhoneHref}">
-                ${displayFather || '-'}${!showFather ? smallLockIconSvg : ''}
+                ${student.fatherPhone || '-'}
               </a>
             </strong>
-          </div>
-          <div class="profile-item ${!showEmail ? 'locked-item' : ''}">
+          </div>`}
+          ${!showEmail ? `
+          <a href="profile.html" class="profile-item locked-item" title="${currentLang === 'bn' ? 'লগইন করে দেখতে ক্লিক করুন' : 'Click to log in and view'}">
+            <span>${t("common.email")}</span>
+            <strong>${maskData(student.email)}${smallLockIconSvg}</strong>
+          </a>` : `
+          <div class="profile-item">
             <span>${t("common.email")}</span>
             <strong>
               <a href="${emailHref}">
-                ${displayEmail || '-'}${!showEmail ? smallLockIconSvg : ''}
+                ${student.email || '-'}
               </a>
             </strong>
-          </div>
-          <div class="profile-item ${!showAddress ? 'locked-item' : ''}">
+          </div>`}
+          ${!showAddress ? `
+          <a href="profile.html" class="profile-item locked-item" title="${currentLang === 'bn' ? 'লগইন করে দেখতে ক্লিক করুন' : 'Click to log in and view'}">
+            <span>${t("common.address")}</span>
+            <strong>${maskData(studentValue(student, "address"))}${smallLockIconSvg}</strong>
+          </a>` : `
+          <div class="profile-item">
             <span>${t("common.address")}</span>
             <strong>
-              <a href="${addressHref}" ${showAddress ? 'target="_blank" rel="noopener"' : ''}>
-                ${displayAddress || '-'}${!showAddress ? smallLockIconSvg : ''}
+              <a href="${addressHref}" target="_blank" rel="noopener">
+                ${studentValue(student, "address") || '-'}
               </a>
             </strong>
-          </div>
+          </div>`}
           <div class="profile-item"><span>${t("common.blood")}</span><strong>${student.blood || "-"}</strong></div>
           <div class="profile-item"><span>${t("common.dob")}</span><strong>${studentValue(student, "dob") || student.dob || "-"}</strong></div>
           <div class="profile-item"><span>${t("common.college")}</span><strong>${studentValue(student, "college")}</strong></div>
