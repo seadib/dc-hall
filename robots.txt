@@ -1,4 +1,13 @@
 User-agent: *
 Allow: /
 
+# Explicit permission for Googlebot-Image & search engine favicons
+User-agent: Googlebot-Image
+Allow: /
+Allow: /favicon.ico
+Allow: /favicon.png
+Allow: /favicon-*.png
+Allow: /apple-touch-icon.png
+Allow: /images/
+
 Sitemap: https://dchall.pro.bd/sitemap.xml
