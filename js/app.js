@@ -215,6 +215,7 @@ const i18n = {
       demoText: "International Hall campus and student memories."
     },
     developer: {
+      eyebrow: "Aspiring Software Engineer",
       title: "Developer Profile",
       subtitle: "Developer of the International Hall website and student-focused web projects.",
       name: "Abdullah Al Adib",
@@ -459,6 +460,7 @@ const i18n = {
       demoText: "আন্তর্জাতিক ছাত্রাবাসের ক্যাম্পাস ও শিক্ষার্থীদের সোনালী স্মৃতি।"
     },
     developer: {
+      eyebrow: "সফটওয়্যার প্রকৌশল প্রত্যাশী",
       title: "ডেভেলপার প্রোফাইল",
       subtitle: "International Hall website ও student-focused web project-এর developer।",
       name: "Abdullah Al Adib",
