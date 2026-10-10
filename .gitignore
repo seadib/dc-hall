@@ -3,3 +3,9 @@ dist/
 .sanity/
 .DS_Store
 Thumbs.db
+
+# Secrets & Service Accounts
+service_account.json
+*credentials*.json
+typing-*.json
+*.key.json
