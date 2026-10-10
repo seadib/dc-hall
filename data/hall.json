@@ -32,60 +32,64 @@
   "hostel_subtitle_bn": "ইতিহাস, খ্যাতিমান শিক্ষার্থী, ভর্তি সাফল্য এবং অবস্থান।",
   "hall_photos": [
     {
-      "photo": "images/hall/hall1.jpg",
-      "title_en": "International Hall Campus",
-      "title_bn": "আন্তর্জাতিক ছাত্রাবাস প্রাঙ্গণ",
-      "desc_en": "Front corridor and historic college premises.",
-      "desc_bn": "সম্মুখ করিডোর ও ঐতিহাসিক কলেজ প্রাঙ্গণ।"
+      "photo": "assets/uploads/hall1-compressed.jpg",
+      "title_en": "Hall Photo 01",
+      "title_bn": "হল ফটো ০১",
+      "desc_en": "Replace this demo file later with hall1.jpg.",
+      "desc_bn": "পরবর্তীতে hall1.jpg দিয়ে এটি পরিবর্তন করুন।"
     },
     {
-      "photo": "images/hall/hall2.jpg",
-      "title_en": "Residential Blocks",
-      "title_bn": "আবাসিক ব্লক",
-      "desc_en": "Peaceful academic environment for student residents.",
-      "desc_bn": "আবাসিক শিক্ষার্থীদের জন্য শান্ত ও সুশৃঙ্খল পড়ার পরিবেশ।"
+      "photo": "assets/uploads/hall2-compressed.jpg",
+      "title_en": "Hall Photo 02",
+      "title_bn": "হল ফটো ০২",
+      "desc_en": "Replace this demo file later with hall2.jpg.",
+      "desc_bn": "পরবর্তীতে hall2.jpg দিয়ে এটি পরিবর্তন করুন।"
     },
     {
-      "photo": "images/hall/hall3.jpg",
-      "title_en": "Hall Common Grounds",
-      "title_bn": "হল প্রাঙ্গণ ও চত্বর",
-      "desc_en": "Community life, shared study and mutual camaraderie.",
-      "desc_bn": "শিক্ষার্থীদের সহমর্মিতা, গ্রুপ স্টাডি ও স্মৃতিময় দিনগুলি।"
+      "photo": "assets/uploads/hall3-compressed.jpg",
+      "title_en": "Hall Photo 03",
+      "title_bn": "হল ফটো ০৩",
+      "desc_en": "Upload hall3.jpg later and it will show here.",
+      "desc_bn": "পরবর্তীতে hall3.jpg আপলোড করলে এখানে দেখাবে।"
     }
   ],
   "alumni_profiles": [
     {
-      "position": 1,
-      "name_en": "Maumoon Abdul Gayoom",
       "name_bn": "মামুন আবদুল গাইয়ুম",
-      "photo": "images/hall/alumni1.jpg",
-      "short_bio_en": "Former President of Maldives (1978–2008)",
-      "short_bio_bn": "মালদ্বীপের সাবেক রাষ্ট্রপতি (১৯৭৮–২০০৮)",
-      "details_en": "Former President of the Republic of Maldives. He served as the head of state for 30 consecutive years from 1978 to 2008 and played a historic role in developing the nation's tourism sector and international relations. He obtained his B.A. and M.A. degrees in Islamic Sharia and Law from Al-Azhar University in Cairo, Egypt.",
-      "details_bn": "মালদ্বীপের সাবেক রাষ্ট্রপতি। তিনি ১৯৭৮ থেকে ২০০৮ সাল পর্যন্ত দীর্ঘ ৩০ বছর টানা ছয় মেয়াদে মালদ্বীপের রাষ্ট্রপ্রধান হিসেবে দায়িত্ব পালন করেন এবং দেশটির পর্যটন শিল্প ও আন্তর্জাতিক সম্পর্কে ঐতিহাসিক ভূমিকা রাখেন। তিনি মিশরের কায়রোর আল-আজহার বিশ্ববিদ্যালয় থেকে ইসলামিক শরিয়াহ ও আইনে স্নাতক এবং স্নাতকোত্তর সম্পন্ন করেন।",
-      "role_en": "Former President of Maldives",
-      "role_bn": "মালদ্বীপের সাবেক রাষ্ট্রপতি",
-      "biography_en": "Former President of the Republic of Maldives.",
-      "biography_bn": "মালদ্বীপের সাবেক রাষ্ট্রপতি।"
+      "hall_memory_en": "-",
+      "hall_memory_bn": "-",
+      "position": 1,
+      "career_en": "Served six consecutive terms as the President of the Maldives and played a significant role in developing the nation's tourism sector.",
+      "career_bn": "মালদ্বীপের ইতিহাসে টানা ছয়বার রাষ্ট্রপতি হিসেবে নির্বাচিত হওয়া এবং দেশটির পর্যটন শিল্পের প্রসার ঘটানো।",
+      "role_en": " He obtained his B.A. and M.A. degrees in Islamic Sharia and Law from Al-Azhar University in Cairo, Egypt. (He did not study at Dhaka College).",
+      "photo": "assets/uploads/maumoon_abdul_gayoom.jpeg",
+      "hall_contribution_en": "-",
+      "biography_en": "Former President of the Republic of Maldives. He served as the head of state for 30 years, from 1978 to 2008.",
+      "role_bn": "মিশরের কায়রোর আল-আজহার বিশ্ববিদ্যালয় থেকে ইসলামিক শরিয়াহ ও আইনে স্নাতক এবং স্নাতকোত্তর সম্পন্ন করেন।",
+      "hall_contribution_bn": "-",
+      "biography_bn": "মালদ্বীপের সাবেক রাষ্ট্রপতি। তিনি ১৯৭৮ থেকে ২০০৮ সাল পর্যন্ত দীর্ঘ ৩০ বছর মালদ্বীপের রাষ্ট্রপ্রধান হিসেবে দায়িত্ব পালন করেন।",
+      "name_en": "Maumoon Abdul Gayoom"
     },
     {
-      "position": 2,
-      "name_en": "Mahmudul Hasan Sohag",
       "name_bn": "মাহমুদুল হাসান সোহাগ",
-      "photo": "images/hall/alumni2.jpg",
-      "short_bio_en": "Chairman of Onnorokom Group & Co-founder of Rokomari.com",
-      "short_bio_bn": "চেয়ারম্যান, অন্যরকম গ্রুপ এবং সহ-প্রতিষ্ঠাতা, রকমারি.কম",
-      "details_en": "Completed HSC from Dhaka College. Graduated in Electrical and Electronic Engineering (EEE) from BUET. Renowned educational visionary and entrepreneur who founded 'Udvash-Unmesh', transforming the shadow education and ed-tech ecosystem in Bangladesh, and later created Rokomari.com and Onnorokom Group.",
-      "details_bn": "ঢাকা কলেজ থেকে উচ্চমাধ্যমিক এবং বাংলাদেশ প্রকৌশল বিশ্ববিদ্যালয় (বুয়েট)-এর ইলেকট্রিক্যাল অ্যান্ড ইলেকট্রনিক ইঞ্জিনিয়ারিং (EEE) বিভাগ থেকে স্নাতক। বাংলাদেশের অন্যতম শীর্ষ শিক্ষাউদ্যোক্তা ও স্বপ্নদ্রষ্টা, যিনি 'উদ্ভাস-উন্মেষ' প্রতিষ্ঠা করে শিক্ষা ও এড-টেক খাতে যুগান্তকারী পরিবর্তন আনেন এবং পরবর্তীতে রকমারি.কম ও অন্যরকম গ্রুপ গড়ে তোলেন।",
-      "role_en": "Chairman, Onnorokom Group & Rokomari.com",
-      "role_bn": "চেয়ারম্যান, অন্যরকম গ্রুপ এবং রকমারি.কম",
+      "hall_memory_en": "-",
+      "hall_memory_bn": "-",
+      "position": 2,
+      "career_en": "Founded 'Udvash-Unmesh', which brought a massive transformation to the shadow education and ed-tech sector in Bangladesh.",
+      "career_bn": "'উদ্ভাস-উন্মেষ' প্রতিষ্ঠা এবং বাংলাদেশের শিক্ষাক্ষেত্রে যুগান্তকারী পরিবর্তন সাধন।",
+      "role_en": "HSC from Dhaka College. BSc in Electrical and Electronic Engineering (EEE) from BUET.",
+      "photo": "assets/uploads/sohag.jpg",
+      "hall_contribution_en": "-",
       "biography_en": "Chairman of Onnorokom Group and Co-founder of Rokomari.com.",
-      "biography_bn": "অন্যরকম গ্রুপ'-এর চেয়ারম্যান এবং রকমারি.কম-এর সহ-প্রতিষ্ঠাতা।"
+      "role_bn": "ঢাকা কলেজ থেকে উচ্চমাধ্যমিক এবং বুয়েটের ইলেকট্রিক্যাল অ্যান্ড ইলেকট্রনিক ইঞ্জিনিয়ারিং (EEE) বিভাগ থেকে স্নাতক।",
+      "hall_contribution_bn": "-",
+      "biography_bn": "অন্যরকম গ্রুপ'-এর চেয়ারম্যান এবং রকমারি.কম-এর সহ-প্রতিষ্ঠাতা।",
+      "name_en": "Mahmudul Hasan Sohag"
     }
   ],
   "map_url": "https://www.google.com/maps?q=International%20Hall,%20Dhaka%20College&output=embed",
   "success_title_en": "Admission success overview",
-  "hall_photo": "images/hall/hostel-building.jpg",
+  "hall_photo": "assets/uploads/hall-compressed.jpg",
   "success_title_bn": "ভর্তি পরীক্ষার সাফল্য",
   "history_text_en": "Dhaka College, established in 1841, is one of the oldest and most influential educational institutions in Bangladesh. International Hall carries that academic spirit through shared study, discipline and student community life.",
   "location_text_en": "Exact location: International Hall, Dhaka College. The live Google map below can be viewed directly on the website.",
@@ -114,7 +118,7 @@
   "hall_super_eyebrow_bn": "সম্মানিত নেতৃত্ব",
   "hall_super_name_en": "Prof. Md. Kamruzzaman",
   "hall_super_name_bn": "অধ্যাপক মোঃ কামরুজ্জামান",
-  "hall_super_photo": "images/hall/hallsuper1.webp",
+  "hall_super_photo": "assets/uploads/md-kamruzzaman.webp",
   "hall_super_bio_en": "Prof. Md. Kamruzzaman serves as the Provost of Dhaka College International Hall. He is committed to maintaining a disciplined, secure, and student-friendly residential environment while supporting students' academic success, personal development, and overall well-being.\n",
   "hall_super_bio_bn": "অধ্যাপক মোঃ কামরুজ্জামান ঢাকা কলেজ ইন্টারন্যাশনাল হলের প্রভোস্ট হিসেবে দায়িত্ব পালন করছেন। তিনি শিক্ষার্থীদের জন্য একটি শৃঙ্খলাবদ্ধ, নিরাপদ ও শিক্ষাবান্ধব আবাসিক পরিবেশ নিশ্চিত করতে এবং তাদের একাডেমিক ও ব্যক্তিগত উন্নয়নে সহায়তা করতে কাজ করে যাচ্ছেন।",
   "hall_super_info_boxes": [
@@ -136,15 +140,5 @@
       "text_en": "Students can contact the hall office for room, attendance and emergency support.",
       "text_bn": "রুম, উপস্থিতি এবং যেকোনো জরুরি সহায়তার জন্য হল অফিসে যোগাযোগ করা যাবে।"
     }
-  ],
-  "hall_super_contact": {
-    "phone": "+880 1711-000000",
-    "whatsapp": "+8801711000000",
-    "facebook": "https://www.facebook.com/dhakacollegeofficial",
-    "email": "hallsuper@dhakacollege.edu.bd",
-    "office_room_en": "Provost Office, Ground Floor, International Hall",
-    "office_room_bn": "প্রভোস্ট অফিস, নিচতলা, আন্তর্জাতিক ছাত্রাবাস",
-    "visiting_hours_en": "Saturday - Thursday: 5:00 PM - 8:00 PM",
-    "visiting_hours_bn": "শনিবার - বৃহস্পতিবার: বিকাল ৫:০০ - রাত ৮:০০"
-  }
+  ]
 }

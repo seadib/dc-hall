@@ -4453,35 +4453,58 @@ function openStudentModal(student) {
         <h3>${t("common.about")}</h3>
         <p>${studentValue(student, "bio")}</p>
 
-        <h3>${t("common.academicResult")}</h3>
+        <div class="academic-section-title">
+          <div class="title-left">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="academic-title-icon">
+              <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+              <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+            </svg>
+            <h3>${t("common.academicResult")}</h3>
+          </div>
+          <span class="academic-title-badge">${showResults ? (currentLang === "bn" ? "মার্কশিট আর্কাইভ" : "Marksheet Archive") : (currentLang === "bn" ? "সুরক্ষিত" : "Protected")}</span>
+        </div>
         <div class="student-academic-results">
-          <div class="academic-year-group">
-            <div class="result-year-label">
-              <span>${currentLang === "bn" ? "১ম বর্ষ (একাদশ শ্রেণি)" : "Class 11 · 1st Year"}</span>
+          <div class="academic-year-card">
+            <div class="academic-year-header">
+              <div class="year-info">
+                <span class="year-pill">${currentLang === "bn" ? "১ম বর্ষ" : "1st Year"}</span>
+                <span class="year-name">${currentLang === "bn" ? "একাদশ শ্রেণির পরীক্ষা" : "Class 11 Term Exams"}</span>
+              </div>
+              <span class="year-count">${currentLang === "bn" ? "৫টি পরীক্ষা" : "5 Exams"}</span>
             </div>
-            <div class="pdf-grid">
+            <div class="pdf-grid grid-5">
               ${studentFirstYearResults(student).map(([key, file]) => {
                 const fileHref = showResults ? file : "profile.html";
                 const targetAttr = showResults ? 'target="_blank" rel="noopener"' : '';
-                const lockIcon = showResults ? '' : ` ${smallLockIconSvg}`;
+                const lockTooltip = showResults ? (currentLang === "bn" ? "মার্কশিট দেখতে ক্লিক করুন" : "Click to view marksheet") : (currentLang === "bn" ? "লগইন করে দেখতে ক্লিক করুন" : "Click to log in and view");
+                const docIconSvg = `<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="res-icon doc"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>`;
+                const lockIconSvg = `<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="res-icon lock"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>`;
+                const icon = showResults ? docIconSvg : lockIconSvg;
                 const linkClass = showResults ? "result-box" : "result-box locked";
-                return `<a class="${linkClass}" href="${fileHref}" ${targetAttr}>${t(`pdf.${key}`)}${lockIcon}</a>`;
+                return `<a class="${linkClass}" href="${fileHref}" ${targetAttr} title="${lockTooltip}">${icon}<span class="res-name">${t(`pdf.${key}`)}</span></a>`;
               }).join("")}
             </div>
           </div>
 
           ${(String(student.classNo || student.class_no || "11") === "12" || student.batch === "HSC-27") ? `
-          <div class="academic-year-group" style="margin-top: 14px;">
-            <div class="result-year-label">
-              <span>${currentLang === "bn" ? "২য় বর্ষ (দ্বাদশ শ্রেণি)" : "Class 12 · 2nd Year"}</span>
+          <div class="academic-year-card">
+            <div class="academic-year-header">
+              <div class="year-info">
+                <span class="year-pill year-2">${currentLang === "bn" ? "২য় বর্ষ" : "2nd Year"}</span>
+                <span class="year-name">${currentLang === "bn" ? "দ্বাদশ শ্রেণির পরীক্ষা" : "Class 12 Term Exams"}</span>
+              </div>
+              <span class="year-count">${currentLang === "bn" ? "৪টি পরীক্ষা" : "4 Exams"}</span>
             </div>
-            <div class="pdf-grid" style="grid-template-columns: repeat(4, minmax(0, 1fr));">
+            <div class="pdf-grid grid-4">
               ${studentSecondYearResults(student).map(([key, file]) => {
                 const fileHref = showResults ? file : "profile.html";
                 const targetAttr = showResults ? 'target="_blank" rel="noopener"' : '';
-                const lockIcon = showResults ? '' : ` ${smallLockIconSvg}`;
+                const lockTooltip = showResults ? (currentLang === "bn" ? "মার্কশিট দেখতে ক্লিক করুন" : "Click to view marksheet") : (currentLang === "bn" ? "লগইন করে দেখতে ক্লিক করুন" : "Click to log in and view");
+                const docIconSvg = `<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="res-icon doc"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>`;
+                const lockIconSvg = `<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="res-icon lock"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>`;
+                const icon = showResults ? docIconSvg : lockIconSvg;
                 const linkClass = showResults ? "result-box" : "result-box locked";
-                return `<a class="${linkClass}" href="${fileHref}" ${targetAttr}>${t(`pdf.${key}`)}${lockIcon}</a>`;
+                return `<a class="${linkClass}" href="${fileHref}" ${targetAttr} title="${lockTooltip}">${icon}<span class="res-name">${t(`pdf.${key}`)}</span></a>`;
               }).join("")}
             </div>
           </div>

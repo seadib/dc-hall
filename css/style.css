@@ -1368,50 +1368,228 @@ h3 {
   margin: 16px 0 22px;
 }
 
-.result-year-label {
+/* --- Modern Academic Results UI in Student Modal --- */
+.academic-section-title {
   display: flex;
   align-items: center;
-  margin: 12px 0 8px;
+  justify-content: space-between;
+  margin: 22px 0 14px;
 }
 
-.result-year-label span {
-  font-size: 0.8rem;
-  font-weight: 700;
+.academic-section-title .title-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.academic-section-title .title-left h3 {
+  margin: 0;
+  font-size: 1.12rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.academic-title-icon {
   color: var(--accent);
-  background: var(--accent-soft);
+  flex-shrink: 0;
+}
+
+.academic-title-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: rgba(16, 201, 168, 0.12);
+  color: var(--accent);
   border: 1px solid rgba(16, 201, 168, 0.25);
-  padding: 4px 12px;
-  border-radius: 6px;
   letter-spacing: 0.02em;
+}
+
+.student-academic-results {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.academic-year-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.academic-year-card:hover {
+  border-color: rgba(16, 201, 168, 0.35);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.academic-year-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+body:not(.dark) .academic-year-header {
+  border-bottom-color: rgba(0, 0, 0, 0.06);
+}
+
+.year-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.year-pill {
+  font-size: 0.74rem;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: 6px;
+  background: rgba(16, 201, 168, 0.16);
+  color: var(--accent);
+  border: 1px solid rgba(16, 201, 168, 0.3);
+  letter-spacing: 0.02em;
+}
+
+.year-pill.year-2 {
+  background: rgba(99, 102, 241, 0.16);
+  color: #818cf8;
+  border-color: rgba(99, 102, 241, 0.3);
+}
+
+.year-name {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.year-count {
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--muted);
 }
 
 .pdf-grid {
   display: grid;
+  gap: 8px;
+  margin: 0;
+}
+
+.pdf-grid.grid-5 {
   grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 10px;
-  margin: 8px 0 16px;
+}
+
+.pdf-grid.grid-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
 .result-box {
-  padding: 12px 8px;
-  border-radius: 8px;
-  background: var(--accent-soft);
-  color: var(--accent-strong);
-  font-weight: 800;
-  text-align: center;
-  display: flex;
+  min-height: 40px;
+  padding: 8px 10px;
+  border-radius: 9px;
+  background: rgba(16, 201, 168, 0.08);
+  border: 1px solid rgba(16, 201, 168, 0.22);
+  color: var(--accent);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 6px;
-  font-size: 0.88rem;
-  transition: transform 0.18s ease, background 0.18s ease, color 0.18s ease;
-  border: 1px solid rgba(16, 201, 168, 0.2);
+  text-align: center;
+  white-space: nowrap;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  user-select: none;
+}
+
+.result-box .res-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.result-box .res-icon {
+  flex-shrink: 0;
+  opacity: 0.9;
+  transition: transform 0.2s ease;
 }
 
 .result-box:hover {
-  background: var(--accent);
-  color: #ffffff;
+  background: linear-gradient(135deg, #10c9a8 0%, #059669 100%);
+  color: #ffffff !important;
+  border-color: #10c9a8;
   transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(16, 201, 168, 0.32);
+}
+
+.result-box:hover .res-icon {
+  opacity: 1;
+  transform: scale(1.15);
+}
+
+/* Locked Result Box */
+.result-box.locked {
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--muted);
+  box-shadow: none;
+}
+
+body:not(.dark) .result-box.locked {
+  background: #f1f5f9;
+  border-color: #e2e8f0;
+  color: #64748b;
+}
+
+.result-box.locked .res-icon.lock {
+  color: #eab308;
+  opacity: 0.9;
+}
+
+.result-box.locked:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.22);
+  color: var(--text) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+body:not(.dark) .result-box.locked:hover {
+  background: #e2e8f0;
+  border-color: #cbd5e1;
+  color: #1e293b !important;
+}
+
+@media (max-width: 640px) {
+  .academic-section-title {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .pdf-grid.grid-5 {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+  .pdf-grid.grid-4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .pdf-grid.grid-5,
+  .pdf-grid.grid-4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  .result-box {
+    font-size: 0.78rem;
+    padding: 7px 6px;
+    gap: 4px;
+  }
 }
 
 .person-grid,
