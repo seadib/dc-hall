@@ -2743,27 +2743,37 @@ body:not([data-page="home"]) .profile-toggle,
   transform: translateX(4px);
 }
 
-.club-header {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-bottom: 12px;
+.club-card-header {
+  text-align: center;
+  margin-bottom: 14px;
 }
 
-.club-logo {
-  width: 48px;
-  height: 48px;
-  border-radius: 12px;
-  object-fit: cover;
+.club-card-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-strong);
+  margin: 0;
+  line-height: 1.35;
+}
+
+.club-title-line {
+  display: block;
+  width: 44px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), #3b82f6);
+  border-radius: 999px;
+  margin: 8px auto 0 auto;
+}
+
+.fb-group-showcase {
   background: var(--surface-strong);
   border: 1px solid var(--border);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
-.club-desc {
-  margin-bottom: 20px;
-  font-size: 0.9rem;
-  line-height: 1.6;
-  color: var(--text-muted);
+.fb-group-showcase:hover {
+  border-color: rgba(24, 119, 242, 0.45);
+  box-shadow: 0 8px 24px rgba(24, 119, 242, 0.12);
 }
 
 .fb-embed-container {

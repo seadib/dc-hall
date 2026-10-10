@@ -84,14 +84,14 @@
     "result_admit_url": "https://dhakacollege.eshiksabd.com/",
     "social_links": [
       {
-        "title_en": "DCian Freaks Page",
-        "title_bn": "DCian Freaks পেজ",
+        "title_en": "DCian Freaks",
+        "title_bn": "ডিসিয়ান ফ্রিকস (DCian Freaks)",
         "url": "https://www.facebook.com/DhakaCollegeFreaks",
         "is_group": false
       },
       {
-        "title_en": "Dhaka College : Ruling Colleges since 1841 Page",
-        "title_bn": "Dhaka College : Ruling Colleges since 1841 পেজ",
+        "title_en": "Dhaka College : Ruling Colleges since 1841",
+        "title_bn": "ঢাকা কলেজ : রুলিং কলেজেস সিন্স ১৮৪১",
         "url": "https://www.facebook.com/dcrules1841",
         "is_group": false
       },
@@ -121,10 +121,10 @@
         "facebook_url": "https://www.facebook.com/dc.cultural.club"
       },
       {
-        "name_en": "Dhaka College International College Club (DCICC)",
-        "name_bn": "ঢাকা কলেজ ইন্টারন্যাশনাল কলেজ ক্লাব (DCICC)",
-        "desc_en": "Fostering global leadership, academic exchange, and international network.",
-        "desc_bn": "বিশ্বব্যাপী নেতৃত্ব, একাডেমিক আদান-প্রদান এবং আন্তর্জাতিক নেটওয়ার্ক গড়ে তোলা।",
+        "name_en": "Dhaka College Islamic Cultural Club",
+        "name_bn": "ঢাকা কলেজ ইসলামিক কালচারাল ক্লাব",
+        "desc_en": "Fostering Islamic culture, moral values, and student community initiatives.",
+        "desc_bn": "ইসলামিক মূল্যবোধ, সাংস্কৃতিক চর্চা এবং ছাত্র কল্যাণমূলক কার্যক্রম পরিচালনা।",
         "facebook_url": "https://www.facebook.com/DCICC"
       },
       {
@@ -135,8 +135,8 @@
         "facebook_url": "https://www.facebook.com/dcsc.dc"
       },
       {
-        "name_en": "Dhaka College Mathematics Club",
-        "name_bn": "ঢাকা কলেজ গণিত ক্লাব",
+        "name_en": "Dhaka College Math Club",
+        "name_bn": "ঢাকা কলেজ ম্যাথ ক্লাব",
         "desc_en": "Nurturing analytical thinking, competitive mathematics, and math olympiad preparations.",
         "desc_bn": "বিশ্লেষণাত্মক চিন্তা, প্রতিযোগিতামূলক গণিত এবং গণিত অলিম্পিয়াডের প্রস্তুতি জোরদার করা।",
         "facebook_url": "https://www.facebook.com/dhakacollegemathclub"

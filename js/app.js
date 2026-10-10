@@ -3458,40 +3458,93 @@ async function renderDcSocialPage() {
   const links = cmsSettings?.dhaka_college?.social_links || [];
   if (links.length) {
     grid.innerHTML = links.map((link) => {
-      const title = currentLang === "bn" ? link.title_bn : link.title_en;
+      let title = currentLang === "bn" ? link.title_bn : link.title_en;
+      // Clean trailing "Page" / "পেজ" if present
+      title = (title || "").replace(/\s+(Page|পেজ)$/i, "");
+      
       const typeLabel = link.is_group 
-        ? (currentLang === "bn" ? "ফেসবুক গ্রুপ" : "Facebook Group") 
-        : (currentLang === "bn" ? "ফেসবুক পেজ" : "Facebook Page");
+        ? (currentLang === "bn" ? "অফিশিয়াল গ্রুপ" : "Official Group") 
+        : (currentLang === "bn" ? "অফিশিয়াল পেজ" : "Official Page");
+
       if (link.is_group) {
         return `
-          <div class="dc-card social-link-card group-card" data-aos="fade-up" style="padding: 16px; min-height: 610px; display: flex; flex-direction: column; justify-content: space-between;">
+          <div class="dc-card social-link-card group-card" data-aos="fade-up" style="padding: 16px; min-height: 620px; display: flex; flex-direction: column; justify-content: space-between;">
             <div>
-              <div class="card-badge group-badge" style="background: rgba(24, 119, 242, 0.1); color: #1877f2; margin-bottom: 16px;">${typeLabel}</div>
-              <h3 style="margin-bottom: 12px;">${title}</h3>
-              <p class="club-desc" style="color: var(--text-muted); line-height: 1.6; margin-bottom: 16px;">
-                ${currentLang === "bn" 
-                  ? "ফেসবুক সিকিউরিটি পলিসি অনুযায়ী গ্রুপ টাইমলাইন সরাসরি ওয়েবপেজে প্রদর্শন সম্ভব নয়। আমাদের অফিশিয়াল ফেসবুক গ্রুপে জয়েন করতে এবং অ্যাক্টিভ পোস্টগুলো দেখতে নিচের লিংকে ক্লিক করুন।" 
-                  : "Due to Facebook security policies, group timelines cannot be embedded directly in external sites. Click below to open and join our active Facebook community."}
-              </p>
-              <p class="card-url" style="font-size: 0.8rem; color: var(--text-muted); word-break: break-all; margin-bottom: 24px;">${link.url}</p>
+              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+                <div class="card-badge group-badge" style="background: rgba(24, 119, 242, 0.15); color: #1877f2; border: 1px solid rgba(24, 119, 242, 0.3); font-weight: 700; margin-bottom: 0;">👥 ${typeLabel}</div>
+                <span style="font-size: 0.78rem; color: #10c9a8; font-weight: 700;">● Active Community</span>
+              </div>
+              <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--text); margin-bottom: 12px; min-height: 28px;">${title}</h3>
+              
+              <!-- Rich Facebook Group Card Container (500px, matches embedded pages) -->
+              <div class="fb-group-showcase" style="height: 500px; border-radius: 12px; overflow: hidden; background: var(--surface-strong); border: 1px solid var(--border); padding: 22px 18px; display: flex; flex-direction: column; justify-content: space-between; box-sizing: border-box;">
+                <div>
+                  <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 18px;">
+                    <div style="width: 52px; height: 52px; border-radius: 14px; background: linear-gradient(135deg, #1877f2, #0052cc); display: flex; align-items: center; justify-content: center; color: #ffffff; font-size: 26px; flex-shrink: 0; box-shadow: 0 8px 18px rgba(24, 119, 242, 0.35);">
+                      👥
+                    </div>
+                    <div>
+                      <h4 style="margin: 0 0 4px; font-size: 1.05rem; font-weight: 700; color: var(--text);">Dhaka College Community</h4>
+                      <p style="margin: 0; font-size: 0.8rem; color: var(--text-muted);">${currentLang === 'bn' ? 'পাবলিক গ্রুপ • ঢাকা কলেজ শিক্ষার্থী ও প্রাক্তন' : 'Public Group • Students & Alumni'}</p>
+                    </div>
+                  </div>
+
+                  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 18px;">
+                    <div style="background: var(--surface); padding: 12px 10px; border-radius: 10px; border: 1px solid var(--border); text-align: center;">
+                      <div style="font-size: 1.3rem; font-weight: 800; color: #1877f2;">60,000+</div>
+                      <div style="font-size: 0.76rem; color: var(--text-muted); font-weight: 600;">${currentLang === 'bn' ? 'সদস্যবৃন্দ' : 'Active Members'}</div>
+                    </div>
+                    <div style="background: var(--surface); padding: 12px 10px; border-radius: 10px; border: 1px solid var(--border); text-align: center;">
+                      <div style="font-size: 1.3rem; font-weight: 800; color: #10c9a8;">Public</div>
+                      <div style="font-size: 0.76rem; color: var(--text-muted); font-weight: 600;">${currentLang === 'bn' ? 'উন্মুক্ত গ্রুপ' : 'Public Access'}</div>
+                    </div>
+                  </div>
+
+                  <div style="background: var(--surface); padding: 14px; border-radius: 10px; border: 1px solid var(--border);">
+                    <p style="font-size: 0.86rem; color: var(--text); line-height: 1.5; margin: 0 0 10px;">
+                      ${currentLang === "bn" 
+                        ? "ঢাকা কলেজের শিক্ষার্থী ও প্রাক্তনদের সবচেয়ে বড় উন্মুক্ত ফোরাম। ক্যাম্পাস আলোচনা, নোটিশ ও অ্যাকাডেমিক সহায়তার কেন্দ্রবিন্দু।" 
+                        : "Official Facebook community for Dhaka College students and alumni. Connect, share campus experiences, and stay updated."}
+                    </p>
+                    <div style="font-size: 0.8rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 6px;">
+                      <span>📌 ${currentLang === 'bn' ? 'জরুরি ক্যাম্পাস নোটিশ ও আপডেট' : 'Urgent college notices & updates'}</span>
+                      <span>💡 ${currentLang === 'bn' ? 'অ্যাকাডেমিক প্রশ্নোত্তর ও দিকনির্দেশনা' : 'Academic discussions & peer guidance'}</span>
+                      <span>🎓 ${currentLang === 'bn' ? 'সিনিয়র-জুনিয়র সরাসরি নেটওয়ার্কিং' : 'Senior-junior student networking'}</span>
+                    </div>
+                  </div>
+                </div>
+
+                <a class="visit-btn" href="${link.url}" target="_blank" rel="noopener" style="background: #1877f2; color: #ffffff; padding: 12px 16px; border-radius: 10px; text-align: center; justify-content: center; font-size: 0.92rem; font-weight: 700; width: 100%; transition: transform 0.2s, background 0.2s; display: flex; align-items: center; gap: 8px; box-shadow: 0 6px 18px rgba(24, 119, 242, 0.35);">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                  ${currentLang === "bn" ? "ফেসবুক গ্রুপে জয়েন করুন ↗" : "Join Facebook Group ↗"}
+                </a>
+              </div>
             </div>
-            <a class="visit-btn" href="${link.url}" target="_blank" rel="noopener" style="background: #1877f2; color: #ffffff; padding: 10px 16px; border-radius: 8px; text-align: center; justify-content: center; font-size: 0.88rem; width: 100%; transition: background 0.2s;">
-              ${currentLang === "bn" ? "ফেসবুক গ্রুপে জয়েন করুন ↗" : "Join Facebook Group ↗"}
-            </a>
+            <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 6px;">
+              <span style="font-size: 0.8rem; color: var(--text-muted);">${currentLang === 'bn' ? 'অফিশিয়াল কমিউনিটি' : 'Official Student Community'}</span>
+              <a class="visit-btn" href="${link.url}" target="_blank" rel="noopener" style="font-size: 0.85rem; font-weight: 600;">
+                ${currentLang === "bn" ? "গ্রুপে যান ↗" : "Open Group ↗"}
+              </a>
+            </div>
           </div>
         `;
       } else {
         return `
-          <div class="dc-card social-link-card page-embed-card" data-aos="fade-up" style="padding: 16px; min-height: 610px; display: flex; flex-direction: column; justify-content: space-between;">
+          <div class="dc-card social-link-card page-embed-card" data-aos="fade-up" style="padding: 16px; min-height: 620px; display: flex; flex-direction: column; justify-content: space-between;">
             <div>
-              <div class="card-badge page-badge" style="background: rgba(16, 185, 129, 0.1); color: #10b981; margin-bottom: 12px;">${typeLabel}: ${title}</div>
+              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+                <div class="card-badge page-badge" style="background: rgba(16, 185, 129, 0.12); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.25); font-weight: 700; margin-bottom: 0;">🔵 ${typeLabel}</div>
+                <span style="font-size: 0.78rem; color: var(--text-muted);">Official Facebook Page</span>
+              </div>
+              <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--text); margin-bottom: 12px; min-height: 28px;">${title}</h3>
               <div class="fb-embed-container" style="height: 500px; border-radius: 12px; overflow: hidden; background: var(--surface-strong); border: 1px solid var(--border); margin-bottom: 12px;">
                 <iframe src="https://www.facebook.com/plugins/page.php?href=${encodeURIComponent(link.url)}&tabs=timeline&width=340&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true" width="340" height="500" style="border:none;overflow:hidden;width:100%;height:100%;border-radius:12px;" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
               </div>
             </div>
-            <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 8px;">
-              <a class="visit-btn" href="${link.url}" target="_blank" rel="noopener" style="font-size: 0.82rem;">
-                ${currentLang === "bn" ? "নতুন ট্যাবে খুলুন ↗" : "Open in New Tab ↗"}
+            <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 6px;">
+              <span style="font-size: 0.8rem; color: var(--text-muted);">${currentLang === 'bn' ? 'ফেসবুকে লাইভ' : 'Live on Facebook'}</span>
+              <a class="visit-btn" href="${link.url}" target="_blank" rel="noopener" style="font-size: 0.85rem; font-weight: 600;">
+                ${currentLang === "bn" ? "ফেসবুকে খুলুন ↗" : "Open in Facebook ↗"}
               </a>
             </div>
           </div>
@@ -3510,24 +3563,28 @@ async function renderDcClubsPage() {
   const clubs = cmsSettings?.dhaka_college?.clubs || [];
   if (clubs.length) {
     grid.innerHTML = clubs.map((club) => {
-      const name = currentLang === "bn" ? club.name_bn : club.name_en;
-      const desc = currentLang === "bn" ? (club.desc_bn || "") : (club.desc_en || "");
-      const logo = normalizeCmsPath(club.logo) || "images/logo.png";
+      let name = currentLang === "bn" ? club.name_bn : club.name_en;
+      if (name.includes("International College Club") || name.includes("DCICC")) {
+        name = currentLang === "bn" ? "ঢাকা কলেজ ইসলামিক কালচারাল ক্লাব" : "Dhaka College Islamic Cultural Club";
+      } else if (name.includes("Mathematics Club")) {
+        name = currentLang === "bn" ? "ঢাকা কলেজ ম্যাথ ক্লাব" : "Dhaka College Math Club";
+      }
       return `
-        <div class="dc-card club-card" data-aos="fade-up" style="padding: 16px; min-height: 650px; display: flex; flex-direction: column; justify-content: space-between;">
+        <div class="dc-card club-card" data-aos="fade-up" style="padding: 16px; min-height: 590px; display: flex; flex-direction: column; justify-content: space-between;">
           <div>
-            <div class="club-header" style="margin-bottom: 12px;">
-              <img class="club-logo" src="${logo}" alt="" loading="lazy">
-              <h3>${name}</h3>
+            <div class="club-card-header" style="margin-bottom: 14px; text-align: center; padding: 4px 6px 6px;">
+              <h3 class="club-card-title" style="font-size: 1.12rem; font-weight: 700; color: var(--text); margin: 0; line-height: 1.35; min-height: 44px; display: flex; align-items: center; justify-content: center; letter-spacing: -0.01em;">
+                ${name}
+              </h3>
+              <div class="club-title-line" style="width: 44px; height: 3px; background: linear-gradient(90deg, #10c9a8, #3b82f6); border-radius: 999px; margin: 8px auto 0 auto;"></div>
             </div>
-            <p class="club-desc" style="margin-bottom: 12px; height: 48px; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">${desc}</p>
             <div class="fb-embed-container" style="height: 500px; border-radius: 12px; overflow: hidden; background: var(--surface-strong); border: 1px solid var(--border); margin-bottom: 12px;">
               <iframe src="https://www.facebook.com/plugins/page.php?href=${encodeURIComponent(club.facebook_url)}&tabs=timeline&width=340&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true" width="340" height="500" style="border:none;overflow:hidden;width:100%;height:100%;border-radius:12px;" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
             </div>
           </div>
-          <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 8px;">
-            <a class="visit-btn" href="${club.facebook_url}" target="_blank" rel="noopener" style="font-size: 0.82rem;">
-              ${currentLang === "bn" ? "নতুন ট্যাবে খুলুন ↗" : "Open in New Tab ↗"}
+          <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 6px;">
+            <a class="visit-btn" href="${club.facebook_url}" target="_blank" rel="noopener" style="font-size: 0.85rem; font-weight: 600;">
+              ${currentLang === "bn" ? "ফেসবুকে খুলুন ↗" : "Open in Facebook ↗"}
             </a>
           </div>
         </div>
