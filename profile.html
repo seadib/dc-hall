@@ -192,6 +192,27 @@
       margin-bottom: 20px;
     }
   </style>
+  <!-- Schema.org BreadcrumbList for Google Sitelinks & Hierarchy -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://dchall.pro.bd/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Student Login & Profile",
+        "item": "https://dchall.pro.bd/profile.html"
+      }
+    ]
+  }
+  </script>
 </head>
 <body data-page="profile">
   <header class="navbar" id="navbar">
@@ -274,7 +295,36 @@
   </main>
 
   <footer class="footer">
-    <div class="container footer-inner"></div>
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo"><img src="images/logo.png" alt="International Hall logo" loading="lazy"><strong>International Hall</strong></div>
+        <p class="footer-about">Official student portal of Dhaka College International Hall. Built with dedication by Abdullah Al Adib.</p>
+      </div>
+      <div class="footer-links">
+        <h3>Quick Links</h3>
+        <a href="index.html#students-preview">Students Preview</a>
+        <a href="index.html#roommates-preview">Roommate Preview</a>
+        <a href="index.html#hallsuper-preview">Hall Super</a>
+        <a href="index.html#gallery-preview">Gallery</a>
+        <a href="index.html#location">Location</a>
+      </div>
+      <div class="footer-links">
+        <h3>Student Links</h3>
+        <a href="students.html">Students</a>
+        <a href="roommates.html">Roommates</a>
+        <a href="results.html">Results</a>
+        <a href="profile.html">Profile / Login</a>
+      </div>
+      <div class="footer-links">
+        <h3>Hall Info</h3>
+        <a href="hostel.html">Hall Info</a>
+        <a href="hostel.html#hallsuper">Hall Super</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="dc-clubs.html">College Clubs</a>
+        <a href="dc-social.html">Social Links</a>
+        <a href="developer.html">Developer</a>
+      </div>
+    </div>
   </footer>
 
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
