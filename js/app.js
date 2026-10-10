@@ -2801,27 +2801,10 @@ function sectionText(student) {
   return student.section ? `${t("common.section")} ${student.section}` : "";
 }
 
-function resultFiles(student) {
-  const isSecondYear = String(student.classNo || student.class_no || "11") === "12" || student.batch === "HSC-27";
+function studentFirstYearResults(student) {
   const r1 = student.results_1st || {};
-  const r2 = student.results_2nd || {};
   const pdfObj = (student.pdfs && Object.keys(student.pdfs).length) ? student.pdfs :
                  (student.generated_pdf_names && Object.keys(student.generated_pdf_names).length) ? student.generated_pdf_names : null;
-
-  if (isSecondYear) {
-    const ct1 = r2.ct1_link || normalizeCmsPath(r2.ct1_pdf) || normalizeCmsPath(pdfObj?.ct1) || `pdfs/${student.slug}-12-ct1.pdf`;
-    const ct2 = r2.ct2_link || normalizeCmsPath(r2.ct2_pdf) || normalizeCmsPath(pdfObj?.ct2) || `pdfs/${student.slug}-12-ct2.pdf`;
-    const ct3 = r2.ct3_link || normalizeCmsPath(r2.ct3_pdf) || normalizeCmsPath(pdfObj?.ct3) || `pdfs/${student.slug}-12-ct3.pdf`;
-    const test = r2.test_link || normalizeCmsPath(r2.test_pdf) || normalizeCmsPath(pdfObj?.test) || `pdfs/${student.slug}-12-test.pdf`;
-    return [
-      ["ct1", ct1],
-      ["ct2", ct2],
-      ["ct3", ct3],
-      ["test", test]
-    ];
-  }
-
-  // 1st Year (Class 11)
   const ct1 = r1.ct1_link || normalizeCmsPath(r1.ct1_pdf) || normalizeCmsPath(pdfObj?.ct1) || `pdfs/${student.slug}-11-ct1.pdf`;
   const ct2 = r1.ct2_link || normalizeCmsPath(r1.ct2_pdf) || normalizeCmsPath(pdfObj?.ct2) || `pdfs/${student.slug}-11-ct2.pdf`;
   const hy = r1.hy_link || normalizeCmsPath(r1.hy_pdf) || normalizeCmsPath(pdfObj?.hy) || `pdfs/${student.slug}-11-hy.pdf`;
@@ -2834,6 +2817,27 @@ function resultFiles(student) {
     ["ct3", ct3],
     ["yearly", yearly]
   ];
+}
+
+function studentSecondYearResults(student) {
+  const r2 = student.results_2nd || {};
+  const pdfObj = (student.pdfs && Object.keys(student.pdfs).length) ? student.pdfs :
+                 (student.generated_pdf_names && Object.keys(student.generated_pdf_names).length) ? student.generated_pdf_names : null;
+  const ct1 = r2.ct1_link || normalizeCmsPath(r2.ct1_pdf) || normalizeCmsPath(pdfObj?.ct1) || `pdfs/${student.slug}-12-ct1.pdf`;
+  const ct2 = r2.ct2_link || normalizeCmsPath(r2.ct2_pdf) || normalizeCmsPath(pdfObj?.ct2) || `pdfs/${student.slug}-12-ct2.pdf`;
+  const ct3 = r2.ct3_link || normalizeCmsPath(r2.ct3_pdf) || normalizeCmsPath(pdfObj?.ct3) || `pdfs/${student.slug}-12-ct3.pdf`;
+  const test = r2.test_link || normalizeCmsPath(r2.test_pdf) || normalizeCmsPath(pdfObj?.test) || `pdfs/${student.slug}-12-test.pdf`;
+  return [
+    ["ct1", ct1],
+    ["ct2", ct2],
+    ["ct3", ct3],
+    ["test", test]
+  ];
+}
+
+function resultFiles(student) {
+  const isSecondYear = String(student.classNo || student.class_no || "11") === "12" || student.batch === "HSC-27";
+  return isSecondYear ? studentSecondYearResults(student) : studentFirstYearResults(student);
 }
 
 function setTheme(isDark) {
@@ -4201,14 +4205,38 @@ function openStudentModal(student) {
         <p>${studentValue(student, "bio")}</p>
 
         <h3>${t("common.academicResult")}</h3>
-        <div class="pdf-grid">
-          ${resultFiles(student).map(([key, file]) => {
-            const fileHref = showResults ? file : "profile.html";
-            const targetAttr = showResults ? 'target="_blank" rel="noopener"' : '';
-            const lockIcon = showResults ? '' : ` ${smallLockIconSvg}`;
-            const linkClass = showResults ? "result-box" : "result-box locked";
-            return `<a class="${linkClass}" href="${fileHref}" ${targetAttr}>${t(`pdf.${key}`)}${lockIcon}</a>`;
-          }).join("")}
+        <div class="student-academic-results">
+          <div class="academic-year-group">
+            <div class="result-year-label">
+              <span>${currentLang === "bn" ? "১ম বর্ষ (একাদশ শ্রেণি)" : "Class 11 · 1st Year"}</span>
+            </div>
+            <div class="pdf-grid">
+              ${studentFirstYearResults(student).map(([key, file]) => {
+                const fileHref = showResults ? file : "profile.html";
+                const targetAttr = showResults ? 'target="_blank" rel="noopener"' : '';
+                const lockIcon = showResults ? '' : ` ${smallLockIconSvg}`;
+                const linkClass = showResults ? "result-box" : "result-box locked";
+                return `<a class="${linkClass}" href="${fileHref}" ${targetAttr}>${t(`pdf.${key}`)}${lockIcon}</a>`;
+              }).join("")}
+            </div>
+          </div>
+
+          ${(String(student.classNo || student.class_no || "11") === "12" || student.batch === "HSC-27") ? `
+          <div class="academic-year-group" style="margin-top: 14px;">
+            <div class="result-year-label">
+              <span>${currentLang === "bn" ? "২য় বর্ষ (দ্বাদশ শ্রেণি)" : "Class 12 · 2nd Year"}</span>
+            </div>
+            <div class="pdf-grid" style="grid-template-columns: repeat(4, minmax(0, 1fr));">
+              ${studentSecondYearResults(student).map(([key, file]) => {
+                const fileHref = showResults ? file : "profile.html";
+                const targetAttr = showResults ? 'target="_blank" rel="noopener"' : '';
+                const lockIcon = showResults ? '' : ` ${smallLockIconSvg}`;
+                const linkClass = showResults ? "result-box" : "result-box locked";
+                return `<a class="${linkClass}" href="${fileHref}" ${targetAttr}>${t(`pdf.${key}`)}${lockIcon}</a>`;
+              }).join("")}
+            </div>
+          </div>
+          ` : ''}
         </div>
 
       </div>
