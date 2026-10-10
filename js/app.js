@@ -106,6 +106,8 @@ const i18n = {
       section: "Section",
       blood: "Blood Group",
       allClasses: "All Classes",
+      firstYear: "1st Year",
+      secondYear: "2nd Year",
       allGroups: "All Groups",
       allSections: "All Sections",
       allBlood: "All Blood Groups"
@@ -360,6 +362,8 @@ const i18n = {
       section: "সেকশন",
       blood: "রক্তের গ্রুপ",
       allClasses: "সব শ্রেণী",
+      firstYear: "১ম বর্ষ",
+      secondYear: "২য় বর্ষ",
       allGroups: "সব গ্রুপ",
       allSections: "সব সেকশন",
       allBlood: "সব রক্তের গ্রুপ"
@@ -4468,7 +4472,6 @@ function openStudentModal(student) {
             <div class="academic-year-header">
               <div class="year-info">
                 <span class="year-pill">${currentLang === "bn" ? "১ম বর্ষ" : "1st Year"}</span>
-                <span class="year-name">${currentLang === "bn" ? "একাদশ শ্রেণির পরীক্ষা" : "Class 11 Term Exams"}</span>
               </div>
               <span class="year-count">${currentLang === "bn" ? "৫টি পরীক্ষা" : "5 Exams"}</span>
             </div>
@@ -4491,7 +4494,6 @@ function openStudentModal(student) {
             <div class="academic-year-header">
               <div class="year-info">
                 <span class="year-pill year-2">${currentLang === "bn" ? "২য় বর্ষ" : "2nd Year"}</span>
-                <span class="year-name">${currentLang === "bn" ? "দ্বাদশ শ্রেণির পরীক্ষা" : "Class 12 Term Exams"}</span>
               </div>
               <span class="year-count">${currentLang === "bn" ? "৪টি পরীক্ষা" : "4 Exams"}</span>
             </div>
