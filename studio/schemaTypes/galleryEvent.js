@@ -9,7 +9,9 @@ export default defineType({
     { name: 'media', title: 'ফটো ও ভিডিও (Photos & Videos)' },
   ],
   fields: [
-    // --- Group: Event Info ---
+    // ═══════════════════════════════════════════
+    // Event Info
+    // ═══════════════════════════════════════════
     defineField({
       name: 'event_id',
       title: 'Event Slug / ID',
@@ -24,10 +26,10 @@ export default defineType({
     }),
     defineField({
       name: 'position',
-      title: 'Display Order / Position',
+      title: 'Display Order / Position (প্রদর্শন ক্রম)',
       type: 'number',
       group: 'info',
-      description: 'Lower numbers appear first (when dates are the same). Leave blank for automatic ordering by date.',
+      description: 'কম নম্বর আগে দেখাবে (যখন তারিখ একই থাকে)। তারিখ অনুযায়ী স্বয়ংক্রিয় ক্রমের জন্য খালি রাখুন।',
     }),
     defineField({
       name: 'title_en',
@@ -44,10 +46,10 @@ export default defineType({
     }),
     defineField({
       name: 'date',
-      title: 'Event Date',
+      title: 'Event Date / ইভেন্ট তারিখ',
       type: 'date',
       group: 'info',
-      description: 'Used for sorting — latest events appear first on the gallery page.',
+      description: 'ইভেন্টের তারিখ সিলেক্ট করুন — ওয়েবসাইটে এই তারিখ দেখাবে এবং সর্টিং এ ব্যবহৃত হবে।',
       options: {
         dateFormat: 'YYYY-MM-DD',
       },
@@ -55,33 +57,37 @@ export default defineType({
     }),
     defineField({
       name: 'date_formatted_en',
-      title: 'Formatted Date (English)',
+      title: 'Custom Date Text (English) — Optional',
       type: 'string',
       group: 'info',
-      description: 'Display format e.g. "March 2026". If blank, auto-generated from date.',
+      description: 'Custom display text e.g. "March 2026". If blank, auto-generated from date above.',
     }),
     defineField({
       name: 'date_formatted_bn',
-      title: 'তারিখ (বাংলা ফরম্যাট)',
+      title: 'কাস্টম তারিখ টেক্সট (বাংলা) — ঐচ্ছিক',
       type: 'string',
       group: 'info',
-      description: 'যেমন: "মার্চ ২০২৬"',
+      description: 'যেমন: "মার্চ ২০২৬"। খালি রাখলে উপরের তারিখ থেকে স্বয়ংক্রিয়ভাবে তৈরি হবে।',
     }),
     defineField({
-      name: 'category',
-      title: 'Category / ক্যাটেগরি',
-      type: 'string',
+      name: 'batches',
+      title: 'Batch / ব্যাচ',
+      type: 'array',
       group: 'info',
+      description: 'কোন ব্যাচের ইভেন্ট সেটি সিলেক্ট করুন। ২+ ব্যাচ একসাথে সিলেক্ট করা যায় (যেমন: ২ ব্যাচ মিলে ট্যুরে গেলে)।',
+      of: [{ type: 'string' }],
       options: {
         list: [
-          { title: 'Events (অনুষ্ঠান)', value: 'events' },
-          { title: 'Sports (খেলাধুলা)', value: 'sports' },
-          { title: 'Tours (ভ্রমণ)', value: 'tours' },
-          { title: 'Memories (দৈনন্দিন স্মৃতি)', value: 'memories' },
+          { title: 'HSC-27', value: 'HSC-27' },
+          { title: 'HSC-28', value: 'HSC-28' },
+          { title: 'HSC-29', value: 'HSC-29' },
+          { title: 'HSC-30', value: 'HSC-30' },
+          { title: 'HSC-31', value: 'HSC-31' },
+          { title: 'HSC-32', value: 'HSC-32' },
+          { title: 'HSC-33', value: 'HSC-33' },
+          { title: 'All Batches (সকল ব্যাচ)', value: 'all' },
         ],
-        layout: 'radio',
       },
-      initialValue: 'events',
     }),
     defineField({
       name: 'description_en',
@@ -97,14 +103,31 @@ export default defineType({
       rows: 3,
       group: 'info',
     }),
+    defineField({
+      name: 'location_name',
+      title: 'Location Name / স্থানের নাম',
+      type: 'string',
+      group: 'info',
+      description: 'ইভেন্টের স্থান যেমন: "International Hall, Dhaka College"',
+      placeholder: 'International Hall, Dhaka College',
+    }),
+    defineField({
+      name: 'location_map_url',
+      title: 'Google Maps URL / গুগল ম্যাপ লিংক',
+      type: 'url',
+      group: 'info',
+      description: 'Google Maps থেকে যেকোনো লিংক দিন — সাধারণ লিংক স্বয়ংক্রিয়ভাবে embed এ রূপান্তর হবে। যেমন: https://maps.google.com/... বা embed URL',
+    }),
 
-    // --- Group: Photos & Videos ---
+    // ═══════════════════════════════════════════
+    // Photos & Videos
+    // ═══════════════════════════════════════════
     defineField({
       name: 'photos',
       title: 'Event Photos (ইভেন্ট ফটোসমূহ)',
       type: 'array',
       group: 'media',
-      description: 'Drag to reorder. First photo is used as the event cover on the home page.',
+      description: '📸 একসাথে অনেক ফটো ড্র্যাগ করে আপলোড করুন। ড্র্যাগ করে ক্রম পরিবর্তন করুন। প্রথম ফটোটি ইভেন্ট কভার হিসেবে ব্যবহৃত হবে। প্রতিটি ফটোতে ক্লিক করে ক্যাপশন যোগ করুন।',
       of: [
         {
           type: 'object',
@@ -151,7 +174,7 @@ export default defineType({
       title: 'Event Videos (ইভেন্ট ভিডিও)',
       type: 'array',
       group: 'media',
-      description: 'YouTube or other embed URLs for event videos.',
+      description: '🎬 YouTube, Google Drive, Mega.nz লিংক বা সরাসরি ভিডিও আপলোড করুন। সাধারণ লিংক দিলে স্বয়ংক্রিয়ভাবে embed হবে।',
       of: [
         {
           type: 'object',
@@ -160,10 +183,16 @@ export default defineType({
           fields: [
             defineField({
               name: 'url',
-              title: 'Video Embed URL',
+              title: 'Video URL (যেকোনো লিংক দিন)',
               type: 'url',
-              description: 'YouTube embed URL e.g. https://www.youtube.com/embed/VIDEO_ID',
-              validation: (Rule) => Rule.required(),
+              description: 'YouTube / Google Drive / Mega.nz — সাধারণ বা embed লিংক দিন।\n• YouTube: https://youtu.be/VIDEO_ID বা https://youtube.com/watch?v=VIDEO_ID\n• Drive: https://drive.google.com/file/d/FILE_ID/view\n• Mega: https://mega.nz/file/FILE_ID#KEY',
+            }),
+            defineField({
+              name: 'video_file',
+              title: 'Or Upload Video / সরাসরি ভিডিও আপলোড',
+              type: 'file',
+              description: 'সরাসরি ভিডিও ফাইল আপলোড করুন (MP4, WebM)। URL দিলে এটি খালি রাখুন।',
+              options: { accept: 'video/mp4,video/webm,video/ogg' },
             }),
             defineField({
               name: 'title_en',
@@ -181,9 +210,23 @@ export default defineType({
               title: 'title_en',
               subtitle: 'url',
             },
+            prepare({ title, subtitle }) {
+              return {
+                title: title || 'Video',
+                subtitle: subtitle || 'Uploaded file',
+              }
+            },
           },
         },
       ],
+    }),
+
+    // Keep category hidden for backward compatibility with existing data
+    defineField({
+      name: 'category',
+      title: 'Legacy Category (hidden)',
+      type: 'string',
+      hidden: true,
     }),
   ],
   orderings: [
@@ -203,18 +246,13 @@ export default defineType({
       title: 'title_en',
       subtitle: 'date',
       media: 'photos.0.photo',
-      category: 'category',
+      batches: 'batches',
     },
-    prepare({ title, subtitle, media, category }) {
-      const catLabel = {
-        events: '🎉 Event',
-        sports: '⚽ Sports',
-        tours: '🏞️ Tour',
-        memories: '📸 Memories',
-      }
+    prepare({ title, subtitle, media, batches }) {
+      const batchLabel = batches && batches.length ? batches.join(', ') : ''
       return {
         title: title || 'Gallery Event',
-        subtitle: `${catLabel[category] || category || ''} ${subtitle ? '· ' + subtitle : ''}`,
+        subtitle: `${batchLabel ? batchLabel + ' · ' : ''}${subtitle || ''}`,
         media: (media && typeof media === 'object' && media.asset) ? media : undefined,
       }
     },

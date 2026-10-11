@@ -2625,33 +2625,50 @@ async function loadCmsContent() {
     devData = sanityData.developer || {};
     hallData = sanityData.hall || {};
 
-    // Build galleryData: merge CMS galleryEvents (structured events) + galleryItems (flat photos)
-    const cmsEvents = (sanityData.galleryEvents || []).map(ev => ({
-      id: ev.event_id || ev._id,
-      position: ev.position || 999,
-      title_en: ev.title_en || '',
-      title_bn: ev.title_bn || '',
-      date: ev.date || '',
-      date_formatted_en: ev.date_formatted_en || '',
-      date_formatted_bn: ev.date_formatted_bn || '',
-      category: ev.category || 'events',
-      description_en: ev.description_en || '',
-      description_bn: ev.description_bn || '',
-      photos: (ev.photos || []).map(p => ({
-        photo: p.photo || '',
-        caption_en: p.caption_en || '',
-        caption_bn: p.caption_bn || '',
-      })),
-      videos: (ev.videos || []).map(v => ({
-        url: v.url || '',
-        title_en: v.title_en || '',
-        title_bn: v.title_bn || '',
-      })),
-    }));
+    // Build galleryData: merge CMS galleryEvents (structured events) + galleryItems (photos collection)
+    const cmsEvents = (sanityData.galleryEvents || []).map(ev => {
+      // Auto-format date if custom formatted fields are empty
+      const autoDate = autoFormatDate(ev.date);
+      return {
+        id: ev.event_id || ev._id,
+        position: ev.position || 999,
+        title_en: ev.title_en || '',
+        title_bn: ev.title_bn || '',
+        date: ev.date || '',
+        date_formatted_en: ev.date_formatted_en || autoDate.en,
+        date_formatted_bn: ev.date_formatted_bn || autoDate.bn,
+        batches: ev.batches || [],
+        description_en: ev.description_en || '',
+        description_bn: ev.description_bn || '',
+        location_name: ev.location_name || '',
+        location_map_url: ev.location_map_url || '',
+        photos: (ev.photos || []).map(p => ({
+          photo: p.photo || '',
+          caption_en: p.caption_en || '',
+          caption_bn: p.caption_bn || '',
+        })),
+        videos: (ev.videos || []).map(v => ({
+          url: v.url ? convertToEmbedUrl(v.url) : (v.video_file_url || ''),
+          is_direct: !v.url && !!v.video_file_url,
+          title_en: v.title_en || '',
+          title_bn: v.title_bn || '',
+        })).filter(v => v.url),
+      };
+    });
+
+    // New galleryItem structure: single document with photos array
+    const galleryDoc = sanityData.gallery;
+    const galleryItems = (galleryDoc && galleryDoc.photos) ? galleryDoc.photos.map(p => ({
+      photo: p.photo || '',
+      caption_en: p.title_en || p.description_en || '',
+      caption_bn: p.title_bn || p.description_bn || '',
+      title_en: p.title_en || '',
+      title_bn: p.title_bn || '',
+    })) : [];
 
     galleryData = {
       events: cmsEvents.length ? cmsEvents : undefined,
-      items: sanityData.gallery || [],
+      items: galleryItems,
     };
   } else {
     // Fallback to local static JSON files
@@ -4783,6 +4800,69 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 });
 
+/**
+ * Converts regular video URLs to embed-friendly URLs.
+ * Supports: YouTube, Google Drive, Mega.nz
+ * If already an embed URL or unrecognized, returns as-is.
+ */
+function convertToEmbedUrl(url) {
+  if (!url) return '';
+  const u = url.trim();
+
+  // YouTube: youtu.be/ID or youtube.com/watch?v=ID → youtube.com/embed/ID
+  if (u.includes('youtu.be/')) {
+    const id = u.split('youtu.be/')[1]?.split(/[?&#]/)[0];
+    if (id) return `https://www.youtube.com/embed/${id}`;
+  }
+  if (u.includes('youtube.com/watch')) {
+    const match = u.match(/[?&]v=([^&#]+)/);
+    if (match) return `https://www.youtube.com/embed/${match[1]}`;
+  }
+  if (u.includes('youtube.com/shorts/')) {
+    const id = u.split('/shorts/')[1]?.split(/[?&#]/)[0];
+    if (id) return `https://www.youtube.com/embed/${id}`;
+  }
+
+  // Google Drive: drive.google.com/file/d/ID/view → drive.google.com/file/d/ID/preview
+  if (u.includes('drive.google.com/file/d/')) {
+    const match = u.match(/\/file\/d\/([^/]+)/);
+    if (match) return `https://drive.google.com/file/d/${match[1]}/preview`;
+  }
+
+  // Mega.nz: mega.nz/file/ID#KEY → mega.nz/embed/ID#KEY
+  if (u.includes('mega.nz/file/')) {
+    return u.replace('mega.nz/file/', 'mega.nz/embed/');
+  }
+
+  // Already embed or unknown — return as-is
+  return u;
+}
+
+/**
+ * Auto-formats a raw YYYY-MM-DD date string to readable format.
+ * Returns { en: "15 March 2026", bn: "১৫ মার্চ ২০২৬" }
+ */
+function autoFormatDate(dateStr) {
+  if (!dateStr) return { en: '', bn: '' };
+  const d = new Date(dateStr + 'T00:00:00');
+  if (isNaN(d.getTime())) return { en: '', bn: '' };
+
+  const months_en = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const months_bn = ['জানুয়ারি','ফেব্রুয়ারি','মার্চ','এপ্রিল','মে','জুন','জুলাই','আগস্ট','সেপ্টেম্বর','অক্টোবর','নভেম্বর','ডিসেম্বর'];
+  const bn_digits = ['০','১','২','৩','৪','৫','৬','৭','৮','৯'];
+
+  const day = d.getDate();
+  const month = d.getMonth();
+  const year = d.getFullYear();
+
+  const toBn = (num) => String(num).split('').map(c => bn_digits[parseInt(c)] || c).join('');
+
+  return {
+    en: `${day} ${months_en[month]} ${year}`,
+    bn: `${toBn(day)} ${months_bn[month]} ${toBn(year)}`
+  };
+}
+
 let currentGalleryData = null;
 
 async function renderGalleryPage(galleryData) {
@@ -4799,15 +4879,15 @@ async function renderGalleryPage(galleryData) {
 
   // Sort events by date latest first
   let events = data.events ? data.events.slice().sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0) || Number(a.position || 0) - Number(b.position || 0)) : [];
-  
-  // Separate pure daily memories from formal events
-  const formalEvents = events.filter(e => e.category !== "memories" && e.id !== "daily-memories");
-  const memoriesEvent = events.find(e => e.category === "memories" || e.id === "daily-memories");
 
-  // 1. Render formal events in authentic DCSC style with horizontal scroll
+  // All events are displayed chronologically (no category filtering)
+  const formalEvents = events;
+
+  // 1. Render events in authentic DCSC style with horizontal scroll
   eventsContainer.innerHTML = formalEvents.map((ev, evIdx) => {
     const title = currentLang === "bn" ? (ev.title_bn || ev.title_en) : (ev.title_en || ev.title_bn);
-    const cat = ev.category || "events";
+    const date = currentLang === "bn" ? (ev.date_formatted_bn || ev.date_formatted_en) : (ev.date_formatted_en || ev.date_formatted_bn);
+    const batchLabel = ev.batches && ev.batches.length ? ev.batches.join(' · ') : '';
 
     // All photos of that event in the horizontal scrolling strip
     const previewPhotos = ev.photos || [];
@@ -4831,13 +4911,18 @@ async function renderGalleryPage(galleryData) {
     }).join("");
 
     return `
-      <section class="dcsc-event-section" data-event-id="${ev.id}" data-category="${cat}">
+      <section class="dcsc-event-section" data-event-id="${ev.id}">
         <div class="dcsc-event-header">
           <div class="dcsc-event-title-wrap">
             <div class="dcsc-accent-bar"></div>
             <div>
               <span class="dcsc-eyebrow">${currentLang === "bn" ? "ইভেন্ট গ্যালারি" : "EVENT GALLERY"}</span>
               <h2 class="dcsc-event-title">${title}</h2>
+              <div class="dcsc-event-meta" style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px;">
+                ${date ? `<span style="font-size: 0.78rem; color: var(--muted); background: var(--surface); padding: 3px 10px; border-radius: 999px; border: 1px solid var(--border); font-weight: 600;">📅 ${date}</span>` : ""}
+                ${batchLabel ? `<span style="font-size: 0.78rem; color: var(--accent); background: var(--accent-soft); padding: 3px 10px; border-radius: 999px; font-weight: 700;">🎓 ${batchLabel}</span>` : ""}
+                ${ev.location_name ? `<span style="font-size: 0.78rem; color: var(--muted); background: var(--surface); padding: 3px 10px; border-radius: 999px; border: 1px solid var(--border); font-weight: 600;">📍 ${ev.location_name}</span>` : ""}
+              </div>
             </div>
           </div>
           <button type="button" class="dcsc-view-event-btn" data-event-id="${ev.id}">
@@ -4853,11 +4938,9 @@ async function renderGalleryPage(galleryData) {
     `;
   }).join("");
 
-  // 2. Render Memories / Gallery at bottom (latest photos first)
+  // 2. Render Gallery Items (general photos) at bottom — from galleryItem photos collection
   let memoryPhotos = [];
-  if (memoriesEvent && memoriesEvent.photos && memoriesEvent.photos.length) {
-    memoryPhotos = memoriesEvent.photos.slice().reverse();
-  } else if (data.items && data.items.length) {
+  if (data.items && data.items.length) {
     memoryPhotos = data.items.slice().reverse();
   }
 
@@ -4882,7 +4965,7 @@ async function renderGalleryPage(galleryData) {
     }).join("");
 
     memoriesContainer.innerHTML = `
-      <section class="dcsc-event-section dcsc-memories-section" data-category="memories">
+      <section class="dcsc-event-section dcsc-memories-section">
         <div class="dcsc-event-header">
           <div class="dcsc-event-title-wrap">
             <div class="dcsc-accent-bar memories-bar"></div>
@@ -4944,6 +5027,7 @@ function showEventDetailView(eventId) {
   const title = currentLang === "bn" ? (ev.title_bn || ev.title_en) : (ev.title_en || ev.title_bn);
   const desc = currentLang === "bn" ? (ev.description_bn || ev.description_en) : (ev.description_en || ev.description_bn);
   const date = currentLang === "bn" ? (ev.date_formatted_bn || ev.date_formatted_en) : (ev.date_formatted_en || ev.date_formatted_bn);
+  const batchLabel = ev.batches && ev.batches.length ? ev.batches.join(' · ') : '';
 
   detailView.innerHTML = `
     <div class="event-detail-header">
@@ -4953,8 +5037,10 @@ function showEventDetailView(eventId) {
       <span class="dcsc-eyebrow">${currentLang === "bn" ? "ইভেন্ট শোকেস" : "EVENT SHOWCASE"}</span>
       <h1 class="event-detail-title">${title}</h1>
       <div class="event-detail-meta">
-        ${date ? `<span style="font-size: 0.88rem; color: var(--muted); background: var(--surface); padding: 5px 14px; border-radius: 999px; border: 1px solid var(--border); font-weight: 600;">${date}</span>` : ""}
+        ${date ? `<span style="font-size: 0.88rem; color: var(--muted); background: var(--surface); padding: 5px 14px; border-radius: 999px; border: 1px solid var(--border); font-weight: 600;">📅 ${date}</span>` : ""}
+        ${batchLabel ? `<span style="font-size: 0.88rem; color: var(--accent); background: var(--accent-soft); padding: 5px 14px; border-radius: 999px; font-weight: 700;">🎓 ${batchLabel}</span>` : ""}
         <span style="font-size: 0.88rem; color: var(--accent); background: var(--accent-soft); padding: 5px 14px; border-radius: 999px; font-weight: 700;">${(ev.photos || []).length} ${currentLang === "bn" ? "টি ফটো" : "Photos"}</span>
+        ${ev.location_name ? `<span style="font-size: 0.88rem; color: var(--muted); background: var(--surface); padding: 5px 14px; border-radius: 999px; border: 1px solid var(--border); font-weight: 600;">📍 ${ev.location_name}</span>` : ""}
       </div>
       ${desc ? `<p class="event-detail-desc">${desc}</p>` : ""}
     </div>
@@ -4963,11 +5049,32 @@ function showEventDetailView(eventId) {
       <div class="event-video-wrap">
         <h3 style="margin-bottom: 16px; font-size: 1.25rem;">${currentLang === "bn" ? "ইভেন্ট ভিডিও" : "Event Videos"}</h3>
         <div class="event-video-grid">
-          ${ev.videos.map(v => `
-            <div style="border-radius: 14px; overflow: hidden; border: 1px solid var(--border); aspect-ratio: 16/9; background: #000;">
-              <iframe src="${v.url}" style="width: 100%; height: 100%; border: 0;" allowfullscreen></iframe>
-            </div>
-          `).join("")}
+          ${ev.videos.map(v => {
+            if (v.is_direct) {
+              // Direct uploaded video — use <video> tag
+              return `
+                <div style="border-radius: 14px; overflow: hidden; border: 1px solid var(--border); aspect-ratio: 16/9; background: #000;">
+                  <video src="${v.url}" style="width: 100%; height: 100%; object-fit: contain;" controls preload="metadata"></video>
+                </div>
+              `;
+            } else {
+              // Embed URL — use <iframe>
+              return `
+                <div style="border-radius: 14px; overflow: hidden; border: 1px solid var(--border); aspect-ratio: 16/9; background: #000;">
+                  <iframe src="${v.url}" style="width: 100%; height: 100%; border: 0;" allowfullscreen allow="autoplay; encrypted-media"></iframe>
+                </div>
+              `;
+            }
+          }).join("")}
+        </div>
+      </div>
+    ` : ""}
+
+    ${ev.location_map_url ? `
+      <div style="margin: 24px 0;">
+        <h3 style="margin-bottom: 12px; font-size: 1.15rem;">📍 ${currentLang === "bn" ? "ইভেন্ট লোকেশন" : "Event Location"}</h3>
+        <div style="border-radius: 14px; overflow: hidden; border: 1px solid var(--border); aspect-ratio: 16/7; background: var(--surface);">
+          <iframe src="${convertToEmbedUrl(ev.location_map_url)}" style="width: 100%; height: 100%; border: 0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
       </div>
     ` : ""}
@@ -5040,13 +5147,12 @@ function renderHomeGallery(galleryData) {
 
   let items = [];
   if (galleryData && galleryData.events && galleryData.events.length) {
-    // 1st photo of each formal event from newest to oldest
-    const formalEvents = galleryData.events
-      .filter(e => e.category !== "memories" && e.id !== "daily-memories")
+    // 1st photo of each event from newest to oldest
+    const sortedEvents = galleryData.events
       .slice()
       .sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0) || Number(a.position || 0) - Number(b.position || 0));
 
-    for (const ev of formalEvents) {
+    for (const ev of sortedEvents) {
       if (ev.photos && ev.photos.length) {
         items.push({
           photo: ev.photos[0].photo,
@@ -5058,11 +5164,10 @@ function renderHomeGallery(galleryData) {
       if (items.length >= 6) break;
     }
 
-    // If fewer than 6 events, backfill with memories from newest to oldest
+    // If fewer than 6 events, backfill with gallery items (general photos)
     if (items.length < 6) {
-      const memoriesEvent = galleryData.events.find(e => e.category === "memories" || e.id === "daily-memories");
-      const memoryPhotos = (memoriesEvent && memoriesEvent.photos ? memoriesEvent.photos : (galleryData.items || [])).slice().reverse();
-      for (const p of memoryPhotos) {
+      const galleryPhotos = (galleryData.items || []).slice().reverse();
+      for (const p of galleryPhotos) {
         const norm = normalizeCmsPath(p.photo);
         if (!items.some(it => normalizeCmsPath(it.photo) === norm)) {
           items.push({
