@@ -55,6 +55,7 @@ const SANITY_GROQ_QUERY = `{
   "hall": *[_type == "hallInfo" && !(_id in path("drafts.**"))][0]{
     ...,
     "hall_photo": coalesce(hall_photo.asset->url, hall_photo),
+    "home_page_photo": coalesce(home_page_photo.asset->url, home_page_photo),
     "hall_super_photo": coalesce(hall_super_photo.asset->url, hall_super_photo),
     "campus_photos": campus_photos[]{
       ...,

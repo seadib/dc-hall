@@ -2532,6 +2532,28 @@ function mapCmsStudent(item, index) {
   const r1 = item.results_1st_year || {};
   const r2 = item.results_2nd_year || {};
 
+  // DOB: prioritize new calendar dob_date field, fallback to legacy dob_day/dob_month, then manual dob
+  let dobEn = '', dobBnVal = '';
+  if (item.dob_date) {
+    // dob_date is YYYY-MM-DD format — extract day and month, ignore year
+    const dobParts = item.dob_date.split('-');
+    if (dobParts.length === 3) {
+      const mm = dobParts[1];
+      const dd = dobParts[2];
+      const monthNames = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+      const monthNamesBn = ['জানুয়ারি','ফেব্রুয়ারি','মার্চ','এপ্রিল','মে','জুন','জুলাই','আগস্ট','সেপ্টেম্বর','অক্টোবর','নভেম্বর','ডিসেম্বর'];
+      const mIdx = parseInt(mm, 10) - 1;
+      dobEn = `${parseInt(dd, 10)}-${monthNames[mIdx] || mm}`;
+      dobBnVal = `${toBengaliDigits(String(parseInt(dd, 10)))} ${monthNamesBn[mIdx] || mm}`;
+    }
+  } else if (item.dob_day && item.dob_month) {
+    dobEn = `${item.dob_day}/${item.dob_month}`;
+    dobBnVal = `${toBengaliDigits(item.dob_day)}/${toBengaliDigits(item.dob_month)}`;
+  } else if (item.dob) {
+    dobEn = item.dob;
+    dobBnVal = item.dob_bn || toBengaliDigits(item.dob);
+  }
+
   return {
     id: index + 1,
     slug,
@@ -2564,8 +2586,8 @@ function mapCmsStudent(item, index) {
     address: item.address_en || "",
     blood: item.blood_group || "",
     bio: item.bio_en || defaultBio,
-    dob: (item.dob_day && item.dob_month) ? `${item.dob_day}/${item.dob_month}` : (item.dob || ""),
-    dobBn: (item.dob_day && item.dob_month) ? `${toBengaliDigits(item.dob_day)}/${toBengaliDigits(item.dob_month)}` : (item.dob_bn || (item.dob ? toBengaliDigits(item.dob) : "")),
+    dob: dobEn,
+    dobBn: dobBnVal,
     pdfs: oldPdfs,
     results_1st: r1,
     results_2nd: r2,
@@ -2578,7 +2600,7 @@ function mapCmsStudent(item, index) {
       college: "ঢাকা কলেজ",
       address: item.address_bn || item.address_en || "",
       bio: item.bio_bn || item.bio_en || defaultBioBn,
-      dob: (item.dob_day && item.dob_month) ? `${toBengaliDigits(item.dob_day)}/${toBengaliDigits(item.dob_month)}` : (item.dob_bn || (item.dob ? toBengaliDigits(item.dob) : ""))
+      dob: dobBnVal
     }
   };
 }
@@ -2772,6 +2794,17 @@ async function loadCmsContent() {
       i18n.bn.hallSuper.name = hallData.hall_super_name_bn || i18n.bn.hallSuper.name;
       i18n.bn.hallSuper.bio = hallData.hall_super_bio_bn || i18n.bn.hallSuper.bio;
       i18n.bn.hallSuper.subtitle = hallData.hall_super_subtitle_bn || i18n.bn.hallSuper.subtitle;
+    }
+    // Store hall data globally for hostel page rendering
+    cmsHallData = hallData;
+
+    // Update home page hall preview photo from CMS (home_page_photo → hall_photo fallback)
+    const homePhoto = hallData.home_page_photo || hallData.hall_photo;
+    if (homePhoto) {
+      const homeHallImg = document.querySelector('.hostel-preview-photo img');
+      if (homeHallImg) {
+        homeHallImg.src = normalizeCmsPath(homePhoto);
+      }
     }
   }
 

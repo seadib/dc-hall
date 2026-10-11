@@ -38,10 +38,22 @@ export default defineType({
       description: 'খালি থাকলে ইংরেজি নাম দেখাবে।',
     }),
     defineField({
+      name: 'dob_date',
+      title: '📅 Date of Birth / জন্ম তারিখ (ক্যালেন্ডার)',
+      type: 'date',
+      group: 'basic',
+      description: 'ক্যালেন্ডার থেকে জন্ম তারিখ ও মাস সিলেক্ট করুন। ⚠️ সাল গুরুত্বপূর্ণ নয় — শুধু দিন ও মাস ব্যবহৃত হবে।',
+      options: {
+        dateFormat: 'DD-MMMM',
+      },
+    }),
+    // Legacy fields — hidden, kept for backward compatibility with existing data
+    defineField({
       name: 'dob_month',
-      title: 'Birth Month (জন্মের মাস)',
+      title: 'Birth Month (Legacy)',
       type: 'string',
       group: 'basic',
+      hidden: true,
       options: {
         list: [
           { title: 'January (জানুয়ারি)', value: '01' },
@@ -59,13 +71,13 @@ export default defineType({
         ],
         layout: 'dropdown',
       },
-      description: 'প্রথমে মাস নির্বাচন করুন।',
     }),
     defineField({
       name: 'dob_day',
-      title: 'Birth Day (জন্মের দিন: ১-৩১)',
+      title: 'Birth Day (Legacy)',
       type: 'string',
       group: 'basic',
+      hidden: true,
       options: {
         list: [
           '01', '02', '03', '04', '05', '06', '07', '08', '09', '10',
@@ -74,14 +86,13 @@ export default defineType({
         ],
         layout: 'dropdown',
       },
-      description: 'নির্বাচিত মাসের দিন সিলেক্ট করুন।',
     }),
     defineField({
       name: 'dob',
-      title: 'Date of Birth (ম্যানুয়াল ফরম্যাট — অপশনাল)',
+      title: 'Date of Birth (Legacy Manual)',
       type: 'string',
       group: 'basic',
-      description: 'উপরের মাস ও দিন সিলেক্ট করা থাকলে এটি স্বয়ংক্রিয়ভাবে কাজ করবে (যেমন: 04/10)।',
+      hidden: true,
       placeholder: '04/10',
     }),
     defineField({

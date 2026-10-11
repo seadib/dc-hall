@@ -159,19 +159,30 @@ export default defineType({
     }),
     defineField({
       name: 'hall_photo',
-      title: 'Main Historic Hostel Photo',
+      title: 'Main Historic Hostel Photo (মূল হোস্টেল ছবি)',
       type: 'image',
       group: 'hostel',
+      description: 'হল ইনফো পেজের মূল ছবি। হটস্পট ক্রপিং সমর্থিত।',
+      options: { hotspot: true },
+    }),
+    defineField({
+      name: 'home_page_photo',
+      title: 'Home Page Hall Photo (হোম পেজ হল ছবি) — ঐচ্ছিক',
+      type: 'image',
+      group: 'hostel',
+      description: 'হোম পেজের হল ইনফো সেকশনে আলাদা ছবি দেখাতে চাইলে এখানে আপলোড করুন। খালি রাখলে উপরের "মূল হোস্টেল ছবি" ব্যবহার হবে।',
+      options: { hotspot: true },
     }),
     defineField({
       name: 'campus_photos',
       title: 'Campus Photo Gallery (ক্যাম্পাসের ছবিসমূহ)',
       type: 'array',
       group: 'hostel',
-      description: 'হল ও হোস্টেলের সুন্দর ছবিসমূহ এখানে যুক্ত করুন',
+      description: '📸 একসাথে অনেক ছবি ড্র্যাগ করে আপলোড করুন। ড্র্যাগ করে ক্রম পরিবর্তন করুন। প্রতিটি ছবিতে ক্লিক করে ক্যাপশন যোগ করুন।',
       of: [
         {
           type: 'image',
+          options: { hotspot: true },
           fields: [
             { name: 'caption_en', title: 'Caption EN', type: 'string' },
             { name: 'caption_bn', title: 'ক্যাপশন বাংলা', type: 'string' },
