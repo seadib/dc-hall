@@ -599,10 +599,11 @@ h3 {
 
 .student-card img {
   width: 100%;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 3 / 4;
   height: auto;
+  max-height: 280px;
   object-fit: cover;
-  object-position: center 18%;
+  object-position: center center;
   background: var(--surface);
   display: block;
 }
@@ -1262,11 +1263,11 @@ h3 {
 .profile img {
   width: 100%;
   height: auto;
-  aspect-ratio: 4 / 5;
-  max-height: 460px;
+  aspect-ratio: 3 / 4;
+  max-height: 480px;
   border-radius: 12px;
   object-fit: cover;
-  object-position: center 18%;
+  object-position: center center;
   display: block;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
 }
@@ -1492,9 +1493,9 @@ body:not(.dark) .academic-year-header {
 }
 
 .year-pill.year-2 {
-  background: rgba(99, 102, 241, 0.16);
-  color: #818cf8;
-  border-color: rgba(99, 102, 241, 0.3);
+  background: rgba(16, 201, 168, 0.16);
+  color: var(--accent);
+  border-color: rgba(16, 201, 168, 0.3);
 }
 
 .year-name {
@@ -2348,7 +2349,6 @@ body:not(.dark) .result-box.locked:hover {
 
   .hero {
     min-height: 74vh;
-    background-position: 65% center !important;
   }
 
   .hero-content {
@@ -2367,10 +2367,10 @@ body:not(.dark) .result-box.locked:hover {
   .student-card img {
     width: 100%;
     height: auto;
-    aspect-ratio: 4 / 5;
-    max-height: none;
+    aspect-ratio: 3 / 4;
+    max-height: 220px;
     object-fit: cover;
-    object-position: center 18%;
+    object-position: center center;
   }
 
   .room-pair {
@@ -2526,11 +2526,10 @@ body:not(.dark) .result-box.locked:hover {
 
   .student-card img {
     width: 100%;
-    height: 230px !important;
-    max-height: 230px !important;
-    aspect-ratio: auto !important;
-    object-fit: cover !important;
-    object-position: center 18% !important;
+    aspect-ratio: 3 / 4;
+    max-height: 280px;
+    object-fit: cover;
+    object-position: center center !important;
   }
 
   .person-card img,
@@ -3859,13 +3858,5 @@ html.user-logged-in #statusCard {
   }
   .language-switch button.active {
     border-radius: 7px !important;
-  }
-  .student-card img {
-    width: 100%;
-    height: 200px !important;
-    max-height: 200px !important;
-    aspect-ratio: auto !important;
-    object-fit: cover !important;
-    object-position: center 18% !important;
   }
 }
