@@ -1225,11 +1225,31 @@ h3 {
 }
 
 .footer {
-  padding: 40px 0 32px;
+  position: relative;
+  padding: 44px 0 34px;
   background: #f1f5f9;
   border-top: 1px solid var(--border);
   color: #475569;
   transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+/* Premium Top Separator Line (Gradient Beam) */
+.footer::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(15, 118, 110, 0.2) 15%,
+    rgba(15, 118, 110, 0.75) 50%,
+    rgba(15, 118, 110, 0.2) 85%,
+    transparent 100%
+  );
+  pointer-events: none;
 }
 
 .footer p {
@@ -2148,9 +2168,27 @@ body:not(.dark) .result-box.locked:hover {
 /* Footer in Dark Mode */
 .dark .footer,
 body.dark .footer {
-  background: #070b14;
+  background: #04070e;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   color: rgba(255, 255, 255, 0.72);
+}
+
+.dark .footer::before,
+body.dark .footer::before {
+  top: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(16, 201, 168, 0.15) 10%,
+    rgba(16, 201, 168, 0.95) 45%,
+    rgba(56, 189, 248, 0.8) 65%,
+    rgba(16, 201, 168, 0.15) 90%,
+    transparent 100%
+  );
+  box-shadow: 0 0 16px rgba(16, 201, 168, 0.45), 0 0 4px rgba(16, 201, 168, 0.8);
 }
 
 .dark .footer-logo,
