@@ -49,7 +49,11 @@ const SANITY_GROQ_QUERY = `{
   "rooms": *[_type == "room" && !(_id in path("drafts.**"))] | order(room_no asc){
     ...,
     "photos": coalesce(photos[].asset->url, photos),
-    "assigned_students": assigned_students[]->{ _id, name_en, name_bn, short_roll, student_id }
+    "assigned_students": coalesce(
+      (coalesce(assigned_students[]->{ _id, name_en, name_bn, short_roll, student_id, batch, "photo": photo.asset->url }, []) +
+      *[_type == "student" && !(_id in path("drafts.**")) && (room_ref._ref == ^._id || references(^._id) || room_no == ^.room_no)]{ _id, name_en, name_bn, short_roll, student_id, batch, "photo": photo.asset->url }),
+      []
+    )
   },
   "home": *[_type == "homePage" && !(_id in path("drafts.**"))][0],
   "hall": *[_type == "hallInfo" && !(_id in path("drafts.**"))][0]{

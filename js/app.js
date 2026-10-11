@@ -2930,6 +2930,21 @@ function applyPageSectionControls() {
 
 function applySectionMap(sectionsConfig, elementMap) {
   if (!sectionsConfig || !elementMap) return;
+  if (Array.isArray(sectionsConfig)) {
+    sectionsConfig.forEach((item, index) => {
+      if (!item || typeof item !== "object") return;
+      const key = item.section_id || item.id || item.key;
+      const el = elementMap[key];
+      if (!el) return;
+      if (item.enabled === false) {
+        el.style.display = "none";
+      } else {
+        el.style.display = "";
+      }
+      el.style.order = index + 1;
+    });
+    return;
+  }
   Object.entries(sectionsConfig).forEach(([key, conf]) => {
     const el = elementMap[key];
     if (!el || typeof conf !== "object" || conf === null) return;

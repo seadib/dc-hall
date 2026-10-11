@@ -17,56 +17,66 @@ export default defineType({
     // ═══════════════════════════════════════════
     defineField({
       name: 'sections_control',
-      title: 'Developer Page Sections Visibility & Order (ডেভেলপার পেজ সেকশনসমূহ অন/অফ ও ক্রম)',
-      type: 'object',
+      title: 'Developer Page Sections Visibility & Order (ড্র্যাগ করে সেকশন সাজান)',
+      type: 'array',
       group: 'sections_control',
-      description: 'ডেভেলপার পেজে কোন কোন সেকশন দেখাবেন এবং কোনটির ক্রমিক আগে/পরে আসবে তা এখান থেকে নিয়ন্ত্রণ করুন।',
-      fields: [
+      description: '↕️ ড্র্যাগ করে ডেভেলপার পেজের সেকশনগুলোর ক্রম সাজান। যে সেকশনটি উপরে থাকবে ওয়েবসাইটে সেটি আগে দেখাবে।',
+      of: [
         {
-          name: 'hero_bio',
-          title: 'Hero Bio & Portrait (হিরো পরিচিতি ও ছবি)',
           type: 'object',
+          name: 'devSectionItem',
+          title: 'Section',
           fields: [
-            { name: 'enabled', title: 'Show Section', type: 'boolean', initialValue: true },
-            { name: 'order', title: 'Order (ক্রম)', type: 'number', initialValue: 1 },
+            defineField({
+              name: 'section_id',
+              title: 'Section (সেকশন নির্বাচন করুন)',
+              type: 'string',
+              options: {
+                list: [
+                  { title: '👤 Hero Bio & Portrait (হিরো পরিচিতি ও ছবি)', value: 'hero_bio' },
+                  { title: '📋 Overview Panels (সম্পর্কে, যোগাযোগ ও উদ্দেশ্য)', value: 'overview_panels' },
+                  { title: '💻 Featured Projects (উল্লেখযোগ্য প্রোজেক্টসমূহ)', value: 'featured_projects' },
+                  { title: '⚡ Skills & Project Method (দক্ষতা ও কাজের ধাপ)', value: 'skills_timeline' },
+                  { title: '🤝 Contributors (প্রোজেক্টের সহযোগীবৃন্দ)', value: 'contributors' },
+                ],
+              },
+              validation: (Rule) => Rule.required(),
+            }),
+            defineField({
+              name: 'enabled',
+              title: 'Show Section (ওয়েবসাইটে প্রদর্শন করবেন কি?)',
+              type: 'boolean',
+              initialValue: true,
+            }),
           ],
+          preview: {
+            select: {
+              section_id: 'section_id',
+              enabled: 'enabled',
+            },
+            prepare({ section_id, enabled }) {
+              const titles = {
+                hero_bio: '👤 Hero Bio & Portrait (হিরো পরিচিতি)',
+                overview_panels: '📋 Overview Panels (প্যানেলসমূহ)',
+                featured_projects: '💻 Featured Projects (প্রোজেক্টসমূহ)',
+                skills_timeline: '⚡ Skills & Timeline (দক্ষতা ও ধাপ)',
+                contributors: '🤝 Contributors (সহযোগীবৃন্দ)',
+              }
+              const isOff = enabled === false
+              return {
+                title: titles[section_id] || section_id || 'Section',
+                subtitle: isOff ? '❌ বন্ধ (Hidden on site)' : '✅ চালু (Visible on site)',
+              }
+            },
+          },
         },
-        {
-          name: 'overview_panels',
-          title: 'Overview Panels (সম্পর্কে, যোগাযোগ ও উদ্দেশ্য প্যানেল)',
-          type: 'object',
-          fields: [
-            { name: 'enabled', title: 'Show Section', type: 'boolean', initialValue: true },
-            { name: 'order', title: 'Order (ক্রম)', type: 'number', initialValue: 2 },
-          ],
-        },
-        {
-          name: 'featured_projects',
-          title: 'Featured Projects (উল্লেখযোগ্য প্রোজেক্টসমূহ)',
-          type: 'object',
-          fields: [
-            { name: 'enabled', title: 'Show Section', type: 'boolean', initialValue: true },
-            { name: 'order', title: 'Order (ক্রম)', type: 'number', initialValue: 3 },
-          ],
-        },
-        {
-          name: 'skills_timeline',
-          title: 'Skills & Project Method (দক্ষতা ও কাজের ধাপ)',
-          type: 'object',
-          fields: [
-            { name: 'enabled', title: 'Show Section', type: 'boolean', initialValue: true },
-            { name: 'order', title: 'Order (ক্রম)', type: 'number', initialValue: 4 },
-          ],
-        },
-        {
-          name: 'contributors',
-          title: 'Contributors (প্রোজেক্টের সহযোগীবৃন্দ)',
-          type: 'object',
-          fields: [
-            { name: 'enabled', title: 'Show Section', type: 'boolean', initialValue: true },
-            { name: 'order', title: 'Order (ক্রম)', type: 'number', initialValue: 5 },
-          ],
-        },
+      ],
+      initialValue: [
+        { _key: 'dsec1', section_id: 'hero_bio', enabled: true },
+        { _key: 'dsec2', section_id: 'overview_panels', enabled: true },
+        { _key: 'dsec3', section_id: 'featured_projects', enabled: true },
+        { _key: 'dsec4', section_id: 'skills_timeline', enabled: true },
+        { _key: 'dsec5', section_id: 'contributors', enabled: true },
       ],
     }),
 

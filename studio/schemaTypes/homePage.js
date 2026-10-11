@@ -16,83 +16,75 @@ export default defineType({
     // ═══════════════════════════════════════════
     defineField({
       name: 'sections_control',
-      title: 'Homepage Sections Visibility & Order (হোমপেজ সেকশনসমূহ অন/অফ ও ক্রম)',
-      type: 'object',
+      title: 'Homepage Sections Visibility & Order (ড্র্যাগ করে সেকশন সাজান)',
+      type: 'array',
       group: 'sections_control',
-      description: 'হোমপেজে কোন কোন সেকশন দেখাবেন এবং কোন সেকশনটি আগে ও কোনটি পরে আসবে তা এখান থেকে সহজে নিয়ন্ত্রণ করুন।',
-      fields: [
+      description: '↕️ ড্র্যাগ করে হোমপেজের সেকশনগুলোর ক্রম সাজান। যে সেকশনটি উপরে থাকবে ওয়েবসাইটে সেটি আগে দেখাবে।',
+      of: [
         {
-          name: 'students_preview',
-          title: 'Students Preview (শিক্ষার্থী প্রিভিউ)',
           type: 'object',
+          name: 'homeSectionItem',
+          title: 'Section',
           fields: [
-            { name: 'enabled', title: 'Show Section (প্রদর্শন করুন)', type: 'boolean', initialValue: true },
-            { name: 'order', title: 'Order (ক্রমিক নম্বর)', type: 'number', initialValue: 1 },
+            defineField({
+              name: 'section_id',
+              title: 'Section (সেকশন নির্বাচন করুন)',
+              type: 'string',
+              options: {
+                list: [
+                  { title: '👨‍🎓 Students Preview (শিক্ষার্থী তালিকা প্রিভিউ)', value: 'students_preview' },
+                  { title: '🛏️ Roommate Preview (রুমমেট প্রিভিউ)', value: 'roommates_preview' },
+                  { title: '📊 Results Preview (একাডেমিক ফলাফল প্রিভিউ)', value: 'results_preview' },
+                  { title: '👨‍🏫 Hall Super Preview (হল সুপার পরিচিতি ও বার্তা)', value: 'hall_super_preview' },
+                  { title: '🏛️ Hall Info & History (হলের ইতিহাস ও পরিচিতি)', value: 'hall_info_preview' },
+                  { title: '📸 Moments & Memories (ক্যাম্পাস ফটো গ্যালারি)', value: 'moments_preview' },
+                  { title: '🌐 Portals & Resources (অফিশিয়াল রিসোর্স ও লিংক)', value: 'resources_preview' },
+                  { title: '📍 Location & Map (অবস্থান ও লাইভ ম্যাপ)', value: 'location_preview' },
+                ],
+              },
+              validation: (Rule) => Rule.required(),
+            }),
+            defineField({
+              name: 'enabled',
+              title: 'Show Section (ওয়েবসাইটে প্রদর্শন করবেন কি?)',
+              type: 'boolean',
+              initialValue: true,
+            }),
           ],
+          preview: {
+            select: {
+              section_id: 'section_id',
+              enabled: 'enabled',
+            },
+            prepare({ section_id, enabled }) {
+              const titles = {
+                students_preview: '👨‍🎓 Students Preview (শিক্ষার্থী তালিকা)',
+                roommates_preview: '🛏️ Roommate Preview (রুমমেট প্রিভিউ)',
+                results_preview: '📊 Results Preview (একাডেমিক ফলাফল)',
+                hall_super_preview: '👨‍🏫 Hall Super Preview (হল সুপার বার্তা)',
+                hall_info_preview: '🏛️ Hall Info & History (হলের ইতিহাস)',
+                moments_preview: '📸 Moments & Memories (ফটো গ্যালারি)',
+                resources_preview: '🌐 Portals & Resources (রিসোর্স ও লিংক)',
+                location_preview: '📍 Location & Map (অবস্থান ও লাইভ ম্যাপ)',
+              }
+              const isOff = enabled === false
+              return {
+                title: titles[section_id] || section_id || 'Section',
+                subtitle: isOff ? '❌ বন্ধ (Hidden on site)' : '✅ চালু (Visible on site)',
+              }
+            },
+          },
         },
-        {
-          name: 'roommates_preview',
-          title: 'Roommate Preview (রুমমেট প্রিভিউ)',
-          type: 'object',
-          fields: [
-            { name: 'enabled', title: 'Show Section (প্রদর্শন করুন)', type: 'boolean', initialValue: true },
-            { name: 'order', title: 'Order (ক্রমিক নম্বর)', type: 'number', initialValue: 2 },
-          ],
-        },
-        {
-          name: 'results_preview',
-          title: 'Results Preview (একাডেমিক ফলাফল প্রিভিউ)',
-          type: 'object',
-          fields: [
-            { name: 'enabled', title: 'Show Section (প্রদর্শন করুন)', type: 'boolean', initialValue: true },
-            { name: 'order', title: 'Order (ক্রমিক নম্বর)', type: 'number', initialValue: 3 },
-          ],
-        },
-        {
-          name: 'hall_super_preview',
-          title: 'Hall Super Preview (হল সুপার পরিচিতি ও বার্তা)',
-          type: 'object',
-          fields: [
-            { name: 'enabled', title: 'Show Section (প্রদর্শন করুন)', type: 'boolean', initialValue: true },
-            { name: 'order', title: 'Order (ক্রমিক নম্বর)', type: 'number', initialValue: 4 },
-          ],
-        },
-        {
-          name: 'hall_info_preview',
-          title: 'Hall Info & History (হলের ইতিহাস ও পরিচিতি)',
-          type: 'object',
-          fields: [
-            { name: 'enabled', title: 'Show Section (প্রদর্শন করুন)', type: 'boolean', initialValue: true },
-            { name: 'order', title: 'Order (ক্রমিক নম্বর)', type: 'number', initialValue: 5 },
-          ],
-        },
-        {
-          name: 'moments_preview',
-          title: 'Moments & Memories (ক্যাম্পাস ফটো গ্যালারি)',
-          type: 'object',
-          fields: [
-            { name: 'enabled', title: 'Show Section (প্রদর্শন করুন)', type: 'boolean', initialValue: true },
-            { name: 'order', title: 'Order (ক্রমিক নম্বর)', type: 'number', initialValue: 6 },
-          ],
-        },
-        {
-          name: 'resources_preview',
-          title: 'Dhaka College Portals & Resources (অফিশিয়াল রিসোর্স)',
-          type: 'object',
-          fields: [
-            { name: 'enabled', title: 'Show Section (প্রদর্শন করুন)', type: 'boolean', initialValue: true },
-            { name: 'order', title: 'Order (ক্রমিক নম্বর)', type: 'number', initialValue: 7 },
-          ],
-        },
-        {
-          name: 'location_preview',
-          title: 'Location & Map (অবস্থান ও লাইভ ম্যাপ)',
-          type: 'object',
-          fields: [
-            { name: 'enabled', title: 'Show Section (প্রদর্শন করুন)', type: 'boolean', initialValue: true },
-            { name: 'order', title: 'Order (ক্রমিক নম্বর)', type: 'number', initialValue: 8 },
-          ],
-        },
+      ],
+      initialValue: [
+        { _key: 'hsec1', section_id: 'students_preview', enabled: true },
+        { _key: 'hsec2', section_id: 'roommates_preview', enabled: true },
+        { _key: 'hsec3', section_id: 'results_preview', enabled: true },
+        { _key: 'hsec4', section_id: 'hall_super_preview', enabled: true },
+        { _key: 'hsec5', section_id: 'hall_info_preview', enabled: true },
+        { _key: 'hsec6', section_id: 'moments_preview', enabled: true },
+        { _key: 'hsec7', section_id: 'resources_preview', enabled: true },
+        { _key: 'hsec8', section_id: 'location_preview', enabled: true },
       ],
     }),
 

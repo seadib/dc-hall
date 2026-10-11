@@ -5,8 +5,8 @@ export default defineType({
   title: 'Gallery Events (ইভেন্ট গ্যালারি)',
   type: 'document',
   groups: [
+    { name: 'media', title: 'ফটো ও ভিডিও (Photos & Videos)', default: true },
     { name: 'info', title: 'ইভেন্ট তথ্য (Event Info)' },
-    { name: 'media', title: 'ফটো ও ভিডিও (Photos & Videos)' },
   ],
   fields: [
     // ═══════════════════════════════════════════

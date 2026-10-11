@@ -18,74 +18,72 @@ export default defineType({
     // ═══════════════════════════════════════════
     defineField({
       name: 'sections_control',
-      title: 'Hall Info Page Sections Visibility & Order (হল ইনফো পেজ সেকশনসমূহ অন/অফ ও ক্রম)',
-      type: 'object',
+      title: 'Hall Info Page Sections Visibility & Order (ড্র্যাগ করে সেকশন সাজান)',
+      type: 'array',
       group: 'sections_control',
-      description: 'হল ইনফো পেজে কোন কোন সেকশন দেখাবেন এবং কোনটির ক্রমিক আগে/পরে আসবে তা এখান থেকে নিয়ন্ত্রণ করুন।',
-      fields: [
+      description: '↕️ ড্র্যাগ করে সেকশনগুলোর ক্রম সাজান। যে সেকশনটি উপরে থাকবে ওয়েবসাইটে সেটি আগে দেখাবে।',
+      of: [
         {
-          name: 'history_nearby',
-          title: 'History & Nearby Places (ইতিহাস ও আশেপাশের স্থান)',
           type: 'object',
+          name: 'sectionItem',
+          title: 'Section',
           fields: [
-            { name: 'enabled', title: 'Show Section', type: 'boolean', initialValue: true },
-            { name: 'order', title: 'Order (ক্রম)', type: 'number', initialValue: 1 },
+            defineField({
+              name: 'section_id',
+              title: 'Section (সেকশন নির্বাচন করুন)',
+              type: 'string',
+              options: {
+                list: [
+                  { title: '🏛️ History & Nearby Places (ইতিহাস ও আশেপাশের স্থান)', value: 'history_nearby' },
+                  { title: '📸 Campus Photos (ক্যাম্পাস ফটো গ্যালারি)', value: 'campus_photos' },
+                  { title: '👨‍🏫 Hall Super Profile & Message (হল সুপার বাণী ও প্রোফাইল)', value: 'hall_super' },
+                  { title: '⏰ Office & Helpdesk (অফিস সময় ও হেল্পডেস্ক)', value: 'helpdesk' },
+                  { title: '🎓 Notable Alumni Profiles (প্রাক্তন কৃতি শিক্ষার্থী)', value: 'alumni' },
+                  { title: '📊 Admission Success Chart (ভর্তি সাফল্য চার্ট)', value: 'success_chart' },
+                  { title: '📍 Location & Map (অবস্থান ও লাইভ ম্যাপ)', value: 'location_map' },
+                ],
+              },
+              validation: (Rule) => Rule.required(),
+            }),
+            defineField({
+              name: 'enabled',
+              title: 'Show Section (ওয়েবসাইটে প্রদর্শন করবেন কি?)',
+              type: 'boolean',
+              initialValue: true,
+            }),
           ],
+          preview: {
+            select: {
+              section_id: 'section_id',
+              enabled: 'enabled',
+            },
+            prepare({ section_id, enabled }) {
+              const titles = {
+                history_nearby: '🏛️ History & Nearby Places (ইতিহাস)',
+                campus_photos: '📸 Campus Photos (ক্যাম্পাস ফটো গ্যালারি)',
+                hall_super: '👨‍🏫 Hall Super Profile & Message (হল সুপার বাণী)',
+                helpdesk: '⏰ Office & Helpdesk (অফিস ও হেল্পডেস্ক)',
+                alumni: '🎓 Notable Alumni Profiles (প্রাক্তন কৃতি শিক্ষার্থী)',
+                success_chart: '📊 Admission Success Chart (ভর্তি সাফল্য)',
+                location_map: '📍 Location & Map (অবস্থান ও লাইভ ম্যাপ)',
+              }
+              const isOff = enabled === false
+              return {
+                title: titles[section_id] || section_id || 'Section',
+                subtitle: isOff ? '❌ বন্ধ (Hidden on site)' : '✅ চালু (Visible on site)',
+              }
+            },
+          },
         },
-        {
-          name: 'campus_photos',
-          title: 'Campus Photos (ক্যাম্পাস ফটো গ্যালারি)',
-          type: 'object',
-          fields: [
-            { name: 'enabled', title: 'Show Section', type: 'boolean', initialValue: true },
-            { name: 'order', title: 'Order (ক্রম)', type: 'number', initialValue: 2 },
-          ],
-        },
-        {
-          name: 'hall_super',
-          title: 'Hall Super Profile & Message (হল সুপার বাণী ও প্রোফাইল)',
-          type: 'object',
-          fields: [
-            { name: 'enabled', title: 'Show Section', type: 'boolean', initialValue: true },
-            { name: 'order', title: 'Order (ক্রম)', type: 'number', initialValue: 3 },
-          ],
-        },
-        {
-          name: 'helpdesk',
-          title: 'Office & Consultation Helpdesk (অফিস সময় ও হেল্পডেস্ক)',
-          type: 'object',
-          fields: [
-            { name: 'enabled', title: 'Show Section', type: 'boolean', initialValue: true },
-            { name: 'order', title: 'Order (ক্রম)', type: 'number', initialValue: 4 },
-          ],
-        },
-        {
-          name: 'alumni',
-          title: 'Notable Alumni Profiles (প্রাক্তন কৃতি শিক্ষার্থী)',
-          type: 'object',
-          fields: [
-            { name: 'enabled', title: 'Show Section', type: 'boolean', initialValue: true },
-            { name: 'order', title: 'Order (ক্রম)', type: 'number', initialValue: 5 },
-          ],
-        },
-        {
-          name: 'success_chart',
-          title: 'Admission Success Chart (ভর্তি সাফল্য চার্ট)',
-          type: 'object',
-          fields: [
-            { name: 'enabled', title: 'Show Section', type: 'boolean', initialValue: true },
-            { name: 'order', title: 'Order (ক্রম)', type: 'number', initialValue: 6 },
-          ],
-        },
-        {
-          name: 'location_map',
-          title: 'Location & Map (অবস্থান ও লাইভ ম্যাপ)',
-          type: 'object',
-          fields: [
-            { name: 'enabled', title: 'Show Section', type: 'boolean', initialValue: true },
-            { name: 'order', title: 'Order (ক্রম)', type: 'number', initialValue: 7 },
-          ],
-        },
+      ],
+      initialValue: [
+        { _key: 'sec1', section_id: 'history_nearby', enabled: true },
+        { _key: 'sec2', section_id: 'campus_photos', enabled: true },
+        { _key: 'sec3', section_id: 'hall_super', enabled: true },
+        { _key: 'sec4', section_id: 'helpdesk', enabled: true },
+        { _key: 'sec5', section_id: 'alumni', enabled: true },
+        { _key: 'sec6', section_id: 'success_chart', enabled: true },
+        { _key: 'sec7', section_id: 'location_map', enabled: true },
       ],
     }),
 

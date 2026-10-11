@@ -1,4 +1,5 @@
 import { defineField, defineType } from 'sanity'
+import { RoomAssignedStudentsInput } from '../components/RoomAssignedStudentsInput'
 
 export default defineType({
   name: 'room',
@@ -59,6 +60,9 @@ export default defineType({
       type: 'array',
       of: [{ type: 'reference', to: [{ type: 'student' }] }],
       description: 'রুমের শিক্ষার্থী সরাসরি এখান থেকেও সিলেক্ট করতে পারেন অথবা স্টুডেন্ট প্রোফাইল থেকেও রুম সিলেক্ট করতে পারেন — দুটোই রিয়েল-টাইমে কানেক্টেড!',
+      components: {
+        input: RoomAssignedStudentsInput,
+      },
     }),
   ],
   preview: {
