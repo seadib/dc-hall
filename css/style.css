@@ -962,12 +962,17 @@ h3 {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .info-box h3 {
   margin: 0 0 4px;
   font-size: 1.05rem;
   font-weight: 700;
+  overflow-wrap: break-word;
+  word-break: normal;
 }
 
 .info-box p {
@@ -975,6 +980,8 @@ h3 {
   font-size: 0.88rem;
   line-height: 1.45;
   color: var(--muted);
+  overflow-wrap: break-word;
+  word-break: normal;
 }
 
 .info-icon {
@@ -2527,6 +2534,20 @@ body:not(.dark) .result-box.locked:hover {
     width: 100% !important;
   }
 
+  .info-box {
+    padding: 12px 14px !important;
+  }
+
+  .social-links-grid, .clubs-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 16px !important;
+  }
+
+  .dc-card {
+    max-width: 100% !important;
+    padding: 16px !important;
+  }
+
   .person-card img,
   .developer-card img {
     width: 100%;
@@ -3108,7 +3129,7 @@ html.user-logged-in #statusCard {
 /* --- Dhaka College Social & Clubs Pages --- */
 .social-links-grid, .clubs-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 28px;
   margin-top: 32px;
   justify-content: center;
