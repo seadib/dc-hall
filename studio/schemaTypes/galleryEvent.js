@@ -108,61 +108,69 @@ export default defineType({
       title: 'Location Name / স্থানের নাম',
       type: 'string',
       group: 'info',
-      description: 'ইভেন্টের স্থান যেমন: "International Hall, Dhaka College"',
-      placeholder: 'International Hall, Dhaka College',
+      description: 'ইভেন্টের স্থান যেমন: "Rajshahi" বা "Padma Garden, Rajshahi"। ওয়েবসাইটে এই নামের উপর ক্লিক করলে স্বয়ংক্রিয়ভাবে গুগল ম্যাপে সার্চ হবে।',
+      placeholder: 'Rajshahi',
     }),
     defineField({
       name: 'location_map_url',
-      title: 'Google Maps URL / গুগল ম্যাপ লিংক',
+      title: 'Google Maps URL (ঐচ্ছিক)',
       type: 'url',
       group: 'info',
-      description: 'Google Maps থেকে যেকোনো লিংক দিন — সাধারণ লিংক স্বয়ংক্রিয়ভাবে embed এ রূপান্তর হবে। যেমন: https://maps.google.com/... বা embed URL',
+      hidden: true,
+      description: 'Optional legacy map URL.',
     }),
 
     // ═══════════════════════════════════════════
     // Photos & Videos
     // ═══════════════════════════════════════════
     defineField({
+      name: 'media_order',
+      title: 'Media Display Order (প্রদর্শন ক্রম)',
+      type: 'string',
+      group: 'media',
+      description: 'ইভেন্ট পেজে কোনটি আগে দেখাবে: ছবি নাকি ভিডিও?',
+      options: {
+        list: [
+          { title: 'Photos First, then Videos (আগে ফটো, পরে ভিডিও)', value: 'photos_first' },
+          { title: 'Videos First, then Photos (আগে ভিডিও, পরে ফটো)', value: 'videos_first' },
+        ],
+        layout: 'radio',
+      },
+      initialValue: 'photos_first',
+    }),
+    defineField({
       name: 'photos',
-      title: 'Event Photos (ইভেন্ট ফটোসমূহ)',
+      title: 'Event Photos (ইভেন্ট ফটোসমূহ — একসাথে ড্র্যাগ ও ড্রপ)',
       type: 'array',
       group: 'media',
-      description: '📸 একসাথে অনেক ফটো ড্র্যাগ করে আপলোড করুন। ড্র্যাগ করে ক্রম পরিবর্তন করুন। প্রথম ফটোটি ইভেন্ট কভার হিসেবে ব্যবহৃত হবে। প্রতিটি ফটোতে ক্লিক করে ক্যাপশন যোগ করুন।',
+      description: '📸 একসাথে যত ইচ্ছা ছবি ড্র্যাগ করে এখানে ছেড়ে দিন (Bulk Drag & Drop)। ড্র্যাগ করে ক্রম পরিবর্তন করুন। প্রথম ছবিটি কভার ফটো হিসেবে কাজ করবে। ছবিতে ক্লিক করে ক্যাপশন দিন।',
       of: [
         {
-          type: 'object',
-          name: 'eventPhoto',
-          title: 'Photo',
+          type: 'image',
+          options: { hotspot: true },
           fields: [
-            defineField({
-              name: 'photo',
-              title: 'Photo / ফটো',
-              type: 'image',
-              options: { hotspot: true },
-              validation: (Rule) => Rule.required(),
-            }),
-            defineField({
+            {
               name: 'caption_en',
               title: 'Caption (English)',
               type: 'string',
-            }),
-            defineField({
+            },
+            {
               name: 'caption_bn',
               title: 'ক্যাপশন (বাংলা)',
               type: 'string',
-            }),
+            },
           ],
           preview: {
             select: {
               title: 'caption_en',
               subtitle: 'caption_bn',
-              media: 'photo',
+              media: 'asset',
             },
             prepare({ title, subtitle, media }) {
               return {
-                title: title || 'Photo',
+                title: title || 'Event Photo',
                 subtitle: subtitle || '',
-                media: (media && typeof media === 'object' && media.asset) ? media : undefined,
+                media,
               }
             },
           },
@@ -245,15 +253,16 @@ export default defineType({
     select: {
       title: 'title_en',
       subtitle: 'date',
-      media: 'photos.0.photo',
+      media: 'photos.0',
       batches: 'batches',
     },
     prepare({ title, subtitle, media, batches }) {
       const batchLabel = batches && batches.length ? batches.join(', ') : ''
+      const thumb = media?.asset ? media : (media?.photo?.asset ? media.photo : (media?.photo || media))
       return {
         title: title || 'Gallery Event',
         subtitle: `${batchLabel ? batchLabel + ' · ' : ''}${subtitle || ''}`,
-        media: (media && typeof media === 'object' && media.asset) ? media : undefined,
+        media: (thumb && typeof thumb === 'object') ? thumb : undefined,
       }
     },
   },

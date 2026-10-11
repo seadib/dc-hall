@@ -15,56 +15,48 @@ export default defineType({
     }),
     defineField({
       name: 'photos',
-      title: 'Gallery Photos (গ্যালারি ফটোসমূহ)',
+      title: 'Gallery Photos (গ্যালারি ফটোসমূহ — একসাথে ড্র্যাগ ও ড্রপ)',
       type: 'array',
-      description: '📸 একসাথে অনেক ছবি ড্র্যাগ করে আপলোড করুন। পরে ড্র্যাগ করে ক্রম পরিবর্তন করুন। প্রতিটি ছবিতে ক্লিক করে নাম ও বিবরণ যোগ করতে পারবেন।',
+      description: '📸 একসাথে যত ইচ্ছা ছবি ড্র্যাগ করে এখানে ছেড়ে দিন (Bulk Drag & Drop)। ড্র্যাগ করে ক্রম পরিবর্তন করুন। প্রতিটি ছবিতে ক্লিক করে নাম ও বিবরণ যোগ করতে পারবেন।',
       of: [
         {
-          type: 'object',
-          name: 'galleryPhoto',
-          title: 'Photo',
+          type: 'image',
+          options: { hotspot: true },
           fields: [
-            defineField({
-              name: 'photo',
-              title: 'Photo / ফটো',
-              type: 'image',
-              options: { hotspot: true },
-              validation: (Rule) => Rule.required(),
-            }),
-            defineField({
+            {
               name: 'title_en',
               title: 'Title / Name (English)',
               type: 'string',
-            }),
-            defineField({
+            },
+            {
               name: 'title_bn',
               title: 'শিরোনাম / নাম (বাংলা)',
               type: 'string',
-            }),
-            defineField({
+            },
+            {
               name: 'description_en',
               title: 'Description (English)',
               type: 'text',
               rows: 2,
-            }),
-            defineField({
+            },
+            {
               name: 'description_bn',
               title: 'বিবরণ (বাংলা)',
               type: 'text',
               rows: 2,
-            }),
+            },
           ],
           preview: {
             select: {
               title: 'title_en',
               subtitle: 'title_bn',
-              media: 'photo',
+              media: 'asset',
             },
             prepare({ title, subtitle, media }) {
               return {
-                title: title || 'Photo',
+                title: title || 'Gallery Photo',
                 subtitle: subtitle || '',
-                media: (media && typeof media === 'object' && media.asset) ? media : undefined,
+                media,
               }
             },
           },

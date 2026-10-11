@@ -6,13 +6,16 @@ import {
   PackageIcon,
   ImageIcon,
   CodeIcon,
+  CalendarIcon,
 } from '@sanity/icons'
 
 export const structure = (S) =>
   S.list()
     .title('Hall Management Content')
     .items([
-      // 1. Singletons (Direct Document Forms)
+      // ═══════════════════════════════════════════
+      // 1. Site-wide Singletons
+      // ═══════════════════════════════════════════
       S.listItem()
         .title('Site Settings & Privacy (সাইট সেটিংস)')
         .icon(CogIcon)
@@ -52,7 +55,9 @@ export const structure = (S) =>
 
       S.divider(),
 
-      // 2. Collection Lists
+      // ═══════════════════════════════════════════
+      // 2. Students & Rooms
+      // ═══════════════════════════════════════════
       S.listItem()
         .title('Students Directory (শিক্ষার্থী তালিকা)')
         .icon(UsersIcon)
@@ -69,12 +74,25 @@ export const structure = (S) =>
             .title('All Rooms (সকল রুম)')
             .defaultOrdering([{ field: 'room_no', direction: 'asc' }])
         ),
+
+      S.divider(),
+
+      // ═══════════════════════════════════════════
+      // 3. Gallery — Events + Photo Items
+      // ═══════════════════════════════════════════
       S.listItem()
-        .title('Photo Gallery (ফটো গ্যালারি)')
+        .title('Gallery Events (ইভেন্ট গ্যালারি)')
+        .icon(CalendarIcon)
+        .child(
+          S.documentTypeList('galleryEvent')
+            .title('All Events (সকল ইভেন্ট)')
+            .defaultOrdering([{ field: 'date', direction: 'desc' }])
+        ),
+      S.listItem()
+        .title('Gallery Items (ফটো গ্যালারি)')
         .icon(ImageIcon)
         .child(
           S.documentTypeList('galleryItem')
-            .title('Gallery Items (ফটো গ্যালারি)')
-            .defaultOrdering([{ field: 'position', direction: 'asc' }])
+            .title('Photo Collections (ফটো কালেকশন)')
         ),
     ])

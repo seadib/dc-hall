@@ -2662,12 +2662,13 @@ async function loadCmsContent() {
         batches: ev.batches || [],
         description_en: ev.description_en || '',
         description_bn: ev.description_bn || '',
+        media_order: ev.media_order || 'photos_first',
         location_name: ev.location_name || '',
         location_map_url: ev.location_map_url || '',
         photos: (ev.photos || []).map(p => ({
-          photo: p.photo || '',
-          caption_en: p.caption_en || '',
-          caption_bn: p.caption_bn || '',
+          photo: p.photo || p.asset?.url || (typeof p === 'string' ? p : ''),
+          caption_en: p.caption_en || p.title_en || '',
+          caption_bn: p.caption_bn || p.title_bn || '',
         })),
         videos: (ev.videos || []).map(v => ({
           url: v.url ? convertToEmbedUrl(v.url) : (v.video_file_url || ''),
@@ -4896,6 +4897,15 @@ function autoFormatDate(dateStr) {
   };
 }
 
+const GALLERY_ICONS = {
+  calendar: `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>`,
+  batch: `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>`,
+  photos: `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>`,
+  videos: `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>`,
+  location: `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>`,
+  external: `<svg class="external-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>`
+};
+
 let currentGalleryData = null;
 
 async function renderGalleryPage(galleryData) {
@@ -4952,9 +4962,8 @@ async function renderGalleryPage(galleryData) {
               <span class="dcsc-eyebrow">${currentLang === "bn" ? "ইভেন্ট গ্যালারি" : "EVENT GALLERY"}</span>
               <h2 class="dcsc-event-title">${title}</h2>
               <div class="dcsc-event-meta" style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px;">
-                ${date ? `<span style="font-size: 0.78rem; color: var(--muted); background: var(--surface); padding: 3px 10px; border-radius: 999px; border: 1px solid var(--border); font-weight: 600;">📅 ${date}</span>` : ""}
-                ${batchLabel ? `<span style="font-size: 0.78rem; color: var(--accent); background: var(--accent-soft); padding: 3px 10px; border-radius: 999px; font-weight: 700;">🎓 ${batchLabel}</span>` : ""}
-                ${ev.location_name ? `<span style="font-size: 0.78rem; color: var(--muted); background: var(--surface); padding: 3px 10px; border-radius: 999px; border: 1px solid var(--border); font-weight: 600;">📍 ${ev.location_name}</span>` : ""}
+                ${date ? `<span class="event-meta-pill event-meta-date" style="padding: 3px 10px; font-size: 0.78rem;">${GALLERY_ICONS.calendar}<span>${date}</span></span>` : ""}
+                ${batchLabel ? `<span class="event-meta-pill event-meta-batch" style="padding: 3px 10px; font-size: 0.78rem;">${GALLERY_ICONS.batch}<span>${batchLabel}</span></span>` : ""}
               </div>
             </div>
           </div>
@@ -5062,6 +5071,77 @@ function showEventDetailView(eventId) {
   const date = currentLang === "bn" ? (ev.date_formatted_bn || ev.date_formatted_en) : (ev.date_formatted_en || ev.date_formatted_bn);
   const batchLabel = ev.batches && ev.batches.length ? ev.batches.join(' · ') : '';
 
+  const photos = ev.photos || [];
+  const videos = ev.videos || [];
+  const isVideosFirst = ev.media_order === 'videos_first';
+
+  // Section 1: Photos block
+  const photosSectionHtml = photos.length ? `
+    <div class="event-photos-wrap">
+      <div class="event-section-header">
+        <div class="event-section-title-wrap">
+          <div class="dcsc-accent-bar"></div>
+          <div>
+            <span class="dcsc-eyebrow">${currentLang === "bn" ? "ছবি সংগ্রহ" : "PHOTOS"}</span>
+            <h3 class="event-section-title">${currentLang === "bn" ? "ইভেন্ট ফটোসমূহ" : "Event Photos"}</h3>
+          </div>
+        </div>
+        <span class="event-section-badge">${photos.length} ${currentLang === "bn" ? "টি ছবি" : "Photos"}</span>
+      </div>
+      <div class="event-detail-grid">
+        ${photos.map((p, pIdx) => {
+          const photoSrc = normalizeCmsPath(p.photo) || "images/hostel-building.jpg";
+          const caption = currentLang === "bn" ? (p.caption_bn || p.caption_en || title) : (p.caption_en || p.caption_bn || title);
+          return `
+            <article class="dcsc-photo-card" data-aos="fade-up" data-aos-delay="${(pIdx % 6) * 50}">
+              <button type="button" data-gallery-src="${photoSrc}" data-gallery-title="${caption}" data-gallery-desc="${title}">
+                <img src="${photoSrc}" alt="${caption}" loading="lazy">
+              </button>
+            </article>
+          `;
+        }).join("")}
+      </div>
+    </div>
+  ` : "";
+
+  // Section 2: Videos block
+  const videosSectionHtml = videos.length ? `
+    <div class="event-video-wrap">
+      <div class="event-section-header">
+        <div class="event-section-title-wrap">
+          <div class="dcsc-accent-bar video-bar"></div>
+          <div>
+            <span class="dcsc-eyebrow">${currentLang === "bn" ? "ভিডিও সংগ্রহ" : "VIDEOS"}</span>
+            <h3 class="event-section-title">${currentLang === "bn" ? "ইভেন্ট ভিডিও" : "Event Videos"}</h3>
+          </div>
+        </div>
+        <span class="event-section-badge">${videos.length} ${currentLang === "bn" ? "টি ভিডিও" : "Videos"}</span>
+      </div>
+      <div class="event-video-grid">
+        ${videos.map(v => {
+          if (v.is_direct) {
+            return `
+              <div class="event-video-card">
+                <video src="${v.url}" controls preload="metadata"></video>
+              </div>
+            `;
+          } else {
+            return `
+              <div class="event-video-card">
+                <iframe src="${v.url}" allowfullscreen allow="autoplay; encrypted-media; fullscreen" loading="lazy"></iframe>
+              </div>
+            `;
+          }
+        }).join("")}
+      </div>
+    </div>
+  ` : "";
+
+  // Order based on admin setting (photos first vs videos first)
+  const mediaContentHtml = isVideosFirst
+    ? `${videosSectionHtml}${photosSectionHtml}`
+    : `${photosSectionHtml}${videosSectionHtml}`;
+
   detailView.innerHTML = `
     <div class="event-detail-header">
       <button type="button" class="event-back-btn" id="eventBackBtn">
@@ -5070,61 +5150,20 @@ function showEventDetailView(eventId) {
       <span class="dcsc-eyebrow">${currentLang === "bn" ? "ইভেন্ট শোকেস" : "EVENT SHOWCASE"}</span>
       <h1 class="event-detail-title">${title}</h1>
       <div class="event-detail-meta">
-        ${date ? `<span style="font-size: 0.88rem; color: var(--muted); background: var(--surface); padding: 5px 14px; border-radius: 999px; border: 1px solid var(--border); font-weight: 600;">📅 ${date}</span>` : ""}
-        ${batchLabel ? `<span style="font-size: 0.88rem; color: var(--accent); background: var(--accent-soft); padding: 5px 14px; border-radius: 999px; font-weight: 700;">🎓 ${batchLabel}</span>` : ""}
-        <span style="font-size: 0.88rem; color: var(--accent); background: var(--accent-soft); padding: 5px 14px; border-radius: 999px; font-weight: 700;">${(ev.photos || []).length} ${currentLang === "bn" ? "টি ফটো" : "Photos"}</span>
-        ${ev.location_name ? `<span style="font-size: 0.88rem; color: var(--muted); background: var(--surface); padding: 5px 14px; border-radius: 999px; border: 1px solid var(--border); font-weight: 600;">📍 ${ev.location_name}</span>` : ""}
+        ${date ? `<span class="event-meta-pill event-meta-date">${GALLERY_ICONS.calendar}<span>${date}</span></span>` : ""}
+        ${batchLabel ? `<span class="event-meta-pill event-meta-batch">${GALLERY_ICONS.batch}<span>${batchLabel}</span></span>` : ""}
+        ${photos.length ? `<span class="event-meta-pill event-meta-count">${GALLERY_ICONS.photos}<span>${photos.length} ${currentLang === "bn" ? "টি ফটো" : "Photos"}</span></span>` : ""}
+        ${videos.length ? `<span class="event-meta-pill event-meta-count">${GALLERY_ICONS.videos}<span>${videos.length} ${currentLang === "bn" ? "টি ভিডিও" : "Videos"}</span></span>` : ""}
+        ${ev.location_name ? `
+          <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ev.location_name)}" target="_blank" rel="noopener noreferrer" class="event-meta-pill event-meta-location" title="${currentLang === "bn" ? "গুগল ম্যাপে অনুসন্ধান করুন" : "Search on Google Maps"}">
+            ${GALLERY_ICONS.location}<span>${ev.location_name}</span>${GALLERY_ICONS.external}
+          </a>
+        ` : ""}
       </div>
       ${desc ? `<p class="event-detail-desc">${desc}</p>` : ""}
     </div>
 
-    ${ev.videos && ev.videos.length ? `
-      <div class="event-video-wrap">
-        <h3 style="margin-bottom: 16px; font-size: 1.25rem;">${currentLang === "bn" ? "ইভেন্ট ভিডিও" : "Event Videos"}</h3>
-        <div class="event-video-grid">
-          ${ev.videos.map(v => {
-            if (v.is_direct) {
-              // Direct uploaded video — use <video> tag
-              return `
-                <div style="border-radius: 14px; overflow: hidden; border: 1px solid var(--border); aspect-ratio: 16/9; background: #000;">
-                  <video src="${v.url}" style="width: 100%; height: 100%; object-fit: contain;" controls preload="metadata"></video>
-                </div>
-              `;
-            } else {
-              // Embed URL — use <iframe>
-              return `
-                <div style="border-radius: 14px; overflow: hidden; border: 1px solid var(--border); aspect-ratio: 16/9; background: #000;">
-                  <iframe src="${v.url}" style="width: 100%; height: 100%; border: 0;" allowfullscreen allow="autoplay; encrypted-media"></iframe>
-                </div>
-              `;
-            }
-          }).join("")}
-        </div>
-      </div>
-    ` : ""}
-
-    ${ev.location_map_url ? `
-      <div style="margin: 24px 0;">
-        <h3 style="margin-bottom: 12px; font-size: 1.15rem;">📍 ${currentLang === "bn" ? "ইভেন্ট লোকেশন" : "Event Location"}</h3>
-        <div style="border-radius: 14px; overflow: hidden; border: 1px solid var(--border); aspect-ratio: 16/7; background: var(--surface);">
-          <iframe src="${convertToEmbedUrl(ev.location_map_url)}" style="width: 100%; height: 100%; border: 0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-      </div>
-    ` : ""}
-
-    <div class="event-detail-grid">
-      ${(ev.photos || []).map((p, pIdx) => {
-        const photoSrc = normalizeCmsPath(p.photo) || "images/hostel-building.jpg";
-        const caption = currentLang === "bn" ? (p.caption_bn || p.caption_en || title) : (p.caption_en || p.caption_bn || title);
-        return `
-          <article class="dcsc-photo-card" data-aos="fade-up" data-aos-delay="${(pIdx % 6) * 50}">
-            <button type="button" data-gallery-src="${photoSrc}" data-gallery-title="${caption}" data-gallery-desc="${title}">
-              <img src="${photoSrc}" alt="${caption}" loading="lazy">
-            </button>
-          </article>
-        `;
-      }).join("")}
-    </div>
+    ${mediaContentHtml}
   `;
 
   mainView.style.display = "none";

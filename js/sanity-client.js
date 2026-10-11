@@ -76,9 +76,11 @@ const SANITY_GROQ_QUERY = `{
   },
   "gallery": *[_type == "galleryItem" && !(_id in path("drafts.**"))][0]{
     "photos": photos[]{
-      "photo": coalesce(photo.asset->url, photo),
+      "photo": coalesce(asset->url, photo.asset->url, photo),
       title_en,
       title_bn,
+      caption_en,
+      caption_bn,
       description_en,
       description_bn
     }
@@ -86,9 +88,10 @@ const SANITY_GROQ_QUERY = `{
   "galleryEvents": *[_type == "galleryEvent" && !(_id in path("drafts.**"))] | order(date desc, position asc){
     ...,
     "event_id": event_id.current,
+    media_order,
     "photos": photos[]{
       ...,
-      "photo": coalesce(photo.asset->url, photo)
+      "photo": coalesce(asset->url, photo.asset->url, photo)
     },
     "videos": videos[]{
       ...,
