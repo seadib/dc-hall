@@ -104,11 +104,19 @@ export default defineType({
       group: 'info',
     }),
     defineField({
+      name: 'locations',
+      title: 'Event Locations / একাধিক স্থান যোগ করুন',
+      type: 'array',
+      group: 'info',
+      description: 'ইভেন্টে একাধিক স্থান/স্পট থাকলে এখানে এক এক করে যোগ করুন (যেমন: "Rajshahi College", "Padma Garden", "Ruet")। ওয়েবসাইটে প্রতিটিতে আলাদা লিংক থাকবে যা ক্লিক করলে গুগল ম্যাপে সেই স্থানটি সরাসরি সার্চ হবে।',
+      of: [{ type: 'string' }],
+    }),
+    defineField({
       name: 'location_name',
-      title: 'Location Name / স্থানের নাম',
+      title: 'Single Location Name (অথবা একটি স্থান লিখুন)',
       type: 'string',
       group: 'info',
-      description: 'ইভেন্টের স্থান যেমন: "Rajshahi" বা "Padma Garden, Rajshahi"। ওয়েবসাইটে এই নামের উপর ক্লিক করলে স্বয়ংক্রিয়ভাবে গুগল ম্যাপে সার্চ হবে।',
+      description: 'যদি মাত্র একটি স্থান থাকে তবে এখানে লিখুন (উপরে একাধিক দিলে এটি খালি রাখতে পারেন)।',
       placeholder: 'Rajshahi',
     }),
     defineField({

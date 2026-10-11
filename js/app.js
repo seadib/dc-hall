@@ -2663,6 +2663,9 @@ async function loadCmsContent() {
         description_en: ev.description_en || '',
         description_bn: ev.description_bn || '',
         media_order: ev.media_order || 'photos_first',
+        locations: (ev.locations && Array.isArray(ev.locations) && ev.locations.length)
+          ? ev.locations.filter(Boolean)
+          : (ev.location_name ? [ev.location_name] : []),
         location_name: ev.location_name || '',
         location_map_url: ev.location_map_url || '',
         photos: (ev.photos || []).map(p => ({
@@ -2670,23 +2673,12 @@ async function loadCmsContent() {
           caption_en: p.caption_en || p.title_en || '',
           caption_bn: p.caption_bn || p.title_bn || '',
         })),
-        videos: (ev.videos || []).map(v => {
-          const rawUrl = (v.url || '').trim();
-          const directFileUrl = v.video_file_url || '';
-          const driveId = getGoogleDriveFileId(rawUrl);
-          return {
-            url: rawUrl ? convertToEmbedUrl(rawUrl) : directFileUrl,
-            raw_url: rawUrl,
-            is_direct: !rawUrl && !!directFileUrl,
-            is_drive: !!driveId,
-            drive_id: driveId,
-            drive_stream_url: driveId ? `https://drive.usercontent.google.com/download?id=${driveId}&export=download` : '',
-            drive_preview_url: driveId ? `https://drive.google.com/file/d/${driveId}/preview` : '',
-            drive_view_url: driveId ? `https://drive.google.com/file/d/${driveId}/view` : '',
-            title_en: v.title_en || '',
-            title_bn: v.title_bn || '',
-          };
-        }).filter(v => v.url || v.is_drive || v.is_direct),
+        videos: (ev.videos || []).map(v => ({
+          url: v.url ? convertToEmbedUrl(v.url) : (v.video_file_url || ''),
+          is_direct: !v.url && !!v.video_file_url,
+          title_en: v.title_en || '',
+          title_bn: v.title_bn || '',
+        })).filter(v => v.url),
       };
     });
 
@@ -5267,35 +5259,13 @@ function showEventDetailView(eventId) {
           if (v.is_direct) {
             return `
               <div class="event-video-card">
-                <video src="${v.url}" controls preload="metadata" playsinline webkit-playsinline></video>
-              </div>
-            `;
-          } else if (v.is_drive) {
-            return `
-              <div class="event-video-card event-video-drive">
-                <video
-                  src="${v.drive_stream_url}"
-                  controls
-                  preload="metadata"
-                  playsinline
-                  webkit-playsinline
-                  onerror="handleDriveVideoError(this, '${v.drive_preview_url}', '${v.drive_view_url}')"
-                ></video>
-                <div class="event-video-bar">
-                  <span class="event-video-pill">
-                    <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M7.71 3.5L1.15 15l3.43 6 6.55-11.5M9.73 15L13.16 21h10.28l-3.43-6M22.29 13.5L15.71 2h-6.85l6.57 11.5"/></svg>
-                    <span>Google Drive</span>
-                  </span>
-                  <a href="${v.drive_view_url}" target="_blank" rel="noopener noreferrer" class="event-video-link">
-                    <span>${currentLang === "bn" ? "ড্রাইভে দেখুন" : "Open in Drive"}</span> &nearr;
-                  </a>
-                </div>
+                <video src="${v.url}" style="width: 100%; height: 100%; object-fit: contain;" controls preload="metadata"></video>
               </div>
             `;
           } else {
             return `
               <div class="event-video-card">
-                <iframe src="${v.url}" allowfullscreen allow="autoplay; encrypted-media; fullscreen" loading="lazy"></iframe>
+                <iframe src="${v.url}" style="width: 100%; height: 100%; border: 0;" allowfullscreen allow="autoplay; encrypted-media"></iframe>
               </div>
             `;
           }
@@ -5309,6 +5279,10 @@ function showEventDetailView(eventId) {
     ? `${videosSectionHtml}${photosSectionHtml}`
     : `${photosSectionHtml}${videosSectionHtml}`;
 
+  const allLocations = (ev.locations && Array.isArray(ev.locations) && ev.locations.length)
+    ? ev.locations.filter(Boolean)
+    : (ev.location_name ? [ev.location_name] : []);
+
   detailView.innerHTML = `
     <div class="event-detail-header">
       <button type="button" class="event-back-btn" id="eventBackBtn">
@@ -5321,11 +5295,11 @@ function showEventDetailView(eventId) {
         ${batchLabel ? `<span class="event-meta-pill event-meta-batch">${GALLERY_ICONS.batch}<span>${batchLabel}</span></span>` : ""}
         ${photos.length ? `<span class="event-meta-pill event-meta-count">${GALLERY_ICONS.photos}<span>${photos.length} ${currentLang === "bn" ? "টি ফটো" : "Photos"}</span></span>` : ""}
         ${videos.length ? `<span class="event-meta-pill event-meta-count">${GALLERY_ICONS.videos}<span>${videos.length} ${currentLang === "bn" ? "টি ভিডিও" : "Videos"}</span></span>` : ""}
-        ${ev.location_name ? `
-          <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ev.location_name)}" target="_blank" rel="noopener noreferrer" class="event-meta-pill event-meta-location" title="${currentLang === "bn" ? "গুগল ম্যাপে অনুসন্ধান করুন" : "Search on Google Maps"}">
-            ${GALLERY_ICONS.location}<span>${ev.location_name}</span>${GALLERY_ICONS.external}
+        ${allLocations.map(loc => `
+          <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(loc)}" target="_blank" rel="noopener noreferrer" class="event-meta-pill event-meta-location" title="${currentLang === "bn" ? "গুগল ম্যাপে অনুসন্ধান করুন" : "Search on Google Maps"}">
+            ${GALLERY_ICONS.location}<span>${loc}</span>${GALLERY_ICONS.external}
           </a>
-        ` : ""}
+        `).join("")}
       </div>
       ${desc ? `<p class="event-detail-desc">${desc}</p>` : ""}
     </div>
