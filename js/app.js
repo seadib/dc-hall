@@ -3176,56 +3176,89 @@ function renderFooter() {
   const developerLink = `<a class="footer-developer-link" href="developer.html">Abdullah Al Adib</a>`;
   const about = footerAboutParts();
 
-  const defaultQuickLinks = [
-    { title_en: "Students Preview", title_bn: "শিক্ষার্থী প্রিভিউ", url: "index.html#students-preview", is_active: true },
-    { title_en: "Roommate Preview", title_bn: "রুমমেট প্রিভিউ", url: "index.html#roommates-preview", is_active: true },
-    { title_en: "Hall Super", title_bn: "হল সুপার", url: "index.html#hallsuper-preview", is_active: true },
-    { title_en: "Gallery", title_bn: "গ্যালারি", url: "index.html#gallery-preview", is_active: true },
-    { title_en: "College Resources", title_bn: "কলেজ রিসোর্স", url: "index.html#dc-resources", is_active: true },
-    { title_en: "Location", title_bn: "অবস্থান", url: "index.html#location", is_active: true }
-  ];
+  let columnsHtml = "";
 
-  const quickLinksList = (cmsSettings && Array.isArray(cmsSettings.quick_links) && cmsSettings.quick_links.length > 0)
-    ? cmsSettings.quick_links
-    : defaultQuickLinks;
+  if (cmsSettings && Array.isArray(cmsSettings.footer_columns) && cmsSettings.footer_columns.length > 0) {
+    // Dynamic columns from Sanity CMS
+    columnsHtml = cmsSettings.footer_columns
+      .filter((col) => col && col.is_active !== false)
+      .map((col) => {
+        const colTitle = currentLang === "bn" && col.title_bn ? col.title_bn : (col.title_en || "Links");
+        const linksList = Array.isArray(col.links) ? col.links : [];
+        const linksHtml = linksList
+          .filter((l) => l && l.is_active !== false)
+          .map((l) => {
+            const label = currentLang === "bn" && l.title_bn ? l.title_bn : (l.title_en || l.title || "");
+            const href = l.url || l.link || "#";
+            const target = l.open_in_new_tab ? ` target="_blank" rel="noopener"` : "";
+            return `<a href="${href}"${target}>${label}</a>`;
+          })
+          .join("\n      ");
+        return `
+          <div class="footer-links">
+            <h3>${colTitle}</h3>
+            ${linksHtml}
+          </div>
+        `;
+      })
+      .join("\n");
+  } else {
+    // Default fallback columns
+    const defaultQuickLinks = [
+      { title_en: "Students Preview", title_bn: "শিক্ষার্থী প্রিভিউ", url: "index.html#students-preview", is_active: true },
+      { title_en: "Roommate Preview", title_bn: "রুমমেট প্রিভিউ", url: "index.html#roommates-preview", is_active: true },
+      { title_en: "Hall Super", title_bn: "হল সুপার", url: "index.html#hallsuper-preview", is_active: true },
+      { title_en: "Gallery", title_bn: "গ্যালারি", url: "index.html#gallery-preview", is_active: true },
+      { title_en: "College Resources", title_bn: "কলেজ রিসোর্স", url: "index.html#dc-resources", is_active: true },
+      { title_en: "Location", title_bn: "অবস্থান", url: "index.html#location", is_active: true }
+    ];
 
-  const quickLinksHtml = quickLinksList
-    .filter((item) => item && item.is_active !== false)
-    .map((item) => {
-      const label = currentLang === "bn" && item.title_bn ? item.title_bn : (item.title_en || item.title || "");
-      const href = item.url || item.link || "#";
-      const target = item.open_in_new_tab ? ` target="_blank" rel="noopener"` : "";
-      return `<a href="${href}"${target}>${label}</a>`;
-    })
-    .join("\n      ");
+    const quickLinksList = (cmsSettings && Array.isArray(cmsSettings.quick_links) && cmsSettings.quick_links.length > 0)
+      ? cmsSettings.quick_links
+      : defaultQuickLinks;
+
+    const quickLinksHtml = quickLinksList
+      .filter((item) => item && item.is_active !== false)
+      .map((item) => {
+        const label = currentLang === "bn" && item.title_bn ? item.title_bn : (item.title_en || item.title || "");
+        const href = item.url || item.link || "#";
+        const target = item.open_in_new_tab ? ` target="_blank" rel="noopener"` : "";
+        return `<a href="${href}"${target}>${label}</a>`;
+      })
+      .join("\n      ");
+
+    columnsHtml = `
+      <div class="footer-links">
+        <h3>${t("footer.quickLinks")}</h3>
+        ${quickLinksHtml}
+      </div>
+      <div class="footer-links">
+        <h3>${t("footer.studentLinks")}</h3>
+        <a href="students.html">${t("nav.students")}</a>
+        <a href="roommates.html">${t("nav.roommates")}</a>
+        <a href="results.html">${t("nav.results")}</a>
+        <a href="profile.html">${currentLang === "bn" ? "প্রোফাইল / লগইন" : "Profile / Login"}</a>
+      </div>
+      <div class="footer-links">
+        <h3>${t("footer.hallLinks")}</h3>
+        <a href="hostel.html">${t("nav.hostel")}</a>
+        <a href="hostel.html#hallsuper">${t("nav.hallSuper")}</a>
+        <a href="hostel.html#famous">${currentLang === "bn" ? "বিশিষ্ট প্রাক্তনী" : "Notable Alumni"}</a>
+        <a href="gallery.html">${t("nav.gallery")}</a>
+        <a href="dc-clubs.html">${currentLang === "bn" ? "কলেজ ক্লাবসমূহ" : "College Clubs"}</a>
+        <a href="dc-social.html">${currentLang === "bn" ? "সোশ্যাল মিডিয়া" : "Social Links"}</a>
+        <a href="developer.html">${t("nav.developer")}</a>
+        <a href="https://dchall.sanity.studio" target="_blank" rel="noopener">${currentLang === "bn" ? "অ্যাডমিন প্যানেল" : "Admin Panel"}</a>
+      </div>
+    `;
+  }
 
   footer.innerHTML = `
     <div class="footer-brand">
       <div class="footer-logo"><img src="images/logo.png" alt="International Hall logo" loading="lazy"><strong>${t("nav.logo")}</strong></div>
       <p class="footer-about">${about.prefix} ${developerLink}. ${about.suffix}</p>
     </div>
-    <div class="footer-links">
-      <h3>${t("footer.quickLinks")}</h3>
-      ${quickLinksHtml}
-    </div>
-    <div class="footer-links">
-      <h3>${t("footer.studentLinks")}</h3>
-      <a href="students.html">${t("nav.students")}</a>
-      <a href="roommates.html">${t("nav.roommates")}</a>
-      <a href="results.html">${t("nav.results")}</a>
-      <a href="profile.html">${currentLang === "bn" ? "প্রোফাইল / লগইন" : "Profile / Login"}</a>
-    </div>
-    <div class="footer-links">
-      <h3>${t("footer.hallLinks")}</h3>
-      <a href="hostel.html">${t("nav.hostel")}</a>
-      <a href="hostel.html#hallsuper">${t("nav.hallSuper")}</a>
-      <a href="hostel.html#famous">${currentLang === "bn" ? "বিশিষ্ট প্রাক্তনী" : "Notable Alumni"}</a>
-      <a href="gallery.html">${t("nav.gallery")}</a>
-      <a href="dc-clubs.html">${currentLang === "bn" ? "কলেজ ক্লাবসমূহ" : "College Clubs"}</a>
-      <a href="dc-social.html">${currentLang === "bn" ? "সোশ্যাল মিডিয়া" : "Social Links"}</a>
-      <a href="developer.html">${t("nav.developer")}</a>
-      <a href="admin/index.html" target="_blank" rel="noopener">${currentLang === "bn" ? "অ্যাডমিন প্যানেল" : "Admin Panel"}</a>
-    </div>
+    ${columnsHtml}
   `;
 }
 

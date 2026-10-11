@@ -187,64 +187,167 @@ export default defineType({
     // ⑤ Footer & Quick Links
     // ═══════════════════════════════════════════
     defineField({
-      name: 'quick_links',
-      title: 'Footer Quick Links (কুইক লিংক ব্যবস্থাপনা)',
+      name: 'footer_columns',
+      title: 'Footer Columns & Links (ফুটার কলাম ও লিংক ব্যবস্থাপনা)',
       type: 'array',
       group: 'footer',
-      description: 'নতুন লিংক যোগ করতে পারেন, ড্র্যাগ করে উপর-নিচ সাজাতে পারেন, এবং সাময়িকভাবে অন/অফ (Active/Inactive) করতে পারেন।',
+      description: '↕️ ড্র্যাগ করে কলামগুলোর ক্রম সাজান। নতুন কলাম যোগ করতে (+ Add item) ক্লিক করুন। প্রতিটি কলামে ইচ্ছামতো লিংক যোগ ও ড্র্যাগ করে সাজানো যাবে।',
       of: [
         {
           type: 'object',
-          title: 'Quick Link',
+          name: 'footerColumn',
+          title: 'Footer Column (কলাম)',
           fields: [
-            {
+            defineField({
               name: 'title_en',
-              title: 'Link Title EN (ইংরেজি শিরোনাম)',
+              title: 'Column Title EN (ইংরেজি শিরোনাম)',
               type: 'string',
+              placeholder: 'e.g. Quick Links / Student / Hall',
               validation: (Rule) => Rule.required(),
-            },
-            {
+            }),
+            defineField({
               name: 'title_bn',
-              title: 'Link Title BN (বাংলা শিরোনাম)',
+              title: 'কলাম শিরোনাম বাংলা (ঐচ্ছিক)',
               type: 'string',
-            },
-            {
-              name: 'url',
-              title: 'Target URL (লিংক যেমন: index.html#location বা পূর্ণ লিংক)',
-              type: 'string',
-              validation: (Rule) => Rule.required(),
-            },
-            {
+              placeholder: 'যেমন: কুইক লিংক / শিক্ষার্থী / হল',
+            }),
+            defineField({
               name: 'is_active',
-              title: 'Status (ON = সাইটে দৃশ্যমান, OFF = সাময়িকভাবে লুকানো)',
+              title: 'Show Column on Site (কলামটি সাইটে দেখাবেন?)',
               type: 'boolean',
               initialValue: true,
-            },
-            {
-              name: 'open_in_new_tab',
-              title: 'Open in new tab (নতুন ট্যাবে ওপেন হবে?)',
-              type: 'boolean',
-              initialValue: false,
-            },
+            }),
+            defineField({
+              name: 'links',
+              title: 'Column Links (এই কলামের লিংকসমূহ — ড্র্যাগ করে সাজান)',
+              type: 'array',
+              of: [
+                {
+                  type: 'object',
+                  name: 'columnLink',
+                  title: 'Link',
+                  fields: [
+                    defineField({
+                      name: 'title_en',
+                      title: 'Link Title EN (ইংরেজি নাম)',
+                      type: 'string',
+                      validation: (Rule) => Rule.required(),
+                    }),
+                    defineField({
+                      name: 'title_bn',
+                      title: 'লিংক নাম বাংলা (ঐচ্ছিক)',
+                      type: 'string',
+                    }),
+                    defineField({
+                      name: 'url',
+                      title: 'Target URL (যেমন: students.html বা https://...)',
+                      type: 'string',
+                      validation: (Rule) => Rule.required(),
+                    }),
+                    defineField({
+                      name: 'is_active',
+                      title: 'Active (চালু?)',
+                      type: 'boolean',
+                      initialValue: true,
+                    }),
+                    defineField({
+                      name: 'open_in_new_tab',
+                      title: 'Open in new tab (নতুন ট্যাবে ওপেন হবে?)',
+                      type: 'boolean',
+                      initialValue: false,
+                    }),
+                  ],
+                  preview: {
+                    select: {
+                      titleEn: 'title_en',
+                      titleBn: 'title_bn',
+                      url: 'url',
+                      isActive: 'is_active',
+                    },
+                    prepare({ titleEn, titleBn, url, isActive }) {
+                      const status = isActive !== false ? '🟢' : '⚪ বন্ধ'
+                      const label = titleEn || titleBn || 'Link'
+                      return {
+                        title: `${status} ${label}`,
+                        subtitle: url,
+                      }
+                    },
+                  },
+                },
+              ],
+            }),
           ],
           preview: {
             select: {
               titleEn: 'title_en',
               titleBn: 'title_bn',
-              url: 'url',
+              links: 'links',
               isActive: 'is_active',
             },
-            prepare({ titleEn, titleBn, url, isActive }) {
-              const status = isActive !== false ? '🟢 Active' : '⚪ Hidden (OFF)'
-              const label = titleEn || titleBn || 'Untitled Link'
+            prepare({ titleEn, titleBn, links, isActive }) {
+              const count = Array.isArray(links) ? links.length : 0
+              const status = isActive !== false ? '🟢 চালু' : '⚪ বন্ধ'
+              const label = titleEn || titleBn || 'Column'
               return {
-                title: `${label} — [${status}]`,
-                subtitle: url || 'No URL',
+                title: `${label} (${count} links)`,
+                subtitle: status,
               }
             },
           },
         },
       ],
+      initialValue: [
+        {
+          _key: 'col1',
+          title_en: 'Quick Links',
+          title_bn: 'কুইক লিংক',
+          is_active: true,
+          links: [
+            { _key: 'l1', title_en: 'Students Preview', title_bn: 'শিক্ষার্থী প্রিভিউ', url: 'index.html#students-preview', is_active: true },
+            { _key: 'l2', title_en: 'Roommate Preview', title_bn: 'রুমমেট প্রিভিউ', url: 'index.html#roommates-preview', is_active: true },
+            { _key: 'l3', title_en: 'Hall Super', title_bn: 'হল সুপার', url: 'index.html#hallsuper-preview', is_active: true },
+            { _key: 'l4', title_en: 'Gallery', title_bn: 'গ্যালারি', url: 'index.html#gallery-preview', is_active: true },
+            { _key: 'l5', title_en: 'College Resources', title_bn: 'কলেজ রিসোর্স', url: 'index.html#dc-resources', is_active: true },
+            { _key: 'l6', title_en: 'Location', title_bn: 'অবস্থান', url: 'index.html#location', is_active: true },
+          ],
+        },
+        {
+          _key: 'col2',
+          title_en: 'Student',
+          title_bn: 'শিক্ষার্থী',
+          is_active: true,
+          links: [
+            { _key: 'l7', title_en: 'Students', title_bn: 'সকল শিক্ষার্থী', url: 'students.html', is_active: true },
+            { _key: 'l8', title_en: 'Roommates', title_bn: 'রুমমেট তালিকা', url: 'roommates.html', is_active: true },
+            { _key: 'l9', title_en: 'Results', title_bn: 'একাডেমিক ফলাফল', url: 'results.html', is_active: true },
+            { _key: 'l10', title_en: 'Profile / Login', title_bn: 'প্রোফাইল / লগইন', url: 'profile.html', is_active: true },
+          ],
+        },
+        {
+          _key: 'col3',
+          title_en: 'Hall',
+          title_bn: 'হল পরিচিতি',
+          is_active: true,
+          links: [
+            { _key: 'l11', title_en: 'Hall Info', title_bn: 'হল তথ্য', url: 'hostel.html', is_active: true },
+            { _key: 'l12', title_en: 'Hall Super', title_bn: 'হল সুপার বাণী', url: 'hostel.html#hallsuper', is_active: true },
+            { _key: 'l13', title_en: 'Notable Alumni', title_bn: 'বিশিষ্ট প্রাক্তনী', url: 'hostel.html#famous', is_active: true },
+            { _key: 'l14', title_en: 'Gallery', title_bn: 'ফটো গ্যালারি', url: 'gallery.html', is_active: true },
+            { _key: 'l15', title_en: 'College Clubs', title_bn: 'কলেজ ক্লাবসমূহ', url: 'dc-clubs.html', is_active: true },
+            { _key: 'l16', title_en: 'Social Links', title_bn: 'সোশ্যাল মিডিয়া', url: 'dc-social.html', is_active: true },
+            { _key: 'l17', title_en: 'Developer', title_bn: 'ডেভেলপার প্রোফাইল', url: 'developer.html', is_active: true },
+            { _key: 'l18', title_en: 'Admin Panel', title_bn: 'অ্যাডমিন প্যানেল', url: 'https://dchall.sanity.studio', is_active: true, open_in_new_tab: true },
+          ],
+        },
+      ],
+    }),
+    defineField({
+      name: 'quick_links',
+      title: 'Legacy Quick Links (hidden)',
+      type: 'array',
+      group: 'footer',
+      hidden: true,
+      of: [{ type: 'object', fields: [{ name: 'title_en', type: 'string' }] }],
     }),
   ],
   preview: {
