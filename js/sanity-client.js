@@ -74,12 +74,15 @@ const SANITY_GROQ_QUERY = `{
       "photo": coalesce(photo.asset->url, photo, asset->url)
     }
   },
-  "galleries": *[_type == "galleryItem" && !(_id in path("drafts.**"))]{
+  "galleries": *[_type == "galleryItem" && !(_id in path("drafts.**"))] | order(position asc){
     _id,
+    heading,
     batch,
     gallery_title,
+    position,
     "photos": photos[]{
       "photo": coalesce(asset->url, photo.asset->url, photo),
+      caption,
       title_en,
       title_bn,
       caption_en,

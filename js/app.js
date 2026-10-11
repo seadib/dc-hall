@@ -2682,36 +2682,36 @@ async function loadCmsContent() {
       };
     });
 
-    // Batch-specific gallery collections (galleries) + single collection fallback (gallery)
+    // Gallery photo collections — each doc has a heading + photos
     let galleryItems = [];
+    let galleryCollections = []; // grouped by collection (each Sanity galleryItem doc)
     if (sanityData.galleries && sanityData.galleries.length) {
       sanityData.galleries.forEach(gDoc => {
-        const batch = gDoc.batch || 'all';
-        (gDoc.photos || []).forEach(p => {
-          galleryItems.push({
-            photo: p.photo || '',
-            batch: batch,
-            caption_en: p.caption_en || p.title_en || p.description_en || '',
-            caption_bn: p.caption_bn || p.title_bn || p.description_bn || '',
-            title_en: p.title_en || '',
-            title_bn: p.title_bn || '',
-          });
-        });
+        const heading = gDoc.heading || gDoc.gallery_title || gDoc.batch || '';
+        const photos = (gDoc.photos || []).map(p => ({
+          photo: p.photo || '',
+          heading: heading,
+          caption: p.caption || p.caption_en || p.title_en || p.description_en || '',
+        }));
+        if (photos.length) {
+          galleryCollections.push({ heading, photos });
+          galleryItems.push(...photos);
+        }
       });
     } else if (sanityData.gallery && sanityData.gallery.photos) {
-      galleryItems = sanityData.gallery.photos.map(p => ({
+      const photos = sanityData.gallery.photos.map(p => ({
         photo: p.photo || '',
-        batch: sanityData.gallery.batch || 'all',
-        caption_en: p.caption_en || p.title_en || p.description_en || '',
-        caption_bn: p.caption_bn || p.title_bn || p.description_bn || '',
-        title_en: p.title_en || '',
-        title_bn: p.title_bn || '',
+        heading: '',
+        caption: p.caption || p.caption_en || p.title_en || p.description_en || '',
       }));
+      galleryCollections.push({ heading: '', photos });
+      galleryItems = photos;
     }
 
     galleryData = {
       events: cmsEvents.length ? cmsEvents : undefined,
       items: galleryItems,
+      collections: galleryCollections,
     };
   } else {
     // Fallback to local static JSON files
@@ -5072,50 +5072,61 @@ async function renderGalleryPage(galleryData) {
     `;
   }).join("");
 
-  // 2. Render Gallery Items (general photos) at bottom — from galleryItem photos collection
-  let memoryPhotos = [];
-  if (data.items && data.items.length) {
-    memoryPhotos = data.items.slice().reverse();
-  }
+  // 2. Render Gallery Items — grouped by heading (each galleryItem doc is a section)
+  const collections = data.collections || [];
 
-  if (memoriesContainer && memoryPhotos.length) {
-    const batches = Array.from(new Set(memoryPhotos.map(p => p.batch).filter(Boolean)));
-    const hasMultipleBatches = batches.length > 1;
+  if (memoriesContainer && collections.length) {
+    // Build filter buttons from headings
+    const headings = collections.map(c => c.heading).filter(Boolean);
+    const hasMultipleHeadings = headings.length > 1;
 
-    const batchFilterHtml = hasMultipleBatches ? `
+    const filterHtml = hasMultipleHeadings ? `
       <div class="gallery-batch-filters" style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px;">
-        <button type="button" class="gallery-batch-btn active" data-batch="all" style="padding: 5px 14px; border-radius: 999px; font-size: 0.8rem; font-weight: 700; border: 1px solid var(--border); background: var(--accent); color: #fff; cursor: pointer;">
-          ${currentLang === "bn" ? "সকল ব্যাচ" : "All Batches"}
+        <button type="button" class="gallery-heading-btn active" data-heading="all" style="padding: 5px 14px; border-radius: 999px; font-size: 0.8rem; font-weight: 700; border: 1px solid var(--border); background: var(--accent); color: #fff; cursor: pointer;">
+          ${currentLang === "bn" ? "সব দেখুন" : "All"}
         </button>
-        ${batches.map(b => `
-          <button type="button" class="gallery-batch-btn" data-batch="${b}" style="padding: 5px 14px; border-radius: 999px; font-size: 0.8rem; font-weight: 600; border: 1px solid var(--border); background: var(--surface); color: var(--text-muted); cursor: pointer;">
-            🎓 ${b === 'all' ? (currentLang === "bn" ? "সাধারণ" : "General") : b}
+        ${headings.map(h => `
+          <button type="button" class="gallery-heading-btn" data-heading="${h}" style="padding: 5px 14px; border-radius: 999px; font-size: 0.8rem; font-weight: 600; border: 1px solid var(--border); background: var(--surface); color: var(--text-muted); cursor: pointer;">
+            📁 ${h}
           </button>
         `).join("")}
       </div>
     ` : "";
 
-    const memoriesHtml = memoryPhotos.map((p, pIdx) => {
-      const photoSrc = normalizeCmsPath(p.photo) || "images/hall/hostel-building.jpg";
-      const caption = currentLang === "bn" ? (p.caption_bn || p.caption_en || "স্মৃতি") : (p.caption_en || p.caption_bn || "Memory");
-      return `
-        <article class="dcsc-photo-card" data-batch="${p.batch || 'all'}" data-aos="fade-up" data-aos-delay="${(pIdx % 4) * 60}">
-          <button type="button" data-gallery-src="${photoSrc}" data-gallery-title="${caption}" data-gallery-desc="${currentLang === "bn" ? "হল জীবন ও দৈনন্দিন স্মৃতি" : "Daily Hall Life"}">
-            <img src="${photoSrc}" alt="${caption}" loading="lazy">
-            <div class="gallery-card-overlay">
-              <div>
-                <span style="font-size: 0.88rem; font-weight: 700; line-height: 1.3; display: block; text-shadow: 0 1px 3px rgba(0,0,0,0.8);">
-                  ${caption}
-                </span>
-                ${p.batch && p.batch !== 'all' ? `
-                  <span style="font-size: 0.72rem; opacity: 0.85; display: block; margin-top: 3px;">
-                    🎓 ${p.batch}
+    // Build each collection section
+    const sectionsHtml = collections.map((col, colIdx) => {
+      const photosHtml = col.photos.map((p, pIdx) => {
+        const photoSrc = normalizeCmsPath(p.photo) || "images/hall/hostel-building.jpg";
+        const caption = p.caption || (col.heading || "Memory");
+        return `
+          <article class="dcsc-photo-card" data-heading="${col.heading || ''}" data-aos="fade-up" data-aos-delay="${(pIdx % 4) * 60}">
+            <button type="button" data-gallery-src="${photoSrc}" data-gallery-title="${caption}" data-gallery-desc="${col.heading || ''}">
+              <img src="${photoSrc}" alt="${caption}" loading="lazy">
+              <div class="gallery-card-overlay">
+                <div>
+                  <span style="font-size: 0.88rem; font-weight: 700; line-height: 1.3; display: block; text-shadow: 0 1px 3px rgba(0,0,0,0.8);">
+                    ${caption}
                   </span>
-                ` : ""}
+                </div>
               </div>
-            </div>
-          </button>
-        </article>
+            </button>
+          </article>
+        `;
+      }).join("");
+
+      return `
+        <div class="gallery-collection-section" data-collection-heading="${col.heading || ''}">
+          ${col.heading ? `
+            <h3 style="margin: 28px 0 14px 0; font-size: 1.15rem; font-weight: 700; color: var(--text-primary); display: flex; align-items: center; gap: 8px;">
+              <span style="display: inline-block; width: 4px; height: 22px; border-radius: 2px; background: var(--accent);"></span>
+              ${col.heading}
+              <span style="font-size: 0.78rem; font-weight: 500; color: var(--text-muted); margin-left: 4px;">(${col.photos.length})</span>
+            </h3>
+          ` : ''}
+          <div class="dcsc-memories-grid">
+            ${photosHtml}
+          </div>
+        </div>
       `;
     }).join("");
 
@@ -5126,20 +5137,19 @@ async function renderGalleryPage(galleryData) {
             <div class="dcsc-accent-bar memories-bar"></div>
             <div>
               <span class="dcsc-eyebrow memories-eyebrow">${currentLang === "bn" ? "দৈনন্দিন স্মৃতি" : "MEMORIES"}</span>
-              <h2 class="dcsc-event-title">${currentLang === "bn" ? "স্মৃতি ও সাধারণ গ্যালারি" : "Photo Gallery & Archive"}</h2>
+              <h2 class="dcsc-event-title">${currentLang === "bn" ? "ফটো গ্যালারি" : "Photo Gallery"}</h2>
             </div>
           </div>
-          ${batchFilterHtml}
+          ${filterHtml}
         </div>
-        <div class="dcsc-memories-grid">
-          ${memoriesHtml}
-        </div>
+        ${sectionsHtml}
       </section>
     `;
 
-    document.querySelectorAll(".gallery-batch-btn").forEach(btn => {
+    // Filter click handlers
+    document.querySelectorAll(".gallery-heading-btn").forEach(btn => {
       btn.addEventListener("click", () => {
-        document.querySelectorAll(".gallery-batch-btn").forEach(b => {
+        document.querySelectorAll(".gallery-heading-btn").forEach(b => {
           b.classList.remove("active");
           b.style.background = "var(--surface)";
           b.style.color = "var(--text-muted)";
@@ -5148,13 +5158,13 @@ async function renderGalleryPage(galleryData) {
         btn.style.background = "var(--accent)";
         btn.style.color = "#fff";
 
-        const selectedBatch = btn.dataset.batch;
-        document.querySelectorAll(".dcsc-memories-grid .dcsc-photo-card").forEach(card => {
-          const cardBatch = card.dataset.batch || "all";
-          if (selectedBatch === "all" || cardBatch === selectedBatch) {
-            card.style.display = "block";
+        const selected = btn.dataset.heading;
+        document.querySelectorAll(".gallery-collection-section").forEach(sec => {
+          const secHeading = sec.dataset.collectionHeading || "";
+          if (selected === "all" || secHeading === selected) {
+            sec.style.display = "block";
           } else {
-            card.style.display = "none";
+            sec.style.display = "none";
           }
         });
       });

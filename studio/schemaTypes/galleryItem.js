@@ -4,73 +4,45 @@ export default defineType({
   name: 'galleryItem',
   title: 'Gallery Items (ফটো গ্যালারি)',
   type: 'document',
-  description: '📸 হলের দৈনন্দিন ফটো গ্যালারি — একসাথে অনেক ফটো আপলোড, রিঅর্ডার ও ক্যাপশন দিন।',
+  description: '📸 হলের ফটো গ্যালারি — শিরোনাম দিন এবং একসাথে অনেক ফটো আপলোড করুন।',
   fields: [
     defineField({
-      name: 'batch',
-      title: 'Batch / ব্যাচ',
+      name: 'heading',
+      title: 'Heading / শিরোনাম',
       type: 'string',
-      options: {
-        list: [
-          { title: 'HSC-27 Gallery', value: 'HSC-27' },
-          { title: 'HSC-28 Gallery', value: 'HSC-28' },
-          { title: 'HSC-29 Gallery', value: 'HSC-29' },
-          { title: 'HSC-30 Gallery', value: 'HSC-30' },
-          { title: 'General / All Batches (সাধারণ গ্যালারি)', value: 'all' },
-        ],
-      },
-      initialValue: 'HSC-27',
-      description: 'এই কালেকশনটি কোন ব্যাচের ফটো গ্যালারি তা নির্বাচন করুন।',
+      description: 'যেকোনো শিরোনাম দিন — যেমন: "HSC-27", "Sports", "Daily Hall Life", "Annual Prize Giving" ইত্যাদি। এই শিরোনাম ওয়েবসাইটের গ্যালারিতে দেখাবে।',
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'gallery_title',
-      title: 'Gallery Collection Title (ঐচ্ছিক)',
-      type: 'string',
-      description: 'কালেকশনের কাস্টম নাম (খালি রাখলে ব্যাচের নাম দেখাবে)।',
+      name: 'position',
+      title: 'Display Order / প্রদর্শন ক্রম',
+      type: 'number',
+      description: 'কম নম্বর আগে দেখাবে। খালি রাখলে শিরোনাম অনুযায়ী সাজাবে।',
     }),
     defineField({
       name: 'photos',
-      title: 'Gallery Photos (গ্যালারি ফটোসমূহ — একসাথে ড্র্যাগ ও ড্রপ)',
+      title: 'Photos / ফটোসমূহ (একসাথে ড্র্যাগ ও ড্রপ)',
       type: 'array',
-      description: '📸 একসাথে যত ইচ্ছা ছবি ড্র্যাগ করে এখানে ছেড়ে দিন (Bulk Drag & Drop)। ড্র্যাগ করে ক্রম পরিবর্তন করুন। প্রতিটি ছবিতে ক্লিক করে নাম ও বিবরণ যোগ করতে পারবেন।',
+      description: '📸 একসাথে যত ইচ্ছা ছবি ড্র্যাগ করে এখানে ছেড়ে দিন। প্রথম ছবিটি কভার হিসেবে দেখাবে।',
       of: [
         {
           type: 'image',
           options: { hotspot: true },
           fields: [
             {
-              name: 'title_en',
-              title: 'Title / Name (English)',
+              name: 'caption',
+              title: 'Caption / ক্যাপশন (ঐচ্ছিক)',
               type: 'string',
-            },
-            {
-              name: 'title_bn',
-              title: 'শিরোনাম / নাম (বাংলা)',
-              type: 'string',
-            },
-            {
-              name: 'description_en',
-              title: 'Description (English)',
-              type: 'text',
-              rows: 2,
-            },
-            {
-              name: 'description_bn',
-              title: 'বিবরণ (বাংলা)',
-              type: 'text',
-              rows: 2,
             },
           ],
           preview: {
             select: {
-              title: 'title_en',
-              subtitle: 'title_bn',
+              title: 'caption',
               media: 'asset',
             },
-            prepare({ title, subtitle, media }) {
+            prepare({ title, media }) {
               return {
-                title: title || 'Gallery Photo',
-                subtitle: subtitle || '',
+                title: title || 'Photo',
                 media,
               }
             },
@@ -78,19 +50,44 @@ export default defineType({
         },
       ],
     }),
+    // Keep old batch field hidden for backward compatibility
+    defineField({
+      name: 'batch',
+      title: 'Legacy Batch (hidden)',
+      type: 'string',
+      hidden: true,
+    }),
+    defineField({
+      name: 'gallery_title',
+      title: 'Legacy Title (hidden)',
+      type: 'string',
+      hidden: true,
+    }),
+  ],
+  orderings: [
+    {
+      title: 'Display Order',
+      name: 'positionAsc',
+      by: [{ field: 'position', direction: 'asc' }],
+    },
+    {
+      title: 'Heading A-Z',
+      name: 'headingAsc',
+      by: [{ field: 'heading', direction: 'asc' }],
+    },
   ],
   preview: {
     select: {
-      batch: 'batch',
-      title: 'gallery_title',
+      title: 'heading',
       photos: 'photos',
+      media: 'photos.0',
     },
-    prepare({ batch, title, photos }) {
+    prepare({ title, photos, media }) {
       const count = Array.isArray(photos) ? photos.length : 0
-      const displayTitle = batch ? `${batch} Photo Gallery` : (title || 'Photo Gallery')
       return {
-        title: displayTitle,
-        subtitle: `${count} photos uploaded`,
+        title: title || 'Gallery',
+        subtitle: `${count} photos`,
+        media: media,
       }
     },
   },
