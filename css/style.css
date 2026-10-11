@@ -652,6 +652,8 @@ h3 {
 .batch-section-header {
   grid-column: 1 / -1;
   margin: 32px 0 16px;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .batch-header-inner {
@@ -665,6 +667,9 @@ h3 {
   border: 1px solid var(--border);
   border-left: 4px solid var(--accent);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .batch-heading {
@@ -2472,8 +2477,54 @@ body:not(.dark) .result-box.locked:hover {
   .person-grid,
   .contributor-grid,
   .gallery-grid {
-    grid-template-columns: 1fr !important;
+    grid-template-columns: minmax(0, 1fr) !important;
     gap: 16px;
+    min-width: 0 !important;
+    width: 100% !important;
+  }
+
+  .student-card {
+    min-width: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  .batch-section-header {
+    margin: 20px 0 12px !important;
+    min-width: 0 !important;
+    width: 100% !important;
+  }
+
+  .batch-header-inner {
+    padding: 10px 14px !important;
+    gap: 8px !important;
+    flex-wrap: wrap !important;
+    min-width: 0 !important;
+    width: 100% !important;
+  }
+
+  .batch-heading {
+    font-size: 1.05rem !important;
+    gap: 6px !important;
+    flex-wrap: wrap !important;
+  }
+
+  .batch-badge {
+    font-size: 0.92rem !important;
+    padding: 2px 8px !important;
+  }
+
+  .batch-count-pill {
+    font-size: 0.78rem !important;
+    padding: 3px 10px !important;
+  }
+
+  .filter-panel {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+    padding: 14px !important;
+    min-width: 0 !important;
+    width: 100% !important;
   }
 
   .person-card img,
@@ -2520,8 +2571,16 @@ body:not(.dark) .result-box.locked:hover {
   .person-grid,
   .contributor-grid,
   .gallery-grid {
-    grid-template-columns: 1fr !important;
+    grid-template-columns: minmax(0, 1fr) !important;
     gap: 16px;
+    min-width: 0 !important;
+    width: 100% !important;
+  }
+
+  .student-card {
+    min-width: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
   }
 
   .student-card img {
@@ -3858,5 +3917,14 @@ html.user-logged-in #statusCard {
   }
   .language-switch button.active {
     border-radius: 7px !important;
+  }
+  .batch-header-inner {
+    padding: 8px 10px !important;
+  }
+  .batch-heading {
+    font-size: 0.95rem !important;
+  }
+  .batch-badge {
+    font-size: 0.85rem !important;
   }
 }
