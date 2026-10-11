@@ -2690,15 +2690,32 @@ async function loadCmsContent() {
       };
     });
 
-    // New galleryItem structure: single document with photos array
-    const galleryDoc = sanityData.gallery;
-    const galleryItems = (galleryDoc && galleryDoc.photos) ? galleryDoc.photos.map(p => ({
-      photo: p.photo || '',
-      caption_en: p.title_en || p.description_en || '',
-      caption_bn: p.title_bn || p.description_bn || '',
-      title_en: p.title_en || '',
-      title_bn: p.title_bn || '',
-    })) : [];
+    // Batch-specific gallery collections (galleries) + single collection fallback (gallery)
+    let galleryItems = [];
+    if (sanityData.galleries && sanityData.galleries.length) {
+      sanityData.galleries.forEach(gDoc => {
+        const batch = gDoc.batch || 'all';
+        (gDoc.photos || []).forEach(p => {
+          galleryItems.push({
+            photo: p.photo || '',
+            batch: batch,
+            caption_en: p.caption_en || p.title_en || p.description_en || '',
+            caption_bn: p.caption_bn || p.title_bn || p.description_bn || '',
+            title_en: p.title_en || '',
+            title_bn: p.title_bn || '',
+          });
+        });
+      });
+    } else if (sanityData.gallery && sanityData.gallery.photos) {
+      galleryItems = sanityData.gallery.photos.map(p => ({
+        photo: p.photo || '',
+        batch: sanityData.gallery.batch || 'all',
+        caption_en: p.caption_en || p.title_en || p.description_en || '',
+        caption_bn: p.caption_bn || p.title_bn || p.description_bn || '',
+        title_en: p.title_en || '',
+        title_bn: p.title_bn || '',
+      }));
+    }
 
     galleryData = {
       events: cmsEvents.length ? cmsEvents : undefined,
@@ -2961,13 +2978,12 @@ function sectionText(student) {
 
 function studentFirstYearResults(student) {
   const r1 = student.results_1st || {};
-  const pdfObj = (student.pdfs && Object.keys(student.pdfs).length) ? student.pdfs :
-                 (student.generated_pdf_names && Object.keys(student.generated_pdf_names).length) ? student.generated_pdf_names : null;
-  const ct1 = r1.ct1_link || normalizeCmsPath(r1.ct1_pdf) || normalizeCmsPath(pdfObj?.ct1) || `pdfs/${student.slug}-11-ct1.pdf`;
-  const ct2 = r1.ct2_link || normalizeCmsPath(r1.ct2_pdf) || normalizeCmsPath(pdfObj?.ct2) || `pdfs/${student.slug}-11-ct2.pdf`;
-  const hy = r1.hy_link || normalizeCmsPath(r1.hy_pdf) || normalizeCmsPath(pdfObj?.hy) || `pdfs/${student.slug}-11-hy.pdf`;
-  const ct3 = r1.ct3_link || normalizeCmsPath(r1.ct3_pdf) || normalizeCmsPath(pdfObj?.ct3) || `pdfs/${student.slug}-11-ct3.pdf`;
-  const yearly = r1.yearly_link || normalizeCmsPath(r1.yearly_pdf) || normalizeCmsPath(pdfObj?.yearly) || `pdfs/${student.slug}-11-y.pdf`;
+  const pdfObj = (student.pdfs && typeof student.pdfs === 'object') ? student.pdfs : null;
+  const ct1 = (r1.ct1_link || normalizeCmsPath(r1.ct1_pdf) || (pdfObj?.ct1 ? normalizeCmsPath(pdfObj.ct1) : "")) || "";
+  const ct2 = (r1.ct2_link || normalizeCmsPath(r1.ct2_pdf) || (pdfObj?.ct2 ? normalizeCmsPath(pdfObj.ct2) : "")) || "";
+  const hy  = (r1.hy_link  || normalizeCmsPath(r1.hy_pdf)  || (pdfObj?.hy  ? normalizeCmsPath(pdfObj.hy)  : "")) || "";
+  const ct3 = (r1.ct3_link || normalizeCmsPath(r1.ct3_pdf) || (pdfObj?.ct3 ? normalizeCmsPath(pdfObj.ct3) : "")) || "";
+  const yearly = (r1.yearly_link || normalizeCmsPath(r1.yearly_pdf) || (pdfObj?.yearly ? normalizeCmsPath(pdfObj.yearly) : "")) || "";
   return [
     ["ct1", ct1],
     ["ct2", ct2],
@@ -2979,12 +2995,10 @@ function studentFirstYearResults(student) {
 
 function studentSecondYearResults(student) {
   const r2 = student.results_2nd || {};
-  const pdfObj = (student.pdfs && Object.keys(student.pdfs).length) ? student.pdfs :
-                 (student.generated_pdf_names && Object.keys(student.generated_pdf_names).length) ? student.generated_pdf_names : null;
-  const ct1 = r2.ct1_link || normalizeCmsPath(r2.ct1_pdf) || normalizeCmsPath(pdfObj?.ct1) || `pdfs/${student.slug}-12-ct1.pdf`;
-  const ct2 = r2.ct2_link || normalizeCmsPath(r2.ct2_pdf) || normalizeCmsPath(pdfObj?.ct2) || `pdfs/${student.slug}-12-ct2.pdf`;
-  const ct3 = r2.ct3_link || normalizeCmsPath(r2.ct3_pdf) || normalizeCmsPath(pdfObj?.ct3) || `pdfs/${student.slug}-12-ct3.pdf`;
-  const test = r2.test_link || normalizeCmsPath(r2.test_pdf) || normalizeCmsPath(pdfObj?.test) || `pdfs/${student.slug}-12-test.pdf`;
+  const ct1 = (r2.ct1_link || normalizeCmsPath(r2.ct1_pdf)) || "";
+  const ct2 = (r2.ct2_link || normalizeCmsPath(r2.ct2_pdf)) || "";
+  const ct3 = (r2.ct3_link || normalizeCmsPath(r2.ct3_pdf)) || "";
+  const test = (r2.test_link || normalizeCmsPath(r2.test_pdf)) || "";
   return [
     ["ct1", ct1],
     ["ct2", ct2],
@@ -3593,11 +3607,9 @@ function renderResults(filterClass = "all") {
     return String(s.class_no || "11") === String(filterClass);
   });
 
-  // Dynamically adapt table headers according to the selected year/class
-  const isSecondYear = filterClass === "12" || (filterClass === "all" && filteredStudents.length > 0 && filteredStudents.every(s => String(s.class_no || "11") === "12"));
-
   if (thead) {
-    if (isSecondYear) {
+    if (filterClass === "12") {
+      // 2nd Year specific columns (4 exams)
       thead.innerHTML = `
         <tr>
           <th>${t("resultTable.serial")}</th>
@@ -3609,7 +3621,8 @@ function renderResults(filterClass = "all") {
           <th>${t("pdf.test")}</th>
         </tr>
       `;
-    } else {
+    } else if (filterClass === "11") {
+      // 1st Year specific columns (5 exams)
       thead.innerHTML = `
         <tr>
           <th>${t("resultTable.serial")}</th>
@@ -3622,24 +3635,71 @@ function renderResults(filterClass = "all") {
           <th>${t("pdf.yearly")}</th>
         </tr>
       `;
+    } else {
+      // All classes: unified 5 columns aligned
+      thead.innerHTML = `
+        <tr>
+          <th>${t("resultTable.serial")}</th>
+          <th>${t("resultTable.student")}</th>
+          <th>${t("resultTable.roll")}</th>
+          <th>${t("pdf.ct1")}</th>
+          <th>${t("pdf.ct2")}</th>
+          <th>${currentLang === "bn" ? "অর্ধ-বার্ষিক" : "Half Yearly"}</th>
+          <th>${t("pdf.ct3")}</th>
+          <th>${currentLang === "bn" ? "বার্ষিক / টেস্ট" : "Yearly / Test"}</th>
+        </tr>
+      `;
     }
   }
 
   table.innerHTML = filteredStudents.map((student, index) => {
     const isAuthorized = canViewStudentPrivateData(student);
     const showStudentResults = !lockResults || isAuthorized;
+    const isSecondYear = String(student.classNo || student.class_no || "11") === "12" || student.batch === "HSC-27";
+
+    let examsInOrder = [];
+    if (filterClass === "12") {
+      examsInOrder = studentSecondYearResults(student);
+    } else if (filterClass === "11") {
+      examsInOrder = studentFirstYearResults(student);
+    } else {
+      // All classes mode: align to 5 columns
+      if (isSecondYear) {
+        const r2 = studentSecondYearResults(student);
+        const ct1 = r2.find(e => e[0] === "ct1")?.[1] || "";
+        const ct2 = r2.find(e => e[0] === "ct2")?.[1] || "";
+        const ct3 = r2.find(e => e[0] === "ct3")?.[1] || "";
+        const test = r2.find(e => e[0] === "test")?.[1] || "";
+        examsInOrder = [
+          ["ct1", ct1],
+          ["ct2", ct2],
+          ["hy", ""], // No half yearly for 2nd year!
+          ["ct3", ct3],
+          ["test", test]
+        ];
+      } else {
+        examsInOrder = studentFirstYearResults(student);
+      }
+    }
+
+    const examCells = examsInOrder.map(([key, file]) => {
+      // If no result PDF was uploaded, keep cell completely empty
+      if (!file) {
+        return `<td><span style="color: var(--text-muted); opacity: 0.35;">—</span></td>`;
+      }
+      const fileHref = showStudentResults ? file : "profile.html";
+      const targetAttr = showStudentResults ? 'target="_blank" rel="noopener"' : '';
+      const lockIcon = showStudentResults ? '' : ` ${lockIconSvg}`;
+      const linkClass = showStudentResults ? "table-pdf-link" : "table-pdf-link locked";
+      return `<td><a class="${linkClass}" href="${fileHref}" ${targetAttr}>${t(`pdf.${key}`)}${lockIcon}</a></td>`;
+    }).join("");
+
     return `
       <tr>
         <td>${index + 1}</td>
         <td><button type="button" data-student-id="${student.id}">${studentValue(student, "name")}</button></td>
         <td title="${student.fullRoll}">${student.roll}</td>
-        ${resultFiles(student).map(([key, file]) => {
-          const fileHref = showStudentResults ? file : "profile.html";
-          const targetAttr = showStudentResults ? 'target="_blank" rel="noopener"' : '';
-          const lockIcon = showStudentResults ? '' : ` ${lockIconSvg}`;
-          const linkClass = showStudentResults ? "table-pdf-link" : "table-pdf-link locked";
-          return `<td><a class="${linkClass}" href="${fileHref}" ${targetAttr}>${t(`pdf.${key}`)}${lockIcon}</a></td>`;
-        }).join("")}
+        ${examCells}
       </tr>
     `;
   }).join("");
@@ -5027,11 +5087,27 @@ async function renderGalleryPage(galleryData) {
   }
 
   if (memoriesContainer && memoryPhotos.length) {
+    const batches = Array.from(new Set(memoryPhotos.map(p => p.batch).filter(Boolean)));
+    const hasMultipleBatches = batches.length > 1;
+
+    const batchFilterHtml = hasMultipleBatches ? `
+      <div class="gallery-batch-filters" style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px;">
+        <button type="button" class="gallery-batch-btn active" data-batch="all" style="padding: 5px 14px; border-radius: 999px; font-size: 0.8rem; font-weight: 700; border: 1px solid var(--border); background: var(--accent); color: #fff; cursor: pointer;">
+          ${currentLang === "bn" ? "সকল ব্যাচ" : "All Batches"}
+        </button>
+        ${batches.map(b => `
+          <button type="button" class="gallery-batch-btn" data-batch="${b}" style="padding: 5px 14px; border-radius: 999px; font-size: 0.8rem; font-weight: 600; border: 1px solid var(--border); background: var(--surface); color: var(--text-muted); cursor: pointer;">
+            🎓 ${b === 'all' ? (currentLang === "bn" ? "সাধারণ" : "General") : b}
+          </button>
+        `).join("")}
+      </div>
+    ` : "";
+
     const memoriesHtml = memoryPhotos.map((p, pIdx) => {
       const photoSrc = normalizeCmsPath(p.photo) || "images/hall/hostel-building.jpg";
       const caption = currentLang === "bn" ? (p.caption_bn || p.caption_en || "স্মৃতি") : (p.caption_en || p.caption_bn || "Memory");
       return `
-        <article class="dcsc-photo-card" data-aos="fade-up" data-aos-delay="${(pIdx % 4) * 60}">
+        <article class="dcsc-photo-card" data-batch="${p.batch || 'all'}" data-aos="fade-up" data-aos-delay="${(pIdx % 4) * 60}">
           <button type="button" data-gallery-src="${photoSrc}" data-gallery-title="${caption}" data-gallery-desc="${currentLang === "bn" ? "হল জীবন ও দৈনন্দিন স্মৃতি" : "Daily Hall Life"}">
             <img src="${photoSrc}" alt="${caption}" loading="lazy">
             <div class="gallery-card-overlay">
@@ -5039,6 +5115,11 @@ async function renderGalleryPage(galleryData) {
                 <span style="font-size: 0.88rem; font-weight: 700; line-height: 1.3; display: block; text-shadow: 0 1px 3px rgba(0,0,0,0.8);">
                   ${caption}
                 </span>
+                ${p.batch && p.batch !== 'all' ? `
+                  <span style="font-size: 0.72rem; opacity: 0.85; display: block; margin-top: 3px;">
+                    🎓 ${p.batch}
+                  </span>
+                ` : ""}
               </div>
             </div>
           </button>
@@ -5053,15 +5134,39 @@ async function renderGalleryPage(galleryData) {
             <div class="dcsc-accent-bar memories-bar"></div>
             <div>
               <span class="dcsc-eyebrow memories-eyebrow">${currentLang === "bn" ? "দৈনন্দিন স্মৃতি" : "MEMORIES"}</span>
-              <h2 class="dcsc-event-title">${currentLang === "bn" ? "স্মৃতি ও সাধারণ গ্যালারি" : "GALLERY"}</h2>
+              <h2 class="dcsc-event-title">${currentLang === "bn" ? "স্মৃতি ও সাধারণ গ্যালারি" : "Photo Gallery & Archive"}</h2>
             </div>
           </div>
+          ${batchFilterHtml}
         </div>
         <div class="dcsc-memories-grid">
           ${memoriesHtml}
         </div>
       </section>
     `;
+
+    document.querySelectorAll(".gallery-batch-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".gallery-batch-btn").forEach(b => {
+          b.classList.remove("active");
+          b.style.background = "var(--surface)";
+          b.style.color = "var(--text-muted)";
+        });
+        btn.classList.add("active");
+        btn.style.background = "var(--accent)";
+        btn.style.color = "#fff";
+
+        const selectedBatch = btn.dataset.batch;
+        document.querySelectorAll(".dcsc-memories-grid .dcsc-photo-card").forEach(card => {
+          const cardBatch = card.dataset.batch || "all";
+          if (selectedBatch === "all" || cardBatch === selectedBatch) {
+            card.style.display = "block";
+          } else {
+            card.style.display = "none";
+          }
+        });
+      });
+    });
   }
 
   // 3. Attach click handlers for 'View Event' buttons

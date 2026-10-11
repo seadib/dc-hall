@@ -7,11 +7,26 @@ export default defineType({
   description: '📸 হলের দৈনন্দিন ফটো গ্যালারি — একসাথে অনেক ফটো আপলোড, রিঅর্ডার ও ক্যাপশন দিন।',
   fields: [
     defineField({
-      name: 'gallery_title',
-      title: 'Gallery Collection Title',
+      name: 'batch',
+      title: 'Batch / ব্যাচ',
       type: 'string',
-      initialValue: 'Main Photo Gallery',
-      description: 'এই গ্যালারি কালেকশনের নাম (ওয়েবসাইটে দেখাবে না, শুধু অ্যাডমিনের জন্য)।',
+      options: {
+        list: [
+          { title: 'HSC-27 Gallery', value: 'HSC-27' },
+          { title: 'HSC-28 Gallery', value: 'HSC-28' },
+          { title: 'HSC-29 Gallery', value: 'HSC-29' },
+          { title: 'HSC-30 Gallery', value: 'HSC-30' },
+          { title: 'General / All Batches (সাধারণ গ্যালারি)', value: 'all' },
+        ],
+      },
+      initialValue: 'HSC-27',
+      description: 'এই কালেকশনটি কোন ব্যাচের ফটো গ্যালারি তা নির্বাচন করুন।',
+    }),
+    defineField({
+      name: 'gallery_title',
+      title: 'Gallery Collection Title (ঐচ্ছিক)',
+      type: 'string',
+      description: 'কালেকশনের কাস্টম নাম (খালি রাখলে ব্যাচের নাম দেখাবে)।',
     }),
     defineField({
       name: 'photos',
@@ -66,14 +81,16 @@ export default defineType({
   ],
   preview: {
     select: {
+      batch: 'batch',
       title: 'gallery_title',
       photos: 'photos',
     },
-    prepare({ title, photos }) {
+    prepare({ batch, title, photos }) {
       const count = Array.isArray(photos) ? photos.length : 0
+      const displayTitle = batch ? `${batch} Photo Gallery` : (title || 'Photo Gallery')
       return {
-        title: title || 'Photo Gallery',
-        subtitle: `${count} photos`,
+        title: displayTitle,
+        subtitle: `${count} photos uploaded`,
       }
     },
   },

@@ -89,10 +89,56 @@ export const structure = (S) =>
             .defaultOrdering([{ field: 'date', direction: 'desc' }])
         ),
       S.listItem()
-        .title('Gallery Items (ফটো গ্যালারি)')
+        .title('Gallery Items (ফটো গ্যালারি — ব্যাচভিত্তিক)')
         .icon(ImageIcon)
         .child(
-          S.documentTypeList('galleryItem')
-            .title('Photo Collections (ফটো কালেকশন)')
+          S.list()
+            .title('Photo Gallery by Batch (ব্যাচভিত্তিক ফটো গ্যালারি)')
+            .items([
+              S.listItem()
+                .title('HSC-27 Photo Gallery (এইচএসসি-২৭)')
+                .icon(ImageIcon)
+                .child(
+                  S.document()
+                    .schemaType('galleryItem')
+                    .documentId('galleryItem_hsc27')
+                    .title('HSC-27 Photo Gallery')
+                ),
+              S.listItem()
+                .title('HSC-28 Photo Gallery (এইচএসসি-২৮)')
+                .icon(ImageIcon)
+                .child(
+                  S.document()
+                    .schemaType('galleryItem')
+                    .documentId('galleryItem_hsc28')
+                    .title('HSC-28 Photo Gallery')
+                ),
+              S.listItem()
+                .title('HSC-29 Photo Gallery (এইচএসসি-২৯)')
+                .icon(ImageIcon)
+                .child(
+                  S.document()
+                    .schemaType('galleryItem')
+                    .documentId('galleryItem_hsc29')
+                    .title('HSC-29 Photo Gallery')
+                ),
+              S.listItem()
+                .title('General / All Batches (সাধারণ গ্যালারি)')
+                .icon(ImageIcon)
+                .child(
+                  S.document()
+                    .schemaType('galleryItem')
+                    .documentId('galleryItem_all')
+                    .title('General Photo Gallery')
+                ),
+              S.divider(),
+              S.listItem()
+                .title('Manage & Delete Old Collections (সকল কালেকশন ও ডিলিট)')
+                .icon(ImageIcon)
+                .child(
+                  S.documentTypeList('galleryItem')
+                    .title('All Photo Collections (পুরোনো তালিকা ও ডিলিট করুন)')
+                ),
+            ])
         ),
     ])
