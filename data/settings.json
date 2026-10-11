@@ -49,6 +49,50 @@
       "link": "developer.html"
     }
   ],
+  "quick_links": [
+    {
+      "title_en": "Students Preview",
+      "title_bn": "শিক্ষার্থী প্রিভিউ",
+      "url": "index.html#students-preview",
+      "is_active": true,
+      "open_in_new_tab": false
+    },
+    {
+      "title_en": "Roommate Preview",
+      "title_bn": "রুমমেট প্রিভিউ",
+      "url": "index.html#roommates-preview",
+      "is_active": true,
+      "open_in_new_tab": false
+    },
+    {
+      "title_en": "Hall Super",
+      "title_bn": "হল সুপার",
+      "url": "index.html#hallsuper-preview",
+      "is_active": true,
+      "open_in_new_tab": false
+    },
+    {
+      "title_en": "Gallery",
+      "title_bn": "গ্যালারি",
+      "url": "index.html#gallery-preview",
+      "is_active": true,
+      "open_in_new_tab": false
+    },
+    {
+      "title_en": "College Resources",
+      "title_bn": "কলেজ রিসোর্স",
+      "url": "index.html#dc-resources",
+      "is_active": true,
+      "open_in_new_tab": false
+    },
+    {
+      "title_en": "Location",
+      "title_bn": "অবস্থান",
+      "url": "index.html#location",
+      "is_active": true,
+      "open_in_new_tab": false
+    }
+  ],
   "site_title_en": "International Hall",
   "contact_logos": {
     "phone": "images/phonelogo.png",

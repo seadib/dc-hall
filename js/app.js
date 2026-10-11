@@ -2600,6 +2600,8 @@ function applyCmsSettings(settings) {
       section.style.backgroundImage = `linear-gradient(90deg, var(--overlay), rgba(8, 13, 24, 0.25)), url("${heroImage}")`;
     });
   }
+
+  renderFooter();
 }
 
 async function loadCmsContent() {
@@ -3091,6 +3093,29 @@ function renderFooter() {
   const developerLink = `<a class="footer-developer-link" href="developer.html">Abdullah Al Adib</a>`;
   const about = footerAboutParts();
 
+  const defaultQuickLinks = [
+    { title_en: "Students Preview", title_bn: "শিক্ষার্থী প্রিভিউ", url: "index.html#students-preview", is_active: true },
+    { title_en: "Roommate Preview", title_bn: "রুমমেট প্রিভিউ", url: "index.html#roommates-preview", is_active: true },
+    { title_en: "Hall Super", title_bn: "হল সুপার", url: "index.html#hallsuper-preview", is_active: true },
+    { title_en: "Gallery", title_bn: "গ্যালারি", url: "index.html#gallery-preview", is_active: true },
+    { title_en: "College Resources", title_bn: "কলেজ রিসোর্স", url: "index.html#dc-resources", is_active: true },
+    { title_en: "Location", title_bn: "অবস্থান", url: "index.html#location", is_active: true }
+  ];
+
+  const quickLinksList = (cmsSettings && Array.isArray(cmsSettings.quick_links) && cmsSettings.quick_links.length > 0)
+    ? cmsSettings.quick_links
+    : defaultQuickLinks;
+
+  const quickLinksHtml = quickLinksList
+    .filter((item) => item && item.is_active !== false)
+    .map((item) => {
+      const label = currentLang === "bn" && item.title_bn ? item.title_bn : (item.title_en || item.title || "");
+      const href = item.url || item.link || "#";
+      const target = item.open_in_new_tab ? ` target="_blank" rel="noopener"` : "";
+      return `<a href="${href}"${target}>${label}</a>`;
+    })
+    .join("\n      ");
+
   footer.innerHTML = `
     <div class="footer-brand">
       <div class="footer-logo"><img src="images/logo.png" alt="International Hall logo" loading="lazy"><strong>${t("nav.logo")}</strong></div>
@@ -3098,12 +3123,7 @@ function renderFooter() {
     </div>
     <div class="footer-links">
       <h3>${t("footer.quickLinks")}</h3>
-      <a href="index.html#students-preview">${t("home.studentsPreview")}</a>
-      <a href="index.html#roommates-preview">${t("home.roommatePreview")}</a>
-      <a href="index.html#hallsuper-preview">${t("nav.hallSuper")}</a>
-      <a href="index.html#gallery-preview">${t("nav.gallery")}</a>
-      <a href="index.html#dc-resources">${currentLang === "bn" ? "কলেজ রিসোর্স" : "College Resources"}</a>
-      <a href="index.html#location">${t("common.location")}</a>
+      ${quickLinksHtml}
     </div>
     <div class="footer-links">
       <h3>${t("footer.studentLinks")}</h3>

@@ -9,6 +9,7 @@ export default defineType({
     { name: 'hero', title: 'হিরো ব্যানার (Hero Banner)' },
     { name: 'privacy', title: 'গোপনীয়তা ও পাসওয়ার্ড (Privacy & Passwords)' },
     { name: 'dhaka_college', title: 'ঢাকা কলেজ অফিসিয়াল ও ক্লাব (DC Official & Clubs)' },
+    { name: 'footer', title: 'ফুটার ও কুইক লিংক (Footer & Quick Links)' },
   ],
   fields: [
     // ═══════════════════════════════════════════
@@ -178,6 +179,70 @@ export default defineType({
               ],
             },
           ],
+        },
+      ],
+    }),
+
+    // ═══════════════════════════════════════════
+    // ⑤ Footer & Quick Links
+    // ═══════════════════════════════════════════
+    defineField({
+      name: 'quick_links',
+      title: 'Footer Quick Links (কুইক লিংক ব্যবস্থাপনা)',
+      type: 'array',
+      group: 'footer',
+      description: 'নতুন লিংক যোগ করতে পারেন, ড্র্যাগ করে উপর-নিচ সাজাতে পারেন, এবং সাময়িকভাবে অন/অফ (Active/Inactive) করতে পারেন।',
+      of: [
+        {
+          type: 'object',
+          title: 'Quick Link',
+          fields: [
+            {
+              name: 'title_en',
+              title: 'Link Title EN (ইংরেজি শিরোনাম)',
+              type: 'string',
+              validation: (Rule) => Rule.required(),
+            },
+            {
+              name: 'title_bn',
+              title: 'Link Title BN (বাংলা শিরোনাম)',
+              type: 'string',
+            },
+            {
+              name: 'url',
+              title: 'Target URL (লিংক যেমন: index.html#location বা পূর্ণ লিংক)',
+              type: 'string',
+              validation: (Rule) => Rule.required(),
+            },
+            {
+              name: 'is_active',
+              title: 'Status (ON = সাইটে দৃশ্যমান, OFF = সাময়িকভাবে লুকানো)',
+              type: 'boolean',
+              initialValue: true,
+            },
+            {
+              name: 'open_in_new_tab',
+              title: 'Open in new tab (নতুন ট্যাবে ওপেন হবে?)',
+              type: 'boolean',
+              initialValue: false,
+            },
+          ],
+          preview: {
+            select: {
+              titleEn: 'title_en',
+              titleBn: 'title_bn',
+              url: 'url',
+              isActive: 'is_active',
+            },
+            prepare({ titleEn, titleBn, url, isActive }) {
+              const status = isActive !== false ? '🟢 Active' : '⚪ Hidden (OFF)'
+              const label = titleEn || titleBn || 'Untitled Link'
+              return {
+                title: `${label} — [${status}]`,
+                subtitle: url || 'No URL',
+              }
+            },
+          },
         },
       ],
     }),

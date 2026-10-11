@@ -59,6 +59,18 @@ collections:
                   - { label: "Text EN", name: "text_en", widget: "string" }
                   - { label: "Text BN", name: "text_bn", widget: "string" }
                   - { label: "Link", name: "link", widget: "string" }
+              # Quick Links
+              - label: "Footer Quick Links"
+                name: "quick_links"
+                widget: "list"
+                collapsed: true
+                summary: "{{fields.title_en}} ({{fields.url}}) - Active: {{fields.is_active}}"
+                fields:
+                  - { label: "Title EN", name: "title_en", widget: "string" }
+                  - { label: "Title BN", name: "title_bn", widget: "string", required: false }
+                  - { label: "Target URL", name: "url", widget: "string" }
+                  - { label: "Active (ON/OFF)", name: "is_active", widget: "boolean", default: true }
+                  - { label: "Open in new tab", name: "open_in_new_tab", widget: "boolean", default: false }
               # Contact Logos
               - label: "Contact Logos"
                 name: "contact_logos"
