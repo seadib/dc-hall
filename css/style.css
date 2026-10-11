@@ -4056,10 +4056,11 @@ html.user-logged-in #statusCard {
   overflow: hidden;
   border: 1px solid var(--border);
   background: #000;
-  aspect-ratio: 16 / 9;
   width: 100%;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
+  display: flex;
+  flex-direction: column;
 }
 
 .event-video-card:hover {
@@ -4070,10 +4071,44 @@ html.user-logged-in #statusCard {
 .event-video-card iframe,
 .event-video-card video {
   width: 100% !important;
-  height: 100% !important;
+  aspect-ratio: 16 / 9;
+  min-height: 195px;
   display: block;
   border: 0;
   object-fit: contain;
+  background: #000;
+}
+
+.event-video-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 14px;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  font-size: 0.78rem;
+}
+
+.event-video-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.event-video-link {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: color 0.15s ease;
+}
+
+.event-video-link:hover {
+  text-decoration: underline;
 }
 
 .gallery-card {

@@ -2670,12 +2670,23 @@ async function loadCmsContent() {
           caption_en: p.caption_en || p.title_en || '',
           caption_bn: p.caption_bn || p.title_bn || '',
         })),
-        videos: (ev.videos || []).map(v => ({
-          url: v.url ? convertToEmbedUrl(v.url) : (v.video_file_url || ''),
-          is_direct: !v.url && !!v.video_file_url,
-          title_en: v.title_en || '',
-          title_bn: v.title_bn || '',
-        })).filter(v => v.url),
+        videos: (ev.videos || []).map(v => {
+          const rawUrl = (v.url || '').trim();
+          const directFileUrl = v.video_file_url || '';
+          const driveId = getGoogleDriveFileId(rawUrl);
+          return {
+            url: rawUrl ? convertToEmbedUrl(rawUrl) : directFileUrl,
+            raw_url: rawUrl,
+            is_direct: !rawUrl && !!directFileUrl,
+            is_drive: !!driveId,
+            drive_id: driveId,
+            drive_stream_url: driveId ? `https://drive.usercontent.google.com/download?id=${driveId}&export=download` : '',
+            drive_preview_url: driveId ? `https://drive.google.com/file/d/${driveId}/preview` : '',
+            drive_view_url: driveId ? `https://drive.google.com/file/d/${driveId}/view` : '',
+            title_en: v.title_en || '',
+            title_bn: v.title_bn || '',
+          };
+        }).filter(v => v.url || v.is_drive || v.is_direct),
       };
     });
 
@@ -4834,6 +4845,35 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 });
 
+function getGoogleDriveFileId(url) {
+  if (!url) return null;
+  const u = String(url).trim();
+  if (!u.includes('drive.google.com')) return null;
+  const match1 = u.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
+  if (match1) return match1[1];
+  const match2 = u.match(/[?&]id=([a-zA-Z0-9_-]+)/);
+  if (match2) return match2[1];
+  return null;
+}
+
+window.handleDriveVideoError = function(videoEl, previewUrl, driveViewUrl) {
+  if (!videoEl) return;
+  const card = videoEl.closest('.event-video-card');
+  if (!card) return;
+  card.innerHTML = `
+    <iframe src="${previewUrl}" allowfullscreen allow="autoplay; encrypted-media; fullscreen" loading="lazy"></iframe>
+    <div class="event-video-bar">
+      <span class="event-video-pill">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M7.71 3.5L1.15 15l3.43 6 6.55-11.5M9.73 15L13.16 21h10.28l-3.43-6M22.29 13.5L15.71 2h-6.85l6.57 11.5"/></svg>
+        <span>Google Drive</span>
+      </span>
+      <a href="${driveViewUrl}" target="_blank" rel="noopener noreferrer" class="event-video-link">
+        <span>Google Drive-এ সরাসরি খুলুন</span> &nearr;
+      </a>
+    </div>
+  `;
+};
+
 /**
  * Converts regular video URLs to embed-friendly URLs.
  * Supports: YouTube, Google Drive, Mega.nz
@@ -5122,7 +5162,29 @@ function showEventDetailView(eventId) {
           if (v.is_direct) {
             return `
               <div class="event-video-card">
-                <video src="${v.url}" controls preload="metadata"></video>
+                <video src="${v.url}" controls preload="metadata" playsinline webkit-playsinline></video>
+              </div>
+            `;
+          } else if (v.is_drive) {
+            return `
+              <div class="event-video-card event-video-drive">
+                <video
+                  src="${v.drive_stream_url}"
+                  controls
+                  preload="metadata"
+                  playsinline
+                  webkit-playsinline
+                  onerror="handleDriveVideoError(this, '${v.drive_preview_url}', '${v.drive_view_url}')"
+                ></video>
+                <div class="event-video-bar">
+                  <span class="event-video-pill">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M7.71 3.5L1.15 15l3.43 6 6.55-11.5M9.73 15L13.16 21h10.28l-3.43-6M22.29 13.5L15.71 2h-6.85l6.57 11.5"/></svg>
+                    <span>Google Drive</span>
+                  </span>
+                  <a href="${v.drive_view_url}" target="_blank" rel="noopener noreferrer" class="event-video-link">
+                    <span>${currentLang === "bn" ? "ড্রাইভে দেখুন" : "Open in Drive"}</span> &nearr;
+                  </a>
+                </div>
               </div>
             `;
           } else {
