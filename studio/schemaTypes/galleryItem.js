@@ -14,6 +14,13 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: 'default_caption',
+      title: 'Default Photo Caption / ডিফল্ট ফটো ক্যাপশন (ঐচ্ছিক)',
+      type: 'string',
+      description: '📸 এই গ্যালারির সকল ছবির জন্য সাধারণ ক্যাপশন। কোনো ছবির নির্দিষ্ট ক্যাপশন না থাকলে এই ক্যাপশনটি স্বয়ংক্রিয়ভাবে ওয়েবসাইটে ও মডালে দেখাবে। খালি রাখলে শিরোনাম (Heading) ক্যাপশন হিসেবে কাজ করবে।',
+      placeholder: 'যেমন: Daily Hall Life, Campus Adda, Hostel Moments...',
+    }),
+    defineField({
       name: 'position',
       title: 'Display Order / প্রদর্শন ক্রম',
       type: 'number',
@@ -31,7 +38,7 @@ export default defineType({
           fields: [
             {
               name: 'caption',
-              title: 'Caption / ক্যাপশন (ঐচ্ছিক)',
+              title: 'Caption / ক্যাপশন (ঐচ্ছিক — খালি রাখলে উপরের ডিফল্ট ক্যাপশন বা শিরোনাম দেখাবে)',
               type: 'string',
             },
           ],
@@ -79,14 +86,16 @@ export default defineType({
   preview: {
     select: {
       title: 'heading',
+      caption: 'default_caption',
       photos: 'photos',
       media: 'photos.0',
     },
-    prepare({ title, photos, media }) {
+    prepare({ title, caption, photos, media }) {
       const count = Array.isArray(photos) ? photos.length : 0
+      const sub = caption ? `${count} photos • Default: "${caption}"` : `${count} photos`
       return {
         title: title || 'Gallery',
-        subtitle: `${count} photos`,
+        subtitle: sub,
         media: media,
       }
     },

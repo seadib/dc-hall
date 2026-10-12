@@ -2663,6 +2663,8 @@ async function loadCmsContent() {
         description_en: ev.description_en || '',
         description_bn: ev.description_bn || '',
         media_order: ev.media_order || 'photos_first',
+        default_caption_en: ev.default_caption_en || '',
+        default_caption_bn: ev.default_caption_bn || '',
         locations: (ev.locations && Array.isArray(ev.locations) && ev.locations.length)
           ? ev.locations.filter(Boolean)
           : (ev.location_name ? [ev.location_name] : []),
@@ -2670,8 +2672,8 @@ async function loadCmsContent() {
         location_map_url: ev.location_map_url || '',
         photos: (ev.photos || []).map(p => ({
           photo: p.photo || p.asset?.url || (typeof p === 'string' ? p : ''),
-          caption_en: p.caption_en || p.title_en || '',
-          caption_bn: p.caption_bn || p.title_bn || '',
+          caption_en: p.caption_en || p.title_en || ev.default_caption_en || '',
+          caption_bn: p.caption_bn || p.title_bn || ev.default_caption_bn || '',
         })),
         videos: (ev.videos || []).map(v => ({
           url: v.url ? convertToEmbedUrl(v.url) : (v.video_file_url || ''),
@@ -2688,13 +2690,14 @@ async function loadCmsContent() {
     if (sanityData.galleries && sanityData.galleries.length) {
       sanityData.galleries.forEach(gDoc => {
         const heading = gDoc.heading || gDoc.gallery_title || gDoc.batch || '';
+        const default_caption = gDoc.default_caption || '';
         const photos = (gDoc.photos || []).map(p => ({
           photo: p.photo || '',
           heading: heading,
-          caption: p.caption || p.caption_en || p.title_en || p.description_en || '',
+          caption: p.caption || p.caption_en || p.title_en || p.description_en || default_caption || '',
         }));
         if (photos.length) {
-          galleryCollections.push({ heading, photos });
+          galleryCollections.push({ heading, default_caption, photos });
           galleryItems.push(...photos);
         }
       });
@@ -4813,13 +4816,26 @@ function openGalleryModal(src, title, desc = "") {
   activeStudentId = null;
   activeRoomId = null;
 
+  const tagText = (desc && desc.trim()) ? desc.trim() : "";
+
   content.innerHTML = `
     <div class="gallery-preview">
-      <img src="${src}" alt="${title}" loading="lazy">
+      <div class="gallery-preview-media">
+        <img src="${src}" alt="${title}" loading="lazy">
+      </div>
       <div class="gallery-preview-body">
-        <p class="eyebrow">${t("nav.gallery")}</p>
-        <h2 id="modalName">${title}</h2>
-        <p>${desc || t("gallery.demoText")}</p>
+        <span class="gallery-preview-eyebrow">${t("nav.gallery")}</span>
+        <h2 id="modalName" class="gallery-preview-title">${title}</h2>
+        ${tagText ? `
+          <div class="gallery-preview-tag-wrap">
+            <span class="gallery-tag-pill">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+              </svg>
+              <span>${tagText}</span>
+            </span>
+          </div>
+        ` : ""}
         <div class="gallery-preview-actions">
           <a class="btn primary" href="${src}" download>Download</a>
           <a class="btn secondary" href="${src}" target="_blank" rel="noopener">Open image</a>
@@ -5072,11 +5088,11 @@ async function renderGalleryPage(galleryData) {
     const date = currentLang === "bn" ? (ev.date_formatted_bn || ev.date_formatted_en) : (ev.date_formatted_en || ev.date_formatted_bn);
     const batchLabel = ev.batches && ev.batches.length ? ev.batches.join(' · ') : '';
 
-    // All photos of that event in the horizontal scrolling strip
     const previewPhotos = ev.photos || [];
+    const defaultCap = currentLang === "bn" ? (ev.default_caption_bn || ev.default_caption_en) : (ev.default_caption_en || ev.default_caption_bn);
     const photosHtml = previewPhotos.map((p, pIdx) => {
       const photoSrc = normalizeCmsPath(p.photo) || "images/hall/hostel-building.jpg";
-      const caption = currentLang === "bn" ? (p.caption_bn || p.caption_en || title) : (p.caption_en || p.caption_bn || title);
+      const caption = currentLang === "bn" ? (p.caption_bn || p.caption_en || defaultCap || title) : (p.caption_en || p.caption_bn || defaultCap || title);
       return `
         <article class="dcsc-photo-card" data-aos="fade-up" data-aos-delay="${(pIdx % 6) * 60}">
           <button type="button" data-gallery-src="${photoSrc}" data-gallery-title="${caption}" data-gallery-desc="${title}">
@@ -5143,9 +5159,10 @@ async function renderGalleryPage(galleryData) {
 
     // Build each collection section
     const sectionsHtml = collections.map((col, colIdx) => {
+      const defaultCap = col.default_caption || "";
       const photosHtml = col.photos.map((p, pIdx) => {
         const photoSrc = normalizeCmsPath(p.photo) || "images/hall/hostel-building.jpg";
-        const caption = p.caption || (col.heading || "Memory");
+        const caption = p.caption || defaultCap || (col.heading || "Memory");
         return `
           <article class="dcsc-photo-card" data-heading="${col.heading || ''}" data-aos="fade-up" data-aos-delay="${(pIdx % 4) * 60}">
             <button type="button" data-gallery-src="${photoSrc}" data-gallery-title="${caption}" data-gallery-desc="${col.heading || ''}">
@@ -5155,6 +5172,11 @@ async function renderGalleryPage(galleryData) {
                   <span style="font-size: 0.88rem; font-weight: 700; line-height: 1.3; display: block; text-shadow: 0 1px 3px rgba(0,0,0,0.8);">
                     ${caption}
                   </span>
+                  ${col.heading && col.heading !== caption ? `
+                    <span style="display: inline-block; margin-top: 4px; font-size: 0.72rem; padding: 2px 8px; border-radius: 999px; background: rgba(255,255,255,0.22); backdrop-filter: blur(4px); color: #fff; font-weight: 600;">
+                      ${col.heading}
+                    </span>
+                  ` : ''}
                 </div>
               </div>
             </button>
@@ -5286,7 +5308,8 @@ function showEventDetailView(eventId) {
       <div class="event-detail-grid">
         ${photos.map((p, pIdx) => {
           const photoSrc = normalizeCmsPath(p.photo) || "images/hostel-building.jpg";
-          const caption = currentLang === "bn" ? (p.caption_bn || p.caption_en || title) : (p.caption_en || p.caption_bn || title);
+          const defaultCap = currentLang === "bn" ? (ev.default_caption_bn || ev.default_caption_en) : (ev.default_caption_en || ev.default_caption_bn);
+          const caption = currentLang === "bn" ? (p.caption_bn || p.caption_en || defaultCap || title) : (p.caption_en || p.caption_bn || defaultCap || title);
           return `
             <article class="dcsc-photo-card" data-aos="fade-up" data-aos-delay="${(pIdx % 6) * 50}">
               <button type="button" data-gallery-src="${photoSrc}" data-gallery-title="${caption}" data-gallery-desc="${title}">

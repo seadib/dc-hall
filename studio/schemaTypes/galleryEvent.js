@@ -147,6 +147,22 @@ export default defineType({
       initialValue: 'photos_first',
     }),
     defineField({
+      name: 'default_caption_en',
+      title: 'Default Photo Caption (English) — Optional',
+      type: 'string',
+      group: 'media',
+      description: 'Default caption for all photos in this event if an individual photo caption is left empty.',
+      placeholder: 'e.g. Reunion Moments, Tour Highlights...',
+    }),
+    defineField({
+      name: 'default_caption_bn',
+      title: 'ডিফল্ট ফটো ক্যাপশন (বাংলা) — ঐচ্ছিক',
+      type: 'string',
+      group: 'media',
+      description: 'ইভেন্টের সকল ছবির জন্য সাধারণ ক্যাপশন। কোনো ছবির নির্দিষ্ট ক্যাপশন না থাকলে এটি ওয়েবসাইটে ও মডালে দেখাবে। খালি রাখলে ইভেন্টের নাম দেখাবে।',
+      placeholder: 'যেমন: স্মৃতিময় মুহূর্ত, রিইউনিয়ন ফটো...',
+    }),
+    defineField({
       name: 'photos',
       title: 'Event Photos (ইভেন্ট ফটোসমূহ — একসাথে ড্র্যাগ ও ড্রপ)',
       type: 'array',
@@ -159,12 +175,12 @@ export default defineType({
           fields: [
             {
               name: 'caption_en',
-              title: 'Caption (English)',
+              title: 'Caption (English) — Optional (falls back to default caption / title)',
               type: 'string',
             },
             {
               name: 'caption_bn',
-              title: 'ক্যাপশন (বাংলা)',
+              title: 'ক্যাপশন (বাংলা) — ঐচ্ছিক (খালি রাখলে ডিফল্ট ক্যাপশন বা শিরোনাম দেখাবে)',
               type: 'string',
             },
           ],
