@@ -4595,11 +4595,8 @@ function openStudentModal(student) {
           </div>
           ${hasVal(student.room) ? `
           <div class="profile-item room-item" data-room-id="${student.room}" style="cursor: pointer;" title="${currentLang === 'bn' ? 'রুমের বিস্তারিত দেখতে ক্লিক করুন' : 'Click to view room details'}">
-            <span>${t("common.room")}</span>
-            <strong style="display: inline-flex; align-items: center; gap: 6px; color: var(--accent);">
-              ${currentLang === "bn" ? ("রুম " + toBengaliDigits(student.room)) : ("Room " + student.room)}
-              <span style="font-size: 0.72rem; opacity: 0.7;">&rarr;</span>
-            </strong>
+            <span>${currentLang === 'bn' ? 'রুম নং' : 'ROOM NO'}</span>
+            <strong>${currentLang === "bn" ? toBengaliDigits(student.room) : student.room}</strong>
           </div>` : ""}
           ${hasVal(student.classNo) ? `<div class="profile-item"><span>${t("common.classLabel")}</span><strong>${classLabel(student.classNo, student)}</strong></div>` : ""}
           ${hasVal(student.group) ? `<div class="profile-item"><span>${t("common.group")}</span><strong>${groupLabel(student.group)}</strong></div>` : ""}
