@@ -2690,6 +2690,8 @@ async function loadCmsContent() {
     if (sanityData.galleries && sanityData.galleries.length) {
       sanityData.galleries.forEach(gDoc => {
         const heading = gDoc.heading || gDoc.gallery_title || gDoc.batch || '';
+        const slug = gDoc.slug || heading.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') || `col-${gDoc._id}`;
+        const preview_limit = Number(gDoc.preview_limit) > 0 ? Number(gDoc.preview_limit) : 0;
         const default_caption = gDoc.default_caption || '';
         const photos = (gDoc.photos || []).map(p => ({
           photo: p.photo || '',
@@ -2697,7 +2699,7 @@ async function loadCmsContent() {
           caption: p.caption || p.caption_en || p.title_en || p.description_en || default_caption || '',
         }));
         if (photos.length) {
-          galleryCollections.push({ heading, default_caption, photos });
+          galleryCollections.push({ heading, slug, preview_limit, default_caption, photos });
           galleryItems.push(...photos);
         }
       });
@@ -4555,7 +4557,13 @@ function openStudentModal(student) {
   const showWhatsAppIcon = student.hasWhatsApp || !!student.whatsapp;
   const showTelegramIcon = student.hasTelegram || !!student.telegram;
 
-  content.innerHTML = `
+        const hasVal = (val) => {
+          if (val === null || val === undefined) return false;
+          const s = String(val).trim();
+          return s !== "" && s !== "-" && s !== "--" && s !== "—" && s !== "N/A" && s !== "null" && s !== "undefined";
+        };
+
+        content.innerHTML = `
     <div class="profile">
       <div class="profile-photo-wrapper">
         <img src="${student.img}" alt="${studentValue(student, "name")}" loading="lazy">
@@ -4585,37 +4593,45 @@ function openStudentModal(student) {
               </button>
             </strong>
           </div>
-          <div class="profile-item"><span>${t("common.classLabel")}</span><strong>${classLabel(student.classNo, student)}</strong></div>
-          <div class="profile-item"><span>${t("common.group")}</span><strong>${groupLabel(student.group)}</strong></div>
-          <div class="profile-item"><span>${t("common.section")}</span><strong>${student.section || "-"}</strong></div>
-          <div class="profile-item"><span>${t("common.practicalGroup")}</span><strong>${student.practicalGroup || "-"}</strong></div>
-          ${showWhatsAppIcon ? (!showSocials ? `
+          ${hasVal(student.room) ? `
+          <div class="profile-item room-item" data-room-id="${student.room}" style="cursor: pointer;" title="${currentLang === 'bn' ? 'রুমের বিস্তারিত দেখতে ক্লিক করুন' : 'Click to view room details'}">
+            <span>${t("common.room")}</span>
+            <strong style="display: inline-flex; align-items: center; gap: 6px; color: var(--accent);">
+              ${currentLang === "bn" ? ("রুম " + toBengaliDigits(student.room)) : ("Room " + student.room)}
+              <span style="font-size: 0.72rem; opacity: 0.7;">&rarr;</span>
+            </strong>
+          </div>` : ""}
+          ${hasVal(student.classNo) ? `<div class="profile-item"><span>${t("common.classLabel")}</span><strong>${classLabel(student.classNo, student)}</strong></div>` : ""}
+          ${hasVal(student.group) ? `<div class="profile-item"><span>${t("common.group")}</span><strong>${groupLabel(student.group)}</strong></div>` : ""}
+          ${hasVal(student.section) ? `<div class="profile-item"><span>${t("common.section")}</span><strong>${student.section}</strong></div>` : ""}
+          ${hasVal(student.practicalGroup) ? `<div class="profile-item"><span>${t("common.practicalGroup")}</span><strong>${student.practicalGroup}</strong></div>` : ""}
+          ${(showWhatsAppIcon && hasVal(whatsappNum)) ? (!showSocials ? `
           <a href="profile.html" class="profile-item locked-item" title="${currentLang === 'bn' ? 'লগইন করে দেখতে ক্লিক করুন' : 'Click to log in and view'}">
             <span>WHATSAPP</span>
-            <strong>${maskData(student.phone)}${smallLockIconSvg}</strong>
+            <strong>${maskData(whatsappNum)}${smallLockIconSvg}</strong>
           </a>` : `
           <div class="profile-item">
             <span>WHATSAPP</span>
             <strong>
               <a href="${whatsappHref}" target="_blank" rel="noopener">
-                ${student.whatsapp || student.phone || '-'}
+                ${whatsappNum}
               </a>
             </strong>
           </div>`) : ''}
-          ${showTelegramIcon ? (!showSocials ? `
+          ${(showTelegramIcon && hasVal(telegramId)) ? (!showSocials ? `
           <a href="profile.html" class="profile-item locked-item" title="${currentLang === 'bn' ? 'লগইন করে দেখতে ক্লিক করুন' : 'Click to log in and view'}">
             <span>TELEGRAM</span>
-            <strong>${maskData(student.telegram)}${smallLockIconSvg}</strong>
+            <strong>${maskData(telegramId)}${smallLockIconSvg}</strong>
           </a>` : `
           <div class="profile-item">
             <span>TELEGRAM</span>
             <strong>
               <a href="${telegramHref}" target="_blank" rel="noopener">
-                ${student.telegram || '-'}
+                ${telegramId}
               </a>
             </strong>
           </div>`) : ''}
-          ${!showPhone ? `
+          ${hasVal(student.phone) ? (!showPhone ? `
           <a href="profile.html" class="profile-item locked-item" title="${currentLang === 'bn' ? 'লগইন করে দেখতে ক্লিক করুন' : 'Click to log in and view'}">
             <span>${t("common.phone")}</span>
             <strong>${maskData(student.phone)}${smallLockIconSvg}</strong>
@@ -4624,11 +4640,11 @@ function openStudentModal(student) {
             <span>${t("common.phone")}</span>
             <strong>
               <a href="${phoneHref}">
-                ${student.phone || '-'}
+                ${student.phone}
               </a>
             </strong>
-          </div>`}
-          ${!showFather ? `
+          </div>`) : ''}
+          ${hasVal(student.fatherPhone) ? (!showFather ? `
           <a href="profile.html" class="profile-item locked-item" title="${currentLang === 'bn' ? 'লগইন করে দেখতে ক্লিক করুন' : 'Click to log in and view'}">
             <span>${t("common.fatherPhone")}</span>
             <strong>${maskData(student.fatherPhone)}${smallLockIconSvg}</strong>
@@ -4637,11 +4653,11 @@ function openStudentModal(student) {
             <span>${t("common.fatherPhone")}</span>
             <strong>
               <a href="${fatherPhoneHref}">
-                ${student.fatherPhone || '-'}
+                ${student.fatherPhone}
               </a>
             </strong>
-          </div>`}
-          ${!showEmail ? `
+          </div>`) : ''}
+          ${hasVal(student.email) ? (!showEmail ? `
           <a href="profile.html" class="profile-item locked-item" title="${currentLang === 'bn' ? 'লগইন করে দেখতে ক্লিক করুন' : 'Click to log in and view'}">
             <span>${t("common.email")}</span>
             <strong>${maskData(student.email)}${smallLockIconSvg}</strong>
@@ -4650,11 +4666,11 @@ function openStudentModal(student) {
             <span>${t("common.email")}</span>
             <strong>
               <a href="${emailHref}">
-                ${student.email || '-'}
+                ${student.email}
               </a>
             </strong>
-          </div>`}
-          ${!showAddress ? `
+          </div>`) : ''}
+          ${hasVal(studentValue(student, "address")) ? (!showAddress ? `
           <a href="profile.html" class="profile-item locked-item" title="${currentLang === 'bn' ? 'লগইন করে দেখতে ক্লিক করুন' : 'Click to log in and view'}">
             <span>${t("common.address")}</span>
             <strong>${maskData(studentValue(student, "address"))}${smallLockIconSvg}</strong>
@@ -4663,17 +4679,19 @@ function openStudentModal(student) {
             <span>${t("common.address")}</span>
             <strong>
               <a href="${addressHref}" target="_blank" rel="noopener">
-                ${studentValue(student, "address") || '-'}
+                ${studentValue(student, "address")}
               </a>
             </strong>
-          </div>`}
-          <div class="profile-item"><span>${t("common.blood")}</span><strong>${student.blood || "-"}</strong></div>
-          <div class="profile-item"><span>${t("common.dob")}</span><strong>${studentValue(student, "dob") || student.dob || "-"}</strong></div>
-          <div class="profile-item"><span>${t("common.college")}</span><strong>${studentValue(student, "college")}</strong></div>
+          </div>`) : ''}
+          ${hasVal(student.blood) ? `<div class="profile-item"><span>${t("common.blood")}</span><strong>${student.blood}</strong></div>` : ""}
+          ${hasVal(studentValue(student, "dob") || student.dob) ? `<div class="profile-item"><span>${t("common.dob")}</span><strong>${studentValue(student, "dob") || student.dob}</strong></div>` : ""}
+          ${hasVal(studentValue(student, "college")) ? `<div class="profile-item"><span>${t("common.college")}</span><strong>${studentValue(student, "college")}</strong></div>` : ""}
         </div>
 
-        <h3>${t("common.about")}</h3>
-        <p>${studentValue(student, "bio")}</p>
+        ${hasVal(studentValue(student, "bio")) ? `
+          <h3>${t("common.about")}</h3>
+          <p>${studentValue(student, "bio")}</p>
+        ` : ""}
 
         <div class="academic-section-title">
           <div class="title-left">
@@ -5149,9 +5167,9 @@ async function renderGalleryPage(galleryData) {
         <button type="button" class="gallery-heading-btn active" data-heading="all" style="padding: 5px 14px; border-radius: 999px; font-size: 0.8rem; font-weight: 700; border: 1px solid var(--border); background: var(--accent); color: #fff; cursor: pointer;">
           ${currentLang === "bn" ? "সব দেখুন" : "All"}
         </button>
-        ${headings.map(h => `
-          <button type="button" class="gallery-heading-btn" data-heading="${h}" style="padding: 5px 14px; border-radius: 999px; font-size: 0.8rem; font-weight: 600; border: 1px solid var(--border); background: var(--surface); color: var(--text-muted); cursor: pointer;">
-            📁 ${h}
+        ${collections.map(col => `
+          <button type="button" class="gallery-heading-btn" data-heading="${col.heading}" data-slug="${col.slug}" style="padding: 5px 14px; border-radius: 999px; font-size: 0.8rem; font-weight: 600; border: 1px solid var(--border); background: var(--surface); color: var(--text-muted); cursor: pointer;">
+            📁 ${col.heading}
           </button>
         `).join("")}
       </div>
@@ -5160,11 +5178,19 @@ async function renderGalleryPage(galleryData) {
     // Build each collection section
     const sectionsHtml = collections.map((col, colIdx) => {
       const defaultCap = col.default_caption || "";
+      const limit = Number(col.preview_limit) > 0 ? Number(col.preview_limit) : 0;
+      const hasLimit = limit > 0 && col.photos.length > limit;
+
       const photosHtml = col.photos.map((p, pIdx) => {
         const photoSrc = normalizeCmsPath(p.photo) || "images/hall/hostel-building.jpg";
         const caption = p.caption || defaultCap || (col.heading || "Memory");
+        const isHidden = hasLimit && pIdx >= limit;
         return `
-          <article class="dcsc-photo-card" data-heading="${col.heading || ''}" data-aos="fade-up" data-aos-delay="${(pIdx % 4) * 60}">
+          <article class="dcsc-photo-card ${isHidden ? 'gallery-extra-photo' : ''}" 
+                   data-heading="${col.heading || ''}" 
+                   ${isHidden ? 'style="display: none;"' : ''} 
+                   data-aos="fade-up" 
+                   data-aos-delay="${(pIdx % 4) * 60}">
             <button type="button" data-gallery-src="${photoSrc}" data-gallery-title="${caption}" data-gallery-desc="${col.heading || ''}">
               <img src="${photoSrc}" alt="${caption}" loading="lazy">
               <div class="gallery-card-overlay">
@@ -5185,14 +5211,22 @@ async function renderGalleryPage(galleryData) {
       }).join("");
 
       return `
-        <div class="gallery-collection-section" data-collection-heading="${col.heading || ''}">
-          ${col.heading ? `
-            <h3 style="margin: 28px 0 14px 0; font-size: 1.15rem; font-weight: 700; color: var(--text-primary); display: flex; align-items: center; gap: 8px;">
-              <span style="display: inline-block; width: 4px; height: 22px; border-radius: 2px; background: var(--accent);"></span>
-              ${col.heading}
-              <span style="font-size: 0.78rem; font-weight: 500; color: var(--text-muted); margin-left: 4px;">(${col.photos.length})</span>
-            </h3>
-          ` : ''}
+        <div class="gallery-collection-section" id="collection-${col.slug}" data-collection-heading="${col.heading || ''}" data-collection-slug="${col.slug || ''}">
+          <div class="gallery-collection-header" style="margin: 28px 0 14px 0; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+            ${col.heading ? `
+              <h3 style="margin: 0; font-size: 1.15rem; font-weight: 700; color: var(--text-primary); display: flex; align-items: center; gap: 8px;">
+                <span style="display: inline-block; width: 4px; height: 22px; border-radius: 2px; background: var(--accent);"></span>
+                ${col.heading}
+                <span style="font-size: 0.78rem; font-weight: 500; color: var(--text-muted); margin-left: 4px;">(${col.photos.length})</span>
+              </h3>
+            ` : '<div></div>'}
+            ${hasLimit ? `
+              <button type="button" class="gallery-view-all-btn" data-slug="${col.slug}" data-limit="${limit}" data-total="${col.photos.length}" style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; border-radius: 999px; font-size: 0.8rem; font-weight: 700; border: 1.5px solid var(--accent); background: rgba(2, 132, 199, 0.08); color: var(--accent); cursor: pointer; transition: all 0.2s ease;">
+                <span class="view-all-text">${currentLang === "bn" ? `সবগুলো দেখুন (${col.photos.length})` : `View All (${col.photos.length})`}</span>
+                <span class="view-all-arrow">&rarr;</span>
+              </button>
+            ` : ''}
+          </div>
           <div class="dcsc-memories-grid">
             ${photosHtml}
           </div>
@@ -5239,6 +5273,37 @@ async function renderGalleryPage(galleryData) {
         });
       });
     });
+
+    // View All button handlers
+    document.querySelectorAll(".gallery-view-all-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const slug = btn.dataset.slug;
+        const total = btn.dataset.total;
+        const section = document.querySelector(`.gallery-collection-section[data-collection-slug="${slug}"]`);
+        if (!section) return;
+        const hiddenPhotos = section.querySelectorAll(".gallery-extra-photo");
+        const textSpan = btn.querySelector(".view-all-text");
+        const arrowSpan = btn.querySelector(".view-all-arrow");
+        
+        const isExpanded = btn.classList.contains("expanded");
+        if (!isExpanded) {
+          hiddenPhotos.forEach(p => p.style.display = "");
+          btn.classList.add("expanded");
+          btn.style.background = "var(--accent)";
+          btn.style.color = "#fff";
+          if (textSpan) textSpan.textContent = currentLang === "bn" ? "কম দেখুন" : "Show Less";
+          if (arrowSpan) arrowSpan.innerHTML = "&uarr;";
+          window.location.hash = `#collection=${slug}`;
+        } else {
+          hiddenPhotos.forEach(p => p.style.display = "none");
+          btn.classList.remove("expanded");
+          btn.style.background = "rgba(2, 132, 199, 0.08)";
+          btn.style.color = "var(--accent)";
+          if (textSpan) textSpan.textContent = currentLang === "bn" ? `সবগুলো দেখুন (${total})` : `View All (${total})`;
+          if (arrowSpan) arrowSpan.innerHTML = "&rarr;";
+        }
+      });
+    });
   }
 
   // 3. Attach click handlers for 'View Event' buttons
@@ -5262,6 +5327,19 @@ function handleGalleryHash() {
     const eventId = hash.replace("#event=", "");
     if (eventId) {
       showEventDetailView(eventId);
+    }
+  } else if (hash.startsWith("#collection=") || hash.startsWith("#gallery=")) {
+    const slug = hash.replace(/^#(collection|gallery)=/, "");
+    closeEventDetailView();
+    const targetSec = document.querySelector(`.gallery-collection-section[data-collection-slug="${slug}"]`);
+    if (targetSec) {
+      const viewAllBtn = targetSec.querySelector(".gallery-view-all-btn");
+      if (viewAllBtn && !viewAllBtn.classList.contains("expanded")) {
+        viewAllBtn.click();
+      }
+      setTimeout(() => {
+        targetSec.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 100);
     }
   } else if (!hash || hash === "#") {
     closeEventDetailView();

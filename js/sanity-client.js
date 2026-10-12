@@ -81,6 +81,8 @@ const SANITY_GROQ_QUERY = `{
   "galleries": *[_type == "galleryItem" && !(_id in path("drafts.**"))] | order(position asc){
     _id,
     heading,
+    "slug": slug.current,
+    preview_limit,
     default_caption,
     batch,
     gallery_title,

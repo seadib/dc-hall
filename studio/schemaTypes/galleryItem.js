@@ -21,6 +21,23 @@ export default defineType({
       placeholder: 'যেমন: Daily Hall Life, Campus Adda, Hostel Moments...',
     }),
     defineField({
+      name: 'slug',
+      title: 'Slug / URL আইডেন্টিফায়ার (যেমন: hsc-27)',
+      type: 'slug',
+      description: 'ওয়েবসাইটে নির্দিষ্ট গ্যালারি সেকশন লিংক করার জন্য (যেমন: #collection=hsc-27)। শিরোনাম থেকে তৈরি করতে Generate-এ ক্লিক করুন।',
+      options: {
+        source: 'heading',
+        maxLength: 60,
+      },
+    }),
+    defineField({
+      name: 'preview_limit',
+      title: 'Main Page Display Count / মূল পেজে ছবির সংখ্যা (ঐচ্ছিক)',
+      type: 'number',
+      description: 'গ্যালারি পেজে শুরুতে সর্বোচ্চ কয়টি ছবি দেখাবে (যেমন: ৬ বা ৮)। অতিরিক্ত ছবি থাকলে "View All" বাটনে ক্লিক করে সব দেখা যাবে। খালি রাখলে সবগুলো ছবি সরাসরি দেখাবে।',
+      placeholder: 'যেমন: 6 বা 8 (খালি রাখলে সব ছবি দেখাবে)',
+    }),
+    defineField({
       name: 'position',
       title: 'Display Order / প্রদর্শন ক্রম',
       type: 'number',

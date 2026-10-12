@@ -1907,6 +1907,38 @@ body:not(.dark) .result-box.locked:hover {
   margin-top: 14px;
 }
 
+.gallery-view-all-btn:hover {
+  background: var(--accent) !important;
+  color: #fff !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
+}
+
+.gallery-extra-photo {
+  animation: fadeInPhoto 0.35s ease forwards;
+}
+
+@keyframes fadeInPhoto {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.profile-item.room-item {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.profile-item.room-item:hover {
+  border-color: var(--accent);
+  background: rgba(2, 132, 199, 0.06);
+}
+
 .success-chart {
   display: grid;
   gap: 16px;
