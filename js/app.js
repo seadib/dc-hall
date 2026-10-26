@@ -4137,6 +4137,7 @@ function openFamousModal(profileId) {
     </div>
   `;
 
+  modal.classList.remove("is-gallery-modal", "is-room-modal");
   modal.classList.add("open");
   modal.setAttribute("aria-hidden", "false");
   document.body.style.overflow = "hidden";
@@ -4749,6 +4750,7 @@ function openStudentModal(student) {
     </div>
   `;
 
+  modal.classList.remove("is-gallery-modal", "is-room-modal");
   modal.classList.add("open");
   modal.setAttribute("aria-hidden", "false");
   document.body.style.overflow = "hidden";
@@ -4817,6 +4819,8 @@ function openRoomModal(room) {
     </div>
   `;
 
+  modal.classList.remove("is-gallery-modal");
+  modal.classList.add("is-room-modal");
   modal.classList.add("open");
   modal.setAttribute("aria-hidden", "false");
   document.body.style.overflow = "hidden";
@@ -4836,6 +4840,7 @@ function openGalleryModal(src, title, desc = "") {
   content.innerHTML = `
     <div class="gallery-preview">
       <div class="gallery-preview-media">
+        <div class="gallery-ambient-bg" style="background-image: url('${src}');" aria-hidden="true"></div>
         <img src="${src}" alt="${title}" loading="lazy">
       </div>
       <div class="gallery-preview-body">
@@ -4859,6 +4864,8 @@ function openGalleryModal(src, title, desc = "") {
     </div>
   `;
 
+  modal.classList.remove("is-room-modal");
+  modal.classList.add("is-gallery-modal");
   modal.classList.add("open");
   modal.setAttribute("aria-hidden", "false");
   document.body.style.overflow = "hidden";
@@ -4871,7 +4878,7 @@ function closeStudentModal() {
 
   activeStudentId = null;
   activeRoomId = null;
-  modal.classList.remove("open");
+  modal.classList.remove("open", "is-gallery-modal", "is-room-modal");
   modal.setAttribute("aria-hidden", "true");
   document.body.style.overflow = "";
 }
@@ -5849,3 +5856,6 @@ window.openStudentModalFromRoom = function(slug) {
     openStudentModal(student);
   }
 };
+
+
+window.openGalleryModal = openGalleryModal;
